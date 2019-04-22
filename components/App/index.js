@@ -38,10 +38,6 @@ requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage
             computed: {
                 langLoading() {
                     return this.$store.state.langLoading
-                },
-
-                routePageLoading() {
-                    return this.$store.state.routePageLoading
                 }
             },
             beforeMount() {
@@ -55,8 +51,6 @@ requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage
                     loadLanguage = "en"
 
                 loadLanguageAsync(loadLanguage)
-
-                this.$store.dispatch("checkCurrentStep")
             }
         });
     });
