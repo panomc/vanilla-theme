@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pano</title>
 </head>
-
+ffff
 <body>
 <div id="app"></div>
 
