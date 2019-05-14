@@ -51,7 +51,16 @@ requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage
                     loadLanguage = "en"
 
                 loadLanguageAsync(loadLanguage)
-            }
+            },
+						mounted() {
+
+							// Enable Bootstrap 4 Tooltips
+							
+							$(function () {
+								$('[data-toggle="tooltip"]').tooltip()
+							})
+							
+						}
         });
     });
 });
