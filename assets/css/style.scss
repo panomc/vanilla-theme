@@ -55,6 +55,7 @@ $border-radius-sm: 8px;
 // Alerts
 
 $alert-margin-bottom: 2rem;
+$alert-color-level: 2;
 
 // Dropdowns
 
@@ -160,4 +161,16 @@ $navbar-nav-link-padding-x: 1.5rem;
     height: 200px;
     background: linear-gradient($light, rgba(0, 0, 0, 0));
   }
+}
+
+.server-status-right {
+  border-top-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.server-status-left {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
 }

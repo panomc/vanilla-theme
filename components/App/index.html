@@ -1,4 +1,5 @@
 <div id='MainComponent'>
+
   <link href="/assets/css/style.css" rel="stylesheet">
   <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
     integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B" rel="stylesheet">
@@ -7,13 +8,21 @@
 
   <!-- Header -->
   <header id="header">
-    <a href="#">
-      <img alt="Server Logo" class="img-fluid" src="/assets/img/logo.png" width="400">
-    </a>
-    <button class="btn btn-sm btn-yellow shadow-yellow py-2 my-2 d-lg-none d-block" type="button">
-      <p class="text-neon text-white font-weight-bolder m-0">OYNA.IPADRESI.COM</p>
-      <small class="text-muted">IP adresini kopyalamak için tıkla!</small>
-    </button>
+    <div class="container">
+      <div class="row justify-content-center align-items-center">
+        <div class="col-12">
+          <a href="#">
+            <img alt="Server Logo" class="img-fluid d-block m-auto" src="/assets/img/logo.png" width="400">
+          </a>
+        </div>
+        <div class="col-12 pt-3">
+          <button class="btn btn-sm btn-yellow shadow-yellow py-2 my-2 d-lg-none d-block m-auto" type="button">
+            <p class="text-neon text-white font-weight-bolder m-0">OYNA.IPADRESI.COM</p>
+            <small class="text-muted">IP adresini kopyalamak için tıkla!</small>
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
   <!-- Header End -->
 
@@ -39,16 +48,20 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Ana Sayfa</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Oyunlar</a>
-          </li>
           <li class="nav-item dropdown">
             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
-              href="#" id="dropdownId">Market</a>
+              href="#" id="dropdownId"><i class="fas fa-shop"></i> Market</a>
             <div aria-labelledby="dropdownId" class="dropdown-menu">
-              <a class="dropdown-item" href="#">Action 1</a>
-              <a class="dropdown-item" href="#">Action 2</a>
+              <a class="dropdown-item" href="#">Vip Paketleri</a>
+              <a class="dropdown-item" href="#">Rütbeler</a>
+              <a class="dropdown-item" href="#">Kutular</a>
             </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Destek</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vote</a>
           </li>
         </ul>
       </div>
@@ -68,8 +81,8 @@
   <!-- Alert End -->
 
   <!-- Slider -->
-  <section class="container">
-    <div class="carousel slide mb-5 shadow-lg" data-ride="carousel" id="carouselId">
+  <!--   <section class="container d-md-block d-none">
+    <div class="carousel slide mb-5 shadow" data-ride="carousel" id="carouselId">
       <ol class="carousel-indicators">
         <li class="active" data-slide-to="0" data-target="#carouselId"></li>
         <li data-slide-to="1" data-target="#carouselId"></li>
@@ -110,7 +123,7 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </section>
+  </section> -->
   <!-- Slider End -->
 
   <!-- Main Block -->
@@ -119,60 +132,6 @@
 
       <!-- Content -->
       <div class="col-lg-8">
-
-        <!-- Post Card -->
-        <div class="card shadow-lg mb-5">
-          <img alt="Post Image" class="card-img-top" src="/assets/img/post-image.jpg">
-          <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-pill badge-mint text-light mr-3">DUYURU</span> Minecraft
-              sunucumuz açıldı!</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium recusandae
-              repellendus sit enim ipsam, officia inventore magnam quasi repellat quaerat fugiat. Voluptatibus saepe in
-              commodi itaque explicabo totam earum dolorem.</p>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <span class="text-muted"><img src="/assets/img/head.png" alt="Steve" width="32" height="32" title="Steve"
-                class="rounded mr-3"> 14 Mart 2018</span>
-            <button class="btn btn-secondary" type="button">Devamını Oku ></button>
-          </div>
-        </div>
-        <!-- Post Card End -->
-
-        <!-- Post Card -->
-        <div class="card shadow-lg mb-5">
-          <img alt="Post Image" class="card-img-top" src="/assets/img/post-image.jpg">
-          <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-pill badge-mint text-light mr-3">DUYURU</span> Minecraft
-              sunucumuz açıldı!</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium recusandae
-              repellendus sit enim ipsam, officia inventore magnam quasi repellat quaerat fugiat. Voluptatibus saepe in
-              commodi itaque explicabo totam earum dolorem.</p>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <span class="text-muted"><img src="/assets/img/head.png" alt="Steve" width="32" height="32" title="Steve"
-                class="rounded mr-3"> 14 Mart 2018</span>
-            <button class="btn btn-secondary" type="button">Devamını Oku ></button>
-          </div>
-        </div>
-        <!-- Post Card End -->
-
-        <!-- Post Card -->
-        <div class="card shadow-lg mb-5">
-          <img alt="Post Image" class="card-img-top" src="/assets/img/post-image.jpg">
-          <div class="card-body">
-            <h5 class="card-title"><span class="badge badge-pill badge-mint text-light mr-3">DUYURU</span> Minecraft
-              sunucumuz açıldı!</h5>
-            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium recusandae
-              repellendus sit enim ipsam, officia inventore magnam quasi repellat quaerat fugiat. Voluptatibus saepe in
-              commodi itaque explicabo totam earum dolorem.</p>
-          </div>
-          <div class="card-footer d-flex justify-content-between align-items-center">
-            <span class="text-muted"><img src="/assets/img/head.png" alt="Steve" width="32" height="32" title="Steve"
-                class="rounded mr-3"> 14 Mart 2018</span>
-            <button class="btn btn-secondary" type="button">Devamını Oku ></button>
-          </div>
-        </div>
-        <!-- Post Card End -->
 
       </div>
       <!-- Content End -->
@@ -189,9 +148,47 @@
         </div>
         <!-- Play Button End -->
 
+        <!-- Server Status -->
+        <div class="mb-5 text-center">
+          <div class="card border border-bittersweet shadow">
+            <div class="card-header bg-bittersweet text-light">
+              Sunucu Durumu
+            </div>
+            <div class="card-body p-0">
+              <div class="row no-gutters">
+                <div class="col-4 d-flex flex-fill align-items-strecth">
+                  <div class="card alert-success mb-0 rounded w-100 server-status-left">
+                    <div class="card-body d-flex flex-column align-items-center">
+                      <i class="fas fa-check-circle fa-lg mb-2"></i>
+                      <span class="mb-0 text-success">Çevrimiçi</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 d-flex flex-fill align-items-strecth">
+                  <div class="card alert-secondary mb-0 rounded-0 w-100">
+                    <div class="card-body d-flex flex-column align-items-center">
+                      <i class="fas fa-users fa-lg mb-2"></i>
+                      <span class="mb-0 text-secondary">16/32</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-4 d-flex flex-fill align-items-strecth">
+                  <div class="card alert-warning mb-0 rounded w-100 server-status-right">
+                    <div class="card-body d-flex flex-column align-items-center">
+                      <i class="fas fa-gamepad fa-lg mb-2"></i>
+                      <span class="mb-0 text-warning">1.8.x</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Server Status End -->
+
         <!-- Latest Sells -->
         <div class="mb-5 text-center">
-          <div class="card border border-secondary shadow-lg">
+          <div class="card border border-secondary shadow">
             <div class="card-header bg-secondary text-light">
               Son Satışlar
             </div>
@@ -222,7 +219,7 @@
 
         <!-- Latest Registers -->
         <div class="mb-5 text-center">
-          <div class="card border border-mint shadow-lg">
+          <div class="card border border-mint shadow">
             <div class="card-header bg-mint text-light">
               Son Kayıt Olanlar
             </div>
@@ -292,7 +289,7 @@
 
         <!-- Online Heads -->
         <div class="mb-5 text-center">
-          <div class="card border border-success shadow-lg">
+          <div class="card border border-success shadow">
             <div class="card-header bg-success text-light">
               Çevrimiçi Kafalar
             </div>
@@ -359,6 +356,13 @@
           </div>
         </div>
         <!-- Online Heads End -->
+
+        <!-- Discord Widget -->
+        <div class="mb-5 text-center d-md-block d-none">
+          <iframe class="shadow" src="https://discordapp.com/widget?id=531572737660026888&theme=dark" width="300"
+            height="500" allowtransparency="true" frameborder="0"></iframe>
+        </div>
+        <!-- Discord Widget End -->
 
       </aside>
       <!-- Sidebar End -->
