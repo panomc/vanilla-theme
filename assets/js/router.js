@@ -1,13 +1,13 @@
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    // {
-    //     path: '/',
-    //     name: 'Main',
-    //     component: function (resolve, reject) {
-    //         loadComponent('Main', '/components/Pages/Main').then(resolve, reject);
-    //     }
-    // }
+    {
+      path: '/',
+      name: 'Main',
+      component: function (resolve, reject) {
+        loadComponent('Main', '/components/Pages/Main').then(resolve, reject);
+      }
+    }
   ]
 });
 
