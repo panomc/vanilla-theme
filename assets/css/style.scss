@@ -46,6 +46,13 @@ $font-family-base: "Lato", sans-serif;
 
 $headings-font-weight: bolder;
 
+// Modals
+
+$modal-backdrop-bg: $white;
+$modal-sm: 400px;
+$modal-content-box-shadow-xs: 0 20px 50px $primary;
+$modal-content-box-shadow-sm-up: 0 20px 50px $primary;
+
 // Borders
 
 $border-radius: 8px;
@@ -136,6 +143,9 @@ $navbar-nav-link-padding-x: 1.5rem;
 .shadow-yellow {
   box-shadow: 0 20px 50px $yellow;
 }
+.shadow-primary {
+  box-shadow: 0 20px 50px $primary;
+}
 
 .text-neon {
   text-shadow: 0 0 6px $white;
@@ -173,4 +183,8 @@ $navbar-nav-link-padding-x: 1.5rem;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+}
+
+.btn-success {
+  color: $white !important;
 }
