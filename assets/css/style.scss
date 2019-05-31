@@ -45,6 +45,7 @@ $lead-font-weight: normal;
 $font-family-base: "Lato", sans-serif;
 
 // Links
+
 $link-color: $secondary;
 
 // Headings
@@ -71,7 +72,7 @@ $alert-color-level: 2;
 
 // Dropdowns
 
-$dropdown-box-shadow: 0 5px 5px $gray;
+$dropdown-box-shadow: 0 5px 5px $glass;
 
 // Navbar
 
@@ -97,7 +98,7 @@ $nav-pills-link-active-color: $secondary;
   margin: 0;
   width: 100%;
   min-height: 300px;
-  background: url("../img/header-bg.jpg") no-repeat center top;
+  background: url("../assets/img/header-bg.jpg") no-repeat center top;
   background-size: cover;
   box-shadow: 0 6px 0 0 inset rgba($color: $white, $alpha: 0.3);
   position: relative;
@@ -170,7 +171,7 @@ $nav-pills-link-active-color: $secondary;
   margin: 0;
   height: 200px;
   margin-top: 2rem;
-  background: url("../img/footer-bg.jpg") no-repeat bottom;
+  background: url("../assets/img/footer-bg.jpg") no-repeat bottom;
   background-size: cover;
   position: relative;
 
