@@ -9,10 +9,10 @@ const router = new VueRouter({
       }
     },
     {
-      path: '/rules',
-      name: 'Rules',
+      path: '/post',
+      name: 'Post',
       component: function (resolve, reject) {
-        loadComponent('Rules', '/components/Pages/Rules').then(resolve, reject);
+        loadComponent('Post', '/components/Pages/Post').then(resolve, reject);
       }
     },
     {

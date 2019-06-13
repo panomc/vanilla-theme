@@ -100,7 +100,6 @@ $nav-pills-link-active-color: $secondary;
   min-height: 300px;
   background: url("../assets/img/header-bg.jpg") no-repeat center top;
   background-size: cover;
-  box-shadow: 0 6px 0 0 inset rgba($color: $white, $alpha: 0.3);
   position: relative;
 
   &:before {
@@ -158,7 +157,7 @@ $nav-pills-link-active-color: $secondary;
   box-shadow: 0 20px 50px $primary;
 }
 
-.text-neon {
+.text-neon {    
   text-shadow: 0 0 6px $white;
 }
 
