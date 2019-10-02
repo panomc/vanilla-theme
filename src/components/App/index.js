@@ -48,6 +48,23 @@ function LoadJS(jsURL) {
   });
 }
 
+requirejs.config({
+  paths: {
+    'router': '/assets/js/router',
+    'api-util': '/assets/js/api.util',
+    'storage-util': '/assets/js/storage.util',
+    'vuex-store': '/assets/js/vuex-store',
+    'i18n': '/assets/js/i18n'
+  },
+  shim: {
+    'api-util': ['router'],
+    'storage-util': ['api-util'],
+    'vuex-store': ['storage-util'],
+    'i18n': ['vuex-store'],
+    'app-dependencies': ['i18n']
+  }
+});
+
 requirejs(["/assets/js/router.js", "/assets/js/api.util.js", "/assets/js/storage.util.js", "/assets/js/vuex-store.js", "/assets/js/i18n.js"], function () {
   LoadCSS('/assets/css/style.css').then(function () {
 
