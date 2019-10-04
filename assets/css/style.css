@@ -12284,7 +12284,7 @@ a.text-glass:hover, a.text-glass:focus {
   margin: 0;
   width: 100%;
   min-height: 300px;
-  background: url("../assets/img/header-bg.jpg") no-repeat center top;
+  background: url("/assets/img/header-bg.jpg") no-repeat center top;
   background-size: cover;
   position: relative;
 }
@@ -12367,7 +12367,7 @@ a.text-glass:hover, a.text-glass:focus {
   margin: 0;
   height: 200px;
   margin-top: 2rem;
-  background: url("../assets/img/footer-bg.jpg") no-repeat bottom;
+  background: url("/assets/img/footer-bg.jpg") no-repeat bottom;
   background-size: cover;
   position: relative;
 }
@@ -12379,18 +12379,6 @@ a.text-glass:hover, a.text-glass:focus {
   height: 200px;
   background: -webkit-gradient(linear, left top, left bottom, from(#f5f7fa), to(rgba(0, 0, 0, 0)));
   background: linear-gradient(#f5f7fa, rgba(0, 0, 0, 0));
-}
-
-.server-status-right {
-  border-top-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-.server-status-left {
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
 }
 
 .btn-success {
