@@ -57,20 +57,9 @@
   </div>
   <!-- Navbar -->
 
-  <!-- Alert -->
-  <div class="container">
-    <div class="alert alert-secondary alert-dismissible fade show shadow" role="alert">
-      <strong>Hey!</strong> Bu bir duyuru yazısı.
-      <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  </div>
-  <!-- Alert End -->
-
   <!-- Slider -->
-  <!--   <section class="container d-md-block d-none">
-    <div class="carousel slide mb-5 shadow" data-ride="carousel" id="carouselId">
+  <!-- <section class="container d-md-block d-none">
+    <div class="carousel slide mb-5" data-ride="carousel" id="carouselId">
       <ol class="carousel-indicators">
         <li class="active" data-slide-to="0" data-target="#carouselId"></li>
         <li data-slide-to="1" data-target="#carouselId"></li>
@@ -120,6 +109,17 @@
 
       <!-- Content -->
       <div class="col-lg-8">
+        
+        <!-- Alert -->
+        <div class="alert alert-secondary alert-dismissible fade d-none shadow-sm shadow-sm" role="alert">
+          <h4>Bu bir duyuru</h4>
+          <strong>Hey!</strong> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti officia voluptates maxime itaque ut sed, officiis laudantium accusamus.
+          <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <!-- Alert End -->
+      
         <router-view></router-view>
       </div>
       <!-- Content End -->
@@ -129,7 +129,7 @@
 
         <!-- Play Button -->
         <div class="mb-5">
-          <button class="btn btn-lg btn-block btn-yellow shadow-yellow py-3" type="button">
+          <button class="btn btn-lg btn-block btn-yellow py-3 shadow" type="button">
             <h3 class="lead text-neon text-white font-weight-bolder">OYNA.IPADRESI.COM</h3>
             <small class="text-muted">IP adresini kopyalamak için tıkla!</small>
           </button>
@@ -138,27 +138,29 @@
 
         <!-- Server Status -->
         <div class="mb-5 text-center">
-          <div class="card border-bittersweet shadow">
-            <div class="card-header bg-bittersweet text-white">
+          <div class="card bg-bittersweet border-bittersweet border-lg shadow-sm">
+            <div class="card-header text-white h5">
               Sunucu Durumu
             </div>
-            <div class="card-body">
-              <div class="d-flex flex-row align-items-center justify-content-around text-muted">
-                  <div>
-                    <i class="fas fa-check-circle fa-lg mb-2 text-success"></i>
-                    <br>
-                    Çevrimiçi
-                  </div>
-                  <div>
-                    <i class="fas fa-users fa-lg mb-2 text-secondary"></i>
-                    <br>
-                    16/32
-                  </div>
-                  <div>
-                    <i class="fas fa-gamepad fa-lg mb-2 text-warning"></i>
-                    <br>
-                    1.8.x
-                  </div>
+            <div class="bg-white">
+              <div class="card-body">
+                <div class="d-flex flex-row align-items-center justify-content-around text-muted">
+                    <div>
+                      <i class="fas fa-check-circle fa-lg mb-2 text-success"></i>
+                      <br>
+                      Çevrimiçi
+                    </div>
+                    <div>
+                      <i class="fas fa-users fa-lg mb-2 text-secondary"></i>
+                      <br>
+                      16/32
+                    </div>
+                    <div>
+                      <i class="fas fa-gamepad fa-lg mb-2 text-warning"></i>
+                      <br>
+                      1.8.x
+                    </div>
+                </div>
               </div>
             </div>
           </div>
@@ -167,10 +169,11 @@
 
         <!-- Latest Registers -->
         <div class="mb-5 text-center">
-          <div class="card border-secondary shadow">
-            <div class="card-header bg-secondary text-white">
+          <div class="card bg-secondary border-secondary border-lg shadow-sm">
+            <div class="card-header text-white h5">
               Son Kayıt Olanlar
             </div>
+            <div class="bg-white">
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
@@ -230,6 +233,7 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </div>
@@ -237,10 +241,12 @@
 
         <!-- Online Heads -->
         <div class="mb-5 text-center">
-          <div class="card border-primary shadow">
-            <div class="card-header bg-primary text-white">
+          <div class="card bg-primary border-primary border-lg shadow-sm">
+            <div class="card-header text-white h5">
               Çevrimiçi Kafalar
             </div>
+            <div class="bg-white">
+              
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
@@ -300,6 +306,7 @@
                   </tr>
                 </tbody>
               </table>
+            </div>
             </div>
           </div>
         </div>
@@ -336,8 +343,8 @@
   <!-- Login Modal -->
   <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-      <div class="modal-content bg-light">
-        <div class="modal-header bg-primary text-white">
+      <div class="modal-content bg-light border-lg">
+        <div class="modal-header bg-primary text-white rounded-0">
           <h5 class="modal-title">Giriş Yap</h5>
           <button type="button" class="close text-white" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>

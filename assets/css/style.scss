@@ -13,9 +13,10 @@ $cream: #f5d76e;
 $yellow: #ffce54;
 $gray: #ccd1d9;
 $dark: #656d78;
+$body: #f5f7fa;
 $glass: rgba(0, 0, 0, .1);
 
-$body-bg: $light;
+$body-bg: $body;
 
 $theme-colors: ("primary": $primary,
   "secondary": $secondary,
@@ -30,7 +31,8 @@ $theme-colors: ("primary": $primary,
   "yellow": $yellow,
   "gray": $gray,
   "dark": $dark,
-  "glass": $glass);
+  "glass": $glass,
+  "body": $body);
 
 // Settings
 
@@ -50,6 +52,7 @@ $link-color: $secondary;
 // Headings
 
 $headings-font-weight: bolder;
+$h5-font-size: 1.10rem;
 
 // Modals
 
@@ -86,6 +89,10 @@ $navbar-nav-link-padding-x: 1.5rem;
 $nav-pills-link-active-bg: $glass;
 $nav-pills-link-active-color: $secondary;
 
+// Pagination
+
+$pagination-border-width: 5px;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
 
@@ -106,7 +113,7 @@ $nav-pills-link-active-color: $secondary;
     content: "";
     width: 100%;
     min-height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0) 66%, $light);
+    background: linear-gradient(rgba(0, 0, 0, 0) 66%, $body);
   }
 }
 
@@ -134,35 +141,22 @@ $nav-pills-link-active-color: $secondary;
 }
 
 .shadow-primary {
-  box-shadow: 0 20px 50px $primary;
+  box-shadow: 0 20px 100px $primary;
+  transition: .5s all;
 }
 
 .shadow-secondary {
   box-shadow: 0 20px 50px $secondary;
-}
-
-.shadow-sunflower {
-  box-shadow: 0 20px 50px $sunflower;
-}
-
-.shadow-discord {
-  box-shadow: 0 20px 50px $discord;
+  transition: .5s all;
 }
 
 .shadow-yellow {
-  box-shadow: 0 20px 50px $yellow;
-}
-
-.shadow-primary {
-  box-shadow: 0 20px 50px $primary;
-}
-
-.text-neon {
-  text-shadow: 0 0 6px $white;
+  box-shadow: 0 0 60px $yellow;
+  transition: .5s all;
 }
 
 .border-lg {
-  border-width: 6px !important;
+  border-width: 5px !important;
 }
 
 #footer {
@@ -179,7 +173,7 @@ $nav-pills-link-active-color: $secondary;
     content: "";
     width: 100%;
     height: 200px;
-    background: linear-gradient($light, rgba(0, 0, 0, 0));
+    background: linear-gradient($body, rgba(0, 0, 0, 0));
   }
 }
 
