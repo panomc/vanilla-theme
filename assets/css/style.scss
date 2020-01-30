@@ -93,7 +93,7 @@ $nav-pills-link-active-color: $secondary;
 
 $pagination-border-width: 5px;
 
-@import "../../node_modules/bootstrap/scss/bootstrap";
+@import "../css/bootstrap/bootstrap.scss";
 @import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
 
 #header {
