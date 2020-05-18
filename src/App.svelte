@@ -2,6 +2,12 @@
   @import "styles/style";
 </style>
 
+<script>
+  import Router from "routve";
+
+  import RouterConfig from "./router.config";
+</script>
+
 <link
   crossorigin="anonymous"
   href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
@@ -175,7 +181,7 @@
       </div>
       <!-- Alert End -->
 
-      <router-view></router-view>
+      <Router routerConfig="{RouterConfig}" />
     </div>
     <!-- Content End -->
 
