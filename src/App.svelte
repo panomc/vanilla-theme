@@ -96,7 +96,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <router-link class="nav-link" to="/">ANA SAYFA</router-link>
+          <a class="nav-link" href="/">ANA SAYFA</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">TALEPLER</a>
