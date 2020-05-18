@@ -1,0 +1,89 @@
+@import "custom-bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
+
+#header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 300px;
+  background: url("/assets/img/header-bg.jpg") no-repeat center top;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    min-height: 300px;
+    background: linear-gradient(rgba(0, 0, 0, 0) 66%, $body);
+  }
+}
+
+.navbar {
+  top: -50px;
+  border-top: 10px solid rgba($color: $white, $alpha: 0.3);
+  border-bottom: 1px inset rgba($color: $black, $alpha: 0.1);
+  font-weight: 900;
+
+  .nav-item.active {
+    border-radius: $border-radius;
+    background: rgba($color: $black, $alpha: 0.1);
+    transition: 250ms;
+  }
+
+  .nav-item {
+    transition: 250ms;
+
+    &:hover {
+      transition: 250ms;
+      text-shadow: 0 0 6px $white;
+      border-radius: $border-radius;
+    }
+  }
+}
+
+.shadow-primary {
+  box-shadow: 0 20px 100px $primary;
+  transition: .5s all;
+}
+
+.shadow-secondary {
+  box-shadow: 0 20px 50px $secondary;
+  transition: .5s all;
+}
+
+.shadow-yellow {
+  box-shadow: 0 0 60px $yellow;
+  transition: .5s all;
+}
+
+.border-lg {
+  border-width: 5px !important;
+}
+
+#footer {
+  padding: 0;
+  margin: 0;
+  height: 200px;
+  margin-top: 2rem;
+  background: url("/assets/img/footer-bg.jpg") no-repeat bottom;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 200px;
+    background: linear-gradient($body, rgba(0, 0, 0, 0));
+  }
+}
+
+.btn-success {
+  color: $white !important;
+}
