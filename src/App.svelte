@@ -181,7 +181,7 @@
       </div>
       <!-- Alert End -->
 
-      <Router routerConfig="{RouterConfig}" />
+      <Router config="{RouterConfig}" />
     </div>
     <!-- Content End -->
 
