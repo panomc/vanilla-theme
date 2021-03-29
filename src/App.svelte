@@ -513,28 +513,7 @@
 
 <RegisterModal />
 
-<!-- Footer -->
-<div class="row text-center pb-3" id="footer">
-  <div class="col-lg-4 d-flex align-items-end justify-content-center">
-    <p class="text-white text-neon lead">Telif Hakkı 2019 | SunucuAdi.</p>
-  </div>
-  <div class="col-lg-4 d-flex align-items-end justify-content-center">
-    <p class="text-white text-neon lead">
-      <a class="text-secondary" href="#">Pano</a>
-      ile oluşturuldu.
-    </p>
-  </div>
-  <div
-    class="col-lg-4 d-flex align-items-end justify-content-center order-lg-last
-    order-first">
-    <img
-      alt="Server Logo"
-      class="img-fluid"
-      src="/assets/img/logo.png"
-      width="250" />
-  </div>
-</div>
-<!-- Footer End -->
+<Footer/>
 
 <!-- Forgetten Password Modal -->
 <div
@@ -613,12 +592,14 @@
   import RouterConfig from "./router.config";
 
   import LoginModal, {
-    show as showLoginModal,
+    show as showLoginModal
   } from "./components/modals/LoginModal.svelte";
   import ResetPasswordModal, {
-    show as showResetPasswordModal,
+    show as showResetPasswordModal
   } from "./components/modals/ResetPasswordModal.svelte";
   import RegisterModal, {
-    show as showRegisterModal,
+    show as showRegisterModal
   } from "./components/modals/RegisterModal.svelte";
+
+  import Footer from "./components/Footer.svelte";
 </script>
