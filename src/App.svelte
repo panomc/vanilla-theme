@@ -70,9 +70,8 @@
       <li class="nav-item">
         <a
           class="nav-link"
-          href="#"
-          data-toggle="modal"
-          data-target="#registerModal">
+          href="javascript:void(0);"
+          on:click="{showRegisterModal}">
           KAYIT OL
         </a>
       </li>
@@ -512,6 +511,8 @@
 
 <ResetPasswordModal />
 
+<RegisterModal />
+
 <!-- Footer -->
 <div class="row text-center pb-3" id="footer">
   <div class="col-lg-4 d-flex align-items-end justify-content-center">
@@ -534,92 +535,6 @@
   </div>
 </div>
 <!-- Footer End -->
-
-<!-- Register Modal -->
-<div
-  class="modal fade"
-  id="registerModal"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-    <div class="modal-content bg-light">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Kayıt Ol</h5>
-        <button type="button" class="close text-white" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pb-1">
-        <form>
-          <div class="form-group">
-            <img
-              src="/assets/img/logo.png"
-              alt="Server Logo"
-              class="img-fluid p-3" />
-          </div>
-          <div class="form-group">
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Hata:</strong>
-              Bu bir hata mesajı.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="registerUserName">* Kullanıcı Adı:</label>
-            <input type="text" id="registerUserName" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="registerPassword">* Şifre:</label>
-            <input type="password" id="registerPassword" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="registerPasswordRepeat">* Şifre Tekrarı:</label>
-            <input
-              type="password"
-              id="registerPasswordRepeat"
-              class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="registerEmail">* E-Posta:</label>
-            <input type="email" id="registerEmail" class="form-control" />
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="registerAcceptTerms" />
-              <label class="custom-control-label" for="registerAcceptTerms">
-                <a href="#">Sunucu Kurallarını</a>
-                okudum ve kabul ediyorum.
-              </label>
-            </div>
-          </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block">
-              Kayıt Ol
-            </button>
-            <button
-              type="button"
-              class="btn btn-link btn-block"
-              data-dismiss="modal"
-              data-toggle="modal"
-              data-target="#loginModal">
-              Zaten kayıtlıysan Giriş Yap
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Forgetten Password Modal -->
 <div
@@ -703,4 +618,7 @@
   import ResetPasswordModal, {
     show as showResetPasswordModal,
   } from "./components/modals/ResetPasswordModal.svelte";
+  import RegisterModal, {
+    show as showRegisterModal,
+  } from "./components/modals/RegisterModal.svelte";
 </script>
