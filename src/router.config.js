@@ -1,7 +1,7 @@
 export default {
   routes: {
     "/": {
-      component: () => import("./pages/Main.svelte"),
+      component: () => import("./pages/Home.svelte"),
     },
     "/profile": {
       component: () => import("./pages/Profile.svelte"),

@@ -221,18 +221,14 @@
 </div>
 
 <script>
-  import Router from "routve";
-
-  import RouterConfig from "./router.config";
-
   import LoginModal, {
-    show as showLoginModal,
+    show as showLoginModal
   } from "./components/modals/LoginModal.svelte";
   import ResetPasswordModal, {
-    show as showResetPasswordModal,
+    show as showResetPasswordModal
   } from "./components/modals/ResetPasswordModal.svelte";
   import RegisterModal, {
-    show as showRegisterModal,
+    show as showRegisterModal
   } from "./components/modals/RegisterModal.svelte";
 
   import Footer from "./components/Footer.svelte";
