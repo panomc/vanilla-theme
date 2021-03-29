@@ -6,6 +6,9 @@
   import Router from "routve";
 
   import RouterConfig from "./router.config";
+  import LoginModal, {
+    show as showLoginModal,
+  } from "./components/modals/LoginModal.svelte";
 </script>
 
 <link
@@ -67,9 +70,8 @@
       <li class="nav-item mr-lg-0 mr-5">
         <a
           class="nav-link"
-          href="#"
-          data-toggle="modal"
-          data-target="#loginModal">
+          href="javascript:void(0);"
+          on:click="{showLoginModal}">
           GİRİŞ YAP
         </a>
       </li>
@@ -515,6 +517,8 @@
 </main>
 <!-- Main Block End -->
 
+<LoginModal />
+
 <!-- Footer -->
 <div class="row text-center pb-3" id="footer">
   <div class="col-lg-4 d-flex align-items-end justify-content-center">
@@ -537,81 +541,6 @@
   </div>
 </div>
 <!-- Footer End -->
-
-<!-- Login Modal -->
-<div
-  class="modal fade"
-  id="loginModal"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-    <div class="modal-content bg-light border-lg">
-      <div class="modal-header bg-primary text-white rounded-0">
-        <h5 class="modal-title">Giriş Yap</h5>
-        <button type="button" class="close text-white" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pb-1">
-        <form>
-          <div class="form-group">
-            <img
-              src="/assets/img/logo.png"
-              alt="Server Logo"
-              class="img-fluid p-3" />
-          </div>
-          <div class="form-group">
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Hata:</strong>
-              Bu bir hata mesajı.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="loginUserName">Kullanıcı Adı:</label>
-            <input type="text" id="loginUserName" class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="loginPassword">Şifre:</label>
-            <input type="password" id="loginPassword" class="form-control" />
-          </div>
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                class="custom-control-input"
-                id="rememberMe" />
-              <label class="custom-control-label" for="rememberMe">
-                Beni Hatırla
-              </label>
-            </div>
-          </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block">
-              Giriş Yap
-            </button>
-            <a
-              href="#"
-              data-toggle="modal"
-              data-target="#forgettenPasswordModal"
-              data-dismiss="modal">
-              <button type="button" class="btn btn-link btn-block">
-                Şifreni mi unuttun?
-              </button>
-            </a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- Register Modal -->
 <div
