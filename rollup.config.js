@@ -46,7 +46,7 @@ const watch = {
 };
 
 const plugins = [
-  babel({
+  production && babel({
     runtimeHelpers: true,
   }),
 
@@ -88,10 +88,15 @@ const plugins = [
   commonjs(),
 
   replace({
-    "process.env.NODE_ENV": JSON.stringify(
-      production ? "production" : "development"
-    ),
-    "process.env.API_URL": JSON.stringify(production ? "" : config["api-url"]),
+    preventAssignment: true,
+    values: {
+      "process.env.NODE_ENV": JSON.stringify(
+        production ? "production" : "development"
+      ),
+      "process.env.API_URL": JSON.stringify(
+        production ? "" : config["api-url"]
+      ),
+    },
   }),
 
   // In dev mode, call `npm run start` once
@@ -111,7 +116,7 @@ const esExport = {
   input: input,
   output: [
     {
-      sourcemap: true,
+      sourcemap: false,
       format: "es",
       name: "app",
       dir: "public/",
@@ -130,7 +135,7 @@ const systemExport = {
   input: input,
   output: [
     {
-      sourcemap: true,
+      sourcemap: false,
       format: "system",
       name: "app",
       dir: "public/",
