@@ -2,19 +2,6 @@
   @import "styles/style";
 </style>
 
-<script>
-  import Router from "routve";
-
-  import RouterConfig from "./router.config";
-
-  import LoginModal, {
-    show as showLoginModal
-  } from "./components/modals/LoginModal.svelte";
-  import ResetPasswordModal, {
-    show as showResetPasswordModal
-  } from "./components/modals/ResetPasswordModal.svelte";
-</script>
-
 <link
   crossorigin="anonymous"
   href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
@@ -695,7 +682,7 @@
               data-toggle="modal"
               data-target="#resetPasswordModal"
               data-dismiss="modal"
-            on:click={showResetPasswordModal}>
+              on:click="{showResetPasswordModal}">
               Sıfırlama Bağlantısı Gönder
             </button>
           </div>
@@ -704,3 +691,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  import Router from "routve";
+
+  import RouterConfig from "./router.config";
+
+  import LoginModal, {
+    show as showLoginModal,
+  } from "./components/modals/LoginModal.svelte";
+  import ResetPasswordModal, {
+    show as showResetPasswordModal,
+  } from "./components/modals/ResetPasswordModal.svelte";
+</script>

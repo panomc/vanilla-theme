@@ -1,66 +1,3 @@
-<script context="module">
-  import jquery from "jquery";
-  import { get, writable } from "svelte/store";
-
-  const dialogID = "loginModal";
-  const error = writable({});
-
-  let callback = () => {};
-  let hideCallback = () => {};
-
-  export function show() {
-    error.set({});
-
-    jquery("#" + dialogID).modal();
-  }
-
-  export function hide() {
-    hideCallback();
-
-    jquery("#" + dialogID).modal("hide");
-  }
-
-  export function setCallback(newCallback) {
-    callback = newCallback;
-  }
-
-  export function onHide(newCallback) {
-    hideCallback = newCallback;
-  }
-</script>
-
-<script>
-  let loading = false;
-
-  function onSubmit() {
-    loading = true;
-
-    // submitLoading.set(true);
-    //
-    // ApiUtil.post("panel/player/set/permissionGroup", get(player))
-    //   .then((response) => {
-    //     if (response.data.result === "ok") {
-    //       submitLoading.set(false);
-    //
-    //       hide();
-    //
-    //       callback(get(player));
-    //
-    //       resolve();
-    //     } else if (response.data.result === "NOT_EXISTS") {
-    //       refreshBrowserPage();
-    //     } else if (!!response.data.error) {
-    //       errors.set(response.data.error);
-    //
-    //       resolve();
-    //     } else reject();
-    //   })
-    //   .catch(() => {
-    //     reject();
-    //   });
-  }
-</script>
-
 <!-- Login Modal -->
 <div
   class="modal fade"
@@ -137,3 +74,66 @@
     </div>
   </div>
 </div>
+
+<script context="module">
+  import jquery from "jquery";
+  import { get, writable } from "svelte/store";
+
+  const dialogID = "loginModal";
+  const error = writable({});
+
+  let callback = () => {};
+  let hideCallback = () => {};
+
+  export function show() {
+    error.set({});
+
+    jquery("#" + dialogID).modal();
+  }
+
+  export function hide() {
+    hideCallback();
+
+    jquery("#" + dialogID).modal("hide");
+  }
+
+  export function setCallback(newCallback) {
+    callback = newCallback;
+  }
+
+  export function onHide(newCallback) {
+    hideCallback = newCallback;
+  }
+</script>
+
+<script>
+  let loading = false;
+
+  function onSubmit() {
+    loading = true;
+
+    // submitLoading.set(true);
+    //
+    // ApiUtil.post("panel/player/set/permissionGroup", get(player))
+    //   .then((response) => {
+    //     if (response.data.result === "ok") {
+    //       submitLoading.set(false);
+    //
+    //       hide();
+    //
+    //       callback(get(player));
+    //
+    //       resolve();
+    //     } else if (response.data.result === "NOT_EXISTS") {
+    //       refreshBrowserPage();
+    //     } else if (!!response.data.error) {
+    //       errors.set(response.data.error);
+    //
+    //       resolve();
+    //     } else reject();
+    //   })
+    //   .catch(() => {
+    //     reject();
+    //   });
+  }
+</script>
