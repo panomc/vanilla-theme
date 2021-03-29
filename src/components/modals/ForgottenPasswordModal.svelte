@@ -1,4 +1,4 @@
-<!-- Reset Password Modal -->
+<!-- Forgotten Password Modal -->
 <div
   class="modal fade"
   id="{dialogID}"
@@ -8,7 +8,7 @@
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Yeni Şifre Oluştur</h5>
+        <h5 class="modal-title">Şifreni Sıfırla</h5>
         <button type="button" class="close text-white" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -16,7 +16,8 @@
       <div class="modal-body pb-1">
         <form>
           <div class="form-group text-center">
-            <i class="fas fa-key fa-4x text-primary d-block m-auto"></i>
+            <i class="fas fa-envelope-square fa-4x text-primary d-block m-auto"
+            ></i>
           </div>
           <div class="form-group">
             <div
@@ -28,24 +29,35 @@
               <strong>Hata:</strong>
               Bu bir hata mesajı.
             </div>
+            <div
+              class="alert alert-success alert-dismissible fade show"
+              role="alert">
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <strong>Başarılı:</strong>
+              Bu bir başarılı durum mesajı.
+            </div>
           </div>
           <div class="form-group">
-            <label for="newPassword">* Yeni Şifre:</label>
-            <input type="password" id="newPassword" class="form-control" />
+            <small class="text-muted">
+              Kayıt olduğun E-Posta adresine bir sıfırlama bağlantısı
+              gönderilecek. Lütfen E-Posta adresini gir.
+            </small>
           </div>
           <div class="form-group">
-            <label for="newPasswordRepeat">* Yeni Şifre Tekrarı:</label>
+            <label for="forgettenPasswordEmail">* E-Posta:</label>
             <input
-              type="password"
-              id="newPasswordRepeat"
+              type="email"
+              id="forgettenPasswordEmail"
               class="form-control" />
           </div>
           <div class="form-group text-center">
             <button
               type="submit"
               class="btn btn-primary text-white shadow btn-lg btn-block"
-              data-dismiss="modal">
-              Şifremi Değiştir
+              on:click="{showResetPasswordModal}">
+              Sıfırlama Bağlantısı Gönder
             </button>
           </div>
         </form>
@@ -58,7 +70,7 @@
   import jquery from "jquery";
   import { get, writable } from "svelte/store";
 
-  const dialogID = "resetPasswordModal";
+  const dialogID = "forgottenPasswordModal";
   const error = writable({});
 
   let callback = () => {};
@@ -87,6 +99,8 @@
 </script>
 
 <script>
+  import { show as showResetPasswordModal } from "./ResetPasswordModal.svelte";
+
   let loading = false;
 
   function onSubmit() {

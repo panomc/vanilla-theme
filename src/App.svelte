@@ -73,85 +73,16 @@
 <ResetPasswordModal />
 
 <RegisterModal />
+
+<ForgottenPasswordModal />
 <!-- Modals End -->
 
-<!-- Forgetten Password Modal -->
-<div
-  class="modal fade"
-  id="forgettenPasswordModal"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-    <div class="modal-content bg-light">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Şifreni Sıfırla</h5>
-        <button type="button" class="close text-white" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body pb-1">
-        <form>
-          <div class="form-group text-center">
-            <i class="fas fa-envelope-square fa-4x text-primary d-block m-auto"
-            ></i>
-          </div>
-          <div class="form-group">
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Hata:</strong>
-              Bu bir hata mesajı.
-            </div>
-            <div
-              class="alert alert-success alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Başarılı:</strong>
-              Bu bir başarılı durum mesajı.
-            </div>
-          </div>
-          <div class="form-group">
-            <small class="text-muted">
-              Kayıt olduğun E-Posta adresine bir sıfırlama bağlantısı
-              gönderilecek. Lütfen E-Posta adresini gir.
-            </small>
-          </div>
-          <div class="form-group">
-            <label for="forgettenPasswordEmail">* E-Posta:</label>
-            <input
-              type="email"
-              id="forgettenPasswordEmail"
-              class="form-control" />
-          </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block"
-              data-toggle="modal"
-              data-target="#resetPasswordModal"
-              data-dismiss="modal"
-              on:click="{showResetPasswordModal}">
-              Sıfırlama Bağlantısı Gönder
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script>
   import LoginModal from "./components/modals/LoginModal.svelte";
-  import ResetPasswordModal, {
-    show as showResetPasswordModal,
-  } from "./components/modals/ResetPasswordModal.svelte";
+  import ResetPasswordModal from "./components/modals/ResetPasswordModal.svelte";
   import RegisterModal from "./components/modals/RegisterModal.svelte";
+  import ForgottenPasswordModal from "./components/modals/ForgottenPasswordModal.svelte";
 
   import Footer from "./components/Footer.svelte";
   import Main from "./components/Main.svelte";

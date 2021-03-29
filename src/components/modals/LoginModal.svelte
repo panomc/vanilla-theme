@@ -60,10 +60,8 @@
               Giriş Yap
             </button>
             <a
-              href="#"
-              data-toggle="modal"
-              data-target="#forgettenPasswordModal"
-              data-dismiss="modal">
+              href="javascript:void(0);"
+              on:click="{showForgottenPasswordModal}">
               <button type="button" class="btn btn-link btn-block">
                 Şifreni mi unuttun?
               </button>
@@ -107,6 +105,8 @@
 </script>
 
 <script>
+  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
+
   let loading = false;
 
   function onSubmit() {
