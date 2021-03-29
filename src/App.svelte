@@ -507,13 +507,15 @@
 </main>
 <!-- Main Block End -->
 
+<Footer />
+
+<!-- Modals Start-->
 <LoginModal />
 
 <ResetPasswordModal />
 
 <RegisterModal />
-
-<Footer/>
+<!-- Modals End -->
 
 <!-- Forgetten Password Modal -->
 <div
@@ -592,13 +594,13 @@
   import RouterConfig from "./router.config";
 
   import LoginModal, {
-    show as showLoginModal
+    show as showLoginModal,
   } from "./components/modals/LoginModal.svelte";
   import ResetPasswordModal, {
-    show as showResetPasswordModal
+    show as showResetPasswordModal,
   } from "./components/modals/ResetPasswordModal.svelte";
   import RegisterModal, {
-    show as showRegisterModal
+    show as showRegisterModal,
   } from "./components/modals/RegisterModal.svelte";
 
   import Footer from "./components/Footer.svelte";
