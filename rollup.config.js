@@ -46,9 +46,10 @@ const watch = {
 };
 
 const plugins = [
-  production && babel({
-    runtimeHelpers: true,
-  }),
+  production &&
+    babel({
+      runtimeHelpers: true,
+    }),
 
   postcss({
     extract: "assets/css/bundle.css",

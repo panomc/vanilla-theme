@@ -14,25 +14,27 @@ $yellow: #ffce54;
 $gray: #ccd1d9;
 $dark: #656d78;
 $body: #f5f7fa;
-$glass: rgba(0, 0, 0, .1);
+$glass: rgba(0, 0, 0, 0.1);
 
 $body-bg: $body;
 
-$theme-colors: ("primary": $primary,
-        "secondary": $secondary,
-        "light": $light,
-        "white": $white,
-        "black": $black,
-        "mint": $mint,
-        "sunflower": $sunflower,
-        "bittersweet": $bittersweet,
-        "discord": $discord,
-        "cream": $cream,
-        "yellow": $yellow,
-        "gray": $gray,
-        "dark": $dark,
-        "glass": $glass,
-        "body": $body);
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "light": $light,
+  "white": $white,
+  "black": $black,
+  "mint": $mint,
+  "sunflower": $sunflower,
+  "bittersweet": $bittersweet,
+  "discord": $discord,
+  "cream": $cream,
+  "yellow": $yellow,
+  "gray": $gray,
+  "dark": $dark,
+  "glass": $glass,
+  "body": $body,
+);
 
 // Settings
 
@@ -42,8 +44,7 @@ $enable-rounded: true;
 // Fonts
 
 $lead-font-weight: normal;
-$font-family-base: "Lato",
-sans-serif;
+$font-family-base: "Lato", sans-serif;
 
 // Links
 
@@ -52,7 +53,7 @@ $link-color: $secondary;
 // Headings
 
 $headings-font-weight: bolder;
-$h5-font-size: 1.10rem;
+$h5-font-size: 1.1rem;
 
 // Modals
 

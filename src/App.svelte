@@ -12,14 +12,12 @@
   crossorigin="anonymous"
   href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
   integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B"
-  rel="stylesheet"
-/>
+  rel="stylesheet" />
 <link
   crossorigin="anonymous"
   href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
   integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+"
-  rel="stylesheet"
-/>
+  rel="stylesheet" />
 
 <!-- Header -->
 <header id="header">
@@ -31,16 +29,14 @@
             alt="Server Logo"
             class="img-fluid d-block m-auto"
             src="/assets/img/logo.png"
-            width="400"
-          />
+            width="400" />
         </a>
       </div>
       <div class="col-12 pt-3">
         <button
           class="btn btn-sm btn-yellow shadow-yellow py-2 my-2 d-lg-none d-block
           m-auto"
-          type="button"
-        >
+          type="button">
           <p class="text-neon text-white font-weight-bolder m-0">
             OYNA.IPADRESI.COM
           </p>
@@ -55,8 +51,7 @@
 <!-- Navbar -->
 <div class="container">
   <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-primary"
-  >
+    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-primary">
     <button
       aria-controls="navbar"
       aria-expanded="false"
@@ -64,8 +59,7 @@
       class="navbar-toggler d-lg-none"
       data-target="#navbar"
       data-toggle="collapse"
-      type="button"
-    >
+      type="button">
       <i aria-hidden="true" class="fa fa-bars"></i>
     </button>
 
@@ -75,8 +69,7 @@
           class="nav-link"
           href="#"
           data-toggle="modal"
-          data-target="#loginModal"
-        >
+          data-target="#loginModal">
           GİRİŞ YAP
         </a>
       </li>
@@ -86,8 +79,7 @@
           class="nav-link"
           href="#"
           data-toggle="modal"
-          data-target="#registerModal"
-        >
+          data-target="#registerModal">
           KAYIT OL
         </a>
       </li>
@@ -156,26 +148,22 @@
 <!-- Main Block -->
 <main class="container">
   <div class="row">
-
     <!-- Content -->
     <div class="col-lg-8">
-
       <!-- Alert -->
       <div
         class="alert alert-secondary alert-dismissible fade d-none shadow-sm
         shadow-sm"
-        role="alert"
-      >
+        role="alert">
         <h4>Bu bir duyuru</h4>
         <strong>Hey!</strong>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti
-        officia voluptates maxime itaque ut sed, officiis laudantium accusamus.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti officia
+        voluptates maxime itaque ut sed, officiis laudantium accusamus.
         <button
           aria-label="Close"
           class="close"
           data-dismiss="alert"
-          type="button"
-        >
+          type="button">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -187,13 +175,11 @@
 
     <!-- Sidebar -->
     <aside class="col-lg-4 d-lg-block d-none">
-
       <!-- Play Button -->
       <div class="mb-5">
         <button
           class="btn btn-lg btn-block btn-yellow py-3 shadow"
-          type="button"
-        >
+          type="button">
           <h3 class="lead text-neon text-white font-weight-bolder">
             OYNA.IPADRESI.COM
           </h3>
@@ -210,8 +196,7 @@
             <div class="card-body">
               <div
                 class="d-flex flex-row align-items-center justify-content-around
-                text-muted"
-              >
+                text-muted">
                 <div>
                   <i class="fas fa-check-circle fa-lg mb-2 text-success"></i>
                   <br />
@@ -251,8 +236,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/butlu"
                         title="Butlu"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -262,8 +246,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -273,8 +256,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -284,8 +266,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                   <tr>
@@ -297,8 +278,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/kahverengi"
                         title="Kahverengi"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -308,8 +288,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -319,8 +298,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -330,8 +308,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                   <tr>
@@ -343,8 +320,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -354,8 +330,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -365,8 +340,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -376,8 +350,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                 </tbody>
@@ -393,7 +366,6 @@
         <div class="card bg-primary border-primary border-lg shadow-sm">
           <div class="card-header text-white h5">Çevrimiçi Kafalar</div>
           <div class="bg-white">
-
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
@@ -406,8 +378,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/butlu"
                         title="Butlu"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -417,8 +388,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -428,8 +398,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -439,8 +408,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                   <tr>
@@ -452,8 +420,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/kahverengi"
                         title="Kahverengi"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -463,8 +430,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -474,8 +440,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -485,8 +450,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                   <tr>
@@ -498,8 +462,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -509,8 +472,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -520,8 +482,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                     <td>
                       <img
@@ -531,8 +492,7 @@
                         data-toggle="tooltip"
                         src="https://minotar.net/avatar/steve"
                         title="Steve"
-                        width="24"
-                      />
+                        width="24" />
                     </td>
                   </tr>
                 </tbody>
@@ -549,10 +509,8 @@
             height="500" allowtransparency="true" frameborder="0"></iframe>
         </div> -->
       <!-- Discord Widget End -->
-
     </aside>
     <!-- Sidebar End -->
-
   </div>
 </main>
 <!-- Main Block End -->
@@ -570,14 +528,12 @@
   </div>
   <div
     class="col-lg-4 d-flex align-items-end justify-content-center order-lg-last
-    order-first"
-  >
+    order-first">
     <img
       alt="Server Logo"
       class="img-fluid"
       src="/assets/img/logo.png"
-      width="250"
-    />
+      width="250" />
   </div>
 </div>
 <!-- Footer End -->
@@ -588,8 +544,7 @@
   id="loginModal"
   tabindex="-1"
   role="dialog"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light border-lg">
       <div class="modal-header bg-primary text-white rounded-0">
@@ -604,14 +559,12 @@
             <img
               src="/assets/img/logo.png"
               alt="Server Logo"
-              class="img-fluid p-3"
-            />
+              class="img-fluid p-3" />
           </div>
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
+              role="alert">
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -632,8 +585,7 @@
               <input
                 type="checkbox"
                 class="custom-control-input"
-                id="rememberMe"
-              />
+                id="rememberMe" />
               <label class="custom-control-label" for="rememberMe">
                 Beni Hatırla
               </label>
@@ -642,16 +594,14 @@
           <div class="form-group text-center">
             <button
               type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block"
-            >
+              class="btn btn-primary text-white shadow btn-lg btn-block">
               Giriş Yap
             </button>
             <a
               href="#"
               data-toggle="modal"
               data-target="#forgettenPasswordModal"
-              data-dismiss="modal"
-            >
+              data-dismiss="modal">
               <button type="button" class="btn btn-link btn-block">
                 Şifreni mi unuttun?
               </button>
@@ -669,8 +619,7 @@
   id="registerModal"
   tabindex="-1"
   role="dialog"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
@@ -685,14 +634,12 @@
             <img
               src="/assets/img/logo.png"
               alt="Server Logo"
-              class="img-fluid p-3"
-            />
+              class="img-fluid p-3" />
           </div>
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
+              role="alert">
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -713,8 +660,7 @@
             <input
               type="password"
               id="registerPasswordRepeat"
-              class="form-control"
-            />
+              class="form-control" />
           </div>
           <div class="form-group">
             <label for="registerEmail">* E-Posta:</label>
@@ -725,8 +671,7 @@
               <input
                 type="checkbox"
                 class="custom-control-input"
-                id="registerAcceptTerms"
-              />
+                id="registerAcceptTerms" />
               <label class="custom-control-label" for="registerAcceptTerms">
                 <a href="#">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
@@ -736,8 +681,7 @@
           <div class="form-group text-center">
             <button
               type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block"
-            >
+              class="btn btn-primary text-white shadow btn-lg btn-block">
               Kayıt Ol
             </button>
             <button
@@ -745,8 +689,7 @@
               class="btn btn-link btn-block"
               data-dismiss="modal"
               data-toggle="modal"
-              data-target="#loginModal"
-            >
+              data-target="#loginModal">
               Zaten kayıtlıysan Giriş Yap
             </button>
           </div>
@@ -762,8 +705,7 @@
   id="forgettenPasswordModal"
   tabindex="-1"
   role="dialog"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
@@ -775,15 +717,13 @@
       <div class="modal-body pb-1">
         <form>
           <div class="form-group text-center">
-            <i
-              class="fas fa-envelope-square fa-4x text-primary d-block m-auto"
+            <i class="fas fa-envelope-square fa-4x text-primary d-block m-auto"
             ></i>
           </div>
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
+              role="alert">
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -792,8 +732,7 @@
             </div>
             <div
               class="alert alert-success alert-dismissible fade show"
-              role="alert"
-            >
+              role="alert">
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -812,8 +751,7 @@
             <input
               type="email"
               id="forgettenPasswordEmail"
-              class="form-control"
-            />
+              class="form-control" />
           </div>
           <div class="form-group text-center">
             <button
@@ -821,8 +759,7 @@
               class="btn btn-primary text-white shadow btn-lg btn-block"
               data-toggle="modal"
               data-target="#resetPasswordModal"
-              data-dismiss="modal"
-            >
+              data-dismiss="modal">
               Sıfırlama Bağlantısı Gönder
             </button>
           </div>
@@ -838,8 +775,7 @@
   id="resetPasswordModal"
   tabindex="-1"
   role="dialog"
-  aria-hidden="true"
->
+  aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
@@ -856,8 +792,7 @@
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"
-              role="alert"
-            >
+              role="alert">
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -874,15 +809,13 @@
             <input
               type="password"
               id="newPasswordRepeat"
-              class="form-control"
-            />
+              class="form-control" />
           </div>
           <div class="form-group text-center">
             <button
               type="submit"
               class="btn btn-primary text-white shadow btn-lg btn-block"
-              data-dismiss="modal"
-            >
+              data-dismiss="modal">
               Şifremi Değiştir
             </button>
           </div>

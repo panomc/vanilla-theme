@@ -24,8 +24,7 @@
         width="32"
         height="32"
         title="Steve"
-        class="rounded mr-3"
-      />
+        class="rounded mr-3" />
       14 Mart 2018
     </div>
 
@@ -61,8 +60,7 @@
         width="32"
         height="32"
         title="Steve"
-        class="rounded mr-3"
-      />
+        class="rounded mr-3" />
       14 Mart 2018
     </span>
     <button class="btn btn-secondary" type="button">Devamını Oku ></button>

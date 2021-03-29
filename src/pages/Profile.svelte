@@ -2,7 +2,6 @@
 
 <div class="card shadow">
   <div class="card-body">
-
     <!-- Profile Card -->
     <div class="card-body rounded border mb-3">
       <div class="row">
@@ -12,8 +11,7 @@
             class="mr-3 rounded float-left"
             width="64"
             height="64"
-            alt="Profile Picture"
-          />
+            alt="Profile Picture" />
           <div>
             <h5>Butlu</h5>
             <div class="text-muted">selimgokcek@outlook.com</div>
@@ -119,7 +117,6 @@
 
     <!-- Settings Category -->
     <div class="row">
-
       <!-- Set New Password -->
       <div class="col-lg-6">
         <div class="card mb-lg-0 mb-3">
@@ -135,8 +132,7 @@
                 <input
                   type="password"
                   id="newPassowrdRepeat"
-                  class="form-control"
-                />
+                  class="form-control" />
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-block btn-secondary">
@@ -159,8 +155,7 @@
                 <input
                   type="password"
                   id="verifyPassword"
-                  class="form-control"
-                />
+                  class="form-control" />
               </div>
               <div class="form-group">
                 <label for="setNewEmail">* Yeni E-Posta:</label>
@@ -176,6 +171,5 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
