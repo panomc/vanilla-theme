@@ -13,8 +13,8 @@ import fs from "fs";
 fs.rmdirSync("public/assets", { recursive: true });
 fs.rmdirSync("public/commons", { recursive: true });
 
-fsExtra.copySync("src/pano/favicon", "public/commons/favicon");
-fsExtra.copySync("src/pano/fonts", "public/commons/fonts");
+fsExtra.copySync("src/pano-ui/favicon", "public/commons/favicon");
+fsExtra.copySync("src/pano-ui/fonts", "public/commons/fonts");
 fsExtra.copySync("src/assets", "public/assets");
 
 const configPath = "./config.js";
