@@ -22,30 +22,31 @@
               class="img-fluid p-3" />
           </div>
           <div class="form-group">
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Hata:</strong>
-              Bu bir hata mesajı.
-            </div>
+            <ErrorAlert />
           </div>
           <div class="form-group">
-            <label for="loginUserName">Kullanıcı Adı:</label>
-            <input type="text" id="loginUserName" class="form-control" />
+            <label for="usernameOrEmail">Kullanıcı Adı / E-Posta:</label>
+            <input
+              type="text"
+              id="usernameOrEmail"
+              class="form-control"
+              bind:value="{$data.usernameOrEmail}" />
           </div>
           <div class="form-group">
-            <label for="loginPassword">Şifre:</label>
-            <input type="password" id="loginPassword" class="form-control" />
+            <label for="password">Şifre:</label>
+            <input
+              type="password"
+              id="password"
+              class="form-control"
+              bind:value="{$data.password}" />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
               <input
                 type="checkbox"
                 class="custom-control-input"
-                id="rememberMe" />
+                id="rememberMe"
+                bind:checked="{$data.rememberMe}" />
               <label class="custom-control-label" for="rememberMe">
                 Beni Hatırla
               </label>
@@ -61,10 +62,9 @@
             </button>
             <a
               href="javascript:void(0);"
+              class="btn btn-link btn-block"
               on:click="{showForgottenPasswordModal}">
-              <button type="button" class="btn btn-link btn-block">
-                Şifreni mi unuttun?
-              </button>
+              Şifreni mi unuttun?
             </a>
           </div>
         </form>
@@ -77,14 +77,28 @@
   import jquery from "jquery";
   import { get, writable } from "svelte/store";
 
+  import {
+    hide as hideError,
+  } from "../ErrorAlert.svelte";
+
+  const dataDefault = {
+    usernameOrEmail: "",
+    password: "",
+    rememberMe: false,
+    recaptcha: "",
+  };
+
   const dialogID = "loginModal";
-  const error = writable({});
+  const error = writable("");
+  const data = writable(dataDefault);
 
   let callback = () => {};
   let hideCallback = () => {};
 
   export function show() {
-    error.set({});
+    error.set("");
+    data.set(dataDefault);
+    hideError();
 
     jquery("#" + dialogID).modal();
   }
@@ -107,33 +121,41 @@
 <script>
   import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
 
+  import ApiUtil, { NETWORK_ERROR } from "../../pano-ui/js/api.util";
+  import ErrorAlert, {
+    show as showError,
+  } from "../ErrorAlert.svelte";
+
   let loading = false;
 
   function onSubmit() {
+    hideError();
+
     loading = true;
 
-    // submitLoading.set(true);
-    //
-    // ApiUtil.post("panel/player/set/permissionGroup", get(player))
-    //   .then((response) => {
-    //     if (response.data.result === "ok") {
-    //       submitLoading.set(false);
-    //
-    //       hide();
-    //
-    //       callback(get(player));
-    //
-    //       resolve();
-    //     } else if (response.data.result === "NOT_EXISTS") {
-    //       refreshBrowserPage();
-    //     } else if (!!response.data.error) {
-    //       errors.set(response.data.error);
-    //
-    //       resolve();
-    //     } else reject();
-    //   })
-    //   .catch(() => {
-    //     reject();
-    //   });
+    ApiUtil.post("auth/login", get(data))
+      .then((response) => {
+        loading = false;
+        console.log(response.data);
+
+        if (response.data.result === "ok") {
+          hide();
+
+          callback(get(data));
+
+          resolve();
+        } else {
+          showError(
+            response.data.result === "error"
+              ? response.data.error
+              : NETWORK_ERROR
+          );
+        }
+      })
+      .catch(() => {
+        loading = false;
+
+        showError(NETWORK_ERROR);
+      });
   }
 </script>
