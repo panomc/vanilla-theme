@@ -1,4 +1,3 @@
-
 <!-- Main Block -->
 <main class="container">
   <div class="row">
@@ -23,7 +22,7 @@
       </div>
       <!-- Alert End -->
 
-      <Router config="{RouterConfig}" />
+      <slot />
     </div>
     <!-- Content End -->
 
@@ -81,132 +80,132 @@
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/butlu"
-                      title="Butlu"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/kahverengi"
-                      title="Kahverengi"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/butlu"
+                        title="Butlu"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/kahverengi"
+                        title="Kahverengi"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -223,132 +222,132 @@
             <div class="card-body p-0">
               <table class="table">
                 <tbody>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/butlu"
-                      title="Butlu"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/kahverengi"
-                      title="Kahverengi"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                  <td>
-                    <img
-                      alt=""
-                      class="rounded"
-                      data-placement="bottom"
-                      data-toggle="tooltip"
-                      src="https://minotar.net/avatar/steve"
-                      title="Steve"
-                      width="24" />
-                  </td>
-                </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/butlu"
+                        title="Butlu"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/kahverengi"
+                        title="Kahverengi"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                    <td>
+                      <img
+                        alt=""
+                        class="rounded"
+                        data-placement="bottom"
+                        data-toggle="tooltip"
+                        src="https://minotar.net/avatar/steve"
+                        title="Steve"
+                        width="24" />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -368,9 +367,3 @@
   </div>
 </main>
 <!-- Main Block End -->
-
-<script>
-  import Router from "routve";
-
-  import RouterConfig from "../router.config";
-</script>

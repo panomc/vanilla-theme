@@ -1,17 +1,7 @@
+<!-- Modals End -->
 <style lang="scss" global>
-  @import "styles/style";
+  @import "../styles/style";
 </style>
-
-<link
-  crossorigin="anonymous"
-  href="https://use.fontawesome.com/releases/v5.7.2/css/solid.css"
-  integrity="sha384-r/k8YTFqmlOaqRkZuSiE9trsrDXkh07mRaoGBMoDcmA58OHILZPsk29i2BsFng1B"
-  rel="stylesheet" />
-<link
-  crossorigin="anonymous"
-  href="https://use.fontawesome.com/releases/v5.7.2/css/fontawesome.css"
-  integrity="sha384-4aon80D8rXCGx9ayDt85LbyUHeMWd3UiBaWliBlJ53yzm9hqN21A+o1pqoyK04h+"
-  rel="stylesheet" />
 
 <Header />
 
@@ -62,8 +52,9 @@
     </div>
   </section> -->
 <!-- Slider End -->
-
-<Main />
+<Main>
+  <slot />
+</Main>
 
 <Footer />
 
@@ -75,17 +66,22 @@
 <RegisterModal />
 
 <ForgottenPasswordModal />
-<!-- Modals End -->
-
 
 <script>
-  import LoginModal from "./components/modals/LoginModal.svelte";
-  import ResetPasswordModal from "./components/modals/ResetPasswordModal.svelte";
-  import RegisterModal from "./components/modals/RegisterModal.svelte";
-  import ForgottenPasswordModal from "./components/modals/ForgottenPasswordModal.svelte";
+  import { browser } from "$app/env";
 
-  import Footer from "./components/Footer.svelte";
-  import Main from "./components/Main.svelte";
-  import Header from "./components/Header.svelte";
-  import Navbar from "./components/Navbar.svelte";
+  if (browser) {
+    import("$lib/init.libs");
+    import("$lib/init.api-util");
+  }
+
+  import Header from "../components/Header.svelte";
+  import Navbar from "../components/Navbar.svelte";
+  import Main from "../components/Main.svelte";
+  import Footer from "../components/Footer.svelte";
+
+  import LoginModal from "../components/modals/LoginModal.svelte";
+  import ForgottenPasswordModal from "../components/modals/ForgottenPasswordModal.svelte";
+  import RegisterModal from "../components/modals/RegisterModal.svelte";
+  import ResetPasswordModal from "../components/modals/ResetPasswordModal.svelte";
 </script>

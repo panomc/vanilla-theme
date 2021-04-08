@@ -67,7 +67,6 @@
 </div>
 
 <script context="module">
-  import jquery from "jquery";
   import { get, writable } from "svelte/store";
 
   const dialogID = "forgottenPasswordModal";
@@ -79,14 +78,14 @@
   export function show() {
     error.set({});
 
-    jquery(".modal").modal("hide");
-    jquery("#" + dialogID).modal();
+    window.$(".modal").modal("hide");
+    window.$("#" + dialogID).modal();
   }
 
   export function hide() {
     hideCallback();
 
-    jquery("#" + dialogID).modal("hide");
+    window.$("#" + dialogID).modal("hide");
   }
 
   export function setCallback(newCallback) {

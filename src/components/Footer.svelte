@@ -1,4 +1,3 @@
-
 <!-- Footer -->
 <div class="row text-center pb-3" id="footer">
   <div class="col-lg-4 d-flex align-items-end justify-content-center">

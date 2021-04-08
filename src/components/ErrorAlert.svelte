@@ -1,9 +1,9 @@
-
 <div
   id="{id}"
-  class="alert alert-danger alert-dismissible" style="display: none;"
+  class="alert alert-danger alert-dismissible"
+  style="display: none;"
   role="alert">
-  <button type="button" class="close" data-dismiss="alert">
+  <button type="button" class="close" on:click="{hide}">
     <span aria-hidden="true">&times;</span>
   </button>
   <strong>Hata:</strong>
@@ -11,7 +11,6 @@
 </div>
 
 <script context="module">
-  import jQuery from "jquery";
   import { writable } from "svelte/store";
 
   const id = "errorAlert";
@@ -20,10 +19,10 @@
   export function show(errorCode) {
     error.set(errorCode);
 
-    jQuery("#" + id).fadeIn("slow");
+    window.$("#" + id).fadeIn("slow");
   }
 
   export function hide() {
-    jQuery("#" + id).fadeOut("fast");
+    window.$("#" + id).fadeOut("fast");
   }
 </script>

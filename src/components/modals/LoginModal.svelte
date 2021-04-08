@@ -74,12 +74,9 @@
 </div>
 
 <script context="module">
-  import jquery from "jquery";
   import { get, writable } from "svelte/store";
 
-  import {
-    hide as hideError,
-  } from "../ErrorAlert.svelte";
+  import { hide as hideError } from "../ErrorAlert.svelte";
 
   const dataDefault = {
     usernameOrEmail: "",
@@ -100,13 +97,13 @@
     data.set(dataDefault);
     hideError();
 
-    jquery("#" + dialogID).modal();
+    window.$("#" + dialogID).modal();
   }
 
   export function hide() {
     hideCallback();
 
-    jquery("#" + dialogID).modal("hide");
+    window.$("#" + dialogID).modal("hide");
   }
 
   export function setCallback(newCallback) {
@@ -119,12 +116,19 @@
 </script>
 
 <script>
-  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
+  import { onMount } from "svelte";
 
-  import ApiUtil, { NETWORK_ERROR } from "../../pano-ui/js/api.util";
-  import ErrorAlert, {
-    show as showError,
-  } from "../ErrorAlert.svelte";
+  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
+  import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
+
+  let ApiUtil, NETWORK_ERROR;
+
+  onMount(async () => {
+    const ApiUtilModule = await import("../../pano-ui/js/api.util");
+
+    ApiUtil = ApiUtilModule.default;
+    NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
+  });
 
   let loading = false;
 

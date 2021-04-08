@@ -1,4 +1,3 @@
-
 <!-- Register Modal -->
 <div
   class="modal fade"
@@ -86,7 +85,6 @@
 </div>
 
 <script context="module">
-  import jquery from "jquery";
   import { get, writable } from "svelte/store";
 
   const dialogID = "registerModal";
@@ -98,13 +96,13 @@
   export function show() {
     error.set({});
 
-    jquery("#" + dialogID).modal();
+    window.$("#" + dialogID).modal();
   }
 
   export function hide() {
     hideCallback();
 
-    jquery("#" + dialogID).modal("hide");
+    window.$("#" + dialogID).modal("hide");
   }
 
   export function setCallback(newCallback) {
