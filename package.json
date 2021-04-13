@@ -12,10 +12,11 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "next",
-    "@sveltejs/kit": "next",
-    "eslint": "^7.23.0",
+    "@sveltejs/kit": "^1.0.0-next.74",
+    "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-svelte3": "^3.1.2",
+    "got": "^11.8.2",
     "npm-run-all": "^4.1.5",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
