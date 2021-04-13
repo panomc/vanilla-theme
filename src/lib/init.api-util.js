@@ -1,3 +1,4 @@
 import { ApiUtil } from "../pano-ui/js/api.util";
+import { API_URL } from "$lib/variables";
 
-ApiUtil.init(import.meta.env.VITE_API_URL);
+ApiUtil.init(API_URL);
