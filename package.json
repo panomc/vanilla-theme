@@ -23,6 +23,7 @@
     "sass": "^1.32.8",
     "svelte": "^3.37.0",
     "svelte-preprocess": "^4.7.0",
+    "url-pattern": "^1.0.3",
     "vite": "^2.1.5"
   },
   "type": "module",

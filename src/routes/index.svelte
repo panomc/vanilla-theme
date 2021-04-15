@@ -1,89 +1,163 @@
 <!-- Post Card -->
-<div class="card shadow-sm mb-5 border-0 shadow-sm">
-  <div class="card-body">
-    <router-link to="/" class="text-black d-inline-block">
-      <h5 class="card-title">
-        <span class="badge badge-pill badge-bittersweet text-light mr-3">
-          ÖNEMLİ
-        </span>
-        Minecraft sunucumuz açıldı!
-      </h5>
-    </router-link>
-    <p class="card-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-      recusandae repellendus sit enim ipsam, officia inventore magnam quasi
-      repellat quaerat fugiat. Voluptatibus saepe in commodi itaque explicabo
-      totam earum dolorem.
-    </p>
-  </div>
-  <div class="card-footer d-flex align-items-center">
-    <div class="text-muted">
-      <img
-        src="/assets/img/head.png"
-        alt="Steve"
-        width="32"
-        height="32"
-        title="Steve"
-        class="rounded mr-3" />
-      14 Mart 2018
+{#each $data.posts as post, index (post)}
+  <div class="card shadow-sm mb-5 border-0 shadow-sm">
+    <div class="card-body">
+      <router-link to="/" class="text-black d-inline-block">
+        <h5 class="card-title">
+          {#if post.category.title !== "-"}
+            <span class="badge badge-pill badge-primary text-light mr-3">
+              {post.category.title}
+            </span>
+          {/if}
+          {post.title}
+        </h5>
+      </router-link>
+      <p class="card-text">
+        {@html post.post}
+      </p>
     </div>
+    <div class="card-footer d-flex align-items-center">
+      <div class="text-muted">
+        <img
+          src="https://minotar.net/avatar/{post.writer.username}"
+          alt="{post.writer.username}"
+          width="32"
+          height="32"
+          title="{post.writer.username}"
+          class="rounded mr-3" />
+        14 Mart 2018
+      </div>
 
-    <button class="btn btn-secondary ml-auto" type="button">
-      Devamını Oku >
-    </button>
+      <button class="btn btn-secondary ml-auto" type="button">
+        Devamını Oku >
+      </button>
+    </div>
   </div>
-</div>
+  {:else}
+  Post yok.
+{/each}
 <!-- Post Card End -->
 
 <!-- Post Card -->
-<div class="card shadow-sm mb-5 border-0 shadow-sm">
-  <img alt="Post Image" class="card-img-top" src="/assets/img/post-image.jpg" />
-  <div class="card-body">
-    <router-link to="/" class="text-black d-inline-block">
-      <h5 class="card-title">
-        <span class="badge badge-pill badge-mint text-light mr-3">DUYURU</span>
-        Minecraft sunucumuz açıldı!
-      </h5>
-    </router-link>
-    <p class="card-text">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-      recusandae repellendus sit enim ipsam, officia inventore magnam quasi
-      repellat quaerat fugiat. Voluptatibus saepe in commodi itaque explicabo
-      totam earum dolorem.
-    </p>
-  </div>
-  <div class="card-footer d-flex justify-content-between">
-    <span class="text-muted">
-      <img
-        src="/assets/img/head.png"
-        alt="Steve"
-        width="32"
-        height="32"
-        title="Steve"
-        class="rounded mr-3" />
-      14 Mart 2018
-    </span>
-    <button class="btn btn-secondary" type="button">Devamını Oku ></button>
-  </div>
-</div>
+<!--<div class="card shadow-sm mb-5 border-0 shadow-sm">-->
+<!--  <img alt="Post Image" class="card-img-top" src="/assets/img/post-image.jpg" />-->
+<!--  <div class="card-body">-->
+<!--    <router-link to="/" class="text-black d-inline-block">-->
+<!--      <h5 class="card-title">-->
+<!--        <span class="badge badge-pill badge-mint text-light mr-3">DUYURU</span>-->
+<!--        Minecraft sunucumuz açıldı!-->
+<!--      </h5>-->
+<!--    </router-link>-->
+<!--    <p class="card-text">-->
+<!--      Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium-->
+<!--      recusandae repellendus sit enim ipsam, officia inventore magnam quasi-->
+<!--      repellat quaerat fugiat. Voluptatibus saepe in commodi itaque explicabo-->
+<!--      totam earum dolorem.-->
+<!--    </p>-->
+<!--  </div>-->
+<!--  <div class="card-footer d-flex justify-content-between">-->
+<!--    <span class="text-muted">-->
+<!--      <img-->
+<!--        src="/assets/img/head.png"-->
+<!--        alt="Steve"-->
+<!--        width="32"-->
+<!--        height="32"-->
+<!--        title="Steve"-->
+<!--        class="rounded mr-3" />-->
+<!--      14 Mart 2018-->
+<!--    </span>-->
+<!--    <button class="btn btn-secondary" type="button">Devamını Oku ></button>-->
+<!--  </div>-->
+<!--</div>-->
 <!-- Post Card End -->
 
-<nav>
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link" href="#">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item active">
-      <a class="page-link" href="#">1</a>
-    </li>
-    <li class="page-item">
-      <a class="page-link" href="#">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<!-- Pagination -->
+<Pagination
+  page="{$currentPage}"
+  totalPage="{$data.total_page}"
+  loading="{$dataLoading}"
+  on:firstPageClick="{() => loadData(1)}"
+  on:lastPageClick="{() => loadData($data.total_page)}"
+  on:pageLinkClick="{(event) => loadData(event.detail.page)}" />
+
+<!-- Pagination End -->
+<script context="module">
+  import { writable } from "svelte/store";
+
+  const currentPage = writable(-1);
+  const data = writable(null);
+  const dataLoading = writable(false);
+</script>
+
+<script>
+  import { session, page } from "$app/stores";
+  import { goto } from "$app/navigation";
+  import { browser } from "$app/env";
+
+  import { onMount, onDestroy } from "svelte";
+  import { get } from "svelte/store";
+
+  import Pagination from "../components/Pagination.svelte";
+
+  if (get(currentPage) === -1)
+    currentPage.set(
+      !!get(page).params.page ? parseInt(get(page).params.page) : 1
+    );
+
+  if (get(data) === null) data.set(get(session));
+
+  let ApiUtil;
+  let unsubscribePage;
+
+  if (browser)
+    unsubscribePage = page.subscribe((page) => {
+      if (
+        (!!page.params.page ? parseInt(page.params.page) : 1) !==
+        get(currentPage)
+      ) {
+        loadData(!!page.params.page ? page.params.page : 1, false);
+      }
+    });
+
+  onMount(async () => {
+    await initUtils();
+  });
+
+  if (browser) {
+    onDestroy(unsubscribePage);
+  }
+
+  async function initUtils() {
+    if (typeof ApiUtil === "undefined") {
+      const ApiUtilModule = await import("../pano-ui/js/api.util");
+
+      ApiUtil = ApiUtilModule.default;
+    }
+  }
+
+  async function loadData(page, routePage = true) {
+    dataLoading.set(true);
+
+    await initUtils();
+
+    ApiUtil.post("posts", {
+      page: parseInt(page),
+    })
+      .then((response) => {
+        if (response.data.result === "ok") {
+          dataLoading.set(false);
+
+          data.set(response.data);
+
+          currentPage.set(page);
+
+          if (routePage) goto(page === 1 ? "/" : "/page/" + page);
+        }else goto("/error-404")
+      })
+      .catch((e) => {
+        dataLoading.set(false);
+
+        console.log(e);
+      });
+  }
+</script>
