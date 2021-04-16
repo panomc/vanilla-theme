@@ -30,9 +30,9 @@
         {format(new Date(parseInt(post.date)), "dd MMMM yyyy - HH:mm")}
       </div>
 
-      <button class="btn btn-secondary ml-auto" type="button">
+      <a href="/post/{post.id}" class="btn btn-secondary ml-auto">
         Devamını Oku >
-      </button>
+      </a>
     </div>
   </div>
 {:else}
