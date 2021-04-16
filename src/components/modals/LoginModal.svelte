@@ -1,26 +1,15 @@
 <!-- Login Modal -->
-<div
-  class="modal fade"
-  id="{dialogID}"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
-    <div class="modal-content bg-light border-lg">
-      <div class="modal-header bg-primary text-white rounded-0">
+<div class="modal fade" id="{dialogID}" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered" role="dialog">
+    <div class="modal-content bg-light">
+      <div class="modal-header bg-primary text-white">
         <h5 class="modal-title">Giriş Yap</h5>
         <button type="button" class="close text-white" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body pb-1">
+      <div class="modal-body">
         <form on:submit|preventDefault="{onSubmit}">
-          <div class="form-group">
-            <img
-              src="/assets/img/logo.png"
-              alt="Server Logo"
-              class="img-fluid p-3" />
-          </div>
           <div class="form-group">
             <ErrorAlert />
           </div>

@@ -1,11 +1,6 @@
 <!-- Register Modal -->
-<div
-  class="modal fade"
-  id="{dialogID}"
-  tabindex="-1"
-  role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+<div class="modal fade" id="{dialogID}" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
         <h5 class="modal-title">Kayıt Ol</h5>
@@ -13,14 +8,8 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body pb-1">
+      <div class="modal-body">
         <form>
-          <div class="form-group">
-            <img
-              src="/assets/img/logo.png"
-              alt="Server Logo"
-              class="img-fluid p-3" />
-          </div>
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"

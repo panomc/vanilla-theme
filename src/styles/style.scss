@@ -65,25 +65,3 @@
 .border-lg {
   border-width: 5px !important;
 }
-
-#footer {
-  padding: 0;
-  margin: 0;
-  height: 200px;
-  margin-top: 2rem;
-  background: url("/assets/img/footer-bg.jpg") no-repeat bottom;
-  background-size: cover;
-  position: relative;
-
-  &:before {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 200px;
-    background: linear-gradient($body, rgba(0, 0, 0, 0));
-  }
-}
-
-.btn-success {
-  color: $white !important;
-}
