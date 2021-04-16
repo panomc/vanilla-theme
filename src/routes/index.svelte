@@ -33,7 +33,7 @@
       </button>
     </div>
   </div>
-  {:else}
+{:else}
   Post yok.
 {/each}
 <!-- Post Card End -->
@@ -84,7 +84,7 @@
 <script context="module">
   import { writable } from "svelte/store";
 
-  const currentPage = writable(-1);
+  const currentPage = writable(0);
   const data = writable(null);
   const dataLoading = writable(false);
 </script>
@@ -99,46 +99,64 @@
 
   import Pagination from "../components/Pagination.svelte";
 
-  if (get(currentPage) === -1)
+  let ApiUtil;
+  let unsubscribePageBrowserSide;
+  let unsubscribePageServerSide;
+  let unsubscribeSession;
+
+  if (!browser)
+    unsubscribeSession = session.subscribe((session) => {
+      data.set(session);
+    });
+
+  if (get(data) === null) {
+    data.set(get(session));
+  }
+
+  if (get(currentPage) === 0)
     currentPage.set(
       !!get(page).params.page ? parseInt(get(page).params.page) : 1
     );
 
-  if (get(data) === null) data.set(get(session));
-
-  let ApiUtil;
-  let unsubscribePage;
+  if (!browser)
+    unsubscribePageServerSide = page.subscribe((page) => {
+      currentPage.set(!!page.params.page ? parseInt(page.params.page) : 1);
+    });
 
   if (browser)
-    unsubscribePage = page.subscribe((page) => {
+    unsubscribePageBrowserSide = page.subscribe((page) => {
       if (
         (!!page.params.page ? parseInt(page.params.page) : 1) !==
         get(currentPage)
-      ) {
+      )
         loadData(!!page.params.page ? page.params.page : 1, false);
-      }
     });
 
   onMount(async () => {
     await initUtils();
   });
 
-  if (browser) {
-    onDestroy(unsubscribePage);
-  }
+  if (!browser) onDestroy(unsubscribeSession);
+  if (!browser) onDestroy(unsubscribePageServerSide);
+
+  if (browser) onDestroy(unsubscribePageBrowserSide);
 
   async function initUtils() {
+    dataLoading.set(true);
+
     if (typeof ApiUtil === "undefined") {
       const ApiUtilModule = await import("../pano-ui/js/api.util");
 
       ApiUtil = ApiUtilModule.default;
     }
+
+    dataLoading.set(false);
   }
 
   async function loadData(page, routePage = true) {
-    dataLoading.set(true);
-
     await initUtils();
+
+    dataLoading.set(true);
 
     ApiUtil.post("posts", {
       page: parseInt(page),
@@ -152,7 +170,7 @@
           currentPage.set(page);
 
           if (routePage) goto(page === 1 ? "/" : "/page/" + page);
-        }else goto("/error-404")
+        } else goto("/error-404");
       })
       .catch((e) => {
         dataLoading.set(false);
