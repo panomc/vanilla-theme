@@ -71,14 +71,16 @@
 <!--</div>-->
 <!-- Post Card End -->
 
-<!-- Pagination -->
-<Pagination
-  page="{$currentPage}"
-  totalPage="{$data.total_page}"
-  loading="{$dataLoading}"
-  on:firstPageClick="{() => loadData(1)}"
-  on:lastPageClick="{() => loadData($data.total_page)}"
-  on:pageLinkClick="{(event) => loadData(event.detail.page)}" />
+{#if $data.posts_count > 0}
+  <!-- Pagination -->
+  <Pagination
+    page="{$currentPage}"
+    totalPage="{$data.total_page}"
+    loading="{$dataLoading}"
+    on:firstPageClick="{() => loadData(1)}"
+    on:lastPageClick="{() => loadData($data.total_page)}"
+    on:pageLinkClick="{(event) => loadData(event.detail.page)}" />
+{/if}
 
 <!-- Pagination End -->
 <script context="module">
