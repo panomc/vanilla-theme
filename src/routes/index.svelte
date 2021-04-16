@@ -25,7 +25,7 @@
           height="32"
           title="{post.writer.username}"
           class="rounded mr-3" />
-        14 Mart 2018
+        {format(new Date(parseInt(post.date)), "dd MMMM yyyy - HH:mm")}
       </div>
 
       <button class="btn btn-secondary ml-auto" type="button">
@@ -74,8 +74,8 @@
 <!--</div>-->
 <!-- Post Card End -->
 
+<!-- Pagination -->
 {#if $data.posts_count > 0}
-  <!-- Pagination -->
   <Pagination
     page="{$currentPage}"
     totalPage="{$data.total_page}"
@@ -95,6 +95,7 @@
 </script>
 
 <script>
+  import { format } from "date-fns";
   import { session, page } from "$app/stores";
   import { goto } from "$app/navigation";
   import { browser } from "$app/env";
@@ -105,6 +106,7 @@
   import Pagination from "../components/Pagination.svelte";
 
   let ApiUtil;
+
   let unsubscribePageBrowserSide;
   let unsubscribePageServerSide;
   let unsubscribeSession;
