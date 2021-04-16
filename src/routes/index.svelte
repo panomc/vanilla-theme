@@ -131,12 +131,12 @@
     });
 
   if (browser)
-    unsubscribePageBrowserSide = page.subscribe((page) => {
+    unsubscribePageBrowserSide = page.subscribe(async (page) => {
       if (
         (!!page.params.page ? parseInt(page.params.page) : 1) !==
         get(currentPage)
       )
-        loadData(!!page.params.page ? page.params.page : 1, false);
+        await loadData(!!page.params.page ? page.params.page : 1, false);
     });
 
   onMount(async () => {
