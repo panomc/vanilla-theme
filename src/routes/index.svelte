@@ -9,7 +9,9 @@
               {post.category.title}
             </span>
           {/if}
-          {post.title}
+          {truncate(post.title, 100)}{@html post.title.length > 100
+            ? "&hellip;"
+            : ""}
         </h5>
       </router-link>
       <p class="card-text">
@@ -95,6 +97,7 @@
 </script>
 
 <script>
+  import { truncate } from "$lib/string.util";
   import { format } from "date-fns";
   import { session, page } from "$app/stores";
   import { goto } from "$app/navigation";
