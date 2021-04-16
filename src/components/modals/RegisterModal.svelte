@@ -22,22 +22,22 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="registerUserName">* Kullanıcı Adı:</label>
+            <label for="registerUserName">Kullanıcı Adı</label>
             <input type="text" id="registerUserName" class="form-control" />
           </div>
           <div class="form-group">
-            <label for="registerPassword">* Şifre:</label>
+            <label for="registerPassword">Şifre</label>
             <input type="password" id="registerPassword" class="form-control" />
           </div>
           <div class="form-group">
-            <label for="registerPasswordRepeat">* Şifre Tekrarı:</label>
+            <label for="registerPasswordRepeat">Şifre Tekrarı</label>
             <input
               type="password"
               id="registerPasswordRepeat"
               class="form-control" />
           </div>
           <div class="form-group">
-            <label for="registerEmail">* E-Posta:</label>
+            <label for="registerEmail">E-Posta</label>
             <input type="email" id="registerEmail" class="form-control" />
           </div>
           <div class="form-group">

@@ -14,7 +14,7 @@
             <ErrorAlert />
           </div>
           <div class="form-group">
-            <label for="usernameOrEmail">Kullanıcı Adı / E-Posta:</label>
+            <label for="usernameOrEmail">Kullanıcı Adı / E-Posta</label>
             <input
               type="text"
               id="usernameOrEmail"
@@ -22,7 +22,7 @@
               bind:value="{$data.usernameOrEmail}" />
           </div>
           <div class="form-group">
-            <label for="password">Şifre:</label>
+            <label for="password">Şifre</label>
             <input
               type="password"
               id="password"
