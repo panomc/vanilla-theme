@@ -27,22 +27,13 @@
           <hr />
           <ul class="nav nav-pills flex-lg-row flex-column">
             <li class="nav-item">
-              <a class="nav-link active" href="#">
-                <i class="fa fa-user fa-fw" aria-hidden="true"></i>
-                Profil
-              </a>
+              <a class="nav-link active" href="#"> Profil </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fa fa-credit-card fa-fw" aria-hidden="true"></i>
-                Ödemeler
-              </a>
+              <a class="nav-link" href="#"> Ödemeler </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fa fa-cog fa-fw" aria-hidden="true"></i>
-                Ayarlar
-              </a>
+              <a class="nav-link" href="#"> Ayarlar </a>
             </li>
           </ul>
         </div>
@@ -53,8 +44,8 @@
 
     <!-- Statistics -->
     <div class="card mb-3">
-      <div class="card-header alert-primary">İstatistikler</div>
-      <table class="table table-striped">
+      <div class="card-header">İstatistikler</div>
+      <table class="table">
         <tbody>
           <tr>
             <td>Oynanış Süresi</td>
@@ -68,8 +59,8 @@
 
     <!-- Active Items -->
     <div class="card mb-3">
-      <div class="card-header alert-primary">Aktif Ürünler</div>
-      <table class="table table-striped">
+      <div class="card-header">Aktif Ürünler</div>
+      <table class="table">
         <thead>
           <tr>
             <th>Ürün</th>
@@ -89,10 +80,8 @@
 
     <!-- Purchase History (30 Days) -->
     <div class="card mb-3">
-      <div class="card-header alert-primary">
-        Satın Alma Geçmişi (Son 30 Gün)
-      </div>
-      <table class="table table-striped">
+      <div class="card-header">Satın Alma Geçmişi (Son 30 Gün)</div>
+      <table class="table">
         <thead>
           <tr>
             <th>Ürün</th>
@@ -120,7 +109,7 @@
       <!-- Set New Password -->
       <div class="col-lg-6">
         <div class="card mb-lg-0 mb-3">
-          <div class="card-header alert-primary">Şifreni Değiştir</div>
+          <div class="card-header">Şifreni Değiştir</div>
           <div class="card-body">
             <form>
               <div class="form-group">
@@ -147,7 +136,7 @@
       <!-- Set New Email -->
       <div class="col-lg-6">
         <div class="card">
-          <div class="card-header alert-primary">E-Postanı Değiştir</div>
+          <div class="card-header">E-Postanı Değiştir</div>
           <div class="card-body">
             <form>
               <div class="form-group">

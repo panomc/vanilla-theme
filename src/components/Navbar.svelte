@@ -14,7 +14,7 @@
     </button>
 
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
-      <li class="nav-item mr-lg-0 mr-5">
+      <li class="nav-item mr-lg-0 mr-5 d-none">
         <a
           class="nav-link"
           href="javascript:void(0);"
@@ -22,8 +22,28 @@
           GİRİŞ YAP
         </a>
       </li>
+      <li class="nav-item mr-lg-0 mr-5">
+        <div class="dropdown">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            id="playerMenuDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-user mr-2" aria-hidden="true"></i>
+            BUTLU
+          </a>
+          <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
+            <a class="dropdown-item" href="#">Profil</a>
+            <a class="dropdown-item" href="#">Ödemeler</a>
+            <a class="dropdown-item" href="#">Ayarlar</a>
+            <a class="dropdown-item text-danger" href="#">Çıkış Yap</a>
+          </div>
+        </div>
+      </li>
 
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a
           class="nav-link"
           href="javascript:void(0);"
