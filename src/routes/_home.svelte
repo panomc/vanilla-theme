@@ -15,7 +15,7 @@
         <div class="col-auto">
           {#if post.category.title !== "-"}
             <div class="lead">
-              <a href="/blog/category/{$data.post.category.url}">
+              <a href="/blog/category/{post.category.url}">
                 <span class="badge badge-primary text-white"
                   >{post.category.title}</span>
               </a>
