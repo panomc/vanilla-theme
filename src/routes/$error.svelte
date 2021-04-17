@@ -1,1 +1,15 @@
-<h1>404 Error</h1>
+<h1>{title}</h1>
+
+<script context="module">
+  export function load({ error, status }) {
+    return {
+      props: {
+        title: `${status}: ${error.message}`,
+      },
+    };
+  }
+</script>
+
+<script>
+  export let title;
+</script>
