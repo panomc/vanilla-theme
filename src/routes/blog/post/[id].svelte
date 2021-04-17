@@ -7,8 +7,10 @@
       {#if $data.post.category !== "-"}
         <div class="col-auto">
           <div class="lead">
-            <span class="badge badge-primary text-white"
-              >{$data.post.category.title}</span>
+            <a href="/blog/category/{$data.post.category.url}">
+              <span class="badge badge-primary text-white"
+                >{$data.post.category.title}</span>
+            </a>
           </div>
         </div>
       {/if}

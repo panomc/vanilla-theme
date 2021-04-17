@@ -7,16 +7,18 @@
           <a href="/blog/post/{post.id}" class="card-title text-black">
             <h3 class="mb-0 d-inline-block">
               {truncate(post.title, 100)}{@html post.title.length > 100
-              ? "&hellip;"
-              : ""}
+                ? "&hellip;"
+                : ""}
             </h3>
           </a>
         </div>
         <div class="col-auto">
           {#if post.category.title !== "-"}
             <div class="lead">
-              <span class="badge badge-primary text-white"
-              >{post.category.title}</span>
+              <a href="/blog/category/{$data.post.category.url}">
+                <span class="badge badge-primary text-white"
+                  >{post.category.title}</span>
+              </a>
             </div>
           {/if}
         </div>
