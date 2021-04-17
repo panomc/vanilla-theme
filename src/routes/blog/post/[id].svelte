@@ -30,7 +30,7 @@
       {format(new Date(parseInt($data.post.date)), "dd MMMM yyyy - HH:mm")}
     </div>
     <div class="text-muted">
-      <ul>
+      <ul class="mb-0">
         <li class="list-inline">
           <span class="list-inline-item px-1">
             <i class="fas fa-eye mr-2"></i>
@@ -39,6 +39,20 @@
         </li>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="row justify-content-between">
+  <div class="col-auto">
+    <a href="#" class="btn btn-link">
+      <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
+    </a>
+  </div>
+  <div class="col-auto">
+    <a href="#" class="btn btn-link">
+      Sonraki Yazı
+      <i class="fas fa-chevron-right ml-2"></i>
+    </a>
   </div>
 </div>
 
