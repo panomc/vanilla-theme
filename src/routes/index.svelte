@@ -2,18 +2,26 @@
 {#each $data.posts as post, index (post)}
   <div class="card shadow-sm mb-5 border-0 shadow-sm">
     <div class="card-body">
-      <router-link to="/" class="text-black d-inline-block">
-        <h5 class="card-title">
+      <div class="row mb-3 justify-content-center">
+        <div class="col">
+          <a href="/post/{post.id}" class="card-title text-black">
+            <h3 class="mb-0 d-inline-block">
+              {truncate(post.title, 100)}{@html post.title.length > 100
+                ? "&hellip;"
+                : ""}
+            </h3>
+          </a>
+        </div>
+        <div class="col-auto">
           {#if post.category.title !== "-"}
-            <span class="badge badge-pill badge-primary text-light mr-3">
-              {post.category.title}
-            </span>
+            <div class="lead">
+              <span class="badge badge-primary text-white"
+                >{post.category.title}</span>
+            </div>
           {/if}
-          {truncate(post.title, 100)}{@html post.title.length > 100
-            ? "&hellip;"
-            : ""}
-        </h5>
-      </router-link>
+        </div>
+      </div>
+
       <p class="card-text">
         {@html post.post}
       </p>

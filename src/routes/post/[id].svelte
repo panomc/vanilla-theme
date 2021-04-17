@@ -1,5 +1,19 @@
 <div class="card shadow-sm mb-4">
-  <div class="card-header d-flex justify-content-between align-items-center">
+  <div class="card-body">
+    <div class="row mb-3 justify-content-center">
+      <div class="col">
+        <a href="/post/" class="card-title text-black">
+          <h3 class="mb-0 d-inline-block">dsadasdsd</h3>
+        </a>
+      </div>
+      <div class="col-auto">
+        <div class="lead">
+          <span class="badge badge-primary text-white">category</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer d-flex justify-content-between align-items-center">
     <div class="text-muted">
       <img
         src="https://minotar.net/avatar/Butlu"
@@ -17,10 +31,5 @@
         </span>
       </li>
     </div>
-  </div>
-  <div class="card-body">
-    <h4 class="card-title">Haftalık Duyurular #1</h4>
-    <hr />
-    hr post content here
   </div>
 </div>
