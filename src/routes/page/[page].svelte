@@ -1,21 +1,23 @@
-<Index />
+<Home />
 
 <script context="module">
+  import { load as loadHome } from "../_home.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, fetch, session, context }) {
-    const output = {};
+  export async function load(params) {
+    let output = {};
 
-    if (session.error === "PAGE_NOT_FOUND")
-    output.redirect = "/error-404"
+    output = {
+      ...output,
+      ...(await loadHome(params)),
+    };
 
     return output;
   }
-
 </script>
 
 <script>
-  import Index from "../index.svelte";
+  import Home from "../_home.svelte";
 </script>

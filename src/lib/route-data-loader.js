@@ -2,7 +2,7 @@ import got from "got";
 import { API_URL } from "$lib/variables";
 import UrlPattern from "url-pattern";
 
-const patterns = {
+export const patterns = {
   "posts": new UrlPattern("/(page/:page)"),
 };
 
@@ -20,6 +20,7 @@ export default async function loadRouteDataHandler(headers, path) {
     pathsAPI
       .then((response) => {
         resolveData = {
+          loadedPath: path,
           ...resolveData,
           ...response.body,
         };
@@ -38,7 +39,7 @@ export default async function loadRouteDataHandler(headers, path) {
   });
 }
 
-function getPathsAPI(headers, path, resolveData) {
+export function getPathsAPI(headers, path, resolveData) {
   const postsMatch = patterns["posts"].match(path);
 
   if (postsMatch !== null)
