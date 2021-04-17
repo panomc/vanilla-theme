@@ -2,9 +2,7 @@
   <div class="card-body">
     <div class="row mb-3 justify-content-center">
       <div class="col">
-        <a href="/post/{$data.post.id}" class="card-title text-black">
-          <h3 class="mb-0 d-inline-block">{$data.post.title}</h3>
-        </a>
+        <h3 class="mb-0 d-inline-block">{$data.post.title}</h3>
       </div>
       {#if $data.post.category !== "-"}
         <div class="col-auto">
@@ -14,9 +12,9 @@
           </div>
         </div>
       {/if}
-
-      {@html $data.post.text}
     </div>
+
+    {@html $data.post.text}
   </div>
   <div class="card-footer d-flex justify-content-between align-items-center">
     <div class="text-muted">
