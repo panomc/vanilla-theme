@@ -65,7 +65,7 @@
 
   async function initUtils() {
     if (typeof ApiUtil === "undefined") {
-      const ApiUtilModule = await import("../../pano-ui/js/api.util");
+      const ApiUtilModule = await import("../../../pano-ui/js/api.util");
 
       ApiUtil = ApiUtilModule.default;
     }

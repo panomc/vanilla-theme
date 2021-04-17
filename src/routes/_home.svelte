@@ -4,7 +4,7 @@
     <div class="card-body">
       <div class="row mb-3 justify-content-center">
         <div class="col">
-          <a href="/post/{post.id}" class="card-title text-black">
+          <a href="/blog/post/{post.id}" class="card-title text-black">
             <h3 class="mb-0 d-inline-block">
               {truncate(post.title, 100)}{@html post.title.length > 100
               ? "&hellip;"
@@ -38,7 +38,7 @@
         {format(new Date(parseInt(post.date)), "dd MMMM yyyy - HH:mm")}
       </div>
 
-      <a href="/post/{post.id}" class="btn btn-secondary ml-auto">
+      <a href="/blog/post/{post.id}" class="btn btn-secondary ml-auto">
         Devamını Oku >
       </a>
     </div>
@@ -141,7 +141,7 @@
 
           currentPage.set(page);
 
-          if (routePage) goto(page === 1 ? "/" : "/page/" + page);
+          if (routePage) goto(page === 1 ? "/" : "/blog/page/" + page);
         } else goto("/error-404");
       })
       .catch((e) => {

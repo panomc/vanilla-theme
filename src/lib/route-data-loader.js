@@ -3,8 +3,8 @@ import { API_URL } from "$lib/variables";
 import UrlPattern from "url-pattern";
 
 export const patterns = {
-  "posts": new UrlPattern("/(page/:page)"),
-  "postDetail": new UrlPattern("/post/(:id)"),
+  "posts": new UrlPattern("/(blog/page/:page)"),
+  "postDetail": new UrlPattern("/blog/post/(:id)"),
 };
 
 export default async function loadRouteDataHandler(headers, path) {
