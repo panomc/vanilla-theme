@@ -4,6 +4,7 @@ import UrlPattern from "url-pattern";
 
 export const patterns = {
   "posts": new UrlPattern("/(page/:page)"),
+  "postDetail": new UrlPattern("/post/(:id)"),
 };
 
 export default async function loadRouteDataHandler(headers, path) {
@@ -45,6 +46,15 @@ export function getPathsAPI(headers, path, resolveData) {
   if (postsMatch !== null)
     return got.post(API_URL + "posts", {
       json: { page: !!postsMatch.page ? parseInt(postsMatch.page) : 1 },
+      headers,
+      responseType: "json",
+    });
+
+  const postDetailMatch = patterns["postDetail"].match(path);
+
+  if (postDetailMatch !== null)
+    return got.post(API_URL + "posts/detail", {
+      json: { id: parseInt(postDetailMatch.id) },
       headers,
       responseType: "json",
     });
