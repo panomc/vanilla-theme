@@ -33,7 +33,8 @@
       <ul class="mb-0">
         <li class="list-inline">
           <span
-            class="list-inline-item px-1" use:tooltip={["Görüntülenme", {placement: "bottom"}]}>
+            class="list-inline-item px-1"
+            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
             <i class="fas fa-eye mr-2"></i>
             {$data.post.views}
           </span>
@@ -123,13 +124,13 @@
 
 <script>
   import { format } from "date-fns";
-  // import tippy from "tippy.js"
 
   import { page } from "$app/stores";
 
-  import { onDestroy, getContext, onMount } from "svelte";
+  import { onDestroy, getContext } from "svelte";
   import { get } from "svelte/store";
-  import tooltip from "../../../pano-ui/js/tooltip.util"
+
+  import tooltip from "../../../pano-ui/js/tooltip.util";
 
   onDestroy(
     getContext("data").subscribe((initialData) => {
