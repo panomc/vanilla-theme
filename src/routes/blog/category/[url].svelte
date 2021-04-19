@@ -1,4 +1,4 @@
-<CategoryPosts />
+<CategoryPosts {data} />
 
 <script context="module">
   import { load as loadCategoryPosts } from "./_categoryPosts.svelte";
@@ -20,4 +20,6 @@
 
 <script>
   import CategoryPosts from "./_categoryPosts.svelte";
+
+  export let data;
 </script>

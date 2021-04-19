@@ -2,32 +2,32 @@
   <div class="card-body">
     <div class="row mb-3 justify-content-center">
       <div class="col">
-        <h3 class="mb-0 d-inline-block">{$data.post.title}</h3>
+        <h3 class="mb-0 d-inline-block">{data.post.title}</h3>
       </div>
-      {#if $data.post.category !== "-"}
+      {#if data.post.category !== "-"}
         <div class="col-auto">
           <div class="lead">
-            <a href="/blog/category/{$data.post.category.url}">
+            <a href="/blog/category/{data.post.category.url}">
               <span class="badge badge-primary text-white"
-                >{$data.post.category.title}</span>
+                >{data.post.category.title}</span>
             </a>
           </div>
         </div>
       {/if}
     </div>
 
-    {@html $data.post.text}
+    {@html data.post.text}
   </div>
   <div class="card-footer d-flex justify-content-between align-items-center">
     <div class="text-muted">
       <img
-        src="https://minotar.net/avatar/{$data.post.writer.username}"
-        alt="{$data.post.writer.username}"
+        src="https://minotar.net/avatar/{data.post.writer.username}"
+        alt="{data.post.writer.username}"
         width="32"
         height="32"
-        title="{$data.post.writer.username}"
+        title="{data.post.writer.username}"
         class="rounded mr-3" />
-      {format(new Date(parseInt($data.post.date)), "dd MMMM yyyy - HH:mm")}
+      {format(new Date(parseInt(data.post.date)), "dd MMMM yyyy - HH:mm")}
     </div>
     <div class="text-muted">
       <ul class="mb-0">
@@ -36,7 +36,7 @@
             class="list-inline-item px-1"
             use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
             <i class="fas fa-eye mr-2"></i>
-            {$data.post.views}
+            {data.post.views}
           </span>
         </li>
       </ul>
@@ -47,21 +47,21 @@
 <div class="row justify-content-between">
   <div class="col-auto">
     <a
-      href="/blog/post/{$data.previous_post === '-'
+      href="/blog/post/{data.previous_post === '-'
         ? ''
-        : $data.previous_post.id}"
+        : data.previous_post.id}"
       class="btn btn-link"
-      class:disabled="{$data.previous_post === '-'}"
-      use:tooltip="{[$data.previous_post.title, { placement: 'bottom' }]}">
+      class:disabled="{data.previous_post === '-'}"
+      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}">
       <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
     </a>
   </div>
   <div class="col-auto">
     <a
-      href="/blog/post/{$data.next_post === '-' ? '' : $data.next_post.id}"
+      href="/blog/post/{data.next_post === '-' ? '' : data.next_post.id}"
       class="btn btn-link"
-      class:disabled="{$data.next_post === '-'}"
-      use:tooltip="{[$data.next_post.title, { placement: 'bottom' }]}">
+      class:disabled="{data.next_post === '-'}"
+      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}">
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>
@@ -69,27 +69,8 @@
 </div>
 
 <script context="module">
-  import { get, writable } from "svelte/store";
   import { goto } from "$app/navigation";
   import { browser } from "$app/env";
-
-  const data = writable({
-    post: {
-      id: -1,
-      title: "",
-      category: "-",
-      writer: {
-        username: "",
-      },
-      text: "",
-      date: 0,
-      status: 1,
-      image: "",
-      views: 0,
-    },
-    previous_post: "-",
-    next_post: "-",
-  });
 
   let ApiUtil;
 
@@ -104,32 +85,39 @@
   async function loadData(id) {
     await initUtils();
 
-    ApiUtil.post("posts/detail", {
-      id,
-    })
-      .then((response) => {
-        if (response.data.result === "ok") {
-          data.set(response.data);
-        } else goto("/error-404");
+    return new Promise((resolve) => {
+      ApiUtil.post("posts/detail", {
+        id,
       })
-      .catch((e) => {
-        console.log(e);
-      });
+        .then((response) => {
+          if (response.data.result === "ok") {
+            resolve(response.data);
+          } else goto("/error-404");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    });
   }
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, session }) {
-    let output = {};
+    let output = {
+      props: {},
+    };
 
     if (session.error === "PAGE_NOT_FOUND") output = null;
 
-    if (page.path === session.loadedPath) data.set(session.data);
+    if (page.path === session.loadedPath) output.props.data = session.data;
 
     if (browser && page.path !== session.loadedPath) {
       // from another page
-      await loadData(!!page.params.id ? parseInt(page.params.id) : 1, false);
+      output.props.data = await loadData(
+        !!page.params.id ? parseInt(page.params.id) : 1,
+        false
+      );
     }
 
     return output;
@@ -140,4 +128,6 @@
   import { format } from "date-fns";
 
   import tooltip from "../../../pano-ui/js/tooltip.util";
+
+  export let data;
 </script>

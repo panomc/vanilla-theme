@@ -1,4 +1,4 @@
-<Home />
+<Home {data}/>
 
 <script context="module">
   import { load as loadHome } from "./_home.svelte";
@@ -20,4 +20,6 @@
 
 <script>
   import Home from "./_home.svelte";
+
+  export let data;
 </script>
