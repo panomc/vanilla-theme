@@ -69,7 +69,7 @@
 </div>
 
 <script context="module">
-  import { writable } from "svelte/store";
+  import { get, writable } from "svelte/store";
   import { goto } from "$app/navigation";
   import { browser } from "$app/env";
 
@@ -125,9 +125,18 @@
 
     if (session.error === "PAGE_NOT_FOUND") output.redirect = "/error-404";
 
-    if (browser && page.path !== session.loadedPath) {
+    if (page.path === session.loadedPath)
+      data.set(session)
+
+    if (
+      browser &&
+      (page.path !== session.loadedPath)
+    ) {
       // from another page
-      await loadData(parseInt(page.params.id));
+      await loadData(
+        !!page.params.id ? parseInt(page.params.id) : 1,
+        false
+      );
     }
 
     return output;
@@ -137,30 +146,6 @@
 <script>
   import { format } from "date-fns";
 
-  import { page } from "$app/stores";
-
-  import { onDestroy, getContext } from "svelte";
-  import { get } from "svelte/store";
-
   import tooltip from "../../../pano-ui/js/tooltip.util";
 
-  onDestroy(
-    getContext("data").subscribe((initialData) => {
-      // first data load in server-side
-      if (initialData !== null && get(page).path === initialData.loadedPath)
-        data.set(initialData);
-    })
-  );
-
-  // browser-side follow page and load data
-  if (browser)
-    onDestroy(
-      page.subscribe(async (page) => {
-        if (
-          get(data).post.id !== -1 &&
-          parseInt(page.params.id) !== get(data).post.id
-        )
-          await loadData(parseInt(page.params.id));
-      })
-    );
 </script>

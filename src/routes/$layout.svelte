@@ -69,8 +69,6 @@
 
 <script context="module">
   import { writable } from "svelte/store";
-
-  const data = writable(null);
 </script>
 
 <script>
@@ -90,13 +88,4 @@
   import ForgottenPasswordModal from "../components/modals/ForgottenPasswordModal.svelte";
   import RegisterModal from "../components/modals/RegisterModal.svelte";
   import ResetPasswordModal from "../components/modals/ResetPasswordModal.svelte";
-
-  import { onDestroy, setContext } from "svelte";
-  import { session } from "$app/stores";
-
-  onDestroy(session.subscribe((session) => {
-    data.set(session);
-  }));
-
-  setContext("data", data);
 </script>

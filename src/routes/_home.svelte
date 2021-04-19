@@ -55,7 +55,7 @@
   import { page } from "$app/stores";
 
   const currentPage = writable(0);
-  let data = writable({
+  const data = writable({
     posts: [],
     posts_count: 0,
     total_page: 1,
@@ -110,7 +110,13 @@
 
     if (session.error === "PAGE_NOT_FOUND") output.redirect = "/error-404";
 
-    if (browser && page.path !== session.loadedPath) {
+    if (page.path === session.loadedPath)
+      data.set(session)
+
+    if (
+      browser &&
+      (page.path !== session.loadedPath)
+    ) {
       // from another page
       await loadData(
         !!page.params.page ? parseInt(page.params.page) : 1,
@@ -123,18 +129,10 @@
 </script>
 
 <script>
-  import { onDestroy, getContext } from "svelte";
+  import { onDestroy } from "svelte";
 
   import Pagination from "../components/Pagination.svelte";
   import Posts from "../components/Posts.svelte";
-
-  onDestroy(
-    getContext("data").subscribe((initialData) => {
-      // first data load in server-side
-      if (initialData !== null && get(page).path === initialData.loadedPath)
-        data.set(initialData);
-    })
-  );
 
   // init first time the current page on both sides
   if (get(currentPage) === 0)
@@ -147,18 +145,6 @@
     onDestroy(
       page.subscribe((page) => {
         currentPage.set(!!page.params.page ? parseInt(page.params.page) : 1);
-      })
-    );
-
-  // browser-side follow page and load data
-  if (browser)
-    onDestroy(
-      page.subscribe(async (page) => {
-        if (
-          (!!page.params.page ? parseInt(page.params.page) : 1) !==
-          get(currentPage)
-        )
-          await loadData(!!page.params.page ? page.params.page : 1, false);
       })
     );
 </script>

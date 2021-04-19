@@ -100,7 +100,13 @@
     if (session.error === "PAGE_NOT_FOUND" || session.error === "NOT_EXISTS")
       output = null;
 
-    if (browser && page.path !== session.loadedPath) {
+    if (page.path === session.loadedPath)
+      data.set(session)
+
+    if (
+      browser &&
+      (page.path !== session.loadedPath)
+    ) {
       // from another page
       await loadData(
         !!page.params.page ? parseInt(page.params.page) : 1,
@@ -119,14 +125,6 @@
   import Pagination from "../../../components/Pagination.svelte";
   import Posts from "../../../components/Posts.svelte";
 
-  onDestroy(
-    getContext("data").subscribe((initialData) => {
-      // first data load in server-side
-      if (initialData !== null && get(page).path === initialData.loadedPath)
-        data.set(initialData);
-    })
-  );
-
   // init first time the current page on both sides
   if (get(currentPage) === 0)
     currentPage.set(
@@ -143,18 +141,6 @@
       page.subscribe((page) => {
         currentPage.set(!!page.params.page ? parseInt(page.params.page) : 1);
         currentUrl.set(!!page.params.url ? page.params.url : "");
-      })
-    );
-
-  // browser-side follow page and load data
-  if (browser)
-    onDestroy(
-      page.subscribe(async (page) => {
-        const pageNumber = !!page.params.page ? parseInt(page.params.page) : 1;
-        const url = !!page.params.url ? page.params.url : "";
-
-        if (pageNumber !== get(currentPage) || url !== get(currentUrl))
-          await loadData(pageNumber, url, false);
       })
     );
 </script>
