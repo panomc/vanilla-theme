@@ -67,10 +67,6 @@
 
 <ForgottenPasswordModal />
 
-<script context="module">
-  import { writable } from "svelte/store";
-</script>
-
 <script>
   import { browser } from "$app/env";
 
