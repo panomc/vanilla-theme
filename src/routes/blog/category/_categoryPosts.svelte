@@ -23,8 +23,6 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import { get } from "svelte/store";
-
   import { browser } from "$app/env";
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
