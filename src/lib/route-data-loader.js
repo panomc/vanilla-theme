@@ -21,13 +21,24 @@ export default async function loadRouteDataHandler(headers, path) {
 
     pathsAPI
       .then((response) => {
+        // Cleanup headers
+        const notAllowed = ["vary", "content-type", "content-length"];
+        const headers = Object.keys(response.headers)
+          .filter((key) => !notAllowed.includes(key))
+          .reduce((object, key) => {
+            object[key] = response.headers[key];
+
+            return object;
+          }, {});
+
         resolveData = {
           loadedPath: path,
           resolveData,
           data: response.body,
+          headers,
         };
 
-        // console.log(resolveData)
+        console.log(headers);
 
         resolve(resolveData);
 
