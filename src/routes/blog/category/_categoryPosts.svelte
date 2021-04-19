@@ -1,9 +1,11 @@
-<h3>
-  {$data.posts_count} <i class="font-weight-light">adet,</i>
-  {$data.category.title}
-  <i class="font-weight-light">kategorisinde yazı var:</i>
-</h3>
-{$currentPage}/{$data.total_page}
+<div class="row justify-content-between">
+  <div class="col-auto">
+    <h4>
+      {$data.category.title} <i class="font-weight-light">kategorisinde</i>
+      {$data.posts_count} <i class="font-weight-light">yazı var:</i>
+    </h4>
+  </div>
+</div>
 <hr />
 
 <Posts posts="{$data.posts}" />

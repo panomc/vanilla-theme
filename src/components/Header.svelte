@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div class="col-12">
-        <a href="#">
+        <a href="/">
           <img
             alt="Server Logo"
             class="img-fluid d-block m-auto"
