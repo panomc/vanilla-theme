@@ -111,32 +111,14 @@
       );
     }
 
+    currentPage.set(!!page.params.page ? parseInt(page.params.page) : 1);
+    currentUrl.set(!!page.params.url ? page.params.url : "");
+
     return output;
   }
 </script>
 
 <script>
-  import { onDestroy, getContext } from "svelte";
-
   import Pagination from "../../../components/Pagination.svelte";
   import Posts from "../../../components/Posts.svelte";
-
-  // init first time the current page on both sides
-  if (get(currentPage) === 0)
-    currentPage.set(
-      !!get(page).params.page ? parseInt(get(page).params.page) : 1
-    );
-
-  // init first time the current url on both sides
-  if (get(currentUrl) === "")
-    currentUrl.set(!!get(page).params.url ? get(page).params.url : "");
-
-  // server-side current page and url rendering
-  if (!browser)
-    onDestroy(
-      page.subscribe((page) => {
-        currentPage.set(!!page.params.page ? parseInt(page.params.page) : 1);
-        currentUrl.set(!!page.params.url ? page.params.url : "");
-      })
-    );
 </script>
