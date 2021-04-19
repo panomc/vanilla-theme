@@ -38,7 +38,7 @@ export default async function loadRouteDataHandler(headers, path) {
           headers,
         };
 
-        console.log(headers);
+        // console.log(headers);
 
         resolve(resolveData);
 
