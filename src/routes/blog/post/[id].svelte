@@ -121,22 +121,15 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load({ page, session }) {
-    const output = {};
+    let output = {};
 
-    if (session.error === "PAGE_NOT_FOUND") output.redirect = "/error-404";
+    if (session.error === "PAGE_NOT_FOUND") output = null;
 
-    if (page.path === session.loadedPath)
-      data.set(session)
+    if (page.path === session.loadedPath) data.set(session);
 
-    if (
-      browser &&
-      (page.path !== session.loadedPath)
-    ) {
+    if (browser && page.path !== session.loadedPath) {
       // from another page
-      await loadData(
-        !!page.params.id ? parseInt(page.params.id) : 1,
-        false
-      );
+      await loadData(!!page.params.id ? parseInt(page.params.id) : 1, false);
     }
 
     return output;
@@ -147,5 +140,4 @@
   import { format } from "date-fns";
 
   import tooltip from "../../../pano-ui/js/tooltip.util";
-
 </script>

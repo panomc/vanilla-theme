@@ -100,13 +100,9 @@
     if (session.error === "PAGE_NOT_FOUND" || session.error === "NOT_EXISTS")
       output = null;
 
-    if (page.path === session.loadedPath)
-      data.set(session)
+    if (page.path === session.loadedPath) data.set(session);
 
-    if (
-      browser &&
-      (page.path !== session.loadedPath)
-    ) {
+    if (browser && page.path !== session.loadedPath) {
       // from another page
       await loadData(
         !!page.params.page ? parseInt(page.params.page) : 1,
