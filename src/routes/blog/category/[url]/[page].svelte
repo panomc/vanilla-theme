@@ -1,7 +1,7 @@
 <CategoryPosts />
 
 <script context="module">
-  import { load as loadCategoryPosts } from "./_categoryPosts.svelte";
+  import { load as loadCategoryPosts } from "../_categoryPosts.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -19,5 +19,5 @@
 </script>
 
 <script>
-  import CategoryPosts from "./_categoryPosts.svelte";
+  import CategoryPosts from "../_categoryPosts.svelte";
 </script>
