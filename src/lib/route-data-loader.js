@@ -23,8 +23,8 @@ export default async function loadRouteDataHandler(headers, path) {
       .then((response) => {
         resolveData = {
           loadedPath: path,
-          ...resolveData,
-          ...response.body,
+          resolveData,
+          data: response.body,
         };
 
         // console.log(resolveData)

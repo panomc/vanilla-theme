@@ -100,7 +100,7 @@
     if (session.error === "PAGE_NOT_FOUND" || session.error === "NOT_EXISTS")
       output = null;
 
-    if (page.path === session.loadedPath) data.set(session);
+    if (page.path === session.loadedPath) data.set(session.data);
 
     if (browser && page.path !== session.loadedPath) {
       // from another page
