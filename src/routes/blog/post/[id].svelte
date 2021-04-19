@@ -46,12 +46,22 @@
 
 <div class="row justify-content-between">
   <div class="col-auto">
-    <a href="#" class="btn btn-link">
+    <a
+      href="/blog/post/{$data.previous_post === '-'
+        ? ''
+        : $data.previous_post.id}"
+      class="btn btn-link"
+      class:disabled="{$data.previous_post === '-'}"
+      use:tooltip="{[$data.previous_post.title, { placement: 'bottom' }]}">
       <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
     </a>
   </div>
   <div class="col-auto">
-    <a href="#" class="btn btn-link">
+    <a
+      href="/blog/post/{$data.next_post === '-' ? '' : $data.next_post.id}"
+      class="btn btn-link"
+      class:disabled="{$data.next_post === '-'}"
+      use:tooltip="{[$data.next_post.title, { placement: 'bottom' }]}">
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>
@@ -77,6 +87,8 @@
       image: "",
       views: 0,
     },
+    previous_post: "-",
+    next_post: "-",
   });
 
   let ApiUtil;
