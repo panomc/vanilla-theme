@@ -48,7 +48,7 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import { get, writable } from "svelte/store";
+  import { writable } from "svelte/store";
 
   import { browser } from "$app/env";
   import { goto } from "$app/navigation";
