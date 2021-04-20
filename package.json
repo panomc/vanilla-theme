@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "next",
-    "@sveltejs/kit": "^1.0.0-next.83",
+    "@sveltejs/kit": "^1.0.0-next.84",
     "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-svelte3": "^3.1.2",
@@ -20,11 +20,11 @@
     "npm-run-all": "^4.1.5",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
-    "sass": "^1.32.10",
+    "sass": "^1.32.11",
     "svelte": "^3.37.0",
-    "svelte-preprocess": "^4.7.0",
+    "svelte-preprocess": "^4.7.2",
     "url-pattern": "^1.0.3",
-    "vite": "^2.1.5"
+    "vite": "^2.2.1"
   },
   "type": "module",
   "dependencies": {
