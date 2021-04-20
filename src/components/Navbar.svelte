@@ -45,7 +45,7 @@
               {$session.user.username}
             </a>
             <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
-              <a class="dropdown-item" href="#">Profil</a>
+              <a class="dropdown-item" href="/profile">Profil</a>
               <a class="dropdown-item" href="/tickets">Talepler</a>
               <a class="dropdown-item" href="/settings">Ayarlar</a>
               <a
