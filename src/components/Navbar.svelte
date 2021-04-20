@@ -63,9 +63,6 @@
         <li class="nav-item active">
           <a class="nav-link" href="/">ANA SAYFA</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">TALEPLER</a>
-        </li>
       </ul>
     </div>
   </nav>
