@@ -7,19 +7,19 @@
       <div class="row">
         <div class="col-lg-6 d-flex flex-row">
           <img
-            src="/assets/img/head.png"
+            src="https://minotar.net/avatar/{$session.user.username}"
             class="mr-3 rounded float-left"
             width="64"
             height="64"
-            alt="Profile Picture" />
+            alt="{$session.user.username}" />
           <div>
-            <h5>Butlu</h5>
-            <div class="text-muted">selimgokcek@outlook.com</div>
+            <h5>{$session.user.username}</h5>
+            <div class="text-muted">{$session.user.email}</div>
             <div class="d-none text-muted">Kayıt: 01.01.2019</div>
           </div>
         </div>
         <div class="col-lg-6">
-          <button type="button" class="btn btn-danger float-right mt-lg-0 mt-3">
+          <button on:click={logout} type="button" class="btn btn-danger float-right mt-lg-0 mt-3">
             Çıkış Yap
           </button>
         </div>
@@ -162,3 +162,35 @@
     </div>
   </div>
 </div>
+
+<script context="module">
+  let ApiUtil;
+
+  async function initUtils() {
+    if (typeof ApiUtil === "undefined") {
+      const ApiUtilModule = await import("../pano-ui/js/api.util");
+
+      ApiUtil = ApiUtilModule.default;
+    }
+  }
+</script>
+
+<script>
+  import { session } from "$app/stores";
+
+  async function logout() {
+    await initUtils();
+
+    await new Promise((resolve) => {
+      ApiUtil.post("auth/logout", {}).then(() => {
+        session.update((session) => {
+          session.user = "-";
+
+          return session;
+        });
+
+        resolve();
+      });
+    });
+  }
+</script>
