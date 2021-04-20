@@ -23,7 +23,7 @@
             GİRİŞ YAP
           </a>
         </li>
-        <li class="nav-item d-none">
+        <li class="nav-item">
           <a
             class="nav-link"
             href="javascript:void(0);"
