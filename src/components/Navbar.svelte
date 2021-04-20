@@ -47,7 +47,7 @@
             <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
               <a class="dropdown-item" href="#">Profil</a>
               <a class="dropdown-item" href="#">Ödemeler</a>
-              <a class="dropdown-item" href="#">Ayarlar</a>
+              <a class="dropdown-item" href="/settings">Ayarlar</a>
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
