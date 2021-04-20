@@ -35,10 +35,13 @@ export default async function loadRouteDataHandler(headers, path) {
 
   return new Promise((resolve) => {
     let resolveData = {};
+
+    resolveData.user = user;
+
     const pathsAPI = getPathsAPI(headers, path.toLowerCase(), resolveData);
 
     if (typeof pathsAPI === "undefined") {
-      resolve({});
+      resolve({ ...resolveData });
 
       return;
     }
@@ -57,13 +60,12 @@ export default async function loadRouteDataHandler(headers, path) {
 
         resolveData = {
           loadedPath: path,
-          resolveData,
+          ...resolveData,
           data: response.body,
           headers,
-          user,
         };
 
-        // console.log(headers);
+        console.log(user);
 
         resolve(resolveData);
 
