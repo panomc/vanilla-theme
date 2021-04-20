@@ -9,43 +9,54 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form on:submit|preventDefault="{onSubmit}">
           <div class="form-group">
-            <div
-              class="alert alert-danger alert-dismissible fade show"
-              role="alert">
-              <button type="button" class="close" data-dismiss="alert">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <strong>Hata:</strong>
-              Bu bir hata mesajı.
-            </div>
+            <SuccessAlert
+              alertElement="{successAlertElement}"
+              message="{successMessage}" />
+            <ErrorAlert
+              alertElement="{errorAlertElement}"
+              error="{errorMessage}" />
           </div>
           <div class="form-group">
             <label for="registerUserName">Kullanıcı Adı</label>
-            <input type="text" id="registerUserName" class="form-control" />
+            <input
+              type="text"
+              id="registerUserName"
+              class="form-control"
+              bind:value="{$data.username}" />
+          </div>
+          <div class="form-group">
+            <label for="registerEmail">E-Posta</label>
+            <input
+              type="email"
+              id="registerEmail"
+              class="form-control"
+              bind:value="{$data.email}" />
           </div>
           <div class="form-group">
             <label for="registerPassword">Şifre</label>
-            <input type="password" id="registerPassword" class="form-control" />
+            <input
+              type="password"
+              id="registerPassword"
+              class="form-control"
+              bind:value="{$data.password}" />
           </div>
           <div class="form-group">
             <label for="registerPasswordRepeat">Şifre Tekrarı</label>
             <input
               type="password"
               id="registerPasswordRepeat"
-              class="form-control" />
-          </div>
-          <div class="form-group">
-            <label for="registerEmail">E-Posta</label>
-            <input type="email" id="registerEmail" class="form-control" />
+              class="form-control"
+              bind:value="{$data.passwordRepeat}" />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
               <input
                 type="checkbox"
                 class="custom-control-input"
-                id="registerAcceptTerms" />
+                id="registerAcceptTerms"
+                bind:checked="{$data.agreement}" />
               <label class="custom-control-label" for="registerAcceptTerms">
                 <a href="#">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
@@ -58,14 +69,15 @@
               class="btn btn-primary text-white shadow btn-lg btn-block">
               Kayıt Ol
             </button>
-            <button
-              type="button"
+            <a
+              href="javascript:void(0);"
               class="btn btn-link btn-block"
-              data-dismiss="modal"
-              data-toggle="modal"
-              data-target="#loginModal">
+              on:click="{() => {
+                hide();
+                showLoginModal();
+              }}">
               Zaten kayıtlıysan Giriş Yap
-            </button>
+            </a>
           </div>
         </form>
       </div>
@@ -74,17 +86,23 @@
 </div>
 
 <script context="module">
-  import { get, writable } from "svelte/store";
-
   const dialogID = "registerModal";
-  const error = writable({});
 
   let callback = () => {};
   let hideCallback = () => {};
 
-  export function show() {
-    error.set({});
+  let ApiUtil, NETWORK_ERROR;
 
+  async function initUtils() {
+    if (typeof ApiUtil === "undefined") {
+      const ApiUtilModule = await import("../../pano-ui/js/api.util");
+
+      ApiUtil = ApiUtilModule.default;
+      NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
+    }
+  }
+
+  export function show() {
     window.$("#" + dialogID).modal();
   }
 
@@ -104,33 +122,72 @@
 </script>
 
 <script>
+  import { writable, get } from "svelte/store";
+
+  import { show as showLoginModal } from "./LoginModal.svelte";
+
+  import ErrorAlert, {
+    show as showError,
+    hide as hideError,
+  } from "../ErrorAlert.svelte";
+  import SuccessAlert, {
+    show as showSuccess,
+    hide as hideSuccess,
+  } from "../SuccessAlert.svelte";
+
   let loading = false;
 
-  function onSubmit() {
+  const dataDefault = {
+    username: "",
+    email: "",
+    password: "",
+    passwordRepeat: "",
+    agreement: false,
+    recaptcha: "",
+  };
+
+  const successMessage = writable("");
+  const errorMessage = writable("");
+  const errorAlertElement = writable(null);
+  const successAlertElement = writable(null);
+  const data = writable({ ...dataDefault });
+
+  async function onSubmit() {
+    await initUtils();
+
+    hideError(get(errorAlertElement));
+    hideSuccess(get(successAlertElement));
+
     loading = true;
 
-    // submitLoading.set(true);
-    //
-    // ApiUtil.post("panel/player/set/permissionGroup", get(player))
-    //   .then((response) => {
-    //     if (response.data.result === "ok") {
-    //       submitLoading.set(false);
-    //
-    //       hide();
-    //
-    //       callback(get(player));
-    //
-    //       resolve();
-    //     } else if (response.data.result === "NOT_EXISTS") {
-    //       refreshBrowserPage();
-    //     } else if (!!response.data.error) {
-    //       errors.set(response.data.error);
-    //
-    //       resolve();
-    //     } else reject();
-    //   })
-    //   .catch(() => {
-    //     reject();
-    //   });
+    ApiUtil.post("auth/register", get(data))
+      .then((response) => {
+        loading = false;
+
+        if (response.data.result === "ok") {
+          successMessage.set("REGISTER_SUCCESSFUL");
+
+          showSuccess(get(successAlertElement));
+
+          callback(get(data));
+
+          data.set({ ...dataDefault })
+        } else {
+          errorMessage.set(
+            response.data.result === "error"
+              ? response.data.error
+              : NETWORK_ERROR
+          );
+
+          showError(get(errorAlertElement));
+        }
+      })
+      .catch(() => {
+        loading = false;
+
+        errorMessage.set(NETWORK_ERROR);
+
+        showError(get(errorAlertElement));
+      });
   }
 </script>
