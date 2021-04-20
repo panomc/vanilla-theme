@@ -11,7 +11,7 @@
       <div class="modal-body">
         <form on:submit|preventDefault="{onSubmit}">
           <div class="form-group">
-            <ErrorAlert />
+            <ErrorAlert alertElement="{errorAlertElement}" error="{error}" />
           </div>
           <div class="form-group">
             <label for="usernameOrEmail">Kullanıcı Adı / E-Posta</label>
@@ -63,7 +63,7 @@
 </div>
 
 <script context="module">
-  import { writable } from "svelte/store";
+  import { writable, get } from "svelte/store";
 
   import { hide as hideError } from "../ErrorAlert.svelte";
 
@@ -77,6 +77,7 @@
   const dialogID = "loginModal";
   const error = writable("");
   const data = writable(dataDefault);
+  const errorAlertElement = writable(null);
 
   let callback = () => {};
   let hideCallback = () => {};
@@ -94,8 +95,10 @@
 
   export function show() {
     error.set("");
+
     data.set(dataDefault);
-    hideError();
+
+    hideError(get(errorAlertElement));
 
     window.$("#" + dialogID).modal();
   }
@@ -116,8 +119,6 @@
 </script>
 
 <script>
-  import { get } from "svelte/store";
-
   import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
   import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
 
@@ -172,17 +173,21 @@
         } else {
           loading = false;
 
-          showError(
+          error.set(
             response.data.result === "error"
               ? response.data.error
               : NETWORK_ERROR
           );
+
+          showError(get(errorAlertElement));
         }
       })
       .catch(() => {
         loading = false;
 
-        showError(NETWORK_ERROR);
+        error.set(NETWORK_ERROR);
+
+        showError(get(errorAlertElement));
       });
   }
 </script>
