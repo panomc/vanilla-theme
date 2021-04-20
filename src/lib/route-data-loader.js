@@ -9,6 +9,30 @@ export const patterns = {
 };
 
 export default async function loadRouteDataHandler(headers, path) {
+  const user = await new Promise((resolve) => {
+    got
+      .get(API_URL + "auth/credentials", {
+        headers,
+        responseType: "json",
+      })
+      .then((response) => {
+        if (response.body.result === "ok") {
+          const notAllowed = ["result"];
+          const data = Object.keys(response.body)
+            .filter((key) => !notAllowed.includes(key))
+            .reduce((object, key) => {
+              object[key] = response.body[key];
+
+              return object;
+            }, {});
+
+          resolve(data);
+        }
+
+        if (response.body.error === "NOT_LOGGED_IN") resolve("-");
+      });
+  });
+
   return new Promise((resolve) => {
     let resolveData = {};
     const pathsAPI = getPathsAPI(headers, path.toLowerCase(), resolveData);
@@ -36,6 +60,7 @@ export default async function loadRouteDataHandler(headers, path) {
           resolveData,
           data: response.body,
           headers,
+          user,
         };
 
         // console.log(headers);
