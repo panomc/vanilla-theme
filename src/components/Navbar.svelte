@@ -14,43 +14,45 @@
     </button>
 
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
-      <li class="nav-item mr-lg-0 mr-5 d-none">
-        <a
-          class="nav-link"
-          href="javascript:void(0);"
-          on:click="{showLoginModal}">
-          GİRİŞ YAP
-        </a>
-      </li>
-      <li class="nav-item mr-lg-0 mr-5">
-        <div class="dropdown">
+      {#if $session.user === "-"}
+        <li class="nav-item mr-lg-0 mr-5">
           <a
             class="nav-link"
             href="javascript:void(0);"
-            id="playerMenuDropdown"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false">
-            <i class="fas fa-user mr-2" aria-hidden="true"></i>
-            BUTLU
+            on:click="{showLoginModal}">
+            GİRİŞ YAP
           </a>
-          <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
-            <a class="dropdown-item" href="#">Profil</a>
-            <a class="dropdown-item" href="#">Ödemeler</a>
-            <a class="dropdown-item" href="#">Ayarlar</a>
-            <a class="dropdown-item text-danger" href="#">Çıkış Yap</a>
+        </li>
+        <li class="nav-item d-none">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            on:click="{showRegisterModal}">
+            KAYIT OL
+          </a>
+        </li>
+      {:else}
+        <li class="nav-item mr-lg-0 mr-5">
+          <div class="dropdown">
+            <a
+              class="nav-link"
+              href="javascript:void(0);"
+              id="playerMenuDropdown"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fas fa-user mr-2" aria-hidden="true"></i>
+              {$session.user.username}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
+              <a class="dropdown-item" href="#">Profil</a>
+              <a class="dropdown-item" href="#">Ödemeler</a>
+              <a class="dropdown-item" href="#">Ayarlar</a>
+              <a class="dropdown-item text-danger" href="#">Çıkış Yap</a>
+            </div>
           </div>
-        </div>
-      </li>
-
-      <li class="nav-item d-none">
-        <a
-          class="nav-link"
-          href="javascript:void(0);"
-          on:click="{showRegisterModal}">
-          KAYIT OL
-        </a>
-      </li>
+        </li>
+      {/if}
     </ul>
 
     <div class="collapse navbar-collapse" id="navbar">
@@ -70,4 +72,5 @@
 <script>
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
+  import { session } from "$app/stores";
 </script>
