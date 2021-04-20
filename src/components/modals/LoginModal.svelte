@@ -63,7 +63,7 @@
 </div>
 
 <script context="module">
-  import { get, writable } from "svelte/store";
+  import { writable } from "svelte/store";
 
   import { hide as hideError } from "../ErrorAlert.svelte";
 
@@ -116,6 +116,8 @@
 </script>
 
 <script>
+  import { get } from "svelte/store";
+
   import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
   import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
 
