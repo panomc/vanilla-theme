@@ -96,7 +96,7 @@
   export function show() {
     error.set("");
 
-    data.set(dataDefault);
+    data.set({ ...dataDefault });
 
     hideError(get(errorAlertElement));
 
