@@ -24,15 +24,15 @@
     "svelte": "^3.37.0",
     "svelte-preprocess": "^4.7.2",
     "url-pattern": "^1.0.3",
-    "vite": "^2.2.1"
+    "vite": "^2.2.1",
+    "date-fns": "^2.21.1",
+    "tippy.js": "^6.3.1"
   },
   "type": "module",
   "dependencies": {
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
-    "date-fns": "^2.21.1",
     "jquery": "^3.6.0",
-    "popper.js": "^1.16.1",
-    "tippy.js": "^6.3.1"
+    "popper.js": "^1.16.1"
   }
 }
