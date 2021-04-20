@@ -66,7 +66,9 @@
           <div class="form-group text-center">
             <button
               type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block">
+              class="btn btn-primary text-white shadow btn-lg btn-block"
+              class:disabled="{loading}"
+              disabled="{loading}">
               Kayıt Ol
             </button>
             <a
@@ -171,7 +173,7 @@
 
           callback(get(data));
 
-          data.set({ ...dataDefault })
+          data.set({ ...dataDefault });
         } else {
           errorMessage.set(
             response.data.result === "error"
