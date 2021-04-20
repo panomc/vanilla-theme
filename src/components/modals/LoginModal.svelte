@@ -81,6 +81,17 @@
   let callback = () => {};
   let hideCallback = () => {};
 
+  let ApiUtil, NETWORK_ERROR;
+
+  async function initUtils() {
+    if (typeof ApiUtil === "undefined") {
+      const ApiUtilModule = await import("../../pano-ui/js/api.util");
+
+      ApiUtil = ApiUtilModule.default;
+      NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
+    }
+  }
+
   export function show() {
     error.set("");
     data.set(dataDefault);
@@ -105,39 +116,60 @@
 </script>
 
 <script>
-  import { onMount } from "svelte";
-
   import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
   import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
 
-  let ApiUtil, NETWORK_ERROR;
-
-  onMount(async () => {
-    const ApiUtilModule = await import("../../pano-ui/js/api.util");
-
-    ApiUtil = ApiUtilModule.default;
-    NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
-  });
+  import { session } from "$app/stores";
 
   let loading = false;
 
-  function onSubmit() {
+  async function updateSessionUser() {
+    const user = await new Promise((resolve) => {
+      ApiUtil.get("auth/credentials").then((response) => {
+        if (response.data.result === "ok") {
+          const notAllowed = ["result"];
+          const data = Object.keys(response.data)
+            .filter((key) => !notAllowed.includes(key))
+            .reduce((object, key) => {
+              object[key] = response.data[key];
+
+              return object;
+            }, {});
+
+          resolve(data);
+        }
+
+        if (response.data.error === "NOT_LOGGED_IN") resolve("-");
+      });
+    });
+
+    session.update((session) => {
+      session.user = user;
+
+      return session;
+    });
+  }
+
+  async function onSubmit() {
+    await initUtils();
+
     hideError();
 
     loading = true;
 
     ApiUtil.post("auth/login", get(data))
       .then((response) => {
-        loading = false;
-        console.log(response.data);
-
         if (response.data.result === "ok") {
-          hide();
+          updateSessionUser().then(() => {
+            loading = false;
 
-          callback(get(data));
+            hide();
 
-          resolve();
+            callback(get(data));
+          });
         } else {
+          loading = false;
+
           showError(
             response.data.result === "error"
               ? response.data.error
