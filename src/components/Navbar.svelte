@@ -48,7 +48,10 @@
               <a class="dropdown-item" href="#">Profil</a>
               <a class="dropdown-item" href="#">Ödemeler</a>
               <a class="dropdown-item" href="#">Ayarlar</a>
-              <a class="dropdown-item text-danger" href="#">Çıkış Yap</a>
+              <a
+                class="dropdown-item text-danger"
+                href="javascript:void(0);"
+                on:click="{logout}">Çıkış Yap</a>
             </div>
           </div>
         </li>
@@ -68,9 +71,38 @@
   </nav>
 </div>
 
+<script context="module">
+  let ApiUtil;
+
+  async function initUtils() {
+    if (typeof ApiUtil === "undefined") {
+      const ApiUtilModule = await import("../pano-ui/js/api.util");
+
+      ApiUtil = ApiUtilModule.default;
+    }
+  }
+</script>
+
 <!-- Navbar -->
 <script>
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
+
   import { session } from "$app/stores";
+
+  async function logout() {
+    await initUtils();
+
+    await new Promise((resolve) => {
+      ApiUtil.post("auth/logout", {}).then(() => {
+        session.update((session) => {
+          session.user = "-";
+
+          return session;
+        });
+
+        resolve();
+      });
+    });
+  }
 </script>
