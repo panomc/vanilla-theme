@@ -4,15 +4,7 @@ import NodeAdapter from "@sveltejs/adapter-node";
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   compilerOptions: {
-    legacy: true,
-    // onwarn: (warning, handler) => {
-    //   console.log("geldi amk")
-    //   // e.g. don't warn on <marquee> elements, cos they're cool
-    //   if (warning.code === 'a11y-distracting-elements') return;
-    //
-    //   // let Rollup handle all other warnings normally
-    //   handler(warning);
-    // }
+    legacy: true
   },
   kit: {
     adapter: NodeAdapter(),
