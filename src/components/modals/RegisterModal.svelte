@@ -13,10 +13,12 @@
           <div class="form-group">
             <SuccessAlert
               alertElement="{successAlertElement}"
-              message="{successMessage}" />
+              message="{successMessage}"
+            />
             <ErrorAlert
               alertElement="{errorAlertElement}"
-              error="{errorMessage}" />
+              error="{errorMessage}"
+            />
           </div>
           <div class="form-group">
             <label for="registerUserName">Kullanıcı Adı</label>
@@ -24,7 +26,8 @@
               type="text"
               id="registerUserName"
               class="form-control"
-              bind:value="{$data.username}" />
+              bind:value="{$data.username}"
+            />
           </div>
           <div class="form-group">
             <label for="registerEmail">E-Posta</label>
@@ -32,7 +35,8 @@
               type="email"
               id="registerEmail"
               class="form-control"
-              bind:value="{$data.email}" />
+              bind:value="{$data.email}"
+            />
           </div>
           <div class="form-group">
             <label for="registerPassword">Şifre</label>
@@ -40,7 +44,8 @@
               type="password"
               id="registerPassword"
               class="form-control"
-              bind:value="{$data.password}" />
+              bind:value="{$data.password}"
+            />
           </div>
           <div class="form-group">
             <label for="registerPasswordRepeat">Şifre Tekrarı</label>
@@ -48,7 +53,8 @@
               type="password"
               id="registerPasswordRepeat"
               class="form-control"
-              bind:value="{$data.passwordRepeat}" />
+              bind:value="{$data.passwordRepeat}"
+            />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
@@ -56,7 +62,8 @@
                 type="checkbox"
                 class="custom-control-input"
                 id="registerAcceptTerms"
-                bind:checked="{$data.agreement}" />
+                bind:checked="{$data.agreement}"
+              />
               <label class="custom-control-label" for="registerAcceptTerms">
                 <a href="#">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
@@ -68,7 +75,8 @@
               type="submit"
               class="btn btn-primary text-white shadow btn-lg btn-block"
               class:disabled="{loading}"
-              disabled="{loading}">
+              disabled="{loading}"
+            >
               Kayıt Ol
             </button>
             <a
@@ -77,7 +85,8 @@
               on:click="{() => {
                 hide();
                 showLoginModal();
-              }}">
+              }}"
+            >
               Zaten kayıtlıysan Giriş Yap
             </a>
           </div>

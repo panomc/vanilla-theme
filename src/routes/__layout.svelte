@@ -1,6 +1,6 @@
 <!-- Modals End -->
 <style lang="scss" global>
-  @import "../styles/style";
+  @import "../styles/style.scss";
 </style>
 
 <Header />

@@ -43,7 +43,8 @@
     loading="{false}"
     on:firstPageClick="{() => loadData(1)}"
     on:lastPageClick="{() => loadData(data.total_page)}"
-    on:pageLinkClick="{(event) => loadData(event.detail.page)}" />
+    on:pageLinkClick="{(event) => loadData(event.detail.page)}"
+  />
 {/if}
 
 <!-- Pagination End -->

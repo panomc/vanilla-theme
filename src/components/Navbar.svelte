@@ -1,7 +1,8 @@
 <!-- Navbar -->
 <div class="container">
   <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-primary">
+    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-primary"
+  >
     <button
       aria-controls="navbar"
       aria-expanded="false"
@@ -9,7 +10,8 @@
       class="navbar-toggler d-lg-none"
       data-target="#navbar"
       data-toggle="collapse"
-      type="button">
+      type="button"
+    >
       <i aria-hidden="true" class="fa fa-bars"></i>
     </button>
 
@@ -19,7 +21,8 @@
           <a
             class="nav-link"
             href="javascript:void(0);"
-            on:click="{showLoginModal}">
+            on:click="{showLoginModal}"
+          >
             GİRİŞ YAP
           </a>
         </li>
@@ -27,7 +30,8 @@
           <a
             class="nav-link"
             href="javascript:void(0);"
-            on:click="{showRegisterModal}">
+            on:click="{showRegisterModal}"
+          >
             KAYIT OL
           </a>
         </li>
@@ -40,7 +44,8 @@
               id="playerMenuDropdown"
               data-toggle="dropdown"
               aria-haspopup="true"
-              aria-expanded="false">
+              aria-expanded="false"
+            >
               <i class="fas fa-user mr-2" aria-hidden="true"></i>
               {$session.user.username}
             </a>
@@ -51,7 +56,8 @@
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
-                on:click="{logout}">Çıkış Yap</a>
+                on:click="{logout}">Çıkış Yap</a
+              >
             </div>
           </div>
         </li>

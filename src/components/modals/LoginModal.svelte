@@ -19,7 +19,8 @@
               type="text"
               id="usernameOrEmail"
               class="form-control"
-              bind:value="{$data.usernameOrEmail}" />
+              bind:value="{$data.usernameOrEmail}"
+            />
           </div>
           <div class="form-group">
             <label for="password">Şifre</label>
@@ -27,7 +28,8 @@
               type="password"
               id="password"
               class="form-control"
-              bind:value="{$data.password}" />
+              bind:value="{$data.password}"
+            />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
@@ -35,7 +37,8 @@
                 type="checkbox"
                 class="custom-control-input"
                 id="rememberMe"
-                bind:checked="{$data.rememberMe}" />
+                bind:checked="{$data.rememberMe}"
+              />
               <label class="custom-control-label" for="rememberMe">
                 Beni Hatırla
               </label>
@@ -46,13 +49,15 @@
               type="submit"
               class="btn btn-primary text-white shadow btn-lg btn-block"
               class:disabled="{loading}"
-              disabled="{loading}">
+              disabled="{loading}"
+            >
               Giriş Yap
             </button>
             <a
               href="javascript:void(0);"
               class="btn btn-link btn-block"
-              on:click="{showForgottenPasswordModal}">
+              on:click="{showForgottenPasswordModal}"
+            >
               Şifreni mi unuttun?
             </a>
           </div>

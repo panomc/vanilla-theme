@@ -1,4 +1,4 @@
-<Home {data}/>
+<Home data="{data}" />
 
 <script context="module">
   import { load as loadHome } from "./_home.svelte";

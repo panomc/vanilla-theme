@@ -9,7 +9,8 @@
           <div class="lead">
             <a href="/blog/category/{data.post.category.url}">
               <span class="badge badge-primary text-white"
-                >{data.post.category.title}</span>
+                >{data.post.category.title}</span
+              >
             </a>
           </div>
         </div>
@@ -26,7 +27,8 @@
         width="32"
         height="32"
         title="{data.post.writer.username}"
-        class="rounded mr-3" />
+        class="rounded mr-3"
+      />
       {format(new Date(parseInt(data.post.date)), "dd MMMM yyyy - HH:mm")}
     </div>
     <div class="text-muted">
@@ -34,7 +36,8 @@
         <li class="list-inline">
           <span
             class="list-inline-item px-1"
-            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
+            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}"
+          >
             <i class="fas fa-eye mr-2"></i>
             {data.post.views}
           </span>
@@ -52,7 +55,8 @@
         : data.previous_post.id}"
       class="btn btn-link"
       class:disabled="{data.previous_post === '-'}"
-      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}">
+      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}"
+    >
       <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
     </a>
   </div>
@@ -61,7 +65,8 @@
       href="/blog/post/{data.next_post === '-' ? '' : data.next_post.id}"
       class="btn btn-link"
       class:disabled="{data.next_post === '-'}"
-      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}">
+      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}"
+    >
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>

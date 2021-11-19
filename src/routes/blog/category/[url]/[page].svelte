@@ -1,4 +1,4 @@
-<CategoryPosts {data} />
+<CategoryPosts data="{data}" />
 
 <script context="module">
   import { load as loadCategoryPosts } from "../_categoryPosts.svelte";

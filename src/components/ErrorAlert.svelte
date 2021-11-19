@@ -2,7 +2,8 @@
   class="alert alert-danger alert-dismissible"
   style="display: none;"
   role="alert"
-  bind:this="{$alertElement}">
+  bind:this="{$alertElement}"
+>
   <button type="button" class="close" on:click="{() => hide($alertElement)}">
     <span aria-hidden="true">&times;</span>
   </button>

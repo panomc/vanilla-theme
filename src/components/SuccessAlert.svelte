@@ -2,7 +2,8 @@
   class="alert border border-success text-success"
   style="display: none;"
   role="alert"
-  bind:this="{$alertElement}">
+  bind:this="{$alertElement}"
+>
   <div class="d-flex">
     <div class="alert__icon mr-3">
       <i class="fas fa-exclamation-circle"></i>
@@ -17,7 +18,8 @@
         type="button"
         class="alert__close alert__close--light"
         aria-label="Close"
-        on:click="{() => hide($alertElement)}">
+        on:click="{() => hide($alertElement)}"
+      >
         <span aria-hidden="true" class="text-success">×</span>
       </button>
     </div>

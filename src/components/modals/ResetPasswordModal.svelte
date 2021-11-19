@@ -4,7 +4,8 @@
   id="{dialogID}"
   tabindex="-1"
   role="dialog"
-  aria-hidden="true">
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
     <div class="modal-content bg-light">
       <div class="modal-header bg-primary text-white">
@@ -21,7 +22,8 @@
           <div class="form-group">
             <div
               class="alert alert-danger alert-dismissible fade show"
-              role="alert">
+              role="alert"
+            >
               <button type="button" class="close" data-dismiss="alert">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -38,13 +40,15 @@
             <input
               type="password"
               id="newPasswordRepeat"
-              class="form-control" />
+              class="form-control"
+            />
           </div>
           <div class="form-group text-center">
             <button
               type="submit"
               class="btn btn-primary text-white shadow btn-lg btn-block"
-              data-dismiss="modal">
+              data-dismiss="modal"
+            >
               Şifremi Değiştir
             </button>
           </div>

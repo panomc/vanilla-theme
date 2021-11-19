@@ -8,14 +8,16 @@
             alt="Server Logo"
             class="img-fluid d-block m-auto"
             src="/assets/img/logo.png"
-            width="400" />
+            width="400"
+          />
         </a>
       </div>
       <div class="col-12 pt-3">
         <button
           class="btn btn-sm btn-yellow shadow-yellow py-2 my-2 d-lg-none d-block
           m-auto"
-          type="button">
+          type="button"
+        >
           <p class="text-neon text-white font-weight-bolder m-0">
             OYNA.IPADRESI.COM
           </p>

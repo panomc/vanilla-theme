@@ -7,8 +7,8 @@
           <a href="/blog/post/{post.id}" class="card-title text-black">
             <h3 class="mb-0 d-inline-block">
               {truncate(post.title, 100)}{@html post.title.length > 100
-              ? "&hellip;"
-              : ""}
+                ? "&hellip;"
+                : ""}
             </h3>
           </a>
         </div>
@@ -17,7 +17,8 @@
             <div class="lead">
               <a href="/blog/category/{post.category.url}">
                 <span class="badge badge-primary text-white"
-                >{post.category.title}</span>
+                  >{post.category.title}</span
+                >
               </a>
             </div>
           {/if}
@@ -36,7 +37,8 @@
           width="32"
           height="32"
           title="{post.writer.username}"
-          class="rounded mr-3" />
+          class="rounded mr-3"
+        />
         {format(new Date(parseInt(post.date)), "dd MMMM yyyy - HH:mm")}
       </div>
 
@@ -51,8 +53,8 @@
     <p class="text-gray">Henüz bir blog yazısı yayınlanmamış.</p>
   </div>
 {/each}
-<!-- Post Card End -->
 
+<!-- Post Card End -->
 <script>
   import { truncate } from "$lib/string.util";
   import { format } from "date-fns";
