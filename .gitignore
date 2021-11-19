@@ -18,3 +18,4 @@ config.js
 .svelte
 build
 functions
+.svelte-kit
