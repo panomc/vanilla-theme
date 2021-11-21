@@ -2,8 +2,6 @@
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/tippy.js/dist/tippy";
 
-@import url("https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i");
-
 #header {
   display: flex;
   justify-content: center;
@@ -30,37 +28,10 @@
   border-top: 10px solid rgba($color: $white, $alpha: 0.3);
   border-bottom: 1px inset rgba($color: $black, $alpha: 0.1);
   font-weight: 900;
-
   .nav-item.active {
     border-radius: $border-radius;
     background: rgba($color: $black, $alpha: 0.1);
-    transition: 250ms;
   }
-
-  .nav-item {
-    transition: 250ms;
-
-    &:hover {
-      transition: 250ms;
-      text-shadow: 0 0 6px $white;
-      border-radius: $border-radius;
-    }
-  }
-}
-
-.shadow-primary {
-  box-shadow: 0 20px 100px $primary;
-  transition: 0.5s all;
-}
-
-.shadow-secondary {
-  box-shadow: 0 20px 50px $secondary;
-  transition: 0.5s all;
-}
-
-.shadow-yellow {
-  box-shadow: 0 0 60px $yellow;
-  transition: 0.5s all;
 }
 
 .border-lg {

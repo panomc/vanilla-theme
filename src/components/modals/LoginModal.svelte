@@ -2,9 +2,9 @@
 <div class="modal fade" id="{dialogID}" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="dialog">
     <div class="modal-content bg-light">
-      <div class="modal-header bg-primary text-white">
-        <h5 class="modal-title">Giriş Yap</h5>
-        <button type="button" class="close text-white" data-dismiss="modal">
+      <div class="modal-header border-bottom-0 text-black">
+        <h4 class="modal-title">Giriş Yap</h4>
+        <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -14,7 +14,7 @@
             <ErrorAlert alertElement="{errorAlertElement}" error="{error}" />
           </div>
           <div class="form-group">
-            <label for="usernameOrEmail">Kullanıcı Adı / E-Posta</label>
+            <label for="usernameOrEmail">Oyuncu Adı / E-Posta</label>
             <input
               type="text"
               id="usernameOrEmail"
@@ -47,7 +47,7 @@
           <div class="form-group text-center">
             <button
               type="submit"
-              class="btn btn-primary text-white shadow btn-lg btn-block"
+              class="btn btn-primary text-white btn-lg btn-block"
               class:disabled="{loading}"
               disabled="{loading}"
             >

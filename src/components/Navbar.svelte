@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <div class="container">
   <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-primary"
+    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-lg"
   >
     <button
       aria-controls="navbar"

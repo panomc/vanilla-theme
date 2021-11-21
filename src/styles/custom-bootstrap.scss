@@ -39,12 +39,10 @@ $theme-colors: (
 // Settings
 
 $enable-shadows: true;
-$enable-rounded: true;
 
 // Fonts
 
 $lead-font-weight: normal;
-$font-family-base: "Lato", sans-serif;
 
 // Links
 
@@ -57,10 +55,7 @@ $h5-font-size: 1.1rem;
 
 // Modals
 
-$modal-backdrop-bg: $white;
 $modal-sm: 400px;
-$modal-content-box-shadow-xs: 0 20px 50px $primary;
-$modal-content-box-shadow-sm-up: 0 20px 50px $primary;
 
 // Borders
 
@@ -80,7 +75,7 @@ $dropdown-box-shadow: 0 5px 5px $glass;
 // Navbar
 
 $navbar-dark-active-color: $sunflower;
-$navbar-dark-color: $light;
+$navbar-dark-color: $white;
 $navbar-padding-y: 0.5rem;
 $navbar-padding-x: 1.5rem;
 $navbar-nav-link-padding-x: 1.5rem;
