@@ -16,9 +16,9 @@
     page="{data.page}"
     totalPage="{data.total_page}"
     loading="{false}"
-    on:firstPageClick="{() => loadData(1, data.url)}"
-    on:lastPageClick="{() => loadData(data.total_page, data.url)}"
-    on:pageLinkClick="{(event) => loadData(event.detail.page, data.url)}"
+    on:firstPageClick="{() => reloadData(1)}"
+    on:lastPageClick="{() => reloadData(data.total_page)}"
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
   />
 {/if}
 
@@ -31,7 +31,7 @@
 
   let refreshable = false;
 
-  async function loadData(page, url, routePage = true) {
+  async function loadData(page, url) {
     return new Promise((resolve) => {
       ApiUtil.post("posts/categoryPosts", {
         page: parseInt(page),
@@ -39,15 +39,17 @@
       })
         .then((response) => {
           if (response.data.result === "ok") {
-            resolve(response.data);
+            const data = response.data
 
-            if (routePage)
-              goto(
-                page === 1
-                  ? "/blog/category/" + url
-                  : "/blog/category/" + url + "/" + page
-              );
-          } else goto("/error-404");
+            data.page = parseInt(page);
+            data.url = url;
+
+            resolve(data);
+          } else if (response.data.result === "error") {
+            const errorCode = response.data.error;
+
+            reject(errorCode, response.data);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -69,22 +71,22 @@
     if (browser && (page.path !== session.loadedPath || refreshable)) {
       // from another page
       output.props.data = await loadData(
-        !!page.params.page ? parseInt(page.params.page) : 1,
+        !!page.params.page ? page.params.page : 1,
         page.params.url,
         false
       );
     }
 
     if (page.path === session.loadedPath && !refreshable) {
-      refreshable = true;
+      if (browser) refreshable = true;
 
       output.props.data = session.data;
-    }
 
-    output.props.data.page = !!page.params.page
-      ? parseInt(page.params.page)
-      : 1;
-    output.props.data.url = page.params.url;
+      output.props.data.page = !!page.params.page
+        ? parseInt(page.params.page)
+        : 1;
+      output.props.data.url = page.params.url;
+    }
 
     return output;
   }
@@ -93,6 +95,23 @@
 <script>
   import Pagination from "../../../components/Pagination.svelte";
   import Posts from "../../../components/Posts.svelte";
+  import { goto } from "$app/navigation";
 
   export let data;
+
+  function reloadData(page = data.page, url = data.url) {
+    loadData(page, url)
+      .then((loadedData) => {
+        if (page !== data.page) {
+          goto(page === 1 ? "/blog/category/" + url : "/blog/category/" + url + "/" + page);
+        } else {
+          data = loadedData;
+        }
+      })
+      .catch((errorCode) => {
+        if (!!errorCode && errorCode === "PAGE_NOT_FOUND") {
+          reloadData(page - 1);
+        }
+      });
+  }
 </script>

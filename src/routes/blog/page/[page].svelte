@@ -1,7 +1,7 @@
 <Home data="{data}" />
 
 <script context="module">
-  import { load as loadHome } from "../../_home.svelte";
+  import { load as loadHome } from "../../_Home.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -21,7 +21,7 @@
 </script>
 
 <script>
-  import Home from "../../_home.svelte";
+  import Home from "../../_Home.svelte";
 
   export let data;
 </script>

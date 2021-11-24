@@ -9,8 +9,7 @@
           <div class="lead">
             <a href="/blog/category/{data.post.category.url}">
               <span class="badge badge-primary text-white"
-                >{data.post.category.title}</span
-              >
+                >{data.post.category.title}</span>
             </a>
           </div>
         </div>
@@ -27,8 +26,7 @@
         width="32"
         height="32"
         title="{data.post.writer.username}"
-        class="rounded mr-3"
-      />
+        class="rounded mr-3" />
       {format(new Date(parseInt(data.post.date)), "dd MMMM yyyy - HH:mm")}
     </div>
     <div class="text-muted">
@@ -36,8 +34,7 @@
         <li class="list-inline">
           <span
             class="list-inline-item px-1"
-            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}"
-          >
+            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
             <i class="fas fa-eye mr-2"></i>
             {data.post.views}
           </span>
@@ -55,8 +52,7 @@
         : data.previous_post.id}"
       class="btn btn-link"
       class:disabled="{data.previous_post === '-'}"
-      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}"
-    >
+      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}">
       <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
     </a>
   </div>
@@ -65,8 +61,7 @@
       href="/blog/post/{data.next_post === '-' ? '' : data.next_post.id}"
       class="btn btn-link"
       class:disabled="{data.next_post === '-'}"
-      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}"
-    >
+      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}">
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>
@@ -74,7 +69,6 @@
 </div>
 
 <script context="module">
-  import { goto } from "$app/navigation";
   import { browser } from "$app/env";
 
   import ApiUtil from "$lib/api.util";
@@ -84,12 +78,20 @@
   async function loadData(id) {
     return new Promise((resolve) => {
       ApiUtil.post("posts/detail", {
-        id,
+        id: parseInt(id),
       })
         .then((response) => {
           if (response.data.result === "ok") {
-            resolve(response.data);
-          } else goto("/error-404");
+            const data = response.data;
+
+            data.id = parseInt(id)
+
+            resolve(data);
+          } else if (response.data.result === "error") {
+            const errorCode = response.data.error;
+
+            reject(errorCode, response.data);
+          }
         })
         .catch((e) => {
           console.log(e);
@@ -105,7 +107,8 @@
       props: {},
     };
 
-    if (!!session.data && session.data.error === "PAGE_NOT_FOUND") output = null;
+    if (!!session.data && session.data.error === "PAGE_NOT_FOUND")
+      output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {
       // from another page
@@ -116,9 +119,10 @@
     }
 
     if (page.path === session.loadedPath && !refreshable) {
-      refreshable = true;
+      if (browser) refreshable = true;
 
       output.props.data = session.data;
+      output.props.data.id = parseInt(page.params.id);
     }
 
     return output;
