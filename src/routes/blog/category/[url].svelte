@@ -9,12 +9,14 @@
   export async function load(params) {
     let output = {};
 
+    const data = await loadCategoryPosts(params)
+
     output = {
       ...output,
-      ...(await loadCategoryPosts(params)),
+      ...data,
     };
 
-    return output;
+    return !!data ? output : null;
   }
 </script>
 

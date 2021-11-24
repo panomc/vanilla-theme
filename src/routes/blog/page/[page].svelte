@@ -9,12 +9,14 @@
   export async function load(params) {
     let output = {};
 
+    const data = await loadHome(params)
+
     output = {
       ...output,
-      ...(await loadHome(params)),
+      ...data,
     };
 
-    return output;
+    return !!data ? output : null;
   }
 </script>
 
