@@ -105,7 +105,7 @@
       props: {},
     };
 
-    if (session.data.error === "PAGE_NOT_FOUND") output = null;
+    if (!!session.data && session.data.error === "PAGE_NOT_FOUND") output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {
       // from another page

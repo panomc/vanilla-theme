@@ -63,7 +63,7 @@
       props: {},
     };
 
-    if (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS")
+    if (!!session.data && (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS"))
       output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {
