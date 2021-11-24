@@ -18,8 +18,7 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.total_page)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
-  />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
 <!-- Pagination End -->
@@ -39,7 +38,7 @@
       })
         .then((response) => {
           if (response.data.result === "ok") {
-            const data = response.data
+            const data = response.data;
 
             data.page = parseInt(page);
             data.url = url;
@@ -73,13 +72,19 @@
             title: "",
             description: "",
             url: "",
-            color: ""
-          }
-        }
+            color: "",
+          },
+        },
       },
     };
 
-    if (!!session.data && (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS"))
+    if (
+      page.path === session.loadedPath &&
+      !refreshable &&
+      !!session.data &&
+      (session.data.error === "PAGE_NOT_FOUND" ||
+        session.data.error === "NOT_EXISTS")
+    )
       output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {
@@ -117,7 +122,11 @@
     loadData(page, url)
       .then((loadedData) => {
         if (page !== data.page) {
-          goto(page === 1 ? "/blog/category/" + url : "/blog/category/" + url + "/" + page);
+          goto(
+            page === 1
+              ? "/blog/category/" + url
+              : "/blog/category/" + url + "/" + page
+          );
         } else {
           data = loadedData;
         }

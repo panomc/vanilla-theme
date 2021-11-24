@@ -93,7 +93,12 @@
       },
     };
 
-    if (!!session.data && session.data.error === "PAGE_NOT_FOUND")
+    if (
+      page.path === session.loadedPath &&
+      !refreshable &&
+      !!session.data &&
+      session.data.error === "PAGE_NOT_FOUND"
+    )
       output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {

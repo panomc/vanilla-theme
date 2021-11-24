@@ -84,7 +84,7 @@
           if (response.data.result === "ok") {
             const data = response.data;
 
-            data.id = parseInt(id)
+            data.id = parseInt(id);
 
             resolve(data);
           } else if (response.data.result === "error") {
@@ -111,21 +111,26 @@
             title: "",
             category: "-",
             writer: {
-              username: ""
+              username: "",
             },
             text: "",
             date: 0,
             status: 1,
             image: "",
-            views: 0
+            views: 0,
           },
           previous_post: "-",
-          next_post: "-"
-        }
+          next_post: "-",
+        },
       },
     };
 
-    if (!!session.data && session.data.error === "PAGE_NOT_FOUND")
+    if (
+      page.path === session.loadedPath &&
+      !refreshable &&
+      !!session.data &&
+      session.data.error === "PAGE_NOT_FOUND"
+    )
       output = null;
 
     if (browser && (page.path !== session.loadedPath || refreshable)) {
