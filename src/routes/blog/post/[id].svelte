@@ -103,7 +103,7 @@
       props: {},
     };
 
-    if (session.error === "PAGE_NOT_FOUND") output = null;
+    if (session.data.error === "PAGE_NOT_FOUND") output = null;
 
     if (page.path === session.loadedPath) output.props.data = session.data;
 

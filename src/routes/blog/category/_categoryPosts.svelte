@@ -61,7 +61,7 @@
       props: {},
     };
 
-    if (session.error === "PAGE_NOT_FOUND" || session.error === "NOT_EXISTS")
+    if (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS")
       output = null;
 
     if (page.path === session.loadedPath) output.props.data = session.data;
