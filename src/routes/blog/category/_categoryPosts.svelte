@@ -29,6 +29,8 @@
 
   import ApiUtil from "$lib/api.util";
 
+  let refreshable = false;
+
   async function loadData(page, url, routePage = true) {
     return new Promise((resolve) => {
       ApiUtil.post("posts/categoryPosts", {
@@ -64,15 +66,19 @@
     if (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS")
       output = null;
 
-    if (page.path === session.loadedPath) output.props.data = session.data;
-
-    if (browser && page.path !== session.loadedPath) {
+    if (browser && (page.path !== session.loadedPath || refreshable)) {
       // from another page
       output.props.data = await loadData(
         !!page.params.page ? parseInt(page.params.page) : 1,
         page.params.url,
         false
       );
+    }
+
+    if (page.path === session.loadedPath && !refreshable) {
+      refreshable = true;
+
+      output.props.data = session.data;
     }
 
     output.props.data.page = !!page.params.page
