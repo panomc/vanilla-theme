@@ -24,7 +24,6 @@
 <!-- Pagination End -->
 <script context="module">
   import { browser } from "$app/env";
-  import { goto } from "$app/navigation";
 
   import ApiUtil from "$lib/api.util";
 
@@ -112,9 +111,10 @@
 </script>
 
 <script>
+  import { goto } from "$app/navigation";
+
   import Pagination from "../../../components/Pagination.svelte";
   import Posts from "../../../components/Posts.svelte";
-  import { goto } from "$app/navigation";
 
   export let data;
 
