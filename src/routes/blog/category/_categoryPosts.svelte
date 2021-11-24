@@ -62,7 +62,21 @@
    */
   export async function load({ page, session }) {
     let output = {
-      props: {},
+      props: {
+        data: {
+          posts: [],
+          posts_count: 0,
+          total_page: 1,
+          page: 1,
+          category: {
+            id: -1,
+            title: "",
+            description: "",
+            url: "",
+            color: ""
+          }
+        }
+      },
     };
 
     if (!!session.data && (session.data.error === "PAGE_NOT_FOUND" || session.data.error === "NOT_EXISTS"))

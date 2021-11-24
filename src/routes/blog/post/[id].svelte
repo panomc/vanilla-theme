@@ -104,7 +104,25 @@
    */
   export async function load({ page, session }) {
     let output = {
-      props: {},
+      props: {
+        data: {
+          post: {
+            id: -1,
+            title: "",
+            category: "-",
+            writer: {
+              username: ""
+            },
+            text: "",
+            date: 0,
+            status: 1,
+            image: "",
+            views: 0
+          },
+          previous_post: "-",
+          next_post: "-"
+        }
+      },
     };
 
     if (!!session.data && session.data.error === "PAGE_NOT_FOUND")
