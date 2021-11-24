@@ -122,7 +122,7 @@
 <script>
   import { format } from "date-fns";
 
-  import tooltip from "../../../pano-ui/js/tooltip.util";
+  import tooltip from "$lib/tooltip.util";
 
   export let data;
 </script>
