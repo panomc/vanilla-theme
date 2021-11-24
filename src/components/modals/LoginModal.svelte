@@ -19,8 +19,7 @@
               type="text"
               id="usernameOrEmail"
               class="form-control"
-              bind:value="{$data.usernameOrEmail}"
-            />
+              bind:value="{$data.usernameOrEmail}" />
           </div>
           <div class="form-group">
             <label for="password">Şifre</label>
@@ -28,8 +27,7 @@
               type="password"
               id="password"
               class="form-control"
-              bind:value="{$data.password}"
-            />
+              bind:value="{$data.password}" />
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
@@ -37,8 +35,7 @@
                 type="checkbox"
                 class="custom-control-input"
                 id="rememberMe"
-                bind:checked="{$data.rememberMe}"
-              />
+                bind:checked="{$data.rememberMe}" />
               <label class="custom-control-label" for="rememberMe">
                 Beni Hatırla
               </label>
@@ -49,15 +46,13 @@
               type="submit"
               class="btn btn-primary text-white btn-lg btn-block"
               class:disabled="{loading}"
-              disabled="{loading}"
-            >
+              disabled="{loading}">
               Giriş Yap
             </button>
             <a
               href="javascript:void(0);"
               class="btn btn-link btn-block"
-              on:click="{showForgottenPasswordModal}"
-            >
+              on:click="{showForgottenPasswordModal}">
               Şifreni mi unuttun?
             </a>
           </div>
@@ -87,17 +82,6 @@
   let callback = () => {};
   let hideCallback = () => {};
 
-  let ApiUtil, NETWORK_ERROR;
-
-  async function initUtils() {
-    if (typeof ApiUtil === "undefined") {
-      const ApiUtilModule = await import("../../pano-ui/js/api.util");
-
-      ApiUtil = ApiUtilModule.default;
-      NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
-    }
-  }
-
   export function show() {
     error.set("");
 
@@ -124,10 +108,12 @@
 </script>
 
 <script>
-  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
-  import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
+  import ApiUtil, { NETWORK_ERROR } from "$lib/api.util";
 
   import { session } from "$app/stores";
+
+  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
+  import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
 
   let loading = false;
 
@@ -159,13 +145,11 @@
   }
 
   async function onSubmit() {
-    await initUtils();
-
     hideError();
 
     loading = true;
 
-    ApiUtil.post("auth/login", get(data))
+    await ApiUtil.post("auth/login", get(data))
       .then((response) => {
         if (response.data.result === "ok") {
           updateSessionUser().then(() => {

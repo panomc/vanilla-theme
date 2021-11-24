@@ -67,12 +67,25 @@
 
 <ForgottenPasswordModal />
 
+<script context="module">
+  import ApiUtil from "$lib/api.util";
+  import { API_URL } from "$lib/variables";
+
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load({}) {
+    ApiUtil.init(API_URL);
+
+    return {};
+  }
+</script>
+
 <script>
   import { browser } from "$app/env";
 
   if (browser) {
     import("$lib/init.libs");
-    import("$lib/init.api-util");
   }
 
   import Header from "../components/Header.svelte";

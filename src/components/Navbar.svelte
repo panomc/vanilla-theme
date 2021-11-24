@@ -1,8 +1,6 @@
 <!-- Navbar -->
 <div class="container">
-  <nav
-    class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-lg"
-  >
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-lg">
     <button
       aria-controls="navbar"
       aria-expanded="false"
@@ -10,8 +8,7 @@
       class="navbar-toggler d-lg-none"
       data-target="#navbar"
       data-toggle="collapse"
-      type="button"
-    >
+      type="button">
       <i aria-hidden="true" class="fa fa-bars"></i>
     </button>
 
@@ -21,8 +18,7 @@
           <a
             class="nav-link"
             href="javascript:void(0);"
-            on:click="{showLoginModal}"
-          >
+            on:click="{showLoginModal}">
             GİRİŞ YAP
           </a>
         </li>
@@ -30,8 +26,7 @@
           <a
             class="nav-link"
             href="javascript:void(0);"
-            on:click="{showRegisterModal}"
-          >
+            on:click="{showRegisterModal}">
             KAYIT OL
           </a>
         </li>
@@ -44,8 +39,7 @@
               id="playerMenuDropdown"
               data-toggle="dropdown"
               aria-haspopup="true"
-              aria-expanded="false"
-            >
+              aria-expanded="false">
               <i class="fas fa-user mr-2" aria-hidden="true"></i>
               {$session.user.username}
             </a>
@@ -56,8 +50,7 @@
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
-                on:click="{logout}">Çıkış Yap</a
-              >
+                on:click="{logout}">Çıkış Yap</a>
             </div>
           </div>
         </li>
@@ -74,28 +67,16 @@
   </nav>
 </div>
 
-<script context="module">
-  let ApiUtil;
-
-  async function initUtils() {
-    if (typeof ApiUtil === "undefined") {
-      const ApiUtilModule = await import("../pano-ui/js/api.util");
-
-      ApiUtil = ApiUtilModule.default;
-    }
-  }
-</script>
-
 <!-- Navbar -->
 <script>
+  import { session } from "$app/stores";
+
+  import ApiUtil from "$lib/api.util";
+
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
 
-  import { session } from "$app/stores";
-
   async function logout() {
-    await initUtils();
-
     await new Promise((resolve) => {
       ApiUtil.post("auth/logout", {}).then(() => {
         session.update((session) => {

@@ -77,19 +77,9 @@
   import { goto } from "$app/navigation";
   import { browser } from "$app/env";
 
-  let ApiUtil;
-
-  async function initUtils() {
-    if (typeof ApiUtil === "undefined") {
-      const ApiUtilModule = await import("../../../pano-ui/js/api.util");
-
-      ApiUtil = ApiUtilModule.default;
-    }
-  }
+  import ApiUtil from "$lib/api.util";
 
   async function loadData(id) {
-    await initUtils();
-
     return new Promise((resolve) => {
       ApiUtil.post("posts/detail", {
         id,

@@ -102,17 +102,6 @@
   let callback = () => {};
   let hideCallback = () => {};
 
-  let ApiUtil, NETWORK_ERROR;
-
-  async function initUtils() {
-    if (typeof ApiUtil === "undefined") {
-      const ApiUtilModule = await import("../../pano-ui/js/api.util");
-
-      ApiUtil = ApiUtilModule.default;
-      NETWORK_ERROR = ApiUtilModule.NETWORK_ERROR;
-    }
-  }
-
   export function show() {
     window.$("#" + dialogID).modal();
   }
@@ -134,6 +123,8 @@
 
 <script>
   import { writable, get } from "svelte/store";
+
+  import ApiUtil, { NETWORK_ERROR } from "$lib/api.util";
 
   import { show as showLoginModal } from "./LoginModal.svelte";
 
@@ -164,14 +155,12 @@
   const data = writable({ ...dataDefault });
 
   async function onSubmit() {
-    await initUtils();
-
     hideError(get(errorAlertElement));
     hideSuccess(get(successAlertElement));
 
     loading = true;
 
-    ApiUtil.post("auth/register", get(data))
+    await ApiUtil.post("auth/register", get(data))
       .then((response) => {
         loading = false;
 
