@@ -117,42 +117,32 @@
 
   let loading = false;
 
-  async function updateSessionUser() {
-    const user = await new Promise((resolve) => {
-      ApiUtil.get("auth/credentials").then((response) => {
-        if (response.data.result === "ok") {
-          const notAllowed = ["result"];
-          const data = Object.keys(response.data)
-            .filter((key) => !notAllowed.includes(key))
-            .reduce((object, key) => {
-              object[key] = response.data[key];
-
-              return object;
-            }, {});
-
-          resolve(data);
-        }
-
-        if (response.data.error === "NOT_LOGGED_IN") resolve("-");
-      });
-    });
-
-    session.update((session) => {
-      session.user = user;
-
-      return session;
-    });
-  }
-
   async function onSubmit() {
     hideError();
 
     loading = true;
 
-    await ApiUtil.post("auth/login", get(data))
-      .then((response) => {
-        if (response.data.result === "ok") {
-          updateSessionUser().then(() => {
+    await ApiUtil.post({ path: "/auth/login", body: get(data) })
+      .then(async (body) => {
+        if (body.result === "ok") {
+          const CSRFToken = body.CSRFToken;
+
+          await ApiUtil.get({
+            path: "/api/auth/credentials",
+            CSRFToken,
+          }).then((body) => {
+            $session.user = {
+              ...Object.keys(body)
+                .filter((key) => !["result"].includes(key))
+                .reduce((object, key) => {
+                  object[key] = body[key];
+
+                  return object;
+                }, {}),
+            };
+
+            $session.CSRFToken = CSRFToken;
+
             loading = false;
 
             hide();
@@ -162,11 +152,7 @@
         } else {
           loading = false;
 
-          error.set(
-            response.data.result === "error"
-              ? response.data.error
-              : NETWORK_ERROR
-          );
+          error.set(body.result === "error" ? body.error : NETWORK_ERROR);
 
           showError(get(errorAlertElement));
         }

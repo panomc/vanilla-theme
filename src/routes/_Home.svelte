@@ -48,40 +48,35 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import { browser } from "$app/env";
-
   import ApiUtil from "$lib/api.util";
 
   let refreshable = false;
 
-  async function loadData(page) {
+  async function loadData({ page, request, CSRFToken }) {
     return new Promise((resolve, reject) => {
-      ApiUtil.post("posts", {
-        page: parseInt(page),
-      })
-        .then((response) => {
-          if (response.data.result === "ok") {
-            const data = response.data;
+      ApiUtil.post({
+        path: "/api/posts",
+        body: { page: parseInt(page) },
+        request,
+        CSRFToken,
+      }).then((body) => {
+        if (body.result === "ok") {
+          const data = body;
 
-            data.page = parseInt(page);
+          data.page = parseInt(page);
 
-            resolve(data);
-          } else if (response.data.result === "error") {
-            const errorCode = response.data.error;
-
-            reject(errorCode, response.data);
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-        });
+          resolve(data);
+        } else {
+          reject(body);
+        }
+      });
     });
   }
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, session }) {
+  export async function load(request) {
     let output = {
       props: {
         data: {
@@ -93,54 +88,38 @@
       },
     };
 
-    if (
-      page.path === session.loadedPath &&
-      !refreshable &&
-      !!session.data &&
-      session.data.error === "PAGE_NOT_FOUND"
-    )
-      output = null;
-
-    if (browser && (page.path !== session.loadedPath || refreshable)) {
-      // from another page
-      output.props.data = await loadData(
-        !!page.params.page ? page.params.page : 1,
-        false
-      );
-    }
-
-    if (page.path === session.loadedPath && !refreshable) {
-      if (browser) refreshable = true;
-
-      output.props.data = session.data;
-
-      output.props.data.page = !!page.params.page
-        ? parseInt(page.params.page)
-        : 1;
-    }
+    await loadData({ page: request.page.params.page || 1, request })
+      .then((body) => {
+        output.props.data = body;
+      })
+      .catch(() => {
+        output = null;
+      });
 
     return output;
   }
 </script>
 
 <script>
+  import { goto } from "$app/navigation";
+  import { session } from "$app/stores";
+
   import Pagination from "../components/Pagination.svelte";
   import Posts from "../components/Posts.svelte";
-  import { goto } from "$app/navigation";
 
   export let data;
 
   function reloadData(page = data.page) {
-    loadData(page)
-      .then((loadedData) => {
+    loadData({ page, CSRFToken: $session.CSRFToken })
+      .then((body) => {
         if (page !== data.page) {
           goto(page === 1 ? "/" : "/blog/page/" + page);
         } else {
-          data = loadedData;
+          data = body;
         }
       })
-      .catch((errorCode) => {
-        if (!!errorCode && errorCode === "PAGE_NOT_FOUND") {
+      .catch((body) => {
+        if (!!body.error && body.error === "PAGE_NOT_FOUND") {
           reloadData(page - 1);
         }
       });

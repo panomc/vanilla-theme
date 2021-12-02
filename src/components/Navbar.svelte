@@ -13,24 +13,7 @@
     </button>
 
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
-      {#if $session.user === "-"}
-        <li class="nav-item mr-lg-0 mr-5">
-          <a
-            class="nav-link"
-            href="javascript:void(0);"
-            on:click="{showLoginModal}">
-            GİRİŞ YAP
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="javascript:void(0);"
-            on:click="{showRegisterModal}">
-            KAYIT OL
-          </a>
-        </li>
-      {:else}
+      {#if $session.user}
         <li class="nav-item mr-lg-0 mr-5">
           <div class="dropdown">
             <a
@@ -53,6 +36,23 @@
                 on:click="{logout}">Çıkış Yap</a>
             </div>
           </div>
+        </li>
+      {:else}
+        <li class="nav-item mr-lg-0 mr-5">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            on:click="{showLoginModal}">
+            GİRİŞ YAP
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            on:click="{showRegisterModal}">
+            KAYIT OL
+          </a>
         </li>
       {/if}
     </ul>
@@ -77,16 +77,9 @@
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
 
   async function logout() {
-    await new Promise((resolve) => {
-      ApiUtil.post("auth/logout", {}).then(() => {
-        session.update((session) => {
-          session.user = "-";
-
-          return session;
-        });
-
-        resolve();
-      });
+    await ApiUtil.post({path: "/auth/logout", CSRFToken: $session.CSRFToken}).then(() => {
+      $session.user = null;
+      $session.CSRFToken = null;
     });
   }
 </script>

@@ -13,6 +13,9 @@
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.0.0-next.55",
     "@sveltejs/kit": "^1.0.0-next.201",
+    "cookie": "^0.4.1",
+    "csrf": "^3.1.0",
+    "date-fns": "^2.26.0",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
@@ -23,14 +26,12 @@
     "sass": "^1.43.4",
     "svelte": "^3.44.2",
     "svelte-preprocess": "^4.9.8",
+    "tippy.js": "^6.3.7",
     "url-pattern": "^1.0.3",
-    "vite": "^2.6.14",
-    "date-fns": "^2.26.0",
-    "tippy.js": "^6.3.7"
+    "vite": "^2.6.14"
   },
   "type": "module",
   "dependencies": {
-    "axios": "^0.24.0",
     "bootstrap": "^4.6.1",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1"

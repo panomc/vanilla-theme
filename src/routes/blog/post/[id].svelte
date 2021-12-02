@@ -69,40 +69,38 @@
 </div>
 
 <script context="module">
-  import { browser } from "$app/env";
-
   import ApiUtil from "$lib/api.util";
 
   let refreshable = false;
 
-  async function loadData(id) {
-    return new Promise((resolve) => {
-      ApiUtil.post("posts/detail", {
-        id: parseInt(id),
+  async function loadData({ id, request, CSRFToken }) {
+    return new Promise((resolve, reject) => {
+      ApiUtil.post({
+        path: "/api/posts/detail",
+        body: {
+          id: parseInt(id),
+        },
+        request,
+        CSRFToken,
       })
-        .then((response) => {
-          if (response.data.result === "ok") {
-            const data = response.data;
+        .then((body) => {
+          if (body.result === "ok") {
+            const data = body;
 
             data.id = parseInt(id);
 
             resolve(data);
-          } else if (response.data.result === "error") {
-            const errorCode = response.data.error;
-
-            reject(errorCode, response.data);
+          } else {
+            reject(body)
           }
         })
-        .catch((e) => {
-          console.log(e);
-        });
     });
   }
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ page, session }) {
+  export async function load(request) {
     let output = {
       props: {
         data: {
@@ -125,28 +123,13 @@
       },
     };
 
-    if (
-      page.path === session.loadedPath &&
-      !refreshable &&
-      !!session.data &&
-      session.data.error === "PAGE_NOT_FOUND"
-    )
-      output = null;
-
-    if (browser && (page.path !== session.loadedPath || refreshable)) {
-      // from another page
-      output.props.data = await loadData(
-        !!page.params.id ? parseInt(page.params.id) : 1,
-        false
-      );
-    }
-
-    if (page.path === session.loadedPath && !refreshable) {
-      if (browser) refreshable = true;
-
-      output.props.data = session.data;
-      output.props.data.id = parseInt(page.params.id);
-    }
+    await loadData({ id: request.page.params.id, request })
+      .then((body) => {
+        output.props.data = body;
+      })
+      .catch(() => {
+        output = null;
+      });
 
     return output;
   }

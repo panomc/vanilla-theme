@@ -11,8 +11,7 @@
             class="mr-3 rounded float-left"
             width="64"
             height="64"
-            alt="{$session.user.username}"
-          />
+            alt="{$session.user.username}" />
           <div>
             <h5>{$session.user.username}</h5>
             <div class="text-muted">{$session.user.email}</div>
@@ -23,8 +22,7 @@
           <button
             on:click="{logout}"
             type="button"
-            class="btn btn-danger float-right mt-lg-0 mt-3"
-          >
+            class="btn btn-danger float-right mt-lg-0 mt-3">
             Çıkış Yap
           </button>
         </div>
@@ -126,8 +124,7 @@
                 <input
                   type="password"
                   id="newPassowrdRepeat"
-                  class="form-control"
-                />
+                  class="form-control" />
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-block btn-secondary">
@@ -150,8 +147,7 @@
                 <input
                   type="password"
                   id="verifyPassword"
-                  class="form-control"
-                />
+                  class="form-control" />
               </div>
               <div class="form-group">
                 <label for="setNewEmail">* Yeni E-Posta:</label>
@@ -176,16 +172,11 @@
   import { session } from "$app/stores";
 
   async function logout() {
-    await new Promise((resolve) => {
-      ApiUtil.post("auth/logout", {}).then(() => {
-        session.update((session) => {
-          session.user = "-";
-
-          return session;
-        });
-
-        resolve();
-      });
+    await ApiUtil.post({
+      path: "/auth/logout",
+      CSRFToken: $session.CSRFToken,
+    }).then(() => {
+      $session.user = null;
     });
   }
 </script>

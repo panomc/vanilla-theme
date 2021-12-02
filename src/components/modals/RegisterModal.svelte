@@ -160,11 +160,11 @@
 
     loading = true;
 
-    await ApiUtil.post("auth/register", get(data))
-      .then((response) => {
+    await ApiUtil.post({path: "/auth/register", body: get(data)})
+      .then((body) => {
         loading = false;
 
-        if (response.data.result === "ok") {
+        if (body.result === "ok") {
           successMessage.set("REGISTER_SUCCESSFUL");
 
           showSuccess(get(successAlertElement));
@@ -174,8 +174,8 @@
           data.set({ ...dataDefault });
         } else {
           errorMessage.set(
-            response.data.result === "error"
-              ? response.data.error
+            body.result === "error"
+              ? body.error
               : NETWORK_ERROR
           );
 
