@@ -50,8 +50,6 @@
 <script context="module">
   import ApiUtil from "$lib/api.util";
 
-  let refreshable = false;
-
   async function loadData({ page, request, CSRFToken }) {
     return new Promise((resolve, reject) => {
       ApiUtil.post({
