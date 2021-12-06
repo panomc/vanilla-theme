@@ -102,8 +102,8 @@
   import { goto } from "$app/navigation";
   import { session } from "$app/stores";
 
-  import Pagination from "../components/Pagination.svelte";
-  import Posts from "../components/Posts.svelte";
+  import Pagination from "$lib/component/Pagination.svelte";
+  import Posts from "$lib/component/Posts.svelte";
 
   export let data;
 
