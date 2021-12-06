@@ -7,7 +7,7 @@ import {
 } from "$lib/variables";
 
 async function fetchCredentials(token) {
-  return api.get("auth/credentials", token).then((response) => {
+  return api.get("/auth/credentials", token).then((response) => {
     if (response.result === "ok") {
       return Object.keys(response)
         .filter((key) => !["result"].includes(key))
