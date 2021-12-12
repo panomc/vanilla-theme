@@ -39,7 +39,7 @@
           title="{post.writer.username}"
           class="rounded mr-3"
         />
-        {format(new Date(parseInt(post.date)), "dd MMMM yyyy - HH:mm")}
+        <Date time="{post.date}"/>
       </div>
 
       <a href="/blog/post/{post.id}" class="btn btn-secondary ml-auto">
@@ -57,7 +57,8 @@
 <!-- Post Card End -->
 <script>
   import { truncate } from "$lib/string.util";
-  import { format } from "date-fns";
+
+  import Date from "$lib/component/Date.svelte";
 
   export let posts;
 </script>
