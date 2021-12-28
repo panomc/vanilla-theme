@@ -1,4 +1,4 @@
-<Post post="{data.post}" />
+<Post post="{data.post}" detail="{true}" />
 
 <div class="row justify-content-between">
   <div class="col-auto">

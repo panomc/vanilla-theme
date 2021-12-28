@@ -38,7 +38,7 @@
       <Date time="{post.date}" />
     </div>
 
-    {#if $page.path.startsWith("/blog/post/")}
+    {#if detail}
       <div class="text-muted">
         <ul class="mb-0">
           <li class="list-inline">
@@ -68,4 +68,5 @@
   import Date from "$lib/component/Date.svelte";
 
   export let post;
+  export let detail = false
 </script>
