@@ -29,7 +29,7 @@
             <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
               <a class="dropdown-item" href="/profile">Profil</a>
               <a class="dropdown-item" href="/tickets">Talepler</a>
-              <a class="dropdown-item" href="/settings">Ayarlar</a>
+              <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
