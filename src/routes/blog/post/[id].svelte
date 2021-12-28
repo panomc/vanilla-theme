@@ -1,48 +1,4 @@
-<div class="card shadow-sm mb-4">
-  <div class="card-body">
-    <div class="row mb-3 justify-content-center">
-      <div class="col">
-        <h3 class="mb-0 d-inline-block">{data.post.title}</h3>
-      </div>
-      {#if data.post.category !== "-"}
-        <div class="col-auto">
-          <div class="lead">
-            <a href="/blog/category/{data.post.category.url}">
-              <span class="badge badge-primary text-white"
-                >{data.post.category.title}</span>
-            </a>
-          </div>
-        </div>
-      {/if}
-    </div>
-
-    {@html data.post.text}
-  </div>
-  <div class="card-footer d-flex justify-content-between align-items-center">
-    <div class="text-muted">
-      <img
-        src="https://minotar.net/avatar/{data.post.writer.username}"
-        alt="{data.post.writer.username}"
-        width="32"
-        height="32"
-        title="{data.post.writer.username}"
-        class="rounded mr-3" />
-      {format(new Date(parseInt(data.post.date)), "dd MMMM yyyy - HH:mm")}
-    </div>
-    <div class="text-muted">
-      <ul class="mb-0">
-        <li class="list-inline">
-          <span
-            class="list-inline-item px-1"
-            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
-            <i class="fas fa-eye mr-2"></i>
-            {data.post.views}
-          </span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<Post post="{data.post}" />
 
 <div class="row justify-content-between">
   <div class="col-auto">
@@ -80,18 +36,17 @@
         },
         request,
         CSRFToken,
-      })
-        .then((body) => {
-          if (body.result === "ok") {
-            const data = body;
+      }).then((body) => {
+        if (body.result === "ok") {
+          const data = body;
 
-            data.id = parseInt(id);
+          data.id = parseInt(id);
 
-            resolve(data);
-          } else {
-            reject(body)
-          }
-        })
+          resolve(data);
+        } else {
+          reject(body);
+        }
+      });
     });
   }
 
@@ -134,9 +89,9 @@
 </script>
 
 <script>
-  import { format } from "date-fns";
-
   import tooltip from "$lib/tooltip.util";
+
+  import Post from "$lib/component/Post.svelte";
 
   export let data;
 </script>
