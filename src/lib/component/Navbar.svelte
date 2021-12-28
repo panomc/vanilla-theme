@@ -33,7 +33,7 @@
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
-                on:click="{logout}">Çıkış Yap</a>
+                on:click="{() => logout($session.CSRFToken)}">Çıkış Yap</a>
             </div>
           </div>
         </li>
@@ -70,16 +70,8 @@
 <!-- Navbar -->
 <script>
   import { session } from "$app/stores";
-
-  import ApiUtil from "$lib/api.util";
+  import { logout } from "$lib/Store";
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
-
-  async function logout() {
-    await ApiUtil.post({path: "/auth/logout", CSRFToken: $session.CSRFToken}).then(() => {
-      $session.user = null;
-      $session.CSRFToken = null;
-    });
-  }
 </script>

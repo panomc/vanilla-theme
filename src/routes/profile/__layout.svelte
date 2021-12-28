@@ -20,7 +20,7 @@
         </div>
         <div class="col-lg-6">
           <button
-            on:click="{logout}"
+            on:click="{() => logout($session.CSRFToken)}"
             type="button"
             class="btn btn-danger float-right mt-lg-0 mt-3">
             Çıkış Yap
@@ -69,26 +69,16 @@
       };
     }
 
-    return { props: { user }};
+    return { props: { user } };
   }
 </script>
 
 <script>
-  import ApiUtil from "$lib/api.util";
+  import { page, session } from "$app/stores";
 
-  import { session, page } from "$app/stores";
+  import { logout } from "$lib/Store";
 
   export let user;
-
-  async function logout() {
-    await ApiUtil.post({
-      path: "/auth/logout",
-      CSRFToken: $session.CSRFToken,
-    }).then(() => {
-      $session.user = null;
-      $session.CSRFToken = null;
-    });
-  }
 
   function matching(path, pathName, startsWith = false) {
     return (
