@@ -23,7 +23,7 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-              <i class="fas fa-user mr-2" aria-hidden="true"></i>
+              <i class="fas fa-user mr-1" aria-hidden="true"></i>
               {$session.user.username}
             </a>
             <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">

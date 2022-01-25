@@ -35,7 +35,7 @@
           <span
             class="list-inline-item px-1"
             use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
-            <i class="fas fa-eye mr-2"></i>
+            <i class="fas fa-eye mr-1"></i>
             {data.post.views}
           </span>
         </li>
@@ -53,7 +53,7 @@
       class="btn btn-link"
       class:disabled="{data.previous_post === '-'}"
       use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}">
-      <i class="fas fa-chevron-left mr-2"></i> Önceki Yazı
+      <i class="fas fa-chevron-left mr-1"></i> Önceki Yazı
     </a>
   </div>
   <div class="col-auto">
