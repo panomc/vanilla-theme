@@ -81,6 +81,7 @@
 
   let callback = () => {};
   let hideCallback = () => {};
+  let modal;
 
   export function show() {
     error.set("");
@@ -89,13 +90,14 @@
 
     hideError(get(errorAlertElement));
 
-    window.$("#" + dialogID).modal();
+    modal = new window.bootstrap.Modal(document.getElementById( dialogID), {backdrop: "static", keyboard: false});
+    modal.show();
   }
 
   export function hide() {
     hideCallback();
 
-    window.$("#" + dialogID).modal("hide");
+    modal.hide();
   }
 
   export function setCallback(newCallback) {

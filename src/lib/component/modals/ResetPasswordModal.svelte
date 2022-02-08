@@ -66,18 +66,19 @@
 
   let callback = () => {};
   let hideCallback = () => {};
+  let modal;
 
   export function show() {
     error.set({});
 
-    window.$(".modal").modal("hide");
-    window.$("#" + dialogID).modal();
+    modal = new window.bootstrap.Modal(document.getElementById( dialogID), {backdrop: "static", keyboard: false});
+    modal.show();
   }
 
   export function hide() {
     hideCallback();
 
-    window.$("#" + dialogID).modal("hide");
+    modal.hide();
   }
 
   export function setCallback(newCallback) {
