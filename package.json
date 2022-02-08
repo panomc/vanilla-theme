@@ -30,7 +30,7 @@
   },
   "type": "module",
   "dependencies": {
-    "bootstrap": "^4.6.1",
+    "bootstrap": "^5.1",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1"
   }
