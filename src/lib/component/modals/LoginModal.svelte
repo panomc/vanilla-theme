@@ -1,19 +1,19 @@
 <!-- Login Modal -->
 <div class="modal fade" id="{dialogID}" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered" role="dialog">
-    <div class="modal-content bg-light">
-      <div class="modal-header border-bottom-0 text-black">
+    <div class="modal-content">
+      <div class="modal-header">
         <h4 class="modal-title">Giriş Yap</h4>
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        ></button>
       </div>
-      <div class="modal-body">
-        <form on:submit|preventDefault="{onSubmit}">
-          <div class="form-group">
+
+      <form on:submit|preventDefault="{onSubmit}">
+        <div class="modal-body">
+          <div class="mb-3">
             <ErrorAlert alertElement="{errorAlertElement}" error="{error}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="usernameOrEmail">Oyuncu Adı / E-Posta</label>
             <input
               type="text"
@@ -21,7 +21,7 @@
               class="form-control"
               bind:value="{$data.usernameOrEmail}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="password">Şifre</label>
             <input
               type="password"
@@ -29,35 +29,36 @@
               class="form-control"
               bind:value="{$data.password}" />
           </div>
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
+          <div class="mb-3">
+            <div class="form-check">
               <input
+                class="form-check-input"
                 type="checkbox"
-                class="custom-control-input"
-                id="rememberMe"
-                bind:checked="{$data.rememberMe}" />
-              <label class="custom-control-label" for="rememberMe">
-                Beni Hatırla
+                value=""
+                id="rememberMe" />
+              <label class="form-check-label" for="rememberMe">
+                Beni hatırla
               </label>
             </div>
           </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="btn btn-primary text-white btn-lg btn-block"
-              class:disabled="{loading}"
-              disabled="{loading}">
-              Giriş Yap
-            </button>
-            <a
-              href="javascript:void(0);"
-              class="btn btn-link btn-block"
-              on:click="{showForgottenPasswordModal}">
-              Şifreni mi unuttun?
-            </a>
-          </div>
-        </form>
-      </div>
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            class:disabled="{loading}"
+            disabled="{loading}">
+            Giriş Yap
+          </button>
+          <a
+            href="#"
+            class="btn btn-link w-100"
+            on:click="{showForgottenPasswordModal}">
+            Şifreni mi unuttun?
+          </a>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -90,7 +91,10 @@
 
     hideError(get(errorAlertElement));
 
-    modal = new window.bootstrap.Modal(document.getElementById( dialogID), {backdrop: "static", keyboard: false});
+    modal = new window.bootstrap.Modal(document.getElementById(dialogID), {
+      backdrop: "static",
+      keyboard: false,
+    });
     modal.show();
   }
 

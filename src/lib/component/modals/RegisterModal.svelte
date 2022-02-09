@@ -1,97 +1,87 @@
 <!-- Register Modal -->
 <div class="modal fade" id="{dialogID}" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-sm modal-dialog-centered">
-    <div class="modal-content bg-light">
-      <div class="modal-header border-bottom-0 text-black">
+    <div class="modal-content">
+      <div class="modal-header">
         <h4 class="modal-title">Kayıt Ol</h4>
-        <button type="button" class="close" data-dismiss="modal">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+        ></button>
       </div>
-      <div class="modal-body">
-        <form on:submit|preventDefault="{onSubmit}">
-          <div class="form-group">
+      <form on:submit|preventDefault="{onSubmit}">
+        <div class="modal-body">
+          <div class="mb-3">
             <SuccessAlert
               alertElement="{successAlertElement}"
-              message="{successMessage}"
-            />
+              message="{successMessage}" />
             <ErrorAlert
               alertElement="{errorAlertElement}"
-              error="{errorMessage}"
-            />
+              error="{errorMessage}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="registerUserName">Oyuncu Adı</label>
             <input
               type="text"
               id="registerUserName"
               class="form-control"
-              bind:value="{$data.username}"
-            />
+              bind:value="{$data.username}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="registerEmail">E-Posta</label>
             <input
               type="email"
               id="registerEmail"
               class="form-control"
-              bind:value="{$data.email}"
-            />
+              bind:value="{$data.email}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="registerPassword">Şifre</label>
             <input
               type="password"
               id="registerPassword"
               class="form-control"
-              bind:value="{$data.password}"
-            />
+              bind:value="{$data.password}" />
           </div>
-          <div class="form-group">
+          <div class="mb-3">
             <label for="registerPasswordRepeat">Şifre Tekrarı</label>
             <input
               type="password"
               id="registerPasswordRepeat"
               class="form-control"
-              bind:value="{$data.passwordRepeat}"
-            />
+              bind:value="{$data.passwordRepeat}" />
           </div>
-          <div class="form-group">
-            <div class="custom-control custom-checkbox">
+          <div class="mb-3">
+            <div class="form-check">
               <input
                 type="checkbox"
-                class="custom-control-input"
+                class="form-check-input"
                 id="registerAcceptTerms"
-                bind:checked="{$data.agreement}"
-              />
-              <label class="custom-control-label" for="registerAcceptTerms">
+                bind:checked="{$data.agreement}" />
+              <label class="form-check-label" for="registerAcceptTerms">
                 <a href="#">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
               </label>
             </div>
           </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="btn btn-primary text-white btn-lg btn-block"
-              class:disabled="{loading}"
-              disabled="{loading}"
-            >
-              Kayıt Ol
-            </button>
-            <a
-              href="javascript:void(0);"
-              class="btn btn-link btn-block"
-              on:click="{() => {
-                hide();
-                showLoginModal();
-              }}"
-            >
-              Zaten kayıtlıysan Giriş Yap
-            </a>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-primary w-100"
+            class:disabled="{loading}"
+            disabled="{loading}">
+            Kayıt Ol
+          </button>
+          <a
+            href="#"
+            class="btn btn-link w-100"
+            on:click="{() => {
+              hide();
+              showLoginModal();
+            }}">
+            Zaten kayıtlıysan Giriş Yap
+          </a>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -104,7 +94,10 @@
   let modal;
 
   export function show() {
-    modal = new window.bootstrap.Modal(document.getElementById( dialogID), {backdrop: "static", keyboard: false});
+    modal = new window.bootstrap.Modal(document.getElementById(dialogID), {
+      backdrop: "static",
+      keyboard: false,
+    });
     modal.show();
   }
 
@@ -162,7 +155,7 @@
 
     loading = true;
 
-    await ApiUtil.post({path: "/auth/register", body: get(data)})
+    await ApiUtil.post({ path: "/auth/register", body: get(data) })
       .then((body) => {
         loading = false;
 
@@ -176,9 +169,7 @@
           data.set({ ...dataDefault });
         } else {
           errorMessage.set(
-            body.result === "error"
-              ? body.error
-              : NETWORK_ERROR
+            body.result === "error" ? body.error : NETWORK_ERROR
           );
 
           showError(get(errorAlertElement));
