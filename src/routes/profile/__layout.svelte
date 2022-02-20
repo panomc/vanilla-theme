@@ -1,61 +1,45 @@
 <!-- Profile Page -->
 
-<div class="card shadow">
-  <div class="card-body">
-    <!-- Profile Card -->
-    <div class="card-body rounded border mb-3">
-      <div class="row">
-        <div class="col-lg-6 d-flex flex-row">
-          <img
-            src="https://minotar.net/avatar/{user.username}"
-            class="mr-3 rounded float-left"
-            width="64"
-            height="64"
-            alt="{user.username}" />
-          <div>
-            <h5>{user.username}</h5>
-            <div class="text-muted">{user.email}</div>
-            <div class="d-none text-muted">Kayıt: 01.01.2019</div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <button
-            on:click="{() => logout($session.CSRFToken)}"
-            type="button"
-            class="btn btn-danger float-right mt-lg-0 mt-3">
-            Çıkış Yap
-          </button>
-        </div>
-        <div class="col-lg-12">
-          <hr />
-          <ul class="nav nav-pills flex-lg-row flex-column">
-            <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="/profile"
-                class:active="{matching($page.path, '/profile')}">
-                Profil
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="/profile/settings"
-                class:active="{matching(
-                  $page.path,
-                  '/profile/settings',
-                  true
-                )}">
-                Ayarlar
-              </a>
-            </li>
-          </ul>
-        </div>
+<!-- Profile Card -->
+<div class="card mb-5">
+  <div class="card-header">
+    <img
+      src="https://minotar.net/avatar/{user.username}"
+      class="rounded-circle border d-block m-auto"
+      width="64"
+      height="64"
+      alt="{user.username}" />
+    <div class="text-center">
+      <h2 class="mb-1">{user.username}</h2>
+      <div class="text-muted">{user.email}</div>
+      <div class="d-none text-muted">Kayıt: 01.01.2019</div>
+      <div class="my-2">
+        <div class="badge text-dark border">Oyuncu</div>
       </div>
     </div>
-
-    <slot />
   </div>
+  <div class="card-body">
+    <ul class="nav flex-lg-row flex-column">
+      <li class="nav-item">
+        <a
+          class="nav-link active"
+          href="/profile"
+          class:active="{matching($page.path, '/profile')}">
+          Profil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          href="/profile/settings"
+          class:active="{matching($page.path, '/profile/settings', true)}">
+          Ayarlar
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <slot />
 </div>
 
 <script context="module">
