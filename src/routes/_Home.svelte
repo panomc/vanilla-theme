@@ -53,7 +53,7 @@
       },
     };
 
-    await loadData({ page: request.page.params.page || 1, request })
+    await loadData({ page: request.params.page || 1, request })
       .then((body) => {
         output.props.data = body;
       })

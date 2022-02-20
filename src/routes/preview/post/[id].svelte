@@ -65,7 +65,7 @@
       },
     };
 
-    await loadData({ id: request.page.params.id, request })
+    await loadData({ id: request.params.id, request })
       .then((body) => {
         output.props.post = body;
       })

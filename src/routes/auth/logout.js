@@ -1,12 +1,15 @@
-import { COOKIE_PREFIX, CSRF_HEADER, CSRF_TOKEN_COOKIE_NAME, JWT_COOKIE_NAME } from "$lib/variables";
+import {
+  COOKIE_PREFIX,
+  CSRF_HEADER,
+  CSRF_TOKEN_COOKIE_NAME,
+  JWT_COOKIE_NAME,
+} from "$lib/variables";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post(request) {
-  const { headers, locals } = request;
-
+export async function post({ locals, request: { headers } }) {
   return (
     headers &&
-    headers[CSRF_HEADER] === locals.CSRFToken && {
+    headers.get(CSRF_HEADER) === locals.CSRFToken && {
       headers: {
         "set-cookie": [
           `${

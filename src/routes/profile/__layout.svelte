@@ -24,7 +24,7 @@
         <a
           class="nav-link active"
           href="/profile"
-          class:active="{matching($page.path, '/profile')}">
+          class:active="{matching($page.url.pathname, '/profile')}">
           Profil
         </a>
       </li>
@@ -32,7 +32,7 @@
         <a
           class="nav-link"
           href="/profile/settings"
-          class:active="{matching($page.path, '/profile/settings', true)}">
+          class:active="{matching($page.url.pathname, '/profile/settings', true)}">
           Ayarlar
         </a>
       </li>

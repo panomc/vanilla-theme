@@ -1,8 +1,8 @@
 import * as api from "$lib/api.util.server";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post(request) {
-  const body = await api.post("auth/register", request.body);
+export async function post({ request }) {
+  const body = await api.post("auth/register", await request.text());
 
   if (body.error) {
     return { body };

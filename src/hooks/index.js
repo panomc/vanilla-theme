@@ -23,27 +23,27 @@ async function fetchCredentials(token) {
 }
 
 /** @type {import('@sveltejs/kit').Handle} */
-export async function handle({ request, resolve }) {
+export async function handle({ event, event: { request }, resolve }) {
   const locals = {};
-  const { path } = request;
+  const { url } = request;
 
-  const cookies = cookie.parse(request.headers.cookie || "");
+  const cookies = cookie.parse(request.headers.get("cookie") || "");
 
   const jwt = cookies[COOKIE_PREFIX + JWT_COOKIE_NAME];
   const CSRFToken = cookies[COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME];
 
   locals.user =
     jwt &&
-    !path.startsWith("/api/") &&
-    !path.startsWith("/auth/") &&
+    !url.startsWith("/api/") &&
+    !url.startsWith("/auth/") &&
     (await fetchCredentials(jwt));
 
   locals.jwt = jwt;
   locals.CSRFToken = CSRFToken;
 
-  request.locals = locals;
+  event.locals = locals;
 
-  return await resolve(request);
+  return await resolve(event);
 }
 
 /** @type {import('@sveltejs/kit').GetSession} */

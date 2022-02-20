@@ -73,8 +73,8 @@
     };
 
     await loadData({
-      page: request.page.params.page || 1,
-      url: request.page.params.url,
+      page: request.params.page || 1,
+      url: request.params.url,
       request,
     })
       .then((body) => {

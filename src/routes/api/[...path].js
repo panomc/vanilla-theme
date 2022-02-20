@@ -1,14 +1,16 @@
 import * as api from "$lib/api.util.server";
 import { CSRF_HEADER } from "$lib/variables";
 
-async function handle(request) {
-  const { method, params, body, headers } = request;
-  const { path } = params;
-  const { jwt, CSRFToken } = request.locals;
-
+/** @type {import('@sveltejs/kit').RequestHandler} */
+async function handle({
+  request: { method, headers },
+  request,
+  params: { path },
+  locals: { jwt, CSRFToken },
+}) {
   let response;
 
-  if (headers[CSRF_HEADER] !== CSRFToken) {
+  if (headers.get(CSRF_HEADER) && CSRFToken && headers.get(CSRF_HEADER) !== CSRFToken) {
     return null;
   }
 
@@ -21,14 +23,14 @@ async function handle(request) {
   }
 
   if (method === "POST") {
-    response = await api.post(path, body, jwt);
+    response = await api.post(path, await request.text(), jwt);
   }
 
   if (method === "PUT") {
-    response = await api.put(path, body, jwt);
+    response = await api.put(path, await request.text(), jwt);
   }
 
-  return {body: response};
+  return { body: response };
 }
 
 /** @type {import('@sveltejs/kit').RequestHandler} */

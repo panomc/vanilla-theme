@@ -8,8 +8,8 @@ import cookie from "cookie";
 import generateToken from "$lib/csrf.js";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post(request) {
-  const body = await api.post("auth/login", request.body);
+export async function post({ request }) {
+  const body = await api.post("auth/login", await request.text());
 
   if (body.error) {
     return { body };
