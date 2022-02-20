@@ -3,60 +3,40 @@
   <div class="row">
     <!-- Content -->
     <div class="col-lg-8">
-      <!-- Alert -->
-      <!-- <div
-        class="alert alert-secondary alert-dismissible shadow-sm
-        shadow-sm"
-        role="alert">
-        <h5>Bu bir duyuru</h5>
-        <strong>Hey!</strong>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti officia
-        voluptates maxime itaque ut sed, officiis laudantium accusamus.
-        <button
-          aria-label="Close"
-          class="close"
-          data-dismiss="alert"
-          type="button">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div> -->
-      <!-- Alert End -->
-
       <slot />
     </div>
     <!-- Content End -->
 
     <!-- Sidebar -->
-    <aside class="col-lg-4 d-lg-block d-none">
+    <aside class="col-lg-4">
       <!-- Play Button -->
       <div class="mb-5">
         <button
-          class="btn btn-lg btn-block btn-yellow py-3 shadow"
+          class="btn btn-yellow w-100 py-3"
           type="button"
           on:click="{onCopyCommandTextClick}"
           use:tooltip="{[
             isCommandTextCopied ? 'Kopyalandı!' : 'Kopyala',
             { placement: 'bottom', hideOnClick: false },
           ]}">
-          <h3 class="lead text-neon text-white font-weight-bolder text-uppercase">
+          <h4 class="text-white text-uppercase">
             {ip}
-          </h3>
-          <small class="text-muted">IP adresini kopyalamak için tıkla!</small>
+          </h4>
+          <small class="text-white">IP adresini kopyalamak için tıkla!</small>
         </button>
       </div>
       <!-- Play Button End -->
 
       <!-- Server Status -->
       <div class="mb-5">
-        <div
-          class="card text-center bg-bittersweet border-bittersweet border-lg shadow-sm">
-          <h5 class="card-header text-white">Sunucu Durumu</h5>
-          <div class="card-body bg-white">
+        <div class="card text-center border-0">
+          <h5 class="card-header bg-bittersweet text-white">Sunucu Durumu</h5>
+          <div class="card-body">
             <div
               class="d-flex flex-row align-items-center justify-content-around
                 text-muted">
               <div>
-                <i class="fas fa-check-circle fa-lg mb-2 text-success"></i>
+                <i class="fas fa-check-circle fa-lg mb-2 text-mint"></i>
                 <br />
                 Çevrimiçi
               </div>
@@ -66,7 +46,7 @@
                 16/32
               </div>
               <div>
-                <i class="fas fa-gamepad fa-lg mb-2 text-warning"></i>
+                <i class="fas fa-gamepad fa-lg mb-2 text-bittersweet"></i>
                 <br />
                 1.8.x
               </div>
@@ -78,153 +58,144 @@
 
       <!-- Latest Registers -->
       <div class="mb-5">
-        <div
-          class="card text-center bg-secondary border-secondary border-lg shadow-sm">
-          <h5 class="card-header text-white">Son Kayıt Olanlar</h5>
-          <div class="bg-white">
-            <div class="card-body p-0">
-              <table class="table">
-                <tbody>
-                  <tr>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/butlu"
-                        title="Butlu"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/kahverengi"
-                        title="Kahverengi"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                    <td>
-                      <img
-                        alt=""
-                        class="rounded"
-                        data-placement="bottom"
-                        data-toggle="tooltip"
-                        src="https://minotar.net/avatar/steve"
-                        title="Steve"
-                        width="24" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div class="card text-center border-0">
+          <h5 class="card-header bg-secondary text-white">Son Kayıt Olanlar</h5>
+          <div class="card-body p-0">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/butlu"
+                      title="Butlu"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/kahverengi"
+                      title="Kahverengi"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                  <td>
+                    <img
+                      alt=""
+                      class="rounded"
+                      data-placement="bottom"
+                      data-toggle="tooltip"
+                      src="https://minotar.net/avatar/steve"
+                      title="Steve"
+                      width="24" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
       <!-- Latest Registers End -->
 
-      <!-- Discord Widget -->
-      <!-- <div class="mb-5 text-center d-md-block d-none">
-          <iframe class="shadow" src="https://discordapp.com/widget?id=531572737660026888&theme=dark" width="300"
-            height="500" allowtransparency="true" frameborder="0"></iframe>
-        </div> -->
-      <!-- Discord Widget End -->
     </aside>
     <!-- Sidebar End -->
   </div>
