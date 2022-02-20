@@ -1,4 +1,8 @@
+// Vanilla Theme Bootstrap Configuration
+
 // Colors
+
+$min-contrast-ratio: 2;
 
 $primary: #66bb6a;
 $secondary: #4a89dc;
@@ -43,6 +47,7 @@ $enable-shadows: true;
 // Links
 
 $link-color: $secondary;
+$link-decoration: none;
 
 // Headings
 
@@ -53,11 +58,15 @@ $h5-font-size: 1.1rem;
 
 $modal-sm: 400px;
 
+// Cards
+
+$card-border-width: 0;
+
 // Borders
 
-$border-radius: 8px;
-$border-radius-lg: 8px;
-$border-radius-sm: 8px;
+$border-radius: 0.3rem;
+$border-radius-lg: 0.3rem;
+$border-radius-sm: 0.3rem;
 
 // Alerts
 
@@ -84,3 +93,10 @@ $nav-pills-link-active-color: $secondary;
 // Pagination
 
 $pagination-border-width: 5px;
+
+// Badges
+
+$badge-font-weight: 0.9rem;
+$badge-padding-x: 1rem;
+$badge-padding-y: 0.5rem;
+$badge-pill-padding-x: 1rem;

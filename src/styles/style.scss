@@ -1,7 +1,11 @@
+// Import Vanilla Theme Bootstrap Configuration
 @import "custom-bootstrap";
+
+// Import Bootstrap
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/tippy.js/dist/tippy";
 
+// Theme Styles
 #header {
   display: flex;
   justify-content: center;
