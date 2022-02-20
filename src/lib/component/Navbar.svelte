@@ -7,7 +7,7 @@
       aria-label="Toggle navigation"
       class="navbar-toggler d-lg-none"
       data-target="#navbar"
-      data-toggle="collapse"
+      data-bs-toggle="collapse"
       type="button">
       <i aria-hidden="true" class="fa fa-bars"></i>
     </button>
@@ -18,40 +18,32 @@
           <div class="dropdown">
             <a
               class="nav-link"
-              href="javascript:void(0);"
-              id="playerMenuDropdown"
-              data-toggle="dropdown"
+              href="#"
+              data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-              <i class="fas fa-user mr-1" aria-hidden="true"></i>
               {$session.user.username}
             </a>
-            <div class="dropdown-menu" aria-labelledby="playerMenuDropdown">
+            <div class="dropdown-menu dropdown-menu-end">
               <a class="dropdown-item" href="/profile">Profil</a>
               <a class="dropdown-item" href="/tickets">Talepler</a>
               <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
               <a
                 class="dropdown-item text-danger"
-                href="javascript:void(0);"
+                href="#"
                 on:click="{() => logout($session.CSRFToken)}">Çıkış Yap</a>
             </div>
           </div>
         </li>
       {:else}
         <li class="nav-item mr-lg-0 mr-5">
-          <a
-            class="nav-link"
-            href="javascript:void(0);"
-            on:click="{showLoginModal}">
-            GİRİŞ YAP
+          <a class="nav-link" href="#" on:click="{showLoginModal}">
+            Giriş Yap
           </a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="javascript:void(0);"
-            on:click="{showRegisterModal}">
-            KAYIT OL
+          <a class="nav-link" href="#" on:click="{showRegisterModal}">
+            Kayıt Ol
           </a>
         </li>
       {/if}
@@ -60,7 +52,7 @@
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
-          <a class="nav-link" href="/">ANA SAYFA</a>
+          <a class="nav-link" href="/">Ana Sayfa</a>
         </li>
       </ul>
     </div>
