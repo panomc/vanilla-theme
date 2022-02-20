@@ -4,8 +4,7 @@
   role="alert"
   bind:this="{$alertElement}"
 >
-  <button type="button" class="close" on:click="{() => hide($alertElement)}">
-    <span aria-hidden="true">&times;</span>
+  <button type="button" data-bs-dismiss="alert" class="btn-close" on:click="{() => hide($alertElement)}">
   </button>
   <strong>Hata:</strong>
   {$error}
