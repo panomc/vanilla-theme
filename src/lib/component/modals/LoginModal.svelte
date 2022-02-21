@@ -66,7 +66,7 @@
 <script context="module">
   import { writable, get } from "svelte/store";
 
-  import { hide as hideError } from "../ErrorAlert.svelte";
+  import { hide as hideError } from "$lib/component/ErrorAlert.svelte";
 
   const dataDefault = {
     usernameOrEmail: "",
@@ -119,7 +119,7 @@
   import { session } from "$app/stores";
 
   import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
-  import ErrorAlert, { show as showError } from "../ErrorAlert.svelte";
+  import ErrorAlert, { show as showError } from "$lib/component/ErrorAlert.svelte";
 
   let loading = false;
 

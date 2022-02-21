@@ -126,11 +126,11 @@
   import ErrorAlert, {
     show as showError,
     hide as hideError,
-  } from "../ErrorAlert.svelte";
+  } from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert, {
     show as showSuccess,
     hide as hideSuccess,
-  } from "../SuccessAlert.svelte";
+  } from "$lib/component/SuccessAlert.svelte";
 
   let loading = false;
 
