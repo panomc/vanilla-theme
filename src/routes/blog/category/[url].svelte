@@ -1,7 +1,7 @@
 <CategoryPosts data="{data}" />
 
 <script context="module">
-  import { load as loadCategoryPosts } from "./_categoryPosts.svelte";
+  import { load as loadCategoryPosts } from "$lib/pages/CategoryPosts.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -9,7 +9,7 @@
   export async function load(params) {
     let output = {};
 
-    const data = await loadCategoryPosts(params)
+    const data = await loadCategoryPosts(params);
 
     output = {
       ...output,
@@ -21,7 +21,7 @@
 </script>
 
 <script>
-  import CategoryPosts from "./_categoryPosts.svelte";
+  import CategoryPosts from "$lib/pages/CategoryPosts.svelte";
 
   export let data;
 </script>

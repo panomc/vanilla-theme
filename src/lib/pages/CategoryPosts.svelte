@@ -23,7 +23,7 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import ApiUtil from "$lib/api.util";
+  import ApiUtil from "$lib/api.util.js";
 
   async function loadData({ page, url, request, CSRFToken }) {
     return new Promise((resolve, reject) => {
