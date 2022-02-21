@@ -19,12 +19,6 @@
 
 <!-- Modals End -->
 <script>
-  import { browser } from "$app/env";
-
-  if (browser) {
-    import("$lib/init.libs");
-  }
-
   import Header from "$lib/component/Header.svelte";
   import Navbar from "$lib/component/Navbar.svelte";
   import Main from "$lib/component/Main.svelte";
