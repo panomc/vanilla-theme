@@ -66,7 +66,7 @@
   import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let user;
-  export let sidebar;
+  export let sidebar = null;
 
   function matching(path, pathName, startsWith = false) {
     return (

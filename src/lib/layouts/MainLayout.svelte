@@ -33,5 +33,5 @@
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
   import ResetPasswordModal from "$lib/component/modals/ResetPasswordModal.svelte";
 
-  export let sidebar;
+  export let sidebar = null;
 </script>
