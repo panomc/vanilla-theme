@@ -16,6 +16,11 @@
 <!-- Pagination End -->
 <script context="module">
   import ApiUtil from "$lib/api.util.js";
+  import HomeSidebar from "$lib/component/sidebars/HomeSidebar.svelte";
+
+  export function sidebar() {
+    return HomeSidebar;
+  }
 
   async function loadData({ page, request, CSRFToken }) {
     return new Promise((resolve, reject) => {

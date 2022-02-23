@@ -26,6 +26,11 @@
 
 <script context="module">
   import ApiUtil from "$lib/api.util";
+  import PostDetailSidebar from "$lib/component/sidebars/PostDetailSidebar.svelte";
+
+  export function sidebar() {
+    return PostDetailSidebar;
+  }
 
   async function loadData({ id, request, CSRFToken }) {
     return new Promise((resolve, reject) => {

@@ -1,4 +1,6 @@
-<PreviewPost post="{post}" />
+<MainLayout>
+  <PreviewPost post="{post}" />
+</MainLayout>
 
 <script context="module">
   import { load as loadPreviewPost } from "$lib/pages/PreviewPost.svelte";
@@ -22,6 +24,7 @@
 
 <script>
   import PreviewPost from "$lib/pages/PreviewPost.svelte";
+  import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let post;
 </script>

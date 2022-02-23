@@ -1,31 +1,37 @@
-<Header />
+<App>
+  <Header />
 
-<Navbar />
+  <Navbar />
 
-<Main>
-  <slot />
-</Main>
+  <Main sidebar="{sidebar}">
+    <slot />
+  </Main>
 
-<Footer />
+  <Footer />
 
-<!-- Modals Start-->
-<LoginModal />
+  <!-- Modals Start-->
+  <LoginModal />
 
-<ResetPasswordModal />
+  <ResetPasswordModal />
 
-<RegisterModal />
+  <RegisterModal />
 
-<ForgottenPasswordModal />
+  <ForgottenPasswordModal />
 
-<!-- Modals End -->
+  <!-- Modals End -->
+</App>
+
 <script>
   import Header from "$lib/component/Header.svelte";
   import Navbar from "$lib/component/Navbar.svelte";
   import Main from "$lib/component/Main.svelte";
   import Footer from "$lib/component/Footer.svelte";
+  import App from "$lib/component/App.svelte";
 
   import LoginModal from "$lib/component/modals/LoginModal.svelte";
   import ForgottenPasswordModal from "$lib/component/modals/ForgottenPasswordModal.svelte";
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
   import ResetPasswordModal from "$lib/component/modals/ResetPasswordModal.svelte";
+
+  export let sidebar;
 </script>
