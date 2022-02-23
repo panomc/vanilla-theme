@@ -64,9 +64,10 @@
 <script>
   import { page } from "$app/stores";
   import MainLayout from "$lib/layouts/MainLayout.svelte";
+  import ProfileSidebar from "$lib/component/sidebars/ProfileSidebar.svelte";
 
   export let user;
-  export let sidebar = null;
+  export let sidebar = ProfileSidebar;
 
   function matching(path, pathName, startsWith = false) {
     return (
