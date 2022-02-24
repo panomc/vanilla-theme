@@ -2,14 +2,14 @@
   <div class="card bg-transparent">
     <div class="card-header">
       <img
-        src="https://minotar.net/avatar/{$session.user.username}"
+        src="https://minotar.net/avatar/{user.username}"
         class="rounded-circle border d-block m-auto"
         width="64"
         height="64"
-        alt="{$session.user.username}" />
+        alt="{user.username}" />
       <div class="text-center">
-        <h2 class="mb-1">{$session.user.username}</h2>
-        <div class="text-muted">{$session.user.email}</div>
+        <h2 class="mb-1">{user.username}</h2>
+        <div class="text-muted">{user.email}</div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
           <div class="badge text-dark border">Oyuncu</div>
@@ -51,6 +51,8 @@
 
   import Sidebar from "$lib/component/Sidebar.svelte";
   import { logout } from "$lib/Store";
+
+  $: user = $session.user ? $session.user : {}
 
   function matching(path, pathName, startsWith = false) {
     return (
