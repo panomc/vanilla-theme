@@ -4,6 +4,7 @@ import { session } from "$app/stores";
 import ApiUtil from "$lib/api.util";
 
 export const sidebar = writable(null);
+export const sidebarProps = writable({});
 export const keepSidebar = writable(false);
 
 export async function logout(CSRFToken) {
@@ -20,12 +21,13 @@ export async function logout(CSRFToken) {
   });
 }
 
-export function setSidebar(component) {
+export function setSidebar(component, props = {}) {
   if (get(sidebar) === component) {
     keepSidebar.set(true);
   } else {
     keepSidebar.set(true);
 
     sidebar.set(component);
+    sidebarProps.set(props);
   }
 }

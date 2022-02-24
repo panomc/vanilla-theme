@@ -7,11 +7,11 @@
     </div>
     <!-- Content End -->
 
-    <svelte:component this="{$sidebar}" />
+    <svelte:component this="{$sidebar}" {...$sidebarProps} />
   </div>
 </main>
 
 <!-- Main Block End -->
 <script>
-  import { sidebar } from "$lib/Store.js";
+  import { sidebar, sidebarProps } from "$lib/Store.js";
 </script>
