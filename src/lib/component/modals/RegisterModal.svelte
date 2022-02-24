@@ -57,7 +57,7 @@
                 id="registerAcceptTerms"
                 bind:checked="{$data.agreement}" />
               <label class="form-check-label" for="registerAcceptTerms">
-                <a href="#">Sunucu Kurallarını</a>
+                <a href="javascript:void(0);">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
               </label>
             </div>
@@ -72,7 +72,7 @@
             Kayıt Ol
           </button>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="btn btn-link w-100"
             on:click="{() => {
               hide();

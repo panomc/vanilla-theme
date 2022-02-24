@@ -52,7 +52,7 @@
             Giriş Yap
           </button>
           <a
-            href="#"
+            href="javascript:void(0);"
             class="btn btn-link w-100"
             on:click="{showForgottenPasswordModal}">
             Şifreni mi unuttun?

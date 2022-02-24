@@ -6,13 +6,13 @@
       </div>
       <div class="col-md-auto col-12 text-md-right text-center">
         <div class="btn-group">
-          <a class="btn btn-sm btn-white active" role="button" href="#">
+          <a class="btn btn-sm btn-white active" role="button" href="javascript:void(0);">
             Tümü
           </a>
           <a
             class="btn btn-sm btn-white text-bittersweet"
             role="button"
-            href="#">
+            href="javascript:void(0);">
             Kapalı
           </a>
         </div>

@@ -18,7 +18,7 @@
           <div class="dropdown">
             <a
               class="nav-link"
-              href="#"
+              href="javascript:void(0);"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
@@ -30,19 +30,19 @@
               <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
               <a
                 class="dropdown-item text-danger"
-                href="#"
+                href="javascript:void(0);"
                 on:click="{() => logout($session.CSRFToken)}">Çıkış Yap</a>
             </div>
           </div>
         </li>
       {:else}
         <li class="nav-item mr-lg-0 mr-5">
-          <a class="nav-link" href="#" on:click="{showLoginModal}">
+          <a class="nav-link" href="javascript:void(0);" on:click="{showLoginModal}">
             Giriş Yap
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" on:click="{showRegisterModal}">
+          <a class="nav-link" href="javascript:void(0);" on:click="{showRegisterModal}">
             Kayıt Ol
           </a>
         </li>
