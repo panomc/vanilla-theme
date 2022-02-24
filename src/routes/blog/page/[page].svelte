@@ -1,9 +1,7 @@
-<MainLayout sidebar="{sidebar()}">
-  <Home data="{data}" />
-</MainLayout>
+<Home data="{data}" />
 
 <script context="module">
-  import { load as loadHome, sidebar } from "$lib/pages/Home.svelte";
+  import { load as loadHome } from "$lib/pages/Home.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -24,7 +22,6 @@
 
 <script>
   import Home from "$lib/pages/Home.svelte";
-  import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let data;
 </script>

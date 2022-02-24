@@ -1,6 +1,4 @@
-<MainLayout>
-  <CategoryPosts data="{data}" />
-</MainLayout>
+<CategoryPosts data="{data}" />
 
 <script context="module">
   import { load as loadCategoryPosts } from "$lib/pages/CategoryPosts.svelte";
@@ -24,7 +22,6 @@
 
 <script>
   import CategoryPosts from "$lib/pages/CategoryPosts.svelte";
-  import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let data;
 </script>

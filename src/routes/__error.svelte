@@ -1,6 +1,4 @@
-<MainLayout>
-  <Error title="{title}" />
-</MainLayout>
+<Error title="{title}" />
 
 <script context="module">
   import { load as loadError } from "$lib/pages/Error.svelte";
@@ -24,7 +22,6 @@
 
 <script>
   import Error from "$lib/pages/Error.svelte";
-  import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let title;
 </script>

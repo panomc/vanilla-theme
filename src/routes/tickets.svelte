@@ -1,8 +1,25 @@
-<MainLayout sidebar="{sidebar()}">
-  <Tickets />
-</MainLayout>
+<Tickets />
+
+<script context="module">
+  import { load as loadTickets } from "$lib/pages/Tickets.svelte";
+
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load(params) {
+    let output = {};
+
+    const data = await loadTickets(params);
+
+    output = {
+      ...output,
+      ...data,
+    };
+
+    return !!data ? output : null;
+  }
+</script>
 
 <script>
-  import Tickets, { sidebar } from "$lib/pages/Tickets.svelte";
-  import MainLayout from "$lib/layouts/MainLayout.svelte";
+  import Tickets from "$lib/pages/Tickets.svelte";
 </script>

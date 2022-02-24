@@ -83,3 +83,18 @@
     </div>
   </div>
 </div>
+
+<script context="module">
+  import { setSidebar } from "$lib/Store.js";
+
+  import ProfileSidebar from "$lib/component/sidebars/ProfileSidebar.svelte";
+
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export function load() {
+    setSidebar(ProfileSidebar);
+
+    return {};
+  }
+</script>

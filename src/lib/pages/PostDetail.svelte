@@ -27,10 +27,7 @@
 <script context="module">
   import ApiUtil from "$lib/api.util";
   import PostDetailSidebar from "$lib/component/sidebars/PostDetailSidebar.svelte";
-
-  export function sidebar() {
-    return PostDetailSidebar;
-  }
+  import { setSidebar } from "$lib/Store.js";
 
   async function loadData({ id, request, CSRFToken }) {
     return new Promise((resolve, reject) => {
@@ -80,6 +77,8 @@
         },
       },
     };
+
+    setSidebar(PostDetailSidebar);
 
     await loadData({ id: request.params.id, request })
       .then((body) => {

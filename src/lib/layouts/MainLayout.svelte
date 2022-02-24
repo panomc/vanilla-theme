@@ -3,7 +3,7 @@
 
   <Navbar />
 
-  <Main sidebar="{sidebar}">
+  <Main>
     <slot />
   </Main>
 
@@ -32,6 +32,4 @@
   import ForgottenPasswordModal from "$lib/component/modals/ForgottenPasswordModal.svelte";
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
   import ResetPasswordModal from "$lib/component/modals/ResetPasswordModal.svelte";
-
-  export let sidebar = null;
 </script>

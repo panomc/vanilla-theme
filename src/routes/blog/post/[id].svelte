@@ -1,12 +1,7 @@
-<MainLayout sidebar="{sidebar()}">
-  <PostDetail data="{data}" />
-</MainLayout>
+<PostDetail data="{data}" />
 
 <script context="module">
-  import {
-    load as loadPostDetail,
-    sidebar,
-  } from "$lib/pages/PostDetail.svelte";
+  import { load as loadPostDetail } from "$lib/pages/PostDetail.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -27,7 +22,6 @@
 
 <script>
   import PostDetail from "$lib/pages/PostDetail.svelte";
-  import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   export let data;
 </script>

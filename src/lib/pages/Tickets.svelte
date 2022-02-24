@@ -28,8 +28,14 @@
 
 <script context="module">
   import TicketsSidebar from "$lib/component/sidebars/TicketsSidebar.svelte";
+  import { setSidebar } from "$lib/Store.js";
 
-  export function sidebar() {
-    return TicketsSidebar;
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load(request) {
+    setSidebar(TicketsSidebar);
+
+    return {}
   }
 </script>
