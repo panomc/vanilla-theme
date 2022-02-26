@@ -1,13 +1,21 @@
 <!-- Statistics -->
-<h4 class="card-title pb-3">İstatistikler</h4>
-<table class="table">
-  <tbody>
-    <tr>
-      <td>Oynanış Süresi</td>
-      <td>1 Saat</td>
-    </tr>
-  </tbody>
-</table>
+<div class="card shadow-sm">
+  <div class="card-body">
+    <h4 class="card-title">İstatistikler</h4>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>KAyıt Tarihi</td>
+          <td>01.01.0000</td>
+        </tr>
+        <tr>
+          <td>Web Siteye Son Giriş</td>
+          <td>01.01.0000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <script context="module">
   import { setSidebar } from "$lib/Store.js";

@@ -1,11 +1,6 @@
 <!-- Profile Page -->
 
-<!-- Profile Card -->
-<div class="card mb-3">
-  <div class="card-body">
-    <slot />
-  </div>
-</div>
+<slot />
 
 <script context="module">
   export function load({ session: { user } }) {
