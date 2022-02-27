@@ -2,8 +2,8 @@
   <div class="card">
     <div class="card-body">
       <h3 class="card-title">Şifre Sıfırla</h3>
-      <ErrorAlert error="Bu bi hata mesaj" />
-      <SuccessAlert message="Bu bi mesaj" />
+      <ErrorAlert error="{error}" />
+      <SuccessAlert message="{message}" />
       <form>
         <div class="mb-3">
           <label for="newPassword">* Yeni Şifre</label>
@@ -24,4 +24,7 @@
 <script>
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";
+
+  let error;
+  let message;
 </script>
