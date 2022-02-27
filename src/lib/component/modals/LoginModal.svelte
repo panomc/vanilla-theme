@@ -52,9 +52,9 @@
             Giriş Yap
           </button>
           <a
-            href="javascript:void(0);"
+            href="/reset-password"
             class="btn btn-link w-100"
-            on:click="{showForgottenPasswordModal}">
+            on:click="{hide}">
             Şifreni mi unuttun?
           </a>
         </div>
@@ -113,7 +113,6 @@
 
   import { session } from "$app/stores";
 
-  import { show as showForgottenPasswordModal } from "./ForgottenPasswordModal.svelte";
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
 
   let loading = false;
