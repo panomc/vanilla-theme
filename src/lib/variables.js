@@ -1,1 +1,1 @@
-export * from "src/pano-ui/js/variables.js";
+export * from "../pano-ui/js/variables.js";
