@@ -13,9 +13,7 @@
             <SuccessAlert
               alertElement="{successAlertElement}"
               message="{successMessage}" />
-            <ErrorAlert
-              alertElement="{errorAlertElement}"
-              error="{errorMessage}" />
+            <ErrorAlert error="{$error}" />
           </div>
           <div class="mb-3">
             <label for="registerUserName">Oyuncu Adı</label>
@@ -87,13 +85,28 @@
 </div>
 
 <script context="module">
+  import { writable } from "svelte/store";
+
   const dialogID = "registerModal";
+  const error = writable();
+  const dataDefault = {
+    username: "",
+    email: "",
+    password: "",
+    passwordRepeat: "",
+    agreement: false,
+    recaptcha: "",
+  };
+  const data = writable({ ...dataDefault });
 
   let callback = () => {};
   let hideCallback = () => {};
   let modal;
 
   export function show() {
+    error.set(null);
+    data.set({ ...dataDefault });
+
     modal = new window.bootstrap.Modal(document.getElementById(dialogID), {
       backdrop: "static",
       keyboard: false,
@@ -117,16 +130,13 @@
 </script>
 
 <script>
-  import { writable, get } from "svelte/store";
+  import { get } from "svelte/store";
 
   import ApiUtil, { NETWORK_ERROR } from "$lib/api.util";
 
   import { show as showLoginModal } from "./LoginModal.svelte";
 
-  import ErrorAlert, {
-    show as showError,
-    hide as hideError,
-  } from "$lib/component/ErrorAlert.svelte";
+  import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert, {
     show as showSuccess,
     hide as hideSuccess,
@@ -134,23 +144,11 @@
 
   let loading = false;
 
-  const dataDefault = {
-    username: "",
-    email: "",
-    password: "",
-    passwordRepeat: "",
-    agreement: false,
-    recaptcha: "",
-  };
-
   const successMessage = writable("");
-  const errorMessage = writable("");
-  const errorAlertElement = writable(null);
   const successAlertElement = writable(null);
-  const data = writable({ ...dataDefault });
 
   async function onSubmit() {
-    hideError(get(errorAlertElement));
+    error.set(null);
     hideSuccess(get(successAlertElement));
 
     loading = true;
@@ -168,19 +166,13 @@
 
           data.set({ ...dataDefault });
         } else {
-          errorMessage.set(
-            body.result === "error" ? body.error : NETWORK_ERROR
-          );
-
-          showError(get(errorAlertElement));
+          error.set(body.result === "error" ? body.error : NETWORK_ERROR);
         }
       })
       .catch(() => {
         loading = false;
 
-        errorMessage.set(NETWORK_ERROR);
-
-        showError(get(errorAlertElement));
+        error.set(NETWORK_ERROR);
       });
   }
 </script>

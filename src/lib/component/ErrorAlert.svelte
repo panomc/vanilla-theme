@@ -1,28 +1,17 @@
-<div
-  class="alert alert-danger alert-dismissible"
-  style="display: none;"
-  role="alert"
-  bind:this="{$alertElement}"
->
-  <button type="button" data-bs-dismiss="alert" class="btn-close" on:click="{() => hide($alertElement)}">
-  </button>
-  <strong>Hata:</strong>
-  {$error}
-</div>
-
-<script context="module">
-  import { writable } from "svelte/store";
-
-  export function show(alertElement) {
-    window.$(alertElement).fadeIn("slow");
-  }
-
-  export function hide(alertElement) {
-    window.$(alertElement).fadeOut("fast");
-  }
-</script>
+{#if error}
+  <div class="alert alert-danger" in:fade out:fade>
+    <strong>Hata:</strong>
+    {error}
+    <button type="button" class="btn-close" on:click="{() => hide()}"> </button>
+  </div>
+{/if}
 
 <script>
-  export let alertElement = writable(null);
-  export let error = writable("");
+  import { fade } from "svelte/transition";
+
+  export let error;
+
+  function hide() {
+    error = null;
+  }
 </script>
