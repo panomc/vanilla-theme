@@ -10,9 +10,7 @@
       <form on:submit|preventDefault="{onSubmit}">
         <div class="modal-body">
           <div class="mb-3">
-            <SuccessAlert
-              alertElement="{successAlertElement}"
-              message="{successMessage}" />
+            <SuccessAlert message="{$successMessage}" />
             <ErrorAlert error="{$error}" />
           </div>
           <div class="mb-3">
@@ -89,6 +87,7 @@
 
   const dialogID = "registerModal";
   const error = writable();
+  const successMessage = writable();
   const dataDefault = {
     username: "",
     email: "",
@@ -137,19 +136,13 @@
   import { show as showLoginModal } from "./LoginModal.svelte";
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
-  import SuccessAlert, {
-    show as showSuccess,
-    hide as hideSuccess,
-  } from "$lib/component/SuccessAlert.svelte";
+  import SuccessAlert from "$lib/component/SuccessAlert.svelte";
 
   let loading = false;
 
-  const successMessage = writable("");
-  const successAlertElement = writable(null);
-
   async function onSubmit() {
     error.set(null);
-    hideSuccess(get(successAlertElement));
+    successMessage.set(null);
 
     loading = true;
 
@@ -159,8 +152,6 @@
 
         if (body.result === "ok") {
           successMessage.set("REGISTER_SUCCESSFUL");
-
-          showSuccess(get(successAlertElement));
 
           callback(get(data));
 
