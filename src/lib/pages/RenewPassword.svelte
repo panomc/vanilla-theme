@@ -1,7 +1,7 @@
 <div class="col-lg-4 col-md-6 m-auto">
   <div class="card">
     <div class="card-body">
-      <h3 class="card-title">Şifre Sıfırla</h3>
+      <h3 class="card-title">Şifreni Değiştir</h3>
       <ErrorAlert error="{error}" />
       <SuccessAlert message="{message}" />
       <form>
