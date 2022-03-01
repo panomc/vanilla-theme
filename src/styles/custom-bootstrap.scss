@@ -2,103 +2,101 @@
 
 // Colors
 
-$min-contrast-ratio: 2;
+// $min-contrast-ratio: 2;
 
-$primary: #66bb6a;
-$secondary: #4a89dc;
-$light: #f5f7fa;
-$white: #fff;
-$danger: #ed5565;
-$black: #000;
-$mint: #48cfad;
-$sunflower: #f6bb42;
-$bittersweet: #fc6e51;
-$discord: #7289da;
-$cream: #f5d76e;
-$yellow: #ffce54;
-$gray: #ccd1d9;
-$dark: #656d78;
-$body: #f5f7fa;
-$glass: rgba(0, 0, 0, 0.1);
+// $primary: #66bb6a;
+// $secondary: #4a89dc;
+// $light: #f5f7fa;
+// $white: #fff;
+// $danger: #ed5565;
+// $black: #000;
+// $mint: #48cfad;
+// $sunflower: #f6bb42;
+// $bittersweet: #fc6e51;
+// $discord: #7289da;
+// $cream: #f5d76e;
+// $yellow: #ffce54;
+// $gray: #ccd1d9;
+// $dark: #656d78;
+// $body: #f5f7fa;
+// $glass: rgba(0, 0, 0, 0.1);
 
-$body-bg: $body;
+// $body-bg: $body;
 
-$theme-colors: (
-  "primary": $primary,
-  "secondary": $secondary,
-  "light": $light,
-  "white": $white,
-  "black": $black,
-  "danger": $danger,
-  "mint": $mint,
-  "sunflower": $sunflower,
-  "bittersweet": $bittersweet,
-  "discord": $discord,
-  "cream": $cream,
-  "yellow": $yellow,
-  "gray": $gray,
-  "dark": $dark,
-  "glass": $glass,
-  "body": $body,
-);
+// $theme-colors: (
+//   "primary": $primary,
+//   "secondary": $secondary,
+//   "light": $light,
+//   "white": $white,
+//   "black": $black,
+//   "danger": $danger,
+//   "mint": $mint,
+//   "sunflower": $sunflower,
+//   "bittersweet": $bittersweet,
+//   "discord": $discord,
+//   "cream": $cream,
+//   "yellow": $yellow,
+//   "gray": $gray,
+//   "dark": $dark,
+//   "glass": $glass,
+//   "body": $body,
+// );
 
-// Settings
+// // Settings
 
-$enable-shadows: true;
+// $enable-shadows: true;
 
-// Links
+// // Links
 
-$link-color: $secondary;
-$link-decoration: none;
+// $link-color: $secondary;
+// $link-decoration: none;
 
-// Headings
+// // Headings
 
-$headings-font-weight: bolder;
-$h5-font-size: 1.1rem;
+// $headings-font-weight: bolder;
+// $h5-font-size: 1.1rem;
 
-// Modals
+// // Modals
 
-$modal-sm: 400px;
+// $modal-sm: 400px;
 
-// Cards
+// // Cards
 
-$card-border-width: 0;
+// $card-border-width: 0;
 
-// Borders
+// // Borders
 
-$border-radius: 0.3rem;
-$border-radius-lg: 0.3rem;
-$border-radius-sm: 0.3rem;
+// $border-radius: 0.3rem;
+// $border-radius-lg: 0.3rem;
+// $border-radius-sm: 0.3rem;
 
-// Alerts
+// // Alerts
 
-$alert-margin-bottom: 2rem;
-$alert-color-level: 2;
+// $alert-margin-bottom: 2rem;
+// $alert-color-level: 2;
 
-// Dropdowns
+// // Dropdowns
 
-$dropdown-box-shadow: 0 5px 5px $glass;
+// $dropdown-box-shadow: 0 5px 5px $glass;
 
-// Navbar
+// // Navbar
 
-$navbar-dark-active-color: $sunflower;
-$navbar-dark-color: $white;
-$navbar-padding-y: 0.5rem;
-$navbar-padding-x: 0.6rem;
-$navbar-nav-link-padding-x: 1.5rem;
+// $navbar-dark-active-color: $sunflower;
+// $navbar-dark-color: $white;
+// $navbar-nav-link-padding-x: 1.5rem;
 
-// Navs
+// // Navs
 
-$nav-pills-link-active-bg: $glass;
-$nav-pills-link-active-color: $secondary;
+// $nav-pills-link-active-bg: $glass;
+// $nav-pills-link-active-color: $secondary;
 
-// Pagination
+// // Pagination
 
-$pagination-border-width: 5px;
+// $pagination-border-width: 5px;
 
-// Badges
+// // Badges
 
-$badge-font-weight: 0.9rem;
-$badge-padding-x: 1rem;
-$badge-padding-y: 0.5rem;
-$badge-pill-padding-x: 1rem;
+// $badge-font-weight: 0.9rem;
+// $badge-padding-x: 1rem;
+// $badge-padding-y: 0.5rem;
+// $badge-pill-padding-x: 1rem;
