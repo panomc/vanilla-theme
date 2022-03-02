@@ -1,12 +1,11 @@
 <!-- Navbar -->
+
 <div class="container">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded shadow-lg">
+  <nav
+    class="navbar navbar-expand-lg navbar-dark bg-primary rounded-pill shadow px-lg-2 px-4">
     <button
-      aria-controls="navbar"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
       class="navbar-toggler d-lg-none"
-      data-target="#navbar"
+      data-bs-target="#navbar"
       data-bs-toggle="collapse"
       type="button">
       <i aria-hidden="true" class="fa fa-bars"></i>
@@ -14,7 +13,7 @@
 
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
       {#if $session.user}
-        <li class="nav-item mr-lg-0 mr-5">
+        <li class="nav-item rounded-pill mr-lg-0 mr-5">
           <div class="dropdown">
             <a
               class="nav-link"
@@ -36,13 +35,19 @@
           </div>
         </li>
       {:else}
-        <li class="nav-item mr-lg-0 mr-5">
-          <a class="nav-link" href="javascript:void(0);" on:click="{showLoginModal}">
+        <li class="nav-item rounded-pill mr-lg-0 mr-5">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            on:click="{showLoginModal}">
             Giriş Yap
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="javascript:void(0);" on:click="{showRegisterModal}">
+          <a
+            class="nav-link"
+            href="javascript:void(0);"
+            on:click="{showRegisterModal}">
             Kayıt Ol
           </a>
         </li>
@@ -51,7 +56,16 @@
 
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
+        <li class="nav-item rounded-pill active">
+          <a class="nav-link" href="/">Ana Sayfa</a>
+        </li>
+        <li class="nav-item rounded-pill">
+          <a class="nav-link" href="/">Ana Sayfa</a>
+        </li>
+        <li class="nav-item rounded-pill">
+          <a class="nav-link" href="/">Ana Sayfa</a>
+        </li>
+        <li class="nav-item rounded-pill">
           <a class="nav-link" href="/">Ana Sayfa</a>
         </li>
       </ul>
