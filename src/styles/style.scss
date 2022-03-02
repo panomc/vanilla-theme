@@ -1,8 +1,6 @@
-// Import Vanilla Theme Bootstrap Configuration
-@import "custom-bootstrap";
+// Import PanoUI
 
-// Import Bootstrap
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "../pano-ui/scss/main";
 @import "node_modules/tippy.js/dist/tippy";
 
 // Theme Styles
@@ -23,7 +21,7 @@
     content: "";
     width: 100%;
     min-height: 300px;
-    background: linear-gradient(rgba(0, 0, 0, 0) 66%, $body);
+    background: linear-gradient(rgba(0, 0, 0, 0) 66%, $light);
   }
 }
 
