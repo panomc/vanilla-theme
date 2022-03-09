@@ -15,30 +15,9 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import ApiUtil from "$lib/api.util.js";
   import HomeSidebar from "$lib/component/sidebars/HomeSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
-
-  async function loadData({ page, request, CSRFToken }) {
-    return new Promise((resolve, reject) => {
-      ApiUtil.post({
-        path: "/api/posts",
-        body: { page: parseInt(page) },
-        request,
-        CSRFToken,
-      }).then((body) => {
-        if (body.result === "ok") {
-          const data = body;
-
-          data.page = parseInt(page);
-
-          resolve(data);
-        } else {
-          reject(body);
-        }
-      });
-    });
-  }
+  import { getPosts } from "$lib/services/posts.js";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -57,13 +36,15 @@
 
     setSidebar(HomeSidebar);
 
-    await loadData({ page: request.params.page || 1, request })
-      .then((body) => {
-        output.props.data = body;
-      })
-      .catch(() => {
+    await getPosts({ page: request.params.page || 1, request }).then((body) => {
+      if (body.error) {
         output = null;
-      });
+
+        return;
+      }
+
+      output.props.data = body;
+    });
 
     return output;
   }
@@ -79,18 +60,16 @@
   export let data;
 
   function reloadData(page = data.page) {
-    loadData({ page, CSRFToken: $session.CSRFToken })
-      .then((body) => {
+    getPosts({ page, CSRFToken: $session.CSRFToken }).then((body) => {
+      if (body.result === "ok") {
         if (page !== data.page) {
           goto(page === 1 ? "/" : "/blog/page/" + page);
         } else {
           data = body;
         }
-      })
-      .catch((body) => {
-        if (!!body.error && body.error === "PAGE_NOT_FOUND") {
-          reloadData(page - 1);
-        }
-      });
+      } else if (body.error === "PAGE_NOT_FOUND") {
+        reloadData(page - 1);
+      }
+    });
   }
 </script>

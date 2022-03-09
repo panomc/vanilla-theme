@@ -6,36 +6,12 @@
 
 <Post post="{post}" detail="{true}" />
 
-<script context="module">
-  import ApiUtil from "$lib/api.util";
+<script context="module">/**
+ * @type {import('@sveltejs/kit').Load}
+ */
+import { getPostPreview } from "$lib/services/posts.js";
 
-  async function loadData({ id, request, CSRFToken }) {
-    return new Promise((resolve, reject) => {
-      ApiUtil.post({
-        path: "/api/panel/post/preview",
-        body: {
-          id: parseInt(id),
-        },
-        request,
-        CSRFToken,
-      }).then((body) => {
-        if (body.result === "ok") {
-          const data = body;
-
-          data.id = parseInt(id);
-
-          resolve(data);
-        } else {
-          reject(body);
-        }
-      });
-    });
-  }
-
-  /**
-   * @type {import('@sveltejs/kit').Load}
-   */
-  export async function load(request) {
+export async function load(request) {
     const { user } = request.session;
 
     if (!user && !user.panelAccess) {
@@ -65,13 +41,16 @@
       },
     };
 
-    await loadData({ id: request.params.id, request })
+    await getPostPreview({ id: request.params.id, request })
       .then((body) => {
+        if (body.error) {
+          output = null
+
+          return;
+        }
+
         output.props.post = body;
       })
-      .catch(() => {
-        output = null;
-      });
 
     return output;
   }

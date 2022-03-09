@@ -23,32 +23,7 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import ApiUtil from "$lib/api.util.js";
-
-  async function loadData({ page, url, request, CSRFToken }) {
-    return new Promise((resolve, reject) => {
-      ApiUtil.post({
-        path: "/api/posts/categoryPosts",
-        body: {
-          page: parseInt(page),
-          url,
-        },
-        request,
-        CSRFToken,
-      }).then((body) => {
-        if (body.result === "ok") {
-          const data = body;
-
-          data.page = parseInt(page);
-          data.url = url;
-
-          resolve(data);
-        } else {
-          reject(body);
-        }
-      });
-    });
-  }
+  import { getCategoryPosts } from "$lib/services/posts";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -72,17 +47,19 @@
       },
     };
 
-    await loadData({
+    await getCategoryPosts({
       page: request.params.page || 1,
       url: request.params.url,
       request,
-    })
-      .then((body) => {
-        output.props.data = body;
-      })
-      .catch(() => {
+    }).then((body) => {
+      if (body.error) {
         output = null;
-      });
+
+        return;
+      }
+
+      output.props.data = body;
+    });
 
     return output;
   }
@@ -99,22 +76,24 @@
   export let data;
 
   function reloadData(page = data.page, url = data.url) {
-    loadData({ page, url, CSRFToken: $session.CSRFToken })
-      .then((body) => {
-        if (page !== data.page) {
-          goto(
-            page === 1
-              ? "/blog/category/" + url
-              : "/blog/category/" + url + "/" + page
-          );
-        } else {
-          data = body;
-        }
-      })
-      .catch((body) => {
-        if (!!body.error && body.error === "PAGE_NOT_FOUND") {
+    getCategoryPosts({ page, url, CSRFToken: $session.CSRFToken }).then(
+      (body) => {
+        if (body.result === "ok") {
+          if (page !== data.page) {
+            goto(
+              page === 1
+                ? "/blog/category/" + url
+                : "/blog/category/" + url + "/" + page
+            );
+          } else {
+            data = body;
+          }
+        } else if (body.error === "PAGE_NOT_FOUND") {
           reloadData(page - 1);
+        } else {
+          console.log(body);
         }
-      });
+      }
+    );
   }
 </script>

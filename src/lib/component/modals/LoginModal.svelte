@@ -109,11 +109,16 @@
 </script>
 
 <script>
-  import ApiUtil, { NETWORK_ERROR } from "$lib/api.util";
+  import { NETWORK_ERROR } from "$lib/api.util";
 
   import { session } from "$app/stores";
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
+
+  import {
+    getCredentials,
+    sendLogin,
+  } from "$lib/services/auth.js";
 
   let loading = false;
 
@@ -122,15 +127,12 @@
 
     loading = true;
 
-    await ApiUtil.post({ path: "/auth/login", body: get(data) })
+    await sendLogin(get(data))
       .then(async (body) => {
         if (body.result === "ok") {
           const CSRFToken = body.CSRFToken;
 
-          await ApiUtil.get({
-            path: "/api/auth/credentials",
-            CSRFToken,
-          }).then((body) => {
+          await getCredentials(CSRFToken).then((body) => {
             $session.user = {
               ...Object.keys(body)
                 .filter((key) => !["result"].includes(key))

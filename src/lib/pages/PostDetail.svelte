@@ -25,32 +25,9 @@
 </div>
 
 <script context="module">
-  import ApiUtil from "$lib/api.util";
   import PostDetailSidebar from "$lib/component/sidebars/PostDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
-
-  async function loadData({ id, request, CSRFToken }) {
-    return new Promise((resolve, reject) => {
-      ApiUtil.post({
-        path: "/api/posts/detail",
-        body: {
-          id: parseInt(id),
-        },
-        request,
-        CSRFToken,
-      }).then((body) => {
-        if (body.result === "ok") {
-          const data = body;
-
-          data.id = parseInt(id);
-
-          resolve(data);
-        } else {
-          reject(body);
-        }
-      });
-    });
-  }
+  import { getPostDetail } from "$lib/services/posts.js";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -80,13 +57,16 @@
 
     setSidebar(PostDetailSidebar);
 
-    await loadData({ id: request.params.id, request })
+    await getPostDetail({ id: request.params.id, request })
       .then((body) => {
+        if (body.error) {
+          output = null;
+
+          return;
+        }
+
         output.props.data = body;
       })
-      .catch(() => {
-        output = null;
-      });
 
     return output;
   }

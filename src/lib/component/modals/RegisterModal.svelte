@@ -131,12 +131,14 @@
 <script>
   import { get } from "svelte/store";
 
-  import ApiUtil, { NETWORK_ERROR } from "$lib/api.util";
+  import { NETWORK_ERROR } from "$lib/api.util";
 
   import { show as showLoginModal } from "./LoginModal.svelte";
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";
+
+  import { sendRegister } from "$lib/services/auth.js";
 
   let loading = false;
 
@@ -146,7 +148,7 @@
 
     loading = true;
 
-    await ApiUtil.post({ path: "/auth/register", body: get(data) })
+    await sendRegister(get(data))
       .then((body) => {
         loading = false;
 

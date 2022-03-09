@@ -1,26 +1,11 @@
 import cookie from "cookie";
-import * as api from "$lib/api.util.server";
 import {
   COOKIE_PREFIX,
   JWT_COOKIE_NAME,
   CSRF_TOKEN_COOKIE_NAME,
 } from "$lib/variables";
+import { getCredentialsServerSide } from "$lib/services/auth.js";
 
-async function fetchCredentials(token) {
-  return api.get("/auth/credentials", token).then((response) => {
-    if (response.result === "ok") {
-      return Object.keys(response)
-        .filter((key) => !["result"].includes(key))
-        .reduce((object, key) => {
-          object[key] = response[key];
-
-          return object;
-        }, {});
-    } else {
-      return null;
-    }
-  });
-}
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, event: { request }, resolve }) {
@@ -36,7 +21,7 @@ export async function handle({ event, event: { request }, resolve }) {
     jwt &&
     !url.startsWith("/api/") &&
     !url.startsWith("/auth/") &&
-    (await fetchCredentials(jwt));
+    (await getCredentialsServerSide(jwt));
 
   locals.jwt = jwt;
   locals.CSRFToken = CSRFToken;
