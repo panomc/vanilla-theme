@@ -3,21 +3,21 @@
 <div class="row justify-content-between">
   <div class="col-auto">
     <a
-      href="/blog/post/{data.previous_post === '-'
+      href="/blog/post/{data.previousPost === '-'
         ? ''
-        : data.previous_post.id}"
+        : data.previousPost.id}"
       class="btn btn-link"
-      class:disabled="{data.previous_post === '-'}"
-      use:tooltip="{[data.previous_post.title, { placement: 'bottom' }]}">
+      class:disabled="{data.previousPost === '-'}"
+      use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
       <i class="fas fa-chevron-left mr-1"></i> Önceki Yazı
     </a>
   </div>
   <div class="col-auto">
     <a
-      href="/blog/post/{data.next_post === '-' ? '' : data.next_post.id}"
+      href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.id}"
       class="btn btn-link"
-      class:disabled="{data.next_post === '-'}"
-      use:tooltip="{[data.next_post.title, { placement: 'bottom' }]}">
+      class:disabled="{data.nextPost === '-'}"
+      use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>
@@ -49,8 +49,8 @@
             image: "",
             views: 0,
           },
-          previous_post: "-",
-          next_post: "-",
+          previousPost: "-",
+          nextPost: "-",
         },
       },
     };

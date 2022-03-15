@@ -3,13 +3,13 @@
 <!-- Post Cards End -->
 
 <!-- Pagination -->
-{#if data.posts_count > 0}
+{#if data.postCount > 0}
   <Pagination
     page="{data.page}"
-    totalPage="{data.total_page}"
+    totalPage="{data.totalPage}"
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
-    on:lastPageClick="{() => reloadData(data.total_page)}"
+    on:lastPageClick="{() => reloadData(data.totalPage)}"
     on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
@@ -27,9 +27,9 @@
       props: {
         data: {
           posts: [],
-          posts_count: 0,
+          postCount: 0,
           page: 1,
-          total_page: 1,
+          totalPage: 1,
         },
       },
     };

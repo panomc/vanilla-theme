@@ -36,8 +36,8 @@ export async function load(request) {
           image: "",
           views: 0,
         },
-        previous_post: "-",
-        next_post: "-",
+        previousPost: "-",
+        nextPost: "-",
       },
     };
 

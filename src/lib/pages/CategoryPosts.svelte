@@ -2,7 +2,7 @@
   <div class="col-auto">
     <h4>
       {data.category.title} <i class="font-weight-light">kategorisinde</i>
-      {data.posts_count} <i class="font-weight-light">yazı var:</i>
+      {data.postCount} <i class="font-weight-light">yazı var:</i>
     </h4>
   </div>
 </div>
@@ -11,13 +11,13 @@
 <Posts posts="{data.posts}" />
 
 <!-- Pagination -->
-{#if data.posts_count > 0}
+{#if data.postCount > 0}
   <Pagination
     page="{data.page}"
-    totalPage="{data.total_page}"
+    totalPage="{data.totalPage}"
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
-    on:lastPageClick="{() => reloadData(data.total_page)}"
+    on:lastPageClick="{() => reloadData(data.totalPage)}"
     on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
@@ -33,8 +33,8 @@
       props: {
         data: {
           posts: [],
-          posts_count: 0,
-          total_page: 1,
+          postCount: 0,
+          totalPage: 1,
           page: 1,
           category: {
             id: -1,
