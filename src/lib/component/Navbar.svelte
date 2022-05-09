@@ -65,7 +65,7 @@
       <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
         <li class="nav-item rounded-pill active">
           <a class="nav-link" href="/">
-            <i class="fas fa-home"></i>
+            <i class="fa-solid fa-house"></i>
           </a>
         </li>
         <li class="nav-item rounded-pill">
