@@ -3,7 +3,7 @@
   <Post post="{post}" />
 {:else}
   <div class="container text-center">
-    <i class="fas fa-sticky-note text-gray fa-3x m-3"></i>
+    <i class="fa-solid fa-pen fa-3x text-dark text-opacity-25 m-3"></i>
     <p class="text-gray">Burada içerik yok.</p>
   </div>
 {/each}

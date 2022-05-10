@@ -27,15 +27,7 @@
 
 .navbar {
   top: -50px;
-  border-top: 10px solid rgba($color: $white, $alpha: 0.3);
-  border-bottom: 1px inset rgba($color: $black, $alpha: 0.1);
-  font-weight: 900;
   .nav-item.active {
-    border-radius: $border-radius;
     background: rgba($color: $black, $alpha: 0.1);
   }
-}
-
-.border-lg {
-  border-width: 5px !important;
 }

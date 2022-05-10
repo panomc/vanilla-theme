@@ -2,14 +2,14 @@
   <!-- Play Button -->
   <div class="mb-5">
     <button
-      class="btn btn-yellow w-100 py-3"
+      class="btn btn-sunflower w-100 py-4"
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[
         isCommandTextCopied ? 'Kopyalandı!' : 'Kopyala',
         { placement: 'bottom', hideOnClick: false },
       ]}">
-      <h4 class="text-white text-uppercase mb-2">
+      <h4 class="text-white text-uppercase mb-0">
         {ip}
       </h4>
     </button>
