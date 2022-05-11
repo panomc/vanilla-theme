@@ -31,3 +31,17 @@
     <div class="mb-3">Editor</div>
   </div>
 </div>
+
+<script context="module">
+  import TicketCreateSidebar from "$lib/component/sidebars/TicketCreateSidebar.svelte";
+  import { setSidebar } from "$lib/Store.js";
+
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load() {
+    setSidebar(TicketCreateSidebar);
+
+    return {};
+  }
+</script>
