@@ -1,4 +1,4 @@
-<div class="card shadow-sm mb-5 border-0 shadow-sm">
+<div class="card mb-3">
   <div class="card-body">
     <div class="row mb-3 justify-content-center">
       <div class="col">
@@ -12,12 +12,12 @@
       </div>
       <div class="col-auto">
         {#if post.category.title !== "-"}
-          <div class="lead">
-            <a href="/blog/category/{post.category.url}">
-              <span class="badge badge-primary text-white"
-                >{post.category.title}</span>
-            </a>
-          </div>
+          <a
+            class="badge rounded-pill border text-dark"
+            href="/blog/category/{post.category.url}">
+            <i class="fa-solid fa-pen mr-2"></i>
+            {post.category.title}
+          </a>
         {/if}
       </div>
     </div>
@@ -26,35 +26,45 @@
       {@html post.text}
     </p>
   </div>
-  <div class="card-footer d-flex justify-content-between align-items-center">
-    <div class="text-muted">
-      <img
-        src="https://minotar.net/avatar/{post.writer.username}"
-        alt="{post.writer.username}"
-        width="32"
-        height="32"
-        title="{post.writer.username}"
-        class="rounded mr-3" />
-      <Date time="{post.date}" />
-    </div>
-
+  <div
+    class="card-footer bg-white d-flex align-items-center justify-content-between">
     {#if detail}
-      <div class="text-muted">
-        <ul class="mb-0">
-          <li class="list-inline">
-            <span
-              class="list-inline-item px-1"
-              use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
-              <i class="fas fa-eye mr-2"></i>
-              {post.views}
-            </span>
-          </li>
-        </ul>
+      <ul class="m-0 p-0 text-muted">
+        <li class="list-inline">
+          <div
+            class="list-inline-item px-1"
+            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
+            <i class="fas fa-eye mr-2"></i>
+            {post.views}
+          </div>
+        </li>
+      </ul>
+
+      <div>
+        <Date class="text-muted" time="{post.date}" />
+        <img
+          src="https://minotar.net/avatar/{post.writer.username}"
+          alt="{post.writer.username}"
+          width="32"
+          height="32"
+          title="{post.writer.username}"
+          class="rounded-circle" />
       </div>
     {:else}
-      <a href="/blog/post/{post.id}" class="btn btn-secondary">
-        Devamını Oku >
+      <a class="btn btn-link" href="/blog/post/{post.id}">
+        Devamını Oku <i class="fas fa-chevron-right mr-1"></i>
       </a>
+
+      <div>
+        <Date class="text-muted" time="{post.date}" />
+        <img
+          src="https://minotar.net/avatar/{post.writer.username}"
+          alt="{post.writer.username}"
+          width="32"
+          height="32"
+          title="{post.writer.username}"
+          class="rounded-circle" />
+      </div>
     {/if}
   </div>
 </div>
@@ -68,5 +78,5 @@
   import Date from "$lib/component/Date.svelte";
 
   export let post;
-  export let detail = false
+  export let detail = false;
 </script>

@@ -1,5 +1,5 @@
 <!-- Settings -->
-<div class="card shadow-sm">
+<div class="card">
   <div class="card-body">
     <h4 class="card-title pb-3">Hesap Ayarları</h4>
     <div class="accordion accordion-flush mb-3" id="accordionFlushExample">

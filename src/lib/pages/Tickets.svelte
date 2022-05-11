@@ -1,4 +1,4 @@
-<div class="card shadow-sm">
+<div class="card">
   <div class="card-body">
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">

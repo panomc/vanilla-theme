@@ -1,5 +1,5 @@
 <!-- Statistics -->
-<div class="card shadow-sm">
+<div class="card">
   <div class="card-body">
     <h4 class="card-title">İstatistikler</h4>
     <table class="table">

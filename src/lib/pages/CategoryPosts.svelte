@@ -1,8 +1,7 @@
 <div class="row justify-content-between">
   <div class="col-auto">
     <h4>
-      {data.category.title} <i class="font-weight-light">kategorisinde</i>
-      {data.postCount} <i class="font-weight-light">yazı var:</i>
+      Kategori: {data.category.title} ({data.postCount} Yazı)
     </h4>
   </div>
 </div>
