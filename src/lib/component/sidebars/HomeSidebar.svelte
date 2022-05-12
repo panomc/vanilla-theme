@@ -1,8 +1,8 @@
 <Sidebar>
   <!-- Play Button -->
-  <div class="mb-5">
+  <div class="mb-4">
     <button
-      class="btn btn-sunflower w-100 py-4"
+      class="btn btn-sunflower bg-gradient w-100 py-4"
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[
@@ -17,7 +17,7 @@
   <!-- Play Button End -->
 
   <!-- Server Status -->
-  <div class="card text-center border-0 mb-5">
+  <div class="card text-center border-0 mb-4">
     <h5 class="card-header bg-bittersweet text-white">Sunucu Durumu</h5>
     <div class="card-body">
       <div
@@ -44,7 +44,7 @@
   <!-- Server Status End -->
 
   <!-- Latest Registers -->
-  <div class="card text-center border-0 mb-5">
+  <div class="card text-center border-0 mb-4">
     <h5 class="card-header bg-secondary text-white">Son Kayıt Olanlar</h5>
     <div class="card-body p-0">
       <table class="table table-borderless mb-0">
