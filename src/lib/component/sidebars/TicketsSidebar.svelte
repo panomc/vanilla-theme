@@ -1,8 +1,10 @@
 <Sidebar>
-  <button class="btn btn-secondary w-100 mb-5">
-    <i class="fas fa-plus"></i>
-    <br />Destek Talebi Oluştur
-  </button>
+  <a href="/ticket/create">
+    <button class="btn btn-secondary w-100 mb-5">
+      <i class="fas fa-plus"></i>
+      <br />Destek Talebi Oluştur
+    </button>
+  </a>
   <!-- Latest Registers -->
   <div class="card text-center border-0">
     <h5 class="card-header bg-sunflower text-white">Çevrimiçi Adminler</h5>

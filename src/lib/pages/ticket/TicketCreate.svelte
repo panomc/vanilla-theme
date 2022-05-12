@@ -5,7 +5,7 @@
         <h4 class="card-title">Destek Talebi Oluştur</h4>
       </div>
       <div class="col-auto">
-        <a href="#">
+        <a href="/tickets">
           <i class="fas fa-arrow-left mr-2"></i>
           Talepler
         </a>
