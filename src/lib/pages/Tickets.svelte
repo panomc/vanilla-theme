@@ -51,7 +51,7 @@
               </a>
             </th>
             <td class="align-middle text-nowrap">
-              <a href="/tickets/ticket/1" title="Talebi Görüntüle">#1 test</a>
+              <a href="/ticket/1" title="Talebi Görüntüle">#1 test</a>
             </td>
             <td class="align-middle text-nowrap">
               <a href="/tickets">
