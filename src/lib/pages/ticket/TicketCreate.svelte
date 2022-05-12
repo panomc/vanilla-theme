@@ -11,21 +11,30 @@
         </a>
       </div>
     </div>
+
     <div class="mb-3">
-      <input
-        type="email"
-        class="form-control form-control-lg"
-        placeholder="Başlık" />
+      <div class="row align-items-end">
+        <div class="col-8">
+          <input
+            type="email"
+            class="form-control form-control-lg border-0"
+            placeholder="Talep başlığını girin" />
+        </div>
+        <div class="col-4">
+          <input
+            class="form-control"
+            list="datalistOptions"
+            id="exampleDataList"
+            placeholder="Kategori" />
+          <datalist id="datalistOptions">
+            <option value="San Francisco"> </option><option value="New York">
+            </option><option value="Seattle"> </option><option
+              value="Los Angeles">
+            </option><option value="Chicago"> </option>
+          </datalist>
+        </div>
+      </div>
     </div>
-    <input
-      class="form-control mb-3"
-      list="datalistOptions"
-      id="exampleDataList"
-      placeholder="Kategori" />
-    <datalist id="datalistOptions">
-      <option value="San Francisco"> </option><option value="New York">
-      </option><option value="Seattle"> </option><option value="Los Angeles">
-      </option><option value="Chicago"> </option></datalist>
 
     <!-- Ticket Editor -->
     <div class="mb-3">Editor</div>
