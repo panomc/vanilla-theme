@@ -1,12 +1,8 @@
 import ApiUtil from "$lib/api.util.js";
 
 export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
-  return await ApiUtil.post({
-    path: "/api/posts/categoryPosts",
-    body: {
-      page: parseInt(page),
-      url,
-    },
+  return await ApiUtil.get({
+    path: `/api/posts?page=${page}&categoryUrl=${url}`,
     request,
     CSRFToken,
   }).then((body) => {
@@ -18,9 +14,8 @@ export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
 };
 
 export const getPosts = async ({ page, request, CSRFToken }) => {
-  return await ApiUtil.post({
-    path: "/api/posts",
-    body: { page: parseInt(page) },
+  return await ApiUtil.get({
+    path: `/api/posts?page=${page}`,
     request,
     CSRFToken,
   }).then((body) => {
@@ -32,10 +27,7 @@ export const getPosts = async ({ page, request, CSRFToken }) => {
 
 export const getPostDetail = async ({ id, request, CSRFToken }) => {
   return await ApiUtil.post({
-    path: "/api/posts/detail",
-    body: {
-      id: parseInt(id),
-    },
+    path: `/api/posts/${id}`,
     request,
     CSRFToken,
   }).then((body) => {
@@ -46,11 +38,8 @@ export const getPostDetail = async ({ id, request, CSRFToken }) => {
 };
 
 export const getPostPreview = async ({ id, request, CSRFToken }) => {
-  ApiUtil.post({
-    path: "/api/panel/post/preview",
-    body: {
-      id: parseInt(id),
-    },
+  ApiUtil.get({
+    path: `/api/panel/posts/${id}/preview`,
     request,
     CSRFToken,
   }).then((body) => {
