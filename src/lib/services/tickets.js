@@ -12,3 +12,16 @@ export const getTickets = async ({ page, pageType, request, CSRFToken }) => {
     return body;
   });
 };
+
+export const getCategoryTickets = async ({ page, url, request, CSRFToken }) => {
+  return ApiUtil.get({
+    path: `/api/tickets?page=${page}&categoryUrl=${url}`,
+    request,
+    CSRFToken,
+  }).then((body) => {
+    body.page = parseInt(page);
+    body.url = url;
+
+    return body;
+  });
+};
