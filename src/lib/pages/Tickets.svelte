@@ -21,69 +21,85 @@
         </div>
       </div>
     </div>
-    <div class="container text-center animate__animated animate__zoomIn">
-      <i class="fas fa-ticket-alt fa-3x m-3 text-dark text-opacity-25"></i>
-      <p class="text-gray">Burada içerik yok.</p>
-    </div>
-
-    <div class="table-responsive">
-      <table class="table table-borderless">
-        <thead>
-          <tr>
-            <th class="align-middle" scope="col"> </th>
-            <th class="align-middle" scope="col">Başlık</th>
-            <th class="align-middle" scope="col">Durum</th>
-            <th class="align-middle" scope="col">Kategori</th>
-            <th class="align-middle" scope="col">Son Yanıt</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">
-              <a
-                use:tooltip="{[
-                  'Talebi Kapat',
-                  { placement: 'bottom', hideOnClick: false },
-                ]}"
-                class="btn btn-sm btn-link text-bittersweet"
-                role="button"
-                href="javascript:void(0);">
-                <i class="fas fa-check mr-1"></i>
-              </a>
-            </th>
-            <td class="align-middle text-nowrap">
-              <a href="/ticket/1" title="Talebi Görüntüle">#1 test</a>
-            </td>
-            <td class="align-middle text-nowrap">
-              <a href="/tickets">
-                <span class="badge bg-sunflower rounded-pill">Yanıtlandı</span>
-              </a>
-            </td>
-            <td class="align-middle text-nowrap">
-              <a href="/tickets/category/-">-</a></td>
-            <td class="align-middle text-nowrap"><span>02/10/2022</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <Tickets tickets="{data.tickets}"/>
   </div>
 </div>
 
-<br />
-<br />
+<br/>
 
-<a href="/ticket/detail/10">Ticket Detail</a>
+<!-- Pagination -->
+{#if data.ticketCount > 0}
+  <Pagination
+    page="{data.page}"
+    totalPage="{data.totalPage}"
+    loading="{false}"
+    on:firstPageClick="{() => reloadData(1)}"
+    on:lastPageClick="{() => reloadData(data.totalPage)}"
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
+{/if}
 
 <script context="module">
   import TicketsSidebar from "$lib/component/sidebars/TicketsSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
-  import tooltip from "$lib/tooltip.util";
+  import { getTickets } from "$lib/services/tickets.js";
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(request) {
+    let output = {
+      props: {
+        data: {
+          tickets: [],
+          ticketCount: 0,
+          page: 1,
+          totalPage: 1,
+        },
+      },
+    };
+
     setSidebar(TicketsSidebar);
 
-    return {};
+    await getTickets({
+      page: request.params.page || 1,
+      pageType: "all",
+      request,
+    }).then((body) => {
+      if (body.error) {
+        output = null;
+
+        return;
+      }
+
+      output.props.data = body;
+    });
+
+    return output;
+  }
+</script>
+
+<script>
+  import { goto } from "$app/navigation";
+  import { session } from "$app/stores";
+
+  import Pagination from "$lib/component/Pagination.svelte";
+  import Tickets from "$lib/component/Tickets.svelte";
+
+  export let data;
+
+  function reloadData(page = data.page) {
+    getTickets({ page, pageType: "all", CSRFToken: $session.CSRFToken }).then(
+      (body) => {
+        if (body.result === "ok") {
+          if (page !== data.page) {
+            goto(page === 1 ? "/" : "/blog/page/" + page);
+          } else {
+            data = body;
+          }
+        } else if (body.error === "PAGE_NOT_FOUND") {
+          reloadData(page - 1);
+        }
+      }
+    );
   }
 </script>

@@ -1,0 +1,41 @@
+{#if status === TicketStatuses.NEW}
+  <a href="/tickets/waitingReply"
+    ><span
+      class="badge bg-mint rounded-pill"
+      use:tooltip="{['Tüm Yeni Talepleri Göster', { placement: 'bottom' }]}"
+      >Yeni</span
+    ></a
+  >
+{:else if status === TicketStatuses.REPLIED}
+  <a href="/tickets"
+    ><span
+      class="badge bg-sunflower rounded-pill"
+      use:tooltip="{[
+        'Tüm Yanıtlanan Talepleri Göster',
+        { placement: 'bottom' },
+      ]}">Yanıtlandı</span
+    ></a
+  >
+{:else if status === TicketStatuses.CLOSED}
+  <a href="/tickets/closed"
+    ><span
+      class="badge bg-bittersweet rounded-pill"
+      use:tooltip="{['Tüm Kapalı Talepleri göster', { placement: 'bottom' }]}"
+      >Kapalı</span
+    ></a
+  >
+{/if}
+
+<script context="module">
+  export const TicketStatuses = Object.freeze({
+    NEW: 1,
+    REPLIED: 2,
+    CLOSED: 3,
+  });
+</script>
+
+<script>
+  import tooltip from "$lib/tooltip.util";
+
+  export let status = TicketStatuses.NEW;
+</script>
