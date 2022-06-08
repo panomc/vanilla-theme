@@ -8,14 +8,16 @@
         <div class="btn-group">
           <a
             class="btn btn-sm btn-outline-light btn-link"
+            class:active="{data.pageType === PageTypes.ALL}"
             role="button"
-            href="javascript:void(0);">
+            href="/tickets/all">
             Tümü
           </a>
           <a
             class="btn btn-sm btn-outline-light btn-link text-bittersweet"
+            class:active="{data.pageType === PageTypes.CLOSED}"
             role="button"
-            href="javascript:void(0);">
+            href="/tickets/closed">
             Kapalı
           </a>
         </div>
@@ -43,10 +45,17 @@
   import { setSidebar } from "$lib/Store.js";
   import { getTickets } from "$lib/services/tickets.js";
 
+  export const PageTypes = Object.freeze({
+    ALL: "all",
+    CLOSED: "closed",
+  });
+
+  export const DefaultPageType = PageTypes.ALL;
+
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request) {
+  export async function load(request, pageType = DefaultPageType) {
     let output = {
       props: {
         data: {
@@ -54,6 +63,7 @@
           ticketCount: 0,
           page: 1,
           totalPage: 1,
+          pageType
         },
       },
     };
@@ -62,7 +72,7 @@
 
     await getTickets({
       page: request.params.page || 1,
-      pageType: "all",
+      pageType,
       request,
     }).then((body) => {
       if (body.error) {
@@ -87,12 +97,12 @@
 
   export let data;
 
-  function reloadData(page = data.page) {
-    getTickets({ page, pageType: "all", CSRFToken: $session.CSRFToken }).then(
+  function reloadData(page = data.page, pageType = data.pageType) {
+    getTickets({ page, pageType, CSRFToken: $session.CSRFToken }).then(
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {
-            goto(page === 1 ? "/" : "/blog/page/" + page);
+            goto(page === 1 ? "/tickets/" + pageType : "/tickets/" + pageType + "/" + page);
           } else {
             data = body;
           }
