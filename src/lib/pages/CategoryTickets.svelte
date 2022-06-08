@@ -62,8 +62,6 @@
         return;
       }
 
-      console.log(body)
-
       output.props.data = body;
     });
 
