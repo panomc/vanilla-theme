@@ -1,15 +1,17 @@
 <tr>
   <th scope="row">
-    <a
-      use:tooltip="{[
-        'Talebi Kapat',
-        { placement: 'bottom', hideOnClick: false },
-      ]}"
-      class="btn btn-sm btn-link text-bittersweet"
-      role="button"
-      href="javascript:void(0);">
-      <i class="fas fa-check mr-1"></i>
-    </a>
+    {#if ticket.status !== TicketStatuses.CLOSED}
+      <a
+        use:tooltip="{[
+          'Talebi Kapat',
+          { placement: 'bottom', hideOnClick: false },
+        ]}"
+        class="btn btn-sm btn-link text-bittersweet"
+        role="button"
+        href="javascript:void(0);">
+        <i class="fas fa-check mr-1"></i>
+      </a>
+    {/if}
   </th>
   <td class="align-middle text-nowrap">
     <a href="/ticket/{ticket.id}" title="Talebi Görüntüle"
@@ -29,7 +31,9 @@
 
 <script>
   import tooltip from "$lib/tooltip.util";
-  import TicketStatus from "$lib/component/TicketStatus.svelte";
+  import TicketStatus, {
+    TicketStatuses,
+  } from "$lib/component/TicketStatus.svelte";
   import Date from "$lib/component/Date.svelte";
 
   export let ticket;
