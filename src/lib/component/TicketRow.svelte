@@ -8,7 +8,8 @@
         ]}"
         class="btn btn-sm btn-link text-bittersweet"
         role="button"
-        href="javascript:void(0);">
+        href="javascript:void(0);"
+        on:click="{() => showCloseTicketConfirmModal(ticket)}">
         <i class="fas fa-check mr-1"></i>
       </a>
     {/if}
@@ -35,6 +36,7 @@
     TicketStatuses,
   } from "$lib/component/TicketStatus.svelte";
   import Date from "$lib/component/Date.svelte";
+  import { show as showCloseTicketConfirmModal } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
   export let ticket;
 </script>

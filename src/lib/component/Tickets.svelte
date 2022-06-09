@@ -28,6 +28,18 @@
 <!-- Tickets Card End -->
 <script>
   import TicketRow from "$lib/component/TicketRow.svelte";
+  import { setCallback as setCloseTicketConfirmCallback } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
+  import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
 
   export let tickets;
+
+  setCloseTicketConfirmCallback((updatedTicket) => {
+    tickets.forEach((ticket) => {
+      if (ticket.id === updatedTicket.id) {
+        ticket.status = TicketStatuses.CLOSED;
+      }
+    })
+
+    tickets = tickets
+  });
 </script>

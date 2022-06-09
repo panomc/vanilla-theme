@@ -25,3 +25,14 @@ export const getCategoryTickets = async ({ page, url, request, CSRFToken }) => {
     return body;
   });
 };
+
+export const closeTicket = async ({ id, request, CSRFToken }) => {
+  return ApiUtil.put({
+    path: `/api/tickets/${id}`,
+    body: {
+      status: "close"
+    },
+    request,
+    CSRFToken,
+  })
+};
