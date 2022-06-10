@@ -21,17 +21,10 @@
             placeholder="Talep başlığını girin" />
         </div>
         <div class="col-4">
-          <input
-            class="form-control"
-            list="datalistOptions"
-            id="exampleDataList"
-            placeholder="Kategori" />
-          <datalist id="datalistOptions">
-            <option value="San Francisco"> </option><option value="New York">
-            </option><option value="Seattle"> </option><option
-              value="Los Angeles">
-            </option><option value="Chicago"> </option>
-          </datalist>
+          <select class="form-select" id="datalistOptions">
+            <option value="1" selected>Kategori</option>
+            <option value="San Francisco">dsadkasd</option>
+          </select>
         </div>
       </div>
     </div>
