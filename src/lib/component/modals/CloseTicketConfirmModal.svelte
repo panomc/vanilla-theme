@@ -16,9 +16,9 @@
         </div>
         Bu talebi kapatmak istediğinizden emin misiniz?
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer flex-nowrap">
         <button
-          class="btn btn-link text-muted"
+          class="btn btn-link col-6 m-0"
           data-bs-dismiss="modal"
           type="button"
           class:disabled="{loading}"
@@ -28,7 +28,7 @@
           İptal
         </button>
         <button
-          class="btn btn-bittersweet"
+          class="btn btn-bittersweet col-6 m-0"
           type="button"
           class:disabled="{loading}"
           aria-disabled="{loading}"
