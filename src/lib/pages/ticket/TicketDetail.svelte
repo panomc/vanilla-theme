@@ -1,10 +1,10 @@
-<style>
+<style global>
   .messages-section {
     overflow-y: auto;
     max-height: 450px;
   }
 
-  .message-balloon p {
+  .message-balloon > p {
     margin: 0;
     padding: 0;
   }
@@ -16,18 +16,298 @@
       <div
         class="row justify-content-between mb-3 animate__animated animate__slideInUp">
         <div class="col-auto">
-          <h3>Talep: #1</h3>
+          <h3>Talep: #{data.ticket.id}</h3>
         </div>
         <div class="col-auto ml-auto">
-          <a
-            class="btn btn-bittersweet"
-            role="button"
-            href="javascript:void(0);">
-            <i class="fas fa-check mr-1"></i>
-            Kapat
-          </a>
+          {#if data.ticket.status !== TicketStatuses.CLOSED}
+            <a
+              class="btn btn-bittersweet"
+              role="button"
+              href="javascript:void(0);"
+              on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
+              <i class="fas fa-check mr-1"></i>
+              Kapat
+            </a>
+          {/if}
         </div>
       </div>
+
+      <div
+        class="card border mb-3"
+        class:border-mint="{data.ticket.status === TicketStatuses.NEW}"
+        class:border-sunflower="{data.ticket.status === TicketStatuses.REPLIED}"
+        class:border-bittersweet="{data.ticket.status ===
+          TicketStatuses.CLOSED}">
+        <div
+          class="card-header bg-opacity-25 pt-3"
+          class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"
+          class:bg-sunflower="{data.ticket.status === TicketStatuses.REPLIED}"
+          class:bg-bittersweet="{data.ticket.status === TicketStatuses.CLOSED}">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title">{data.ticket.title}</h5>
+              <small>
+                <a href="/players/player/{data.ticket.username}"
+                  >{data.ticket.username}</a>
+                tarafından,
+                <Date time="{data.ticket.date}" relativeFormat="{true}" />
+                ,
+                <a href="javascript:void(0);"
+                  >{data.ticket.category === "-"
+                    ? data.ticket.category
+                    : data.ticket.category.title}</a>
+                kategorisine açıldı.</small>
+            </div>
+            <div class="col-auto">
+              <TicketStatus status="{data.ticket.status}" />
+            </div>
+          </div>
+        </div>
+        <div
+          class="card-body messages-section"
+          id="messageSection"
+          bind:this="{messagesSectionDiv}"
+          bind:clientHeight="{$messagesSectionClientHeight}">
+          {#if data.ticket.messages.length < data.ticket.messageCount && data.ticket.messageCount > 5}
+            <button
+              class="btn btn-link bg-light d-block m-auto"
+              class:disabled="{loadMoreLoading}"
+              on:click="{loadMore}"
+              ><i class="fas fa-arrow-up mr-1"></i> Önceki Mesajlar ({data
+                .ticket.messageCount -
+                (data.ticket.messages.length - sentMessageCount)})
+            </button>
+          {/if}
+
+          {#each data.ticket.messages as message, index (message)}
+            {#if message.panel}
+              <div class="row py-2 flex-nowrap justify-content-end">
+                <div class="col-auto d-flex align-items-center">
+                  <!-- <a
+                      class="btn btn-link btn-sm text-gray mr-2"
+                      role="button"
+                      href="javascript:void(0);">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a> -->
+                  <Date time="{message.date}">
+                    <div
+                      class="message-balloon p-2 rounded bg-white border shadow-sm">
+                      {@html message.message}
+                    </div>
+                  </Date>
+                </div>
+                <div class="col-auto">
+                  <a href="/players/player/{message.username}">
+                    <img
+                      src="https://minotar.net/avatar/{message.username}/48"
+                      alt="{message.username}"
+                      class="ml-2 border rounded-circle d-block mr-auto animate__animated animate__zoomIn"
+                      use:tooltip="{[
+                        message.username,
+                        { placement: 'bottom' },
+                      ]}"
+                      width="48"
+                      height="48" />
+                  </a>
+                </div>
+              </div>
+            {:else}
+              <div class="row py-2 flex-nowrap justify-content-start">
+                <div class="col-auto text-right">
+                  <a href="/players/player/{message.username}">
+                    <img
+                      src="https://minotar.net/avatar/{message.username}/48"
+                      alt="{message.username}"
+                      class="mr-2 border rounded-circle animate__animated animate__zoomIn"
+                      use:tooltip="{[
+                        message.username,
+                        { placement: 'bottom' },
+                      ]}"
+                      width="48"
+                      height="48" />
+                  </a>
+                </div>
+                <div class="col-auto d-flex flex-nowrap align-items-center">
+                  <Date time="{message.date}">
+                    <div
+                      class="message-balloon p-2 rounded d-inline-block bg-white border shadow-sm">
+                      {message.message}
+                    </div>
+                  </Date>
+                  <a
+                    class="btn btn-link d-none ml-3"
+                    role="button"
+                    href="javascript:void(0);">
+                    <i class="fas fa-ellipsis-v"></i>
+                  </a>
+                </div>
+              </div>
+            {/if}
+          {/each}
+        </div>
+      </div>
+
+      {#if data.ticket.status === TicketStatuses.CLOSED}
+        <div class="container text-center">
+          <i class="fas fa-times fa-3x text-dark text-opacity-25 m-3"></i>
+          <p class="text-gray">Bu talep kapalı.</p>
+        </div>
+      {:else}
+        <textarea bind:value="{message}"></textarea>
+        <button
+          class="btn btn-primary"
+          on:click="{sendMessage}"
+          class:disabled="{messageSendLoading || isSendButtonDisabled}"
+          :disabled="{messageSendLoading || isSendButtonDisabled}"
+          >Send Message
+        </button>
+      {/if}
     </div>
   </div>
 </article>
+
+<script context="module">
+  import TicketCreateSidebar from "$lib/component/sidebars/TicketCreateSidebar.svelte";
+  import { setSidebar } from "$lib/Store";
+  import { getTicketDetail } from "$lib/services/tickets";
+
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  export async function load(request) {
+    let output = {
+      props: {
+        data: {
+          ticket: {
+            id: -1,
+            username: "",
+            title: "",
+            category: "-",
+            messages: [],
+            status: 1,
+            date: 0,
+            messageCount: 0,
+          },
+        },
+      },
+    };
+
+    setSidebar(TicketCreateSidebar);
+
+    await getTicketDetail({
+      id: request.params.id,
+      request,
+    }).then((body) => {
+      if (body.error) {
+        output = null;
+
+        return;
+      }
+
+      output.props.data = body;
+    });
+
+    return output;
+  }
+</script>
+
+<script>
+  import { afterUpdate, onMount } from "svelte";
+  import { writable } from "svelte/store";
+  import { session } from "$app/stores";
+
+  import Date from "$lib/component/Date.svelte";
+  import tooltip from "$lib/tooltip.util";
+
+  import TicketStatus, {
+    TicketStatuses,
+  } from "$lib/component/TicketStatus.svelte";
+  import {
+    loadMoreTicketMessages,
+    sendTicketMessage,
+  } from "$lib/services/tickets";
+
+  import {
+    show as showCloseTicketConfirmModal,
+    setCallback as setCloseTicketConfirmCallback,
+  } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
+
+  export let data;
+
+  let message = "";
+
+  let messagesSectionDiv;
+  let loadMoreLoading = false;
+  let messageSendLoading = false;
+
+  let shouldScroll = true;
+
+  let sentMessageCount = 0;
+
+  $: isSendButtonDisabled = message === "";
+
+  const messagesSectionClientHeight = writable(0);
+
+  async function loadMore() {
+    loadMoreLoading = true;
+
+    await loadMoreTicketMessages({
+      id: data.ticket.id,
+      lastMessageId: data.ticket.messages[0].id,
+      CSRFToken: $session.CSRFToken,
+    }).then((body) => {
+      if (body.error) {
+        return;
+      }
+
+      body.messages.reverse().forEach((message) => {
+        data.ticket.messages.unshift(message);
+      });
+
+      data.ticket.messages = data.ticket.messages;
+
+      loadMoreLoading = false;
+    });
+  }
+
+  async function sendMessage() {
+    messageSendLoading = true;
+
+    await sendTicketMessage({
+      ticketId: data.ticket.id,
+      message,
+      CSRFToken: $session.CSRFToken,
+    }).then((body) => {
+      if (body.error) {
+        return;
+      }
+
+      shouldScroll = true;
+
+      data.ticket.messages.push(body.message);
+
+      sentMessageCount++;
+
+      data.ticket.status = TicketStatuses.REPLIED;
+      message = "";
+
+      messageSendLoading = false;
+    });
+  }
+
+  setCloseTicketConfirmCallback(() => {
+    data.ticket.status = TicketStatuses.CLOSED;
+  });
+
+  afterUpdate(() => {
+    if (shouldScroll && messagesSectionDiv.scrollHeight > 0) {
+      messagesSectionDiv.scrollTo(0, messagesSectionDiv.scrollHeight);
+
+      shouldScroll = false;
+    }
+  });
+
+  onMount(() => {
+    shouldScroll = true;
+  });
+</script>
