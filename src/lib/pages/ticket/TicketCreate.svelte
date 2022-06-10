@@ -42,7 +42,11 @@
       <textarea class="form-control" rows="6" bind:value="{message}"></textarea>
     </div>
 
-    <button class="btn btn-primary w-100" on:click="{() => submit()}"
+    <button
+      class="btn btn-primary w-100"
+      on:click="{() => submit()}"
+      class:disabled="{loading || isButtonDisabled}"
+      disabled="{loading || isButtonDisabled}">
       >Talep Oluştur</button>
   </div>
 </div>
@@ -98,9 +102,12 @@
   let title = "";
   let message = "";
   let categoryId = -1;
+  let loading = false;
+  $: isButtonDisabled = title === "" || message === "";
 
   async function submit() {
     error = null;
+    loading = true;
 
     await createTicket({
       title,
@@ -109,6 +116,8 @@
       CSRFToken: $session.CSRFToken,
     })
       .then((body) => {
+        loading = false;
+
         if (body.error) {
           error = body.error;
 
@@ -118,6 +127,8 @@
         goto("/ticket/" + body.id);
       })
       .catch(() => {
+        loading = false;
+
         error = NETWORK_ERROR;
       });
   }
