@@ -3,7 +3,12 @@
 </MainLayout>
 
 <script context="module">
-  import { keepSidebar, setSidebar } from "$lib/Store.js";
+  import {
+    keepSidebar,
+    setSidebar,
+    processQueuedSidebar,
+    sidebarPageInit,
+  } from "$lib/Store.js";
   import { browser } from "$app/env";
 
   /**
@@ -14,6 +19,8 @@
     if (!browser) {
       setSidebar(null);
       keepSidebar.set(false);
+      processQueuedSidebar();
+      sidebarPageInit.set(true);
     }
 
     return {};
@@ -21,18 +28,22 @@
 </script>
 
 <script>
-  import { get } from "svelte/store";
-
   import { afterNavigate } from "$app/navigation";
 
   import MainLayout from "$lib/layouts/MainLayout.svelte";
 
   // check on page change and set null if page doesn't have sidebar
-  afterNavigate(() => {
-    if (!get(keepSidebar)) {
-      setSidebar(null);
-    } else {
+  afterNavigate((navigation) => {
+    if ($keepSidebar) {
       keepSidebar.set(false);
+      processQueuedSidebar();
+
+      return;
+    }
+
+    if (navigation.from.pathname !== navigation.to.pathname) {
+      setSidebar(null);
+      processQueuedSidebar();
     }
   });
 </script>
