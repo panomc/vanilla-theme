@@ -9,21 +9,21 @@ export const sendLogout = async (CSRFToken) => {
 };
 
 export const sendLogin = async (body) => {
-  return await ApiUtil.post({
+  return ApiUtil.post({
     path: "/auth/login",
     body,
   });
 };
 
 export const getCredentials = async (CSRFToken) => {
-  return await ApiUtil.get({
+  return ApiUtil.get({
     path: "/api/auth/credentials",
     CSRFToken,
   });
 };
 
 export const getCredentialsServerSide = async (token) => {
-  return await api.get("/auth/credentials", token).then((response) => {
+  return api.get("/auth/credentials", token).then((response) => {
     if (response.result !== "ok") {
       return null;
     }
@@ -39,7 +39,7 @@ export const getCredentialsServerSide = async (token) => {
 };
 
 export const sendRegister = async (body) => {
-  return await ApiUtil.post({
+  return ApiUtil.post({
     path: "/auth/register",
     body,
   });

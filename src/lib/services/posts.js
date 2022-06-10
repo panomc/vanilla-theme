@@ -1,7 +1,7 @@
 import ApiUtil from "$lib/api.util.js";
 
 export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
-  return await ApiUtil.get({
+  return ApiUtil.get({
     path: `/api/posts?page=${page}&categoryUrl=${url}`,
     request,
     CSRFToken,
@@ -14,7 +14,7 @@ export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
 };
 
 export const getPosts = async ({ page, request, CSRFToken }) => {
-  return await ApiUtil.get({
+  return ApiUtil.get({
     path: `/api/posts?page=${page}`,
     request,
     CSRFToken,
@@ -26,7 +26,7 @@ export const getPosts = async ({ page, request, CSRFToken }) => {
 };
 
 export const getPostDetail = async ({ id, request, CSRFToken }) => {
-  return await ApiUtil.post({
+  return ApiUtil.post({
     path: `/api/posts/${id}`,
     request,
     CSRFToken,
