@@ -41,7 +41,7 @@
       return;
     }
 
-    if (navigation.from.pathname !== navigation.to.pathname) {
+    if (navigation.from && navigation.from.pathname !== navigation.to.pathname) {
       setSidebar(null);
       processQueuedSidebar();
     }
