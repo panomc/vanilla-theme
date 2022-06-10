@@ -23,7 +23,7 @@ export const getCredentials = async (CSRFToken) => {
 };
 
 export const getCredentialsServerSide = async (token) => {
-  return api.get("/auth/credentials", token).then((response) => {
+  return api.get("/api/auth/credentials", token).then((response) => {
     if (response.result !== "ok") {
       return null;
     }
