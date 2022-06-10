@@ -4,7 +4,7 @@ import NodeAdapter from "@sveltejs/adapter-node";
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
   compilerOptions: {
-    legacy: true
+    legacy: true,
   },
   kit: {
     adapter: NodeAdapter(),
@@ -12,7 +12,7 @@ const config = {
 
   preprocess: SveltePreprocess(),
 
-  onwarn: (warning, handler) =>  {
+  onwarn: (warning, handler) => {
     if (warning.code === "a11y-invalid-attribute") return;
     if (warning.code === "a11y-missing-attribute") return;
 
