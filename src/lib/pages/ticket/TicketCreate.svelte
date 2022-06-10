@@ -19,7 +19,7 @@
         <div class="col-8">
           <input
             type="email"
-            class="form-control form-control-lg border-0"
+            class="form-control"
             placeholder="Talep başlığını girin"
             bind:value="{title}" />
         </div>
@@ -38,9 +38,11 @@
     </div>
 
     <!-- Ticket Editor -->
-    <div class="mb-3"><textarea bind:value="{message}"></textarea></div>
+    <div class="mb-3">
+      <textarea class="form-control" rows="6" bind:value="{message}"></textarea>
+    </div>
 
-    <button class="btn btn-primary" on:click="{() => submit()}"
+    <button class="btn btn-primary w-100" on:click="{() => submit()}"
       >Talep Oluştur</button>
   </div>
 </div>
@@ -104,7 +106,7 @@
       title,
       message,
       categoryId,
-      CSRFToken: $session.CSRFToken
+      CSRFToken: $session.CSRFToken,
     })
       .then((body) => {
         if (body.error) {
