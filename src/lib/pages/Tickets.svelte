@@ -23,7 +23,7 @@
         </div>
       </div>
     </div>
-    <Tickets tickets="{data.tickets}"/>
+    <Tickets tickets="{data.tickets}" on:closeTicket={(event) => onCloseTicketClick(event.detail.ticket)}/>
   </div>
 </div>
 
@@ -94,6 +94,9 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
+  import { show as showCloseTicketConfirmModal, setCallback as setCloseTicketConfirmCallback, onHide as setCloseTicketConfirmOnHideCallback } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
+
+  import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
 
   export let data;
 
@@ -112,4 +115,37 @@
       }
     );
   }
+
+  const onCloseTicketClick = (updatedTicket) => {
+    data.tickets.forEach((ticket) => {
+      if (ticket.id === updatedTicket.id) {
+        ticket.selected = true
+      }
+    })
+
+    data.tickets = data.tickets
+
+    showCloseTicketConfirmModal(updatedTicket)
+  }
+
+  setCloseTicketConfirmCallback((updatedTicket) => {
+    data.tickets.forEach((ticket) => {
+      if (ticket.id === updatedTicket.id) {
+        ticket.status = TicketStatuses.CLOSED;
+        ticket.selected = false
+      }
+    })
+
+    data.tickets = data.tickets
+  });
+
+  setCloseTicketConfirmOnHideCallback(() => {
+    data.tickets.forEach((ticket) => {
+      if (ticket.selected) {
+        ticket.selected = false
+      }
+    })
+
+    data.tickets = data.tickets
+  })
 </script>

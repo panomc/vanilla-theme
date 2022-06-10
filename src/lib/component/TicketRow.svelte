@@ -1,4 +1,4 @@
-<tr>
+<tr class:table-primary="{ticket.selected}">
   <th scope="row">
     {#if ticket.status !== TicketStatuses.CLOSED}
       <a
@@ -9,7 +9,7 @@
         class="btn btn-sm btn-link text-bittersweet"
         role="button"
         href="javascript:void(0);"
-        on:click="{() => showCloseTicketConfirmModal(ticket)}">
+        on:click="{() => onCloseTicket()}">
         <i class="fas fa-check mr-1"></i>
       </a>
     {/if}
@@ -31,12 +31,19 @@
 </tr>
 
 <script>
+  import {createEventDispatcher} from "svelte";
+
   import tooltip from "$lib/tooltip.util";
   import TicketStatus, {
     TicketStatuses,
   } from "$lib/component/TicketStatus.svelte";
   import Date from "$lib/component/Date.svelte";
-  import { show as showCloseTicketConfirmModal } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
   export let ticket;
+
+  const dispatch = createEventDispatcher();
+
+  function onCloseTicket() {
+    dispatch("closeTicket", { ticket });
+  }
 </script>
