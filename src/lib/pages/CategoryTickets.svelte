@@ -2,14 +2,16 @@
   <div class="card-body">
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">
-        <h4 class="card-title mb-md-0"><strong>"{data.category.title}"</strong> Kategorisindeki Talepler</h4>
+        <h4 class="card-title mb-md-0">
+          <strong>"{data.category.title}"</strong> Kategorisindeki Talepler
+        </h4>
       </div>
     </div>
-    <Tickets tickets="{data.tickets}"/>
+    <Tickets tickets="{data.tickets}" />
   </div>
 </div>
 
-<br/>
+<br />
 
 <!-- Pagination -->
 {#if data.ticketCount > 0}
@@ -19,7 +21,8 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
+  />
 {/if}
 
 <script context="module">
@@ -83,7 +86,11 @@
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {
-            goto(page === 1 ? "/tickets/category/" + url : "/tickets/category/" + url + "/" + page);
+            goto(
+              page === 1
+                ? "/tickets/category/" + url
+                : "/tickets/category/" + url + "/" + page
+            );
           } else {
             data = body;
           }

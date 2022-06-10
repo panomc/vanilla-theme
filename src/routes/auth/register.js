@@ -10,7 +10,7 @@ export async function post({ request }) {
 
   return {
     body: {
-      "result": "ok"
+      "result": "ok",
     },
   };
 }

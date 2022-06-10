@@ -19,7 +19,8 @@
               type="text"
               id="registerUserName"
               class="form-control"
-              bind:value="{$data.username}" />
+              bind:value="{$data.username}"
+            />
           </div>
           <div class="mb-3">
             <label for="registerEmail">E-Posta</label>
@@ -27,7 +28,8 @@
               type="email"
               id="registerEmail"
               class="form-control"
-              bind:value="{$data.email}" />
+              bind:value="{$data.email}"
+            />
           </div>
           <div class="mb-3">
             <label for="registerPassword">Şifre</label>
@@ -35,7 +37,8 @@
               type="password"
               id="registerPassword"
               class="form-control"
-              bind:value="{$data.password}" />
+              bind:value="{$data.password}"
+            />
           </div>
           <div class="mb-3">
             <label for="registerPasswordRepeat">Şifre Tekrarı</label>
@@ -43,7 +46,8 @@
               type="password"
               id="registerPasswordRepeat"
               class="form-control"
-              bind:value="{$data.passwordRepeat}" />
+              bind:value="{$data.passwordRepeat}"
+            />
           </div>
           <div class="mb-3">
             <div class="form-check">
@@ -51,7 +55,8 @@
                 type="checkbox"
                 class="form-check-input"
                 id="registerAcceptTerms"
-                bind:checked="{$data.agreement}" />
+                bind:checked="{$data.agreement}"
+              />
               <label class="form-check-label" for="registerAcceptTerms">
                 <a href="javascript:void(0);">Sunucu Kurallarını</a>
                 okudum ve kabul ediyorum.
@@ -64,7 +69,8 @@
             type="submit"
             class="btn btn-primary w-100"
             class:disabled="{loading}"
-            disabled="{loading}">
+            disabled="{loading}"
+          >
             Kayıt Ol
           </button>
           <a
@@ -73,7 +79,8 @@
             on:click="{() => {
               hide();
               showLoginModal();
-            }}">
+            }}"
+          >
             Zaten kayıtlıysan Giriş Yap
           </a>
         </div>

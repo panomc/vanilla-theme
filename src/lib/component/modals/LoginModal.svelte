@@ -19,7 +19,8 @@
               type="text"
               id="usernameOrEmail"
               class="form-control"
-              bind:value="{$data.usernameOrEmail}" />
+              bind:value="{$data.usernameOrEmail}"
+            />
           </div>
           <div class="mb-3">
             <label for="password">Şifre</label>
@@ -27,7 +28,8 @@
               type="password"
               id="password"
               class="form-control"
-              bind:value="{$data.password}" />
+              bind:value="{$data.password}"
+            />
           </div>
           <div class="mb-3">
             <div class="form-check">
@@ -35,7 +37,8 @@
                 class="form-check-input"
                 type="checkbox"
                 value=""
-                id="rememberMe" />
+                id="rememberMe"
+              />
               <label class="form-check-label" for="rememberMe">
                 Beni hatırla
               </label>
@@ -48,13 +51,15 @@
             type="submit"
             class="btn btn-primary w-100"
             class:disabled="{loading}"
-            disabled="{loading}">
+            disabled="{loading}"
+          >
             Giriş Yap
           </button>
           <a
             href="/reset-password"
             class="btn btn-link w-100"
-            on:click="{hide}">
+            on:click="{hide}"
+          >
             Şifreni mi unuttun?
           </a>
         </div>
@@ -115,10 +120,7 @@
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
 
-  import {
-    getCredentials,
-    sendLogin,
-  } from "$lib/services/auth.js";
+  import { getCredentials, sendLogin } from "$lib/services/auth.js";
 
   let loading = false;
 

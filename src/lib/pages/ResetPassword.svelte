@@ -17,7 +17,8 @@
               type="email"
               placeholder="ahmo@mail.com"
               id="forgettenPasswordEmail"
-              class="form-control" />
+              class="form-control"
+            />
           </div>
         </div>
         <button type="submit" class="btn btn-primary w-100">

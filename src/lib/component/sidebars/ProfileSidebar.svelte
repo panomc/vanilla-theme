@@ -6,12 +6,14 @@
         class="rounded-circle border d-block m-auto"
         width="64"
         height="64"
-        alt="{user.username}" />
+        alt="{user.username}"
+      />
       <div class="text-center">
         <h2 class="my-2">{user.username}</h2>
         <div
           class="text-muted"
-          use:tooltip="{['Gizli', { placement: 'top', hideOnClick: false }]}">
+          use:tooltip="{['Gizli', { placement: 'top', hideOnClick: false }]}"
+        >
           {user.email}
         </div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
@@ -26,7 +28,8 @@
           <a
             class="nav-link"
             href="/profile"
-            class:active="{matching($page.url.pathname, '/profile')}">
+            class:active="{matching($page.url.pathname, '/profile')}"
+          >
             İstatistikler
           </a>
         </li>
@@ -38,7 +41,8 @@
               $page.url.pathname,
               '/profile/settings',
               true
-            )}">
+            )}"
+          >
             Ayarlar
           </a>
         </li>
@@ -46,7 +50,8 @@
           <a
             class="nav-link text-danger"
             on:click="{() => logout($session.CSRFToken)}"
-            href="javascript:void(0);">
+            href="javascript:void(0);"
+          >
             Çıkış Yap
           </a>
         </li>

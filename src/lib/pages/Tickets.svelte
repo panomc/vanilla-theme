@@ -10,24 +10,29 @@
             class="btn btn-sm btn-outline-light btn-link"
             class:active="{data.pageType === PageTypes.ALL}"
             role="button"
-            href="/tickets/all">
+            href="/tickets/all"
+          >
             Tümü
           </a>
           <a
             class="btn btn-sm btn-outline-light btn-link text-bittersweet"
             class:active="{data.pageType === PageTypes.CLOSED}"
             role="button"
-            href="/tickets/closed">
+            href="/tickets/closed"
+          >
             Kapalı
           </a>
         </div>
       </div>
     </div>
-    <Tickets tickets="{data.tickets}" on:closeTicket={(event) => onCloseTicketClick(event.detail.ticket)}/>
+    <Tickets
+      tickets="{data.tickets}"
+      on:closeTicket="{(event) => onCloseTicketClick(event.detail.ticket)}"
+    />
   </div>
 </div>
 
-<br/>
+<br />
 
 <!-- Pagination -->
 {#if data.ticketCount > 0}
@@ -37,7 +42,8 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
+  />
 {/if}
 
 <script context="module">
@@ -63,7 +69,7 @@
           ticketCount: 0,
           page: 1,
           totalPage: 1,
-          pageType
+          pageType,
         },
       },
     };
@@ -94,7 +100,11 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
-  import { show as showCloseTicketConfirmModal, setCallback as setCloseTicketConfirmCallback, onHide as setCloseTicketConfirmOnHideCallback } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
+  import {
+    show as showCloseTicketConfirmModal,
+    setCallback as setCloseTicketConfirmCallback,
+    onHide as setCloseTicketConfirmOnHideCallback,
+  } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
   import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
 
@@ -105,7 +115,11 @@
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {
-            goto(page === 1 ? "/tickets/" + pageType : "/tickets/" + pageType + "/" + page);
+            goto(
+              page === 1
+                ? "/tickets/" + pageType
+                : "/tickets/" + pageType + "/" + page
+            );
           } else {
             data = body;
           }
@@ -119,33 +133,33 @@
   const onCloseTicketClick = (updatedTicket) => {
     data.tickets.forEach((ticket) => {
       if (ticket.id === updatedTicket.id) {
-        ticket.selected = true
+        ticket.selected = true;
       }
-    })
+    });
 
-    data.tickets = data.tickets
+    data.tickets = data.tickets;
 
-    showCloseTicketConfirmModal(updatedTicket)
-  }
+    showCloseTicketConfirmModal(updatedTicket);
+  };
 
   setCloseTicketConfirmCallback((updatedTicket) => {
     data.tickets.forEach((ticket) => {
       if (ticket.id === updatedTicket.id) {
         ticket.status = TicketStatuses.CLOSED;
-        ticket.selected = false
+        ticket.selected = false;
       }
-    })
+    });
 
-    data.tickets = data.tickets
+    data.tickets = data.tickets;
   });
 
   setCloseTicketConfirmOnHideCallback(() => {
     data.tickets.forEach((ticket) => {
       if (ticket.selected) {
-        ticket.selected = false
+        ticket.selected = false;
       }
-    })
+    });
 
-    data.tickets = data.tickets
-  })
+    data.tickets = data.tickets;
+  });
 </script>

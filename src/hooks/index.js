@@ -6,7 +6,6 @@ import {
 } from "$lib/variables";
 import { getCredentialsServerSide } from "$lib/services/auth.js";
 
-
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, event: { request }, resolve }) {
   const locals = {};

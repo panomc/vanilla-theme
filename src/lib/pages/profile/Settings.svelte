@@ -11,7 +11,8 @@
             data-bs-toggle="collapse"
             data-bs-target="#settings-collapsePassword"
             aria-expanded="false"
-            aria-controls="flush-collapseOne">
+            aria-controls="flush-collapseOne"
+          >
             Şifre Değiştir
           </button>
         </h4>
@@ -19,7 +20,8 @@
           id="settings-collapsePassword"
           class="accordion-collapse collapse"
           aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample">
+          data-bs-parent="#accordionFlushExample"
+        >
           <div class="accordion-body">
             <!-- Set New Password -->
             <form>
@@ -29,14 +31,16 @@
                   <input
                     type="password"
                     id="newPassowrd"
-                    class="form-control" />
+                    class="form-control"
+                  />
                 </div>
                 <div class="col-4">
                   <label for="newPassowrdRepeat">* Yeni Şifre Tekrarı:</label>
                   <input
                     type="password"
                     id="newPassowrdRepeat"
-                    class="form-control" />
+                    class="form-control"
+                  />
                 </div>
                 <div class="col-4">
                   <button type="submit" class="btn btn-secondary w-100">
@@ -64,7 +68,8 @@
           id="settings-collapseEmail"
           class="accordion-collapse collapse"
           aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample">
+          data-bs-parent="#accordionFlushExample"
+        >
           <div class="accordion-body">
             <!-- Set New Password -->
             <form>
@@ -74,7 +79,8 @@
                   <input
                     type="password"
                     id="verifyPassword"
-                    class="form-control" />
+                    class="form-control"
+                  />
                 </div>
                 <div class="col-4">
                   <label for="setNewEmail">* Yeni E-Posta:</label>

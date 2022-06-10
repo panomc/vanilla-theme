@@ -42,24 +42,30 @@ export const closeTicket = async ({ id, request, CSRFToken }) => {
   return ApiUtil.put({
     path: `/api/tickets/${id}`,
     body: {
-      status: "close"
+      status: "close",
     },
     request,
     CSRFToken,
-  })
+  });
 };
 
-export const createTicket = async ({ title, message, categoryId, request, CSRFToken }) => {
+export const createTicket = async ({
+  title,
+  message,
+  categoryId,
+  request,
+  CSRFToken,
+}) => {
   return ApiUtil.post({
     path: `/api/tickets`,
     body: {
       title,
       message,
-      categoryId
+      categoryId,
     },
     request,
     CSRFToken,
-  })
+  });
 };
 
 export const getTicketDetail = async ({ id, request, CSRFToken }) => {
@@ -67,18 +73,28 @@ export const getTicketDetail = async ({ id, request, CSRFToken }) => {
     path: `/api/tickets/${id}`,
     request,
     CSRFToken,
-  })
+  });
 };
 
-export const loadMoreTicketMessages = async ({ id, lastMessageId, request, CSRFToken }) => {
+export const loadMoreTicketMessages = async ({
+  id,
+  lastMessageId,
+  request,
+  CSRFToken,
+}) => {
   return ApiUtil.get({
     path: `/api/tickets/${id}/messages?lastMessageId=${lastMessageId}`,
     request,
     CSRFToken,
-  })
+  });
 };
 
-export const sendTicketMessage = async ({ ticketId, message, request, CSRFToken }) => {
+export const sendTicketMessage = async ({
+  ticketId,
+  message,
+  request,
+  CSRFToken,
+}) => {
   return ApiUtil.post({
     path: `/api/tickets/${ticketId}/message`,
     body: {
@@ -86,5 +102,5 @@ export const sendTicketMessage = async ({ ticketId, message, request, CSRFToken 
     },
     request,
     CSRFToken,
-  })
+  });
 };

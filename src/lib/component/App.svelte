@@ -2,7 +2,7 @@
   @import "src/styles/style.scss";
 </style>
 
-<slot/>
+<slot />
 
 <script>
   import { browser } from "$app/env";

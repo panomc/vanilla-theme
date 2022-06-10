@@ -32,7 +32,7 @@ export async function post({ request }) {
     },
     body: {
       "result": "ok",
-      CSRFToken
+      CSRFToken,
     },
   };
 }

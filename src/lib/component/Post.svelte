@@ -14,7 +14,8 @@
         {#if post.category.title !== "-"}
           <a
             class="badge rounded-pill border text-dark"
-            href="/blog/category/{post.category.url}">
+            href="/blog/category/{post.category.url}"
+          >
             <i class="fa-solid fa-pen mr-2"></i>
             {post.category.title}
           </a>
@@ -27,13 +28,15 @@
     </p>
   </div>
   <div
-    class="card-footer bg-white d-flex align-items-center justify-content-between">
+    class="card-footer bg-white d-flex align-items-center justify-content-between"
+  >
     {#if detail}
       <ul class="m-0 p-0 text-muted">
         <li class="list-inline">
           <div
             class="list-inline-item px-1"
-            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
+            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}"
+          >
             <i class="fas fa-eye mr-2"></i>
             {post.views}
           </div>
@@ -48,7 +51,8 @@
           width="32"
           height="32"
           title="{post.writer.username}"
-          class="rounded-circle" />
+          class="rounded-circle"
+        />
       </div>
     {:else}
       <a class="btn btn-link" href="/blog/post/{post.id}">
@@ -63,7 +67,8 @@
           width="32"
           height="32"
           title="{post.writer.username}"
-          class="rounded-circle" />
+          class="rounded-circle"
+        />
       </div>
     {/if}
   </div>

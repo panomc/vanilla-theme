@@ -1,17 +1,18 @@
 <h1>Önizlenen Yazı: {post.title}</h1>
 
-<hr/>
+<hr />
 
-<br/>
+<br />
 
 <Post post="{post}" detail="{true}" />
 
-<script context="module">/**
- * @type {import('@sveltejs/kit').Load}
- */
-import { getPostPreview } from "$lib/services/posts.js";
+<script context="module">
+  /**
+   * @type {import('@sveltejs/kit').Load}
+   */
+  import { getPostPreview } from "$lib/services/posts.js";
 
-export async function load(request) {
+  export async function load(request) {
     const { user } = request.session;
 
     if (!user && !user.panelAccess) {
@@ -41,16 +42,15 @@ export async function load(request) {
       },
     };
 
-    await getPostPreview({ id: request.params.id, request })
-      .then((body) => {
-        if (body.error) {
-          output = null
+    await getPostPreview({ id: request.params.id, request }).then((body) => {
+      if (body.error) {
+        output = null;
 
-          return;
-        }
+        return;
+      }
 
-        output.props.post = body;
-      })
+      output.props.post = body;
+    });
 
     return output;
   }

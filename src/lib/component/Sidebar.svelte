@@ -1,5 +1,5 @@
 <!-- Sidebar -->
 <aside class="col-lg-4">
-  <slot/>
+  <slot />
 </aside>
 <!-- Sidebar End -->

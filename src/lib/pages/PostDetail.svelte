@@ -3,12 +3,11 @@
 <div class="row justify-content-between">
   <div class="col-auto">
     <a
-      href="/blog/post/{data.previousPost === '-'
-        ? ''
-        : data.previousPost.id}"
+      href="/blog/post/{data.previousPost === '-' ? '' : data.previousPost.id}"
       class="btn btn-link"
       class:disabled="{data.previousPost === '-'}"
-      use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
+      use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}"
+    >
       <i class="fas fa-chevron-left mr-1"></i> Önceki Yazı
     </a>
   </div>
@@ -17,7 +16,8 @@
       href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.id}"
       class="btn btn-link"
       class:disabled="{data.nextPost === '-'}"
-      use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
+      use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}"
+    >
       Sonraki Yazı
       <i class="fas fa-chevron-right ml-2"></i>
     </a>
@@ -57,16 +57,15 @@
 
     setSidebar(PostDetailSidebar);
 
-    await getPostDetail({ id: request.params.id, request })
-      .then((body) => {
-        if (body.error) {
-          output = null;
+    await getPostDetail({ id: request.params.id, request }).then((body) => {
+      if (body.error) {
+        output = null;
 
-          return;
-        }
+        return;
+      }
 
-        output.props.data = body;
-      })
+      output.props.data = body;
+    });
 
     return output;
   }

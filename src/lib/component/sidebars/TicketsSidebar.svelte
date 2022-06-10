@@ -20,7 +20,8 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/butlu"
                 title="Butlu"
-                width="24" />
+                width="24"
+              />
             </td>
             <td>
               <img
@@ -30,7 +31,8 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24" />
+                width="24"
+              />
             </td>
           </tr>
         </tbody>
