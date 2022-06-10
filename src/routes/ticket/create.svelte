@@ -1,4 +1,4 @@
-<TicketCreate />
+<TicketCreate data="{data}" />
 
 <script context="module">
   import { load as loadTicketCreate } from "$lib/pages/ticket/TicketCreate.svelte";
@@ -22,4 +22,6 @@
 
 <script>
   import TicketCreate from "$lib/pages/ticket/TicketCreate.svelte";
+
+  export let data;
 </script>
