@@ -288,7 +288,6 @@
 
       sentMessageCount++;
 
-      data.ticket.status = TicketStatuses.REPLIED;
       message = "";
 
       messageSendLoading = false;
