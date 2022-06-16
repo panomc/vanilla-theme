@@ -21,15 +21,13 @@
             type="email"
             class="form-control"
             placeholder="Talep başlığını girin"
-            bind:value="{title}"
-          />
+            bind:value="{title}" />
         </div>
         <div class="col-4">
           <select
             class="form-select"
             id="datalistOptions"
-            bind:value="{categoryId}"
-          >
+            bind:value="{categoryId}">
             <option value="{-1}">Kategorisiz</option>
             {#each data.categories as category, index (category)}
               <option value="{category.id}">{category.title}</option>
@@ -48,10 +46,8 @@
       class="btn btn-primary w-100"
       on:click="{() => submit()}"
       class:disabled="{loading || isButtonDisabled}"
-      disabled="{loading || isButtonDisabled}"
-    >
-      >Talep Oluştur</button
-    >
+      disabled="{loading || isButtonDisabled}">
+      Talep Oluştur</button>
   </div>
 </div>
 

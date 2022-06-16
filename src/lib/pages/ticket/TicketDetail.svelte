@@ -14,8 +14,7 @@
   <div class="card">
     <div class="card-body">
       <div
-        class="row justify-content-between mb-3 animate__animated animate__slideInUp"
-      >
+        class="row justify-content-between mb-3 animate__animated animate__slideInUp">
         <div class="col-auto">
           <h3>Talep: #{data.ticket.id}</h3>
         </div>
@@ -25,8 +24,7 @@
               class="btn btn-bittersweet"
               role="button"
               href="javascript:void(0);"
-              on:click="{() => showCloseTicketConfirmModal(data.ticket)}"
-            >
+              on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
               <i class="fas fa-check mr-1"></i>
               Kapat
             </a>
@@ -34,36 +32,26 @@
         </div>
       </div>
 
-      <div
-        class="card border mb-3"
-        class:border-mint="{data.ticket.status === TicketStatuses.NEW}"
-        class:border-sunflower="{data.ticket.status === TicketStatuses.REPLIED}"
-        class:border-bittersweet="{data.ticket.status ===
-          TicketStatuses.CLOSED}"
-      >
+      <div class="card mb-3">
         <div
           class="card-header bg-opacity-25 pt-3"
           class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"
           class:bg-sunflower="{data.ticket.status === TicketStatuses.REPLIED}"
-          class:bg-bittersweet="{data.ticket.status === TicketStatuses.CLOSED}"
-        >
+          class:bg-bittersweet="{data.ticket.status === TicketStatuses.CLOSED}">
           <div class="row">
             <div class="col">
               <h5 class="card-title">{data.ticket.title}</h5>
               <small>
                 <a href="/players/player/{data.ticket.username}"
-                  >{data.ticket.username}</a
-                >
+                  >{data.ticket.username}</a>
                 tarafından,
                 <Date time="{data.ticket.date}" relativeFormat="{true}" />
                 ,
                 <a href="javascript:void(0);"
                   >{data.ticket.category === "-"
                     ? data.ticket.category
-                    : data.ticket.category.title}</a
-                >
-                kategorisine açıldı.</small
-              >
+                    : data.ticket.category.title}</a>
+                kategorisine açıldı.</small>
             </div>
             <div class="col-auto">
               <TicketStatus status="{data.ticket.status}" />
@@ -74,8 +62,7 @@
           class="card-body messages-section"
           id="messageSection"
           bind:this="{messagesSectionDiv}"
-          bind:clientHeight="{$messagesSectionClientHeight}"
-        >
+          bind:clientHeight="{$messagesSectionClientHeight}">
           {#if data.ticket.messages.length < data.ticket.messageCount && data.ticket.messageCount > 5}
             <button
               class="btn btn-link bg-light d-block m-auto"
@@ -99,8 +86,7 @@
                     </a> -->
                   <Date time="{message.date}">
                     <div
-                      class="message-balloon p-2 rounded bg-white border shadow-sm"
-                    >
+                      class="message-balloon p-2 rounded bg-primary text-white">
                       {@html message.message}
                     </div>
                   </Date>
@@ -110,14 +96,13 @@
                     <img
                       src="https://minotar.net/avatar/{message.username}/48"
                       alt="{message.username}"
-                      class="ml-2 border rounded-circle d-block mr-auto animate__animated animate__zoomIn"
+                      class="rounded-circle d-block mr-auto animate__animated animate__zoomIn"
                       use:tooltip="{[
                         message.username,
                         { placement: 'bottom' },
                       ]}"
                       width="48"
-                      height="48"
-                    />
+                      height="48" />
                   </a>
                 </div>
               </div>
@@ -128,29 +113,26 @@
                     <img
                       src="https://minotar.net/avatar/{message.username}/48"
                       alt="{message.username}"
-                      class="mr-2 border rounded-circle animate__animated animate__zoomIn"
+                      class="rounded-circle animate__animated animate__zoomIn"
                       use:tooltip="{[
                         message.username,
                         { placement: 'bottom' },
                       ]}"
                       width="48"
-                      height="48"
-                    />
+                      height="48" />
                   </a>
                 </div>
                 <div class="col-auto d-flex flex-nowrap align-items-center">
                   <Date time="{message.date}">
                     <div
-                      class="message-balloon p-2 rounded d-inline-block bg-white border shadow-sm"
-                    >
+                      class="message-balloon p-2 rounded d-inline-block bg-light text-black">
                       {message.message}
                     </div>
                   </Date>
                   <a
                     class="btn btn-link d-none ml-3"
                     role="button"
-                    href="javascript:void(0);"
-                  >
+                    href="javascript:void(0);">
                     <i class="fas fa-ellipsis-v"></i>
                   </a>
                 </div>
@@ -166,14 +148,24 @@
           <p class="text-gray">Bu talep kapalı.</p>
         </div>
       {:else}
-        <textarea bind:value="{message}"></textarea>
-        <button
-          class="btn btn-primary"
-          on:click="{sendMessage}"
-          class:disabled="{messageSendLoading || isSendButtonDisabled}"
-          :disabled="{messageSendLoading || isSendButtonDisabled}"
-          >Send Message
-        </button>
+        <div class="row align-items-end">
+          <div class="col">
+            <textarea
+              placeholder="Mesajınız..."
+              class="form-control"
+              bind:value="{message}"></textarea>
+          </div>
+          <div class="col-auto">
+            <button
+              class="btn btn-secondary"
+              on:click="{sendMessage}"
+              class:disabled="{messageSendLoading || isSendButtonDisabled}"
+              :disabled="{messageSendLoading || isSendButtonDisabled}">
+              <i class="fas fa-paper-plane"></i>
+              <span class="d-lg-inline d-none">Gönder</span>
+            </button>
+          </div>
+        </div>
       {/if}
     </div>
   </div>

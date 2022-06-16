@@ -3,7 +3,7 @@
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">
         <h4 class="card-title mb-md-0">
-          <strong>"{data.category.title}"</strong> Kategorisindeki Talepler
+          <strong>"{data.category.title}"</strong> Talepler
         </h4>
       </div>
     </div>
