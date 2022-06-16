@@ -15,7 +15,7 @@
           <a
             class="badge rounded-pill border text-yellow"
             href="/blog/category/{post.category.url}">
-            <i class="fa-solid fa-pen mr-2"></i>
+            <i class="fa-solid fa-pen me-2"></i>
             {post.category.title}
           </a>
         {/if}
@@ -34,7 +34,7 @@
           <div
             class="list-inline-item px-1"
             use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
-            <i class="fas fa-eye mr-2"></i>
+            <i class="fas fa-eye me-2"></i>
             {post.views}
           </div>
         </li>
@@ -48,11 +48,11 @@
           width="32"
           height="32"
           title="{post.writer.username}"
-          class="rounded-circle" />
+          class="rounded-circle ms-2" />
       </div>
     {:else}
       <a class="btn btn-link" href="/blog/post/{post.id}">
-        Devamını Oku <i class="fas fa-chevron-right mr-1"></i>
+        Devamını Oku <i class="fas fa-chevron-right ms-2"></i>
       </a>
 
       <div>
@@ -63,7 +63,7 @@
           width="32"
           height="32"
           title="{post.writer.username}"
-          class="rounded-circle" />
+          class="rounded-circle ms-2" />
       </div>
     {/if}
   </div>

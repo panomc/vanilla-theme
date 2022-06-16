@@ -6,9 +6,8 @@
       href="/blog/post/{data.previousPost === '-' ? '' : data.previousPost.id}"
       class="btn btn-link"
       class:disabled="{data.previousPost === '-'}"
-      use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}"
-    >
-      <i class="fas fa-chevron-left mr-1"></i> Önceki Yazı
+      use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
+      Önceki Yazı
     </a>
   </div>
   <div class="col-auto">
@@ -16,10 +15,8 @@
       href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.id}"
       class="btn btn-link"
       class:disabled="{data.nextPost === '-'}"
-      use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}"
-    >
+      use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
       Sonraki Yazı
-      <i class="fas fa-chevron-right ml-2"></i>
     </a>
   </div>
 </div>
