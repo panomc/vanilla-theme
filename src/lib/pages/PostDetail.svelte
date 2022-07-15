@@ -22,7 +22,7 @@
 </div>
 
 <script context="module">
-  import PostDetailSidebar from "$lib/component/sidebars/PostDetailSidebar.svelte";
+  import HomeSidebar from "$lib/component/sidebars/HomeSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getPostDetail } from "$lib/services/posts.js";
 
@@ -52,7 +52,7 @@
       },
     };
 
-    setSidebar(PostDetailSidebar);
+    setSidebar(HomeSidebar);
 
     await getPostDetail({ id: request.params.id, request }).then((body) => {
       if (body.error) {
