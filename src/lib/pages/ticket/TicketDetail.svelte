@@ -49,7 +49,7 @@
                 ,
                 <a href="javascript:void(0);"
                   >{data.ticket.category === "-"
-                    ? data.ticket.category
+                    ? "Kategorisiz"
                     : data.ticket.category.title}</a>
                 kategorisine açıldı.</small>
             </div>
