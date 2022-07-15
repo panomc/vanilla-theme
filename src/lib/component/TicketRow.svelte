@@ -6,12 +6,12 @@
           'Talebi Kapat',
           { placement: 'bottom', hideOnClick: false },
         ]}"
-        class="btn btn-sm btn-link text-bittersweet"
+        class="btn btn-sm btn-link link-bittersweet"
         role="button"
         href="javascript:void(0);"
         on:click="{() => onCloseTicket()}"
       >
-        <i class="fas fa-check mr-1"></i>
+        <i class="fas fa-check"></i>
       </a>
     {/if}
   </th>
@@ -24,7 +24,7 @@
     <TicketStatus status="{ticket.status}" />
   </td>
   <td class="align-middle text-nowrap">
-    <a href="/tickets/category/{ticket.category.url}">
+    <a class="badge rounded-pill bg-light text-black" href="/tickets/category/{ticket.category.url}">
       {ticket.category.title}
     </a>
   </td>
