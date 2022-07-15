@@ -290,6 +290,7 @@
       shouldScroll = true;
 
       data.ticket.messages.push(body.message);
+      data.ticket = data.ticket
 
       sentMessageCount++;
 
