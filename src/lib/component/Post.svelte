@@ -13,9 +13,9 @@
       <div class="col-auto">
         {#if post.category.title !== "-"}
           <a
-            class="badge rounded-pill border text-yellow"
-            href="/blog/category/{post.category.url}">
-            <i class="fa-solid fa-pen me-2"></i>
+            class="badge rounded-pill bg-light text-black"
+            href="/blog/category/{post.category.url}"
+            use:tooltip="{['Filtrele', { placement: 'bottom' }]}">
             {post.category.title}
           </a>
         {/if}

@@ -6,7 +6,7 @@
       </div>
       <div class="col-auto">
         <a href="/tickets">
-          <i class="fas fa-arrow-left mr-2"></i>
+          <i class="fas fa-arrow-left me-2"></i>
           Talepler
         </a>
       </div>

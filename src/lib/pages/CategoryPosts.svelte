@@ -1,11 +1,16 @@
-<div class="row justify-content-between">
+<div class="row justify-content-between mb-3">
   <div class="col-auto">
     <h4>
       Kategori: {data.category.title} ({data.postCount} Yazı)
     </h4>
   </div>
+  <div class="col-auto">
+      <a href="/">
+        <i class="fas fa-arrow-left me-2"></i>
+        Yazılar
+      </a>
+  </div>
 </div>
-<hr />
 
 <Posts posts="{data.posts}" />
 
