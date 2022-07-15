@@ -172,7 +172,7 @@
 </article>
 
 <script context="module">
-  import TicketCreateSidebar from "$lib/component/sidebars/TicketCreateSidebar.svelte";
+  import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store";
   import { getTicketDetail } from "$lib/services/tickets";
 
@@ -197,7 +197,7 @@
       },
     };
 
-    setSidebar(TicketCreateSidebar);
+    setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketDetail({
       id: request.params.id,

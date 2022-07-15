@@ -1,10 +1,4 @@
 <Sidebar>
-  <a href="/ticket/create">
-    <button class="btn btn-secondary w-100 mb-5">
-      <i class="fas fa-plus"></i>
-      <br />Destek Talebi Oluştur
-    </button>
-  </a>
   <!-- Latest Registers -->
   <div class="card text-center border-0">
     <h5 class="card-header bg-sunflower text-white">Çevrimiçi Adminler</h5>
@@ -25,14 +19,14 @@
               </a>
             </td>
             <td>
-              <a href="/player/kahverengi">
+              <a href="/player/Steve">
                 <img
                   alt=""
                   class="rounded"
                   data-placement="bottom"
                   data-toggle="tooltip"
-                  src="https://minotar.net/avatar/kahverengi"
-                  title="kahverengi"
+                  src="https://minotar.net/avatar/steve"
+                  title="Steve"
                   width="24" />
               </a>
             </td>

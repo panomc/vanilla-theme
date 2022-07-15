@@ -1,7 +1,8 @@
-<Error title="{title}" />
+
+<PlayerProfile />
 
 <script context="module">
-  import { load as loadError } from "$lib/pages/Error.svelte";
+  import { load as loadPlayerProfile } from "$lib/pages/PlayerProfile.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -9,7 +10,7 @@
   export async function load(params) {
     let output = {};
 
-    const data = await loadError(params);
+    const data = await loadPlayerProfile(params);
 
     output = {
       ...output,
@@ -21,7 +22,5 @@
 </script>
 
 <script>
-  import Error from "$lib/pages/Error.svelte";
-
-  export let title;
+  import PlayerProfile from "$lib/pages/PlayerProfile.svelte";
 </script>

@@ -18,7 +18,7 @@
       ...data,
     };
 
-    return !!data ? output : null;
+    return data ? output : null;
   }
 </script>
 

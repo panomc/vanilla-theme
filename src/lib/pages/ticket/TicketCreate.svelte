@@ -52,7 +52,7 @@
 </div>
 
 <script context="module">
-  import TicketCreateSidebar from "$lib/component/sidebars/TicketCreateSidebar.svelte";
+  import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getTicketCategories } from "$lib/services/tickets";
 
@@ -69,7 +69,7 @@
       },
     };
 
-    setSidebar(TicketCreateSidebar);
+    setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketCategories({
       page: output.props.data.categoryPage,
