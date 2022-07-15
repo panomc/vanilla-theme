@@ -24,7 +24,7 @@
     <TicketStatus status="{ticket.status}" />
   </td>
   <td class="align-middle text-nowrap">
-    <a class="badge rounded-pill bg-light text-black" href="/tickets/category/{ticket.category.url}">
+    <a use:tooltip="{['Filtrele', { placement: 'bottom' }]}" class="badge rounded-pill bg-light text-black" href="/tickets/category/{ticket.category.url}">
       {ticket.category.title}
     </a>
   </td>
