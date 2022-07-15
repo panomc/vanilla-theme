@@ -47,7 +47,7 @@
           alt="{post.writer.username}"
           width="32"
           height="32"
-          title="{post.writer.username}"
+          use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
           class="rounded-circle ms-2" />
       </div>
     {:else}
@@ -62,7 +62,7 @@
           alt="{post.writer.username}"
           width="32"
           height="32"
-          title="{post.writer.username}"
+          use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
           class="rounded-circle ms-2" />
       </div>
     {/if}
@@ -70,8 +70,6 @@
 </div>
 
 <script>
-  import { page } from "$app/stores";
-
   import { truncate } from "$lib/string.util";
   import tooltip from "$lib/tooltip.util";
 
