@@ -8,8 +8,7 @@
       use:tooltip="{[
         isCommandTextCopied ? 'Kopyalandı!' : 'Kopyala',
         { placement: 'bottom', hideOnClick: false },
-      ]}"
-    >
+      ]}">
       <h4 class="text-white text-uppercase mb-0">
         {ip}
       </h4>
@@ -21,23 +20,17 @@
   <div class="card text-center border-0 mb-4">
     <h5 class="card-header bg-bittersweet text-white">Sunucu Durumu</h5>
     <div class="card-body">
-      <div
-        class="d-flex flex-row align-items-center justify-content-around
-              text-muted"
-      >
-        <div>
-          <i class="fas fa-check-circle fa-lg mb-2 text-mint"></i>
-          <br />
+      <div class="d-flex flex-row align-items-center justify-content-around">
+        <div use:tooltip="{['play.serveradress.com', { placement: 'bottom' }]}">
+          <i class="fas fa-check-circle fa-lg d-block text-mint py-3"></i>
           Çevrimiçi
         </div>
-        <div>
-          <i class="fas fa-users fa-lg mb-2 text-secondary"></i>
-          <br />
+        <div use:tooltip="{['157 players are playing', { placement: 'bottom' }]}">
+          <i class="fas fa-users fa-lg d-block text-secondary py-3"></i>
           16/32
         </div>
-        <div>
-          <i class="fas fa-gamepad fa-lg mb-2 text-bittersweet"></i>
-          <br />
+        <div use:tooltip="{['Game client version', { placement: 'bottom' }]}">
+          <i class="fas fa-gamepad fa-lg d-block text-bittersweet py-3"></i>
           1.8.x
         </div>
       </div>
@@ -60,8 +53,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/butlu"
                 title="Butlu"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -71,8 +63,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -82,8 +73,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -93,8 +83,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
           </tr>
           <tr>
@@ -106,8 +95,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/kahverengi"
                 title="Kahverengi"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -117,8 +105,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -128,8 +115,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -139,8 +125,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
           </tr>
           <tr>
@@ -152,8 +137,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -163,8 +147,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -174,8 +157,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
             <td>
               <img
@@ -185,8 +167,7 @@
                 data-toggle="tooltip"
                 src="https://minotar.net/avatar/steve"
                 title="Steve"
-                width="24"
-              />
+                width="24" />
             </td>
           </tr>
         </tbody>
