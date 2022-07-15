@@ -42,13 +42,15 @@
 
       <div>
         <Date class="text-muted" time="{post.date}" />
-        <img
-          src="https://minotar.net/avatar/{post.writer.username}"
-          alt="{post.writer.username}"
-          width="32"
-          height="32"
-          use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
-          class="rounded-circle ms-2" />
+        <a href="/player/{post.writer.username}">
+          <img
+            src="https://minotar.net/avatar/{post.writer.username}"
+            alt="{post.writer.username}"
+            width="32"
+            height="32"
+            use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
+            class="rounded-circle ms-2" />
+        </a>
       </div>
     {:else}
       <a class="btn btn-link" href="/blog/post/{post.id}">
@@ -57,13 +59,15 @@
 
       <div>
         <Date class="text-muted" time="{post.date}" />
-        <img
-          src="https://minotar.net/avatar/{post.writer.username}"
-          alt="{post.writer.username}"
-          width="32"
-          height="32"
-          use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
-          class="rounded-circle ms-2" />
+        <a href="/player/{post.writer.username}">
+          <img
+            src="https://minotar.net/avatar/{post.writer.username}"
+            alt="{post.writer.username}"
+            width="32"
+            height="32"
+            use:tooltip="{[post.writer.username, { placement: 'bottom' }]}"
+            class="rounded-circle ms-2" />
+        </a>
       </div>
     {/if}
   </div>
