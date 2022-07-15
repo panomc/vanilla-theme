@@ -50,8 +50,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/butlu"
                   title="Butlu"
                   width="24" />
@@ -62,8 +60,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -74,8 +70,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -86,8 +80,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -100,8 +92,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/kahverengi"
                   title="Kahverengi"
                   width="24" />
@@ -112,8 +102,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -124,8 +112,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -136,8 +122,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -150,8 +134,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -162,8 +144,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -174,8 +154,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
@@ -186,8 +164,6 @@
                 <img
                   alt=""
                   class="rounded"
-                  data-placement="bottom"
-                  data-toggle="tooltip"
                   src="https://minotar.net/avatar/steve"
                   title="Steve"
                   width="24" />
