@@ -18,7 +18,7 @@
                   alt=""
                   class="rounded"
                   src="https://minotar.net/avatar/butlu"
-                  title="Butlu"
+                  use:tooltip="{['Butlu',{ placement: 'bottom' },]}"
                   width="24" />
               </a>
             </td>
@@ -28,7 +28,7 @@
                   alt=""
                   class="rounded"
                   src="https://minotar.net/avatar/kahverengi"
-                  title="kahverengi"
+                  use:tooltip="{['kahverengi',{ placement: 'bottom' },]}"
                   width="24" />
               </a>
             </td>
@@ -42,4 +42,6 @@
 
 <script>
   import Sidebar from "$lib/component/Sidebar.svelte";
+
+  import tooltip from "$lib/tooltip.util"
 </script>
