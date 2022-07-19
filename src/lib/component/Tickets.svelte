@@ -2,7 +2,7 @@
 
 {#if tickets.length > 0}
   <div class="table-responsive">
-    <table class="table table-borderless">
+    <table class="table table-borderless table-hover">
       <thead>
         <tr>
           <th class="align-middle" scope="col"> </th>

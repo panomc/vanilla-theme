@@ -5,7 +5,7 @@
     <table class="table">
       <tbody>
         <tr>
-          <td>KAyıt Tarihi</td>
+          <td>Kayıt Tarihi</td>
           <td>01.01.0000</td>
         </tr>
         <tr>

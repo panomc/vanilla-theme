@@ -27,7 +27,7 @@
             <form>
               <div class="row align-items-end">
                 <div class="col-4">
-                  <label for="newPassowrd">* Yeni Şifre:</label>
+                  <label for="newPassowrd">* Yeni Şifre</label>
                   <input
                     type="password"
                     id="newPassowrd"
@@ -35,7 +35,7 @@
                   />
                 </div>
                 <div class="col-4">
-                  <label for="newPassowrdRepeat">* Yeni Şifre Tekrarı:</label>
+                  <label for="newPassowrdRepeat">* Yeni Şifre Tekrarı</label>
                   <input
                     type="password"
                     id="newPassowrdRepeat"
@@ -75,7 +75,7 @@
             <form>
               <div class="row align-items-end">
                 <div class="col-4">
-                  <label for="verifyPassword">Şifre:</label>
+                  <label for="verifyPassword">Şifre</label>
                   <input
                     type="password"
                     id="verifyPassword"
@@ -83,7 +83,7 @@
                   />
                 </div>
                 <div class="col-4">
-                  <label for="setNewEmail">* Yeni E-Posta:</label>
+                  <label for="setNewEmail">* Yeni E-Posta</label>
                   <input type="email" id="setNewEmail" class="form-control" />
                 </div>
                 <div class="col-4">

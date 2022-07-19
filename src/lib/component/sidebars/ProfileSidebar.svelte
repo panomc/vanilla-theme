@@ -18,7 +18,7 @@
         </div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
-          <div class="badge text-dark border">Oyuncu</div>
+          <div class="badge bg-light text-black rounded-pill">Oyuncu</div>
         </div>
       </div>
     </div>

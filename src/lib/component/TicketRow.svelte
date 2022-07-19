@@ -6,7 +6,7 @@
           'Talebi Kapat',
           { placement: 'bottom', hideOnClick: false },
         ]}"
-        class="btn btn-sm btn-link link-bittersweet"
+        class="btn btn-link link-bittersweet"
         role="button"
         href="javascript:void(0);"
         on:click="{() => onCloseTicket()}">

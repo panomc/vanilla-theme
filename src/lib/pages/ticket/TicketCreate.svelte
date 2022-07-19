@@ -15,26 +15,21 @@
     <ErrorAlert error="{error}" />
 
     <div class="mb-3">
-      <div class="row align-items-end">
-        <div class="col-8">
-          <input
-            type="email"
-            class="form-control"
-            placeholder="Talep başlığını girin"
-            bind:value="{title}" />
-        </div>
-        <div class="col-4">
-          <select
-            class="form-select"
-            id="datalistOptions"
-            bind:value="{categoryId}">
-            <option value="{-1}">Kategorisiz</option>
-            {#each data.categories as category, index (category)}
-              <option value="{category.id}">{category.title}</option>
-            {/each}
-          </select>
-        </div>
-      </div>
+      <input
+        type="email"
+        class="form-control form-control-lg border-0 text-black px-0 mb-3"
+        placeholder="Talep başlığını girin"
+        bind:value="{title}" />
+
+      <select
+        class="form-select"
+        id="datalistOptions"
+        bind:value="{categoryId}">
+        <option value="{-1}">Kategorisiz</option>
+        {#each data.categories as category, index (category)}
+          <option value="{category.id}">{category.title}</option>
+        {/each}
+      </select>
     </div>
 
     <!-- Ticket Editor -->
