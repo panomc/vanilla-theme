@@ -21,12 +21,11 @@
         <div class="col-auto ml-auto">
           {#if data.ticket.status !== TicketStatuses.CLOSED}
             <a
-              class="btn btn-bittersweet"
+              class="btn btn-outline-bittersweet"
               role="button"
               href="javascript:void(0);"
               on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
-              <i class="fas fa-check mr-1"></i>
-              Kapat
+              <i class="fas fa-check me-1"></i> Talebi Kapat
             </a>
           {/if}
         </div>
@@ -290,7 +289,7 @@
       shouldScroll = true;
 
       data.ticket.messages.push(body.message);
-      data.ticket = data.ticket
+      data.ticket = data.ticket;
 
       sentMessageCount++;
 
