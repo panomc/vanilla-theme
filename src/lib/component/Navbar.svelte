@@ -19,13 +19,15 @@
     </button>
 
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
-      <li class="nav-item rounded-pill">
-        <a class="nav-link" href="/">
-          <i
-            class="fa-solid fa-arrow-up fa-rotate-by"
-            style="--fa-rotate-angle: 45deg;"></i> Panel
-        </a>
-      </li>
+      {#if $session.user && $session.user.panelAccess}
+        <li class="nav-item rounded-pill">
+          <a class="nav-link" href="/panel">
+            <i
+              class="fa-solid fa-arrow-up fa-rotate-by"
+              style="--fa-rotate-angle: 45deg;"></i> Panel
+          </a>
+        </li>
+      {/if}
       {#if $session.user}
         <li class="nav-item rounded-pill mr-lg-0 mr-5">
           <div class="dropdown">
