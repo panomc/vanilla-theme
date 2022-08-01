@@ -27,7 +27,7 @@ export async function handle({ event, event: { request }, resolve }) {
 
   event.locals = locals;
 
-  return await resolve(event);
+  return resolve(event);
 }
 
 /** @type {import('@sveltejs/kit').GetSession} */
