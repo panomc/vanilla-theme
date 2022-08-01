@@ -44,7 +44,7 @@
         <Date class="text-muted" time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
-            src="https://minotar.net/avatar/{post.writer.username}"
+            src="https://crafthead.net/avatar/{post.writer.username}"
             alt="{post.writer.username}"
             width="32"
             height="32"
@@ -61,7 +61,7 @@
         <Date class="text-muted" time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
-            src="https://minotar.net/avatar/{post.writer.username}"
+            src="https://crafthead.net/avatar/{post.writer.username}"
             alt="{post.writer.username}"
             width="32"
             height="32"

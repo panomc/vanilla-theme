@@ -11,7 +11,7 @@
                 <img
                   alt=""
                   class="rounded"
-                  src="https://minotar.net/avatar/butlu"
+                  src="https://crafthead.net/avatar/butlu"
                   use:tooltip="{['Butlu',{ placement: 'bottom' },]}"
                   width="24" />
               </a>
@@ -21,7 +21,7 @@
                 <img
                   alt=""
                   class="rounded"
-                  src="https://minotar.net/avatar/steve"
+                  src="https://crafthead.net/avatar/steve"
                   use:tooltip="{['Steve',{ placement: 'bottom' },]}"
                   width="24" />
               </a>

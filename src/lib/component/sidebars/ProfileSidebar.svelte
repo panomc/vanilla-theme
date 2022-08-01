@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header bg-white">
       <img
-        src="https://minotar.net/avatar/{user.username}"
+        src="https://crafthead.net/avatar/{user.username}"
         class="rounded-circle border d-block m-auto"
         width="64"
         height="64"
