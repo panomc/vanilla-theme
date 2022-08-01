@@ -5,7 +5,7 @@ import {
 } from "$lib/variables";
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
-export async function post() {
+export async function POST() {
   return {
     headers: {
       "set-cookie": [
