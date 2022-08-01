@@ -3,7 +3,7 @@
 <div class="row justify-content-between">
   <div class="col-auto">
     <a
-      href="/blog/post/{data.previousPost === '-' ? '' : data.previousPost.id}"
+      href="/blog/post/{data.previousPost === '-' ? '' : data.previousPost.url}"
       class="btn btn-link"
       class:disabled="{data.previousPost === '-'}"
       use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
@@ -12,7 +12,7 @@
   </div>
   <div class="col-auto">
     <a
-      href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.id}"
+      href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.url}"
       class="btn btn-link"
       class:disabled="{data.nextPost === '-'}"
       use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
@@ -45,6 +45,7 @@
             status: 1,
             image: "",
             views: 0,
+            url: ""
           },
           previousPost: "-",
           nextPost: "-",
@@ -54,7 +55,7 @@
 
     setSidebar(HomeSidebar);
 
-    await getPostDetail({ id: request.params.id, request }).then((body) => {
+    await getPostDetail({ url: request.params.url, request }).then((body) => {
       if (body.error) {
         output = null;
 

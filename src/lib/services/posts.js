@@ -25,13 +25,13 @@ export const getPosts = async ({ page, request, CSRFToken }) => {
   });
 };
 
-export const getPostDetail = async ({ id, request, CSRFToken }) => {
+export const getPostDetail = async ({ url, request, CSRFToken }) => {
   return ApiUtil.post({
-    path: `/api/posts/${id}`,
+    path: `/api/posts/${url}`,
     request,
     CSRFToken,
   }).then((body) => {
-    body.id = parseInt(id);
+    body.url = url;
 
     return body;
   });
