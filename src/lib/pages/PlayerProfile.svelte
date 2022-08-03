@@ -1,6 +1,5 @@
 Hello world!
 
-
 <script context="module">
   /**
    * @type {import('@sveltejs/kit').Load}

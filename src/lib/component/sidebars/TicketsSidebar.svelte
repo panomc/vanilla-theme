@@ -18,7 +18,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/butlu"
-                  use:tooltip="{['Butlu',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Butlu', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -28,7 +28,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/kahverengi"
-                  use:tooltip="{['kahverengi',{ placement: 'bottom' },]}"
+                  use:tooltip="{['kahverengi', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -43,5 +43,5 @@
 <script>
   import Sidebar from "$lib/component/Sidebar.svelte";
 
-  import tooltip from "$lib/tooltip.util"
+  import tooltip from "$lib/tooltip.util";
 </script>

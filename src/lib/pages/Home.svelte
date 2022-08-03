@@ -10,8 +10,7 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
-  />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
 <!-- Pagination End -->

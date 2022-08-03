@@ -10,16 +10,14 @@
             class="btn btn-sm btn-outline-light btn-link"
             class:active="{data.pageType === PageTypes.ALL}"
             role="button"
-            href="/tickets/all"
-          >
+            href="/tickets/all">
             Tümü
           </a>
           <a
             class="btn btn-sm btn-outline-light btn-link text-bittersweet"
             class:active="{data.pageType === PageTypes.CLOSED}"
             role="button"
-            href="/tickets/closed"
-          >
+            href="/tickets/closed">
             Kapalı
           </a>
         </div>
@@ -27,8 +25,7 @@
     </div>
     <Tickets
       tickets="{data.tickets}"
-      on:closeTicket="{(event) => onCloseTicketClick(event.detail.ticket)}"
-    />
+      on:closeTicket="{(event) => onCloseTicketClick(event.detail.ticket)}" />
   </div>
 </div>
 
@@ -42,8 +39,7 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
-  />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
 <script context="module">

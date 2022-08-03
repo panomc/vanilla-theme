@@ -5,10 +5,10 @@
     </h4>
   </div>
   <div class="col-auto">
-      <a href="/">
-        <i class="fas fa-arrow-left me-2"></i>
-        Yazılar
-      </a>
+    <a href="/">
+      <i class="fas fa-arrow-left me-2"></i>
+      Yazılar
+    </a>
   </div>
 </div>
 
@@ -22,8 +22,7 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
-  />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
 <!-- Pagination End -->

@@ -1,4 +1,3 @@
-
 <PlayerProfile />
 
 <script context="module">

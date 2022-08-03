@@ -2,28 +2,20 @@
   <a href="/tickets/waitingReply"
     ><span
       class="badge bg-mint rounded-pill"
-      use:tooltip="{['Filtrele', { placement: 'bottom' }]}"
-      >Yeni</span
-    ></a
-  >
+      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Yeni</span
+    ></a>
 {:else if status === TicketStatuses.REPLIED}
   <a href="/tickets"
     ><span
       class="badge bg-sunflower rounded-pill"
-      use:tooltip="{[
-        'Filtrele',
-        { placement: 'bottom' },
-      ]}">Yanıtlandı</span
-    ></a
-  >
+      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Yanıtlandı</span
+    ></a>
 {:else if status === TicketStatuses.CLOSED}
   <a href="/tickets/closed"
     ><span
       class="badge bg-bittersweet rounded-pill"
-      use:tooltip="{['Filtrele', { placement: 'bottom' }]}"
-      >Kapalı</span
-    ></a
-  >
+      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Kapalı</span
+    ></a>
 {/if}
 
 <script context="module">

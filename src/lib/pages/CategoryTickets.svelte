@@ -3,7 +3,10 @@
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">
         <h4 class="card-title mb-md-0">
-          <strong>"{data.category.title === '-' ? 'Kategorisiz' : data.category.title}"</strong> Talepler
+          <strong
+            >"{data.category.title === "-"
+              ? "Kategorisiz"
+              : data.category.title}"</strong> Talepler
         </h4>
       </div>
     </div>
@@ -21,8 +24,7 @@
     loading="{false}"
     on:firstPageClick="{() => reloadData(1)}"
     on:lastPageClick="{() => reloadData(data.totalPage)}"
-    on:pageLinkClick="{(event) => reloadData(event.detail.page)}"
-  />
+    on:pageLinkClick="{(event) => reloadData(event.detail.page)}" />
 {/if}
 
 <script context="module">

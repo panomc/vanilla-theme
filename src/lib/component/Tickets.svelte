@@ -9,16 +9,14 @@
           <th class="align-middle" scope="col">Başlık</th>
           <th class="align-middle" scope="col">Durum</th>
           <th class="align-middle" scope="col">Kategori</th>
-          <th class="align-middle" scope="col">Son Yanıt</th></tr
-        >
+          <th class="align-middle" scope="col">Son Yanıt</th></tr>
       </thead>
       <tbody>
         {#each tickets as ticket, index (ticket)}
           <TicketRow
             ticket="{ticket}"
             on:closeTicket="{(event) =>
-              onCloseTicketClick(event.detail.ticket)}"
-          />
+              onCloseTicketClick(event.detail.ticket)}" />
         {/each}
       </tbody>
     </table>

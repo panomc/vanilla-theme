@@ -45,7 +45,7 @@
             status: 1,
             image: "",
             views: 0,
-            url: ""
+            url: "",
           },
           previousPost: "-",
           nextPost: "-",

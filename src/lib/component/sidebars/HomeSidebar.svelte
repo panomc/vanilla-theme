@@ -25,7 +25,8 @@
           <i class="fas fa-check-circle fa-lg d-block text-mint py-3"></i>
           Çevrimiçi
         </div>
-        <div use:tooltip="{['157 players are playing', { placement: 'bottom' }]}">
+        <div
+          use:tooltip="{['157 players are playing', { placement: 'bottom' }]}">
           <i class="fas fa-users fa-lg d-block text-secondary py-3"></i>
           16/32
         </div>
@@ -51,7 +52,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/butlu"
-                  use:tooltip="{['Butlu',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Butlu', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -61,7 +62,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -71,7 +72,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -81,7 +82,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -93,7 +94,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/kahverengi"
-                  use:tooltip="{['kahverengi',{ placement: 'bottom' },]}"
+                  use:tooltip="{['kahverengi', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -103,7 +104,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -113,7 +114,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -123,7 +124,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -135,7 +136,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -145,7 +146,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -155,7 +156,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
@@ -165,7 +166,7 @@
                   alt=""
                   class="rounded"
                   src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve',{ placement: 'bottom' },]}"
+                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
                   width="24" />
               </a>
             </td>
