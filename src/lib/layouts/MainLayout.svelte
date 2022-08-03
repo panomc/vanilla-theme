@@ -26,10 +26,20 @@
   } from "$lib/Store.js";
   import { browser } from "$app/env";
 
+  import ApiUtil from "$lib/api.util.js";
+
+  function sendVisitorVisitRequest({ request, CSRFToken }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request, CSRFToken })
+  }
+
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load() {
+  export async function load(request) {
+    if (browser) {
+      sendVisitorVisitRequest({ request });
+    }
+
     // when page opens, set default
     if (!browser) {
       setSidebar(null);
