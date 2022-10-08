@@ -55,7 +55,6 @@
     } = event;
 
     session.set({ user, CSRFToken });
-    console.log("==== mainlayout ====")
 
     if (browser) {
       sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
