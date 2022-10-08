@@ -28,6 +28,19 @@
   </div>
 </div>
 
+<script context="module">
+  import { requireNotLogin } from "$lib/Store.js";
+
+  /**
+   * @type {import('@sveltejs/kit').LayoutLoad}
+   */
+  export async function load({ parent }) {
+    await parent();
+
+    requireNotLogin();
+  }
+</script>
+
 <script>
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";

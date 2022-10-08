@@ -4,6 +4,7 @@ Hello world!
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export function load() {
+  export async function load({parent}) {
+    await parent();
   }
 </script>

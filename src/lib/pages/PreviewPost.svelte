@@ -15,6 +15,10 @@
   import { session } from "$lib/Store.js";
 
   export async function load(event) {
+    const { parent } = event;
+
+    await parent();
+
     const { user } = get(session);
 
     if (!user && !user.panelAccess) {
@@ -24,37 +28,37 @@
       };
     }
 
-    let output = {
-      props: {
-        post: {
-          id: -1,
-          title: "",
-          category: "-",
-          writer: {
-            username: "",
-          },
-          text: "",
-          date: 0,
-          status: 1,
-          image: "",
-          views: 0,
+    let data = {
+      post: {
+        id: -1,
+        title: "",
+        category: "-",
+        writer: {
+          username: "",
         },
-        previousPost: "-",
-        nextPost: "-",
+        text: "",
+        date: 0,
+        status: 1,
+        image: "",
+        views: 0,
       },
+      previousPost: "-",
+      nextPost: "-",
     };
 
-    await getPostPreview({ id: event.params.id, request: event }).then((body) => {
-      if (body.error) {
-        output = null;
+    await getPostPreview({ id: event.params.id, request: event }).then(
+      (body) => {
+        if (body.error) {
+          data = {};
 
-        return;
+          return;
+        }
+
+        data = body;
       }
+    );
 
-      output.props.post = body;
-    });
-
-    return output;
+    return data;
   }
 </script>
 

@@ -30,42 +30,43 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event) {
-    let output = {
-      props: {
-        data: {
-          post: {
-            id: -1,
-            title: "",
-            category: "-",
-            writer: {
-              username: "",
-            },
-            text: "",
-            date: 0,
-            status: 1,
-            image: "",
-            views: 0,
-            url: "",
-          },
-          previousPost: "-",
-          nextPost: "-",
+    const { parent } = event;
+    await parent();
+
+    let data = {
+      post: {
+        id: -1,
+        title: "",
+        category: "-",
+        writer: {
+          username: "",
         },
+        text: "",
+        date: 0,
+        status: 1,
+        image: "",
+        views: 0,
+        url: "",
       },
+      previousPost: "-",
+      nextPost: "-",
     };
 
     setSidebar(HomeSidebar);
 
-    await getPostDetail({ url: event.params.url, request: event }).then((body) => {
-      if (body.error) {
-        output = null;
+    await getPostDetail({ url: event.params.url, request: event }).then(
+      (body) => {
+        if (body.error) {
+          data = null;
 
-        return;
+          return;
+        }
+
+        data = body;
       }
+    );
 
-      output.props.data = body;
-    });
-
-    return output;
+    return data;
   }
 </script>
 

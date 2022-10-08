@@ -55,31 +55,30 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event) {
-    let output = {
-      props: {
-        data: {
-          categories: [],
-          categoryPage: 0,
-        },
-      },
+    const { parent } = event;
+    await parent();
+
+    let data = {
+      categories: [],
+      categoryPage: 0,
     };
 
     setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketCategories({
-      page: output.props.data.categoryPage,
+      page: data.categoryPage,
       request: event,
     }).then((body) => {
       if (body.error) {
-        output = null;
+        data = null;
 
         return;
       }
 
-      output.props.data = body;
+      data = body;
     });
 
-    return output;
+    return data;
   }
 </script>
 

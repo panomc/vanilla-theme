@@ -23,6 +23,9 @@
    * @type {import('@sveltejs/kit').PageLoad}
    */
   export async function load(event) {
+    const { parent } = event;
+    await parent();
+
     let data = {
       posts: [],
       postCount: 0,
@@ -32,13 +35,15 @@
 
     setSidebar(HomeSidebar);
 
-    await getPosts({ page: event.params.page || 1, request: event }).then((body) => {
-      if (body.error) {
-        return;
-      }
+    await getPosts({ page: event.params.page || 1, request: event }).then(
+      (body) => {
+        if (body.error) {
+          return;
+        }
 
-      data = body;
-    });
+        data = body;
+      }
+    );
 
     return data;
   }

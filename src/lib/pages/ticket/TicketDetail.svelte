@@ -179,20 +179,19 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event) {
-    let output = {
-      props: {
-        data: {
-          ticket: {
-            id: -1,
-            username: "",
-            title: "",
-            category: "-",
-            messages: [],
-            status: 1,
-            date: 0,
-            messageCount: 0,
-          },
-        },
+    const { parent } = event;
+    await parent();
+
+    let data = {
+      ticket: {
+        id: -1,
+        username: "",
+        title: "",
+        category: "-",
+        messages: [],
+        status: 1,
+        date: 0,
+        messageCount: 0,
       },
     };
 
@@ -203,15 +202,15 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        output = null;
+        data = null;
 
         return;
       }
 
-      output.props.data = body;
+      data = body;
     });
 
-    return output;
+    return data;
   }
 </script>
 

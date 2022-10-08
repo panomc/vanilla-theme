@@ -33,21 +33,20 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event) {
-    let output = {
-      props: {
-        data: {
-          posts: [],
-          postCount: 0,
-          totalPage: 1,
-          page: 1,
-          category: {
-            id: -1,
-            title: "",
-            description: "",
-            url: "",
-            color: "",
-          },
-        },
+    const { parent } = event;
+    await parent();
+
+    let data = {
+      posts: [],
+      postCount: 0,
+      totalPage: 1,
+      page: 1,
+      category: {
+        id: -1,
+        title: "",
+        description: "",
+        url: "",
+        color: "",
       },
     };
 
@@ -57,15 +56,15 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        output = null;
+        data = null;
 
         return;
       }
 
-      output.props.data = body;
+      data = body;
     });
 
-    return output;
+    return data;
   }
 </script>
 

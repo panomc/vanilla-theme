@@ -55,3 +55,9 @@ export function requireLogin() {
     throw redirect(302, "/");
   }
 }
+
+export function requireNotLogin() {
+  if (get(session).user) {
+    throw redirect(302, "/");
+  }
+}

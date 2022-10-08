@@ -58,16 +58,15 @@
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event, pageType = DefaultPageType) {
-    let output = {
-      props: {
-        data: {
-          tickets: [],
-          ticketCount: 0,
-          page: 1,
-          totalPage: 1,
-          pageType,
-        },
-      },
+    const { parent } = event;
+    await parent();
+
+    let data = {
+      tickets: [],
+      ticketCount: 0,
+      page: 1,
+      totalPage: 1,
+      pageType,
     };
 
     setSidebar(TicketsSidebar);
@@ -78,15 +77,15 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        output = null;
+        data = {};
 
         return;
       }
 
-      output.props.data = body;
+      data = body;
     });
 
-    return output;
+    return data;
   }
 </script>
 

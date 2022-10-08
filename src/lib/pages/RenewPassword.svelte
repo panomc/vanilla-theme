@@ -22,7 +22,7 @@
 </div>
 
 <script context="module">
-  import { requireLogin } from "$lib/Store.js";
+  import { requireNotLogin } from "$lib/Store.js";
 
   /**
    * @type {import('@sveltejs/kit').PageLoad}
@@ -30,7 +30,7 @@
   export async function load({ parent }) {
     await parent();
 
-    requireLogin();
+    requireNotLogin();
   }
 </script>
 
