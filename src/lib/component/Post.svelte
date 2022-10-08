@@ -41,7 +41,7 @@
       </ul>
 
       <div>
-        <Date class="text-muted" time="{post.date}" />
+        <Date time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
             src="https://crafthead.net/avatar/{post.writer.username}"
@@ -58,7 +58,7 @@
       </a>
 
       <div>
-        <Date class="text-muted" time="{post.date}" />
+        <Date time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
             src="https://crafthead.net/avatar/{post.writer.username}"

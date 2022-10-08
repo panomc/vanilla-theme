@@ -87,8 +87,7 @@
 
 <!-- Navbar -->
 <script>
-  import { session } from "$app/stores";
-  import { logout } from "$lib/Store";
+  import { logout, session } from "$lib/Store";
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";

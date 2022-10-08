@@ -1,7 +1,7 @@
 import { get, writable } from "svelte/store";
-import { session } from "$app/stores";
 
 import { sendLogout } from "$lib/services/auth.js";
+import { invalidateAll } from "$app/navigation";
 
 export const sidebar = writable(null);
 export const queuedSidebar = writable(null);
@@ -9,6 +9,7 @@ export const queuedSidebarProps = writable(null);
 export const sidebarProps = writable({});
 export const keepSidebar = writable(false);
 export const sidebarPageInit = writable(false);
+export const session = writable({});
 
 export async function logout(CSRFToken) {
   sendLogout(CSRFToken).then(() => {
@@ -18,6 +19,8 @@ export async function logout(CSRFToken) {
 
       return data;
     });
+
+    invalidateAll()
   });
 }
 

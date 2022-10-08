@@ -5,15 +5,14 @@
 <CloseTicketConfirmModal />
 
 <script context="module">
-  export function load({ session: { user } }) {
-    if (!user) {
-      return {
-        status: 302,
-        redirect: "/",
-      };
-    }
+  import { redirect } from "@sveltejs/kit";
+  import { get } from "svelte/store";
+  import { session } from "$lib/Store.js";
 
-    return {};
+  export function load() {
+    if (!get(session).user) {
+      throw redirect(302, "/");
+    }
   }
 </script>
 

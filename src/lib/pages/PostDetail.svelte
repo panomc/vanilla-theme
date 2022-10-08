@@ -29,7 +29,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request) {
+  export async function load(event) {
     let output = {
       props: {
         data: {
@@ -55,7 +55,7 @@
 
     setSidebar(HomeSidebar);
 
-    await getPostDetail({ url: request.params.url, request }).then((body) => {
+    await getPostDetail({ url: event.params.url, request: event }).then((body) => {
       if (body.error) {
         output = null;
 

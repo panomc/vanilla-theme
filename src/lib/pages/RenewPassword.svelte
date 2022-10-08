@@ -28,3 +28,18 @@
   let error;
   let message;
 </script>
+
+<script context="module">
+  import { get } from "svelte/store";
+  import { session } from "$lib/Store.js";
+  import { redirect } from "@sveltejs/kit";
+
+  /**
+   * @type {import('@sveltejs/kit').PageLoad}
+   */
+  export async function load() {
+    if (!get(session).user) {
+      throw redirect(302, "/");
+    }
+  }
+</script>

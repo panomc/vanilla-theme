@@ -57,7 +57,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request, pageType = DefaultPageType) {
+  export async function load(event, pageType = DefaultPageType) {
     let output = {
       props: {
         data: {
@@ -73,9 +73,9 @@
     setSidebar(TicketsSidebar);
 
     await getTickets({
-      page: request.params.page || 1,
+      page: event.params.page || 1,
       pageType,
-      request,
+      request: event,
     }).then((body) => {
       if (body.error) {
         output = null;
@@ -92,7 +92,6 @@
 
 <script>
   import { goto } from "$app/navigation";
-  import { session } from "$app/stores";
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
@@ -103,6 +102,7 @@
   } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
   import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
+  import { session } from "$lib/Store.js";
 
   export let data;
 

@@ -20,42 +20,36 @@
   import { getPosts } from "$lib/services/posts.js";
 
   /**
-   * @type {import('@sveltejs/kit').Load}
+   * @type {import('@sveltejs/kit').PageLoad}
    */
-  export async function load(request) {
-    let output = {
-      props: {
-        data: {
-          posts: [],
-          postCount: 0,
-          page: 1,
-          totalPage: 1,
-        },
-      },
+  export async function load(event) {
+    let data = {
+      posts: [],
+      postCount: 0,
+      page: 1,
+      totalPage: 1,
     };
 
     setSidebar(HomeSidebar);
 
-    await getPosts({ page: request.params.page || 1, request }).then((body) => {
+    await getPosts({ page: event.params.page || 1, request: event }).then((body) => {
       if (body.error) {
-        output = null;
-
         return;
       }
 
-      output.props.data = body;
+      data = body;
     });
 
-    return output;
+    return data;
   }
 </script>
 
 <script>
   import { goto } from "$app/navigation";
-  import { session } from "$app/stores";
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Posts from "$lib/component/Posts.svelte";
+  import { session } from "$lib/Store.js";
 
   export let data;
 

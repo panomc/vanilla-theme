@@ -1,5 +1,5 @@
 import ApiUtil from "$lib/api.util";
-import * as api from "$lib/api.util.server.js";
+import * as api from "$lib/api-server.util.js";
 
 export const sendLogout = async (CSRFToken) => {
   return ApiUtil.post({

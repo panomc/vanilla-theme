@@ -23,32 +23,42 @@
     setSidebar,
     processQueuedSidebar,
     sidebarPageInit,
+    session,
   } from "$lib/Store.js";
-  import { browser } from "$app/env";
 
   import ApiUtil from "$lib/api.util.js";
+  import { browser } from "$app/environment";
+  import { get } from "svelte/store";
 
-  function sendVisitorVisitRequest({ request, CSRFToken }) {
-    ApiUtil.post({ path: "/api/visitorVisit", request, CSRFToken })
+  function sendVisitorVisitRequest({ event, CSRFToken }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
   }
 
   /**
-   * @type {import('@sveltejs/kit').Load}
+   * @type {import('@sveltejs/kit').LayoutLoad}
    */
-  export async function load(request) {
+  export async function load(event) {
+    const {
+      data: { user, CSRFToken },
+    } = event;
+
+    session.set({ user, CSRFToken });
+
     if (browser) {
-      sendVisitorVisitRequest({ request });
+      sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
     }
+  }
 
-    // when page opens, set default
-    if (!browser) {
-      setSidebar(null);
-      keepSidebar.set(false);
-      processQueuedSidebar();
-      sidebarPageInit.set(true);
-    }
+  /**
+   * @type {import('@sveltejs/kit').LayoutLoad}
+   */
+  export async function loadServer({ locals: { user, CSRFToken } }) {
+    setSidebar(null);
+    keepSidebar.set(false);
+    processQueuedSidebar();
+    sidebarPageInit.set(true);
 
-    return {};
+    return { user, CSRFToken };
   }
 </script>
 
@@ -75,7 +85,7 @@
 
     if (
       navigation.from &&
-      navigation.from.pathname !== navigation.to.pathname
+      navigation.from.url.pathname !== navigation.to.url.pathname
     ) {
       setSidebar(null);
       processQueuedSidebar();

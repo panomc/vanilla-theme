@@ -3,14 +3,13 @@
 <slot />
 
 <script context="module">
-  export function load({ session: { user } }) {
-    if (!user) {
-      return {
-        status: 302,
-        redirect: "/",
-      };
-    }
+  import { redirect } from "@sveltejs/kit";
+  import { session } from "$lib/Store.js";
+  import { get } from "svelte/store";
 
-    return {};
+  export function load() {
+    if (!get(session).user) {
+      throw redirect(302, "/");
+    }
   }
 </script>

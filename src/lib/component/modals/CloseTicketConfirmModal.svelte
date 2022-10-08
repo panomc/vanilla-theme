@@ -83,10 +83,10 @@
 <script>
   import { NETWORK_ERROR } from "$lib/api.util";
 
-  import { session } from "$app/stores";
-
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import { closeTicket } from "$lib/services/tickets";
+
+  import { session } from "$lib/Store.js";
 
   let loading = false;
 

@@ -32,7 +32,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request) {
+  export async function load(event) {
     let output = {
       props: {
         data: {
@@ -52,9 +52,9 @@
     };
 
     await getCategoryPosts({
-      page: request.params.page || 1,
-      url: request.params.url,
-      request,
+      page: event.params.page || 1,
+      url: event.params.url,
+      request: event,
     }).then((body) => {
       if (body.error) {
         output = null;
@@ -70,12 +70,11 @@
 </script>
 
 <script>
-  import { session } from "$app/stores";
-
   import { goto } from "$app/navigation";
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Posts from "$lib/component/Posts.svelte";
+  import { session } from "$lib/Store.js";
 
   export let data;
 

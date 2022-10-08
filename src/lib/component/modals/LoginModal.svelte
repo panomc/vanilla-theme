@@ -111,11 +111,11 @@
 <script>
   import { NETWORK_ERROR } from "$lib/api.util";
 
-  import { session } from "$app/stores";
-
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
 
   import { getCredentials, sendLogin } from "$lib/services/auth.js";
+
+  import { session } from "$lib/Store.js";
 
   let loading = false;
 
@@ -130,17 +130,21 @@
           const CSRFToken = body.CSRFToken;
 
           await getCredentials(CSRFToken).then((body) => {
-            $session.user = {
-              ...Object.keys(body)
-                .filter((key) => !["result"].includes(key))
-                .reduce((object, key) => {
-                  object[key] = body[key];
+            session.update((data) => {
+              data.user = {
+                ...Object.keys(body)
+                  .filter((key) => !["result"].includes(key))
+                  .reduce((object, key) => {
+                    object[key] = body[key];
 
-                  return object;
-                }, {}),
-            };
+                    return object;
+                  }, {}),
+              };
 
-            $session.CSRFToken = CSRFToken;
+              data.CSRFToken = CSRFToken;
+
+              return data;
+            });
 
             loading = false;
 
@@ -154,7 +158,8 @@
           error.set(body.result === "error" ? body.error : NETWORK_ERROR);
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         loading = false;
 
         error.set(NETWORK_ERROR);

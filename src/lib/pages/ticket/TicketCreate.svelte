@@ -54,7 +54,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request) {
+  export async function load(event) {
     let output = {
       props: {
         data: {
@@ -68,7 +68,7 @@
 
     await getTicketCategories({
       page: output.props.data.categoryPage,
-      request,
+      request: event,
     }).then((body) => {
       if (body.error) {
         output = null;
@@ -85,11 +85,12 @@
 
 <script>
   import { goto } from "$app/navigation";
-  import { session } from "$app/stores";
 
   import { createTicket } from "$lib/services/tickets";
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import { NETWORK_ERROR } from "$lib/api.util";
+
+  import { session } from "$lib/Store.js";
 
   export let data;
 

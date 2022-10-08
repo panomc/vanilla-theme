@@ -27,7 +27,5 @@
    */
   export function load() {
     setSidebar(ProfileSidebar);
-
-    return {};
   }
 </script>

@@ -178,7 +178,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load(request) {
+  export async function load(event) {
     let output = {
       props: {
         data: {
@@ -199,8 +199,8 @@
     setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketDetail({
-      id: request.params.id,
-      request,
+      id: event.params.id,
+      request: event,
     }).then((body) => {
       if (body.error) {
         output = null;
@@ -218,7 +218,7 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { session } from "$app/stores";
+  import { session } from "$lib/Store.js";
 
   import Date from "$lib/component/Date.svelte";
   import tooltip from "$lib/tooltip.util";

@@ -56,11 +56,11 @@
 </Sidebar>
 
 <script>
-  import { page, session } from "$app/stores";
+  import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";
 
   import Sidebar from "$lib/component/Sidebar.svelte";
-  import { logout } from "$lib/Store";
+  import { logout, session } from "$lib/Store";
 
   $: user = $session.user ? $session.user : {};
 
