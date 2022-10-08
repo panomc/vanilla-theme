@@ -3,13 +3,11 @@
 <slot />
 
 <script context="module">
-  import { redirect } from "@sveltejs/kit";
-  import { session } from "$lib/Store.js";
-  import { get } from "svelte/store";
+  import { requireLogin } from "$lib/Store.js";
 
-  export function load() {
-    if (!get(session).user) {
-      throw redirect(302, "/");
-    }
+  export async function load({parent}) {
+    await parent();
+
+    requireLogin()
   }
 </script>

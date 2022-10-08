@@ -2,6 +2,7 @@ import { get, writable } from "svelte/store";
 
 import { sendLogout } from "$lib/services/auth.js";
 import { invalidateAll } from "$app/navigation";
+import { redirect } from "@sveltejs/kit";
 
 export const sidebar = writable(null);
 export const queuedSidebar = writable(null);
@@ -47,4 +48,10 @@ export function setSidebar(component, props = {}) {
 export function processQueuedSidebar() {
   sidebar.set(get(queuedSidebar));
   sidebarProps.set(get(queuedSidebarProps));
+}
+
+export function requireLogin() {
+  if (!get(session).user) {
+    throw redirect(302, "/");
+  }
 }

@@ -35,22 +35,7 @@
   }
 
   /**
-   * @type {import('@sveltejs/kit').LayoutLoad}
-   */
-  export async function load(event) {
-    const {
-      data: { user, CSRFToken },
-    } = event;
-
-    session.set({ user, CSRFToken });
-
-    if (browser) {
-      sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
-    }
-  }
-
-  /**
-   * @type {import('@sveltejs/kit').LayoutLoad}
+   * @type {import('@sveltejs/kit').LayoutServerLoad}
    */
   export async function loadServer({ locals: { user, CSRFToken } }) {
     setSidebar(null);
@@ -59,6 +44,22 @@
     sidebarPageInit.set(true);
 
     return { user, CSRFToken };
+  }
+
+  /**
+   * @type {import('@sveltejs/kit').LayoutLoad}
+   */
+  export async function load(event) {
+    const {
+      data: { user, CSRFToken },
+    } = event;
+
+    session.set({ user, CSRFToken });
+    console.log("==== mainlayout ====")
+
+    if (browser) {
+      sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
+    }
   }
 </script>
 
