@@ -10,7 +10,7 @@ export async function handle({
   event,
   event: {
     cookies,
-    url: { href },
+    url: { pathname },
   },
   resolve,
 }) {
@@ -21,8 +21,8 @@ export async function handle({
 
   locals.user =
     jwt &&
-    !href.startsWith("/api/") &&
-    !href.startsWith("/auth/") &&
+    !pathname.startsWith("/api/") &&
+    !pathname.startsWith("/auth/") &&
     (await getCredentialsServerSide(jwt));
 
   locals.jwt = jwt;
