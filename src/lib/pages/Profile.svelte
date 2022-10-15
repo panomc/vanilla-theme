@@ -25,7 +25,7 @@
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({parent}) {
+  export async function load({ parent }) {
     await parent();
 
     setSidebar(ProfileSidebar);

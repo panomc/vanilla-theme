@@ -21,7 +21,7 @@ export async function logout(CSRFToken) {
       return data;
     });
 
-    invalidateAll()
+    invalidateAll();
   });
 }
 
