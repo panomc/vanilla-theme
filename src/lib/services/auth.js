@@ -44,3 +44,10 @@ export const sendRegister = async (body) => {
     body,
   });
 };
+
+export const sendVerifyEmail = async (token) => {
+  return ApiUtil.post({
+    path: "/auth/verifyEmail",
+    body: { token },
+  });
+};
