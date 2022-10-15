@@ -21,7 +21,7 @@
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
       {#if $session.user && $session.user.panelAccess}
         <li class="nav-item rounded-pill">
-          <a class="nav-link" href="/panel">
+          <a class="nav-link" href="{PANEL_URL}">
             <i
               class="fa-solid fa-arrow-up fa-rotate-by"
               style="--fa-rotate-angle: 45deg;"></i> Panel
@@ -91,4 +91,5 @@
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
+  import { PANEL_URL } from "$lib/variables.js";
 </script>
