@@ -25,20 +25,27 @@
             <form>
               <div class="row align-items-end">
                 <div class="col-4">
-                  <label for="newPassowrd">* Yeni Şifre</label>
+                  <label for="newPassowrd">Mevcut Şifre</label>
                   <input
                     type="password"
                     id="newPassowrd"
                     class="form-control" />
                 </div>
                 <div class="col-4">
-                  <label for="newPassowrdRepeat">* Yeni Şifre Tekrarı</label>
+                  <label for="newPassowrd">Yeni Şifre</label>
+                  <input
+                    type="password"
+                    id="newPassowrd"
+                    class="form-control" />
+                </div>
+                <div class="col-4">
+                  <label for="newPassowrdRepeat">Yeni Şifre Tekrarı</label>
                   <input
                     type="password"
                     id="newPassowrdRepeat"
                     class="form-control" />
                 </div>
-                <div class="col-4">
+                <div class="col-12 mt-3">
                   <button type="submit" class="btn btn-secondary w-100">
                     Kaydet
                   </button>
@@ -77,7 +84,7 @@
                     class="form-control" />
                 </div>
                 <div class="col-4">
-                  <label for="setNewEmail">* Yeni E-Posta</label>
+                  <label for="setNewEmail">Yeni E-Posta</label>
                   <input type="email" id="setNewEmail" class="form-control" />
                 </div>
                 <div class="col-4">
