@@ -3,7 +3,7 @@
     <div class="card-header bg-white">
       <img
         src="https://crafthead.net/avatar/{user.username}"
-        class="rounded-circle border d-block m-auto"
+        class="rounded d-block m-auto"
         width="64"
         height="64"
         alt="{user.username}" />

@@ -43,24 +43,20 @@
   <div class="card text-center border-0 mb-4">
     <h5 class="card-header bg-secondary text-white">Son Kayıt Olanlar</h5>
     <div class="card-body p-0">
-      <table class="table table-borderless mb-0">
-        <tbody>
-          <tr>
-            {#each $data.lastRegisteredUsers as player, index (player)}
-              <td>
-                <a href="/player/{player}">
-                  <img
-                    alt="{player}"
-                    class="rounded"
-                    src="https://crafthead.net/avatar/{player}"
-                    use:tooltip="{[player, { placement: 'bottom' }]}"
-                    width="24" />
-                </a>
-              </td>
-            {/each}
-          </tr>
-        </tbody>
-      </table>
+      <div class="row">
+        {#each $data.lastRegisteredUsers as player, index (player)}
+          <div class="col-3">
+            <a href="/player/{player}">
+              <img
+                alt="{player}"
+                class="rounded m-2"
+                src="https://crafthead.net/avatar/{player}"
+                use:tooltip="{[player, { placement: 'bottom' }]}"
+                width="24" />
+            </a>
+          </div>
+        {/each}
+      </div>
     </div>
   </div>
   <!-- Latest Registers End -->
