@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>{$session.siteInfo.websiteName}</title>
+</svelte:head>
+
 <App>
   <Header />
 
@@ -37,13 +41,19 @@
   /**
    * @type {import('@sveltejs/kit').LayoutServerLoad}
    */
-  export async function loadServer({ locals: { user, CSRFToken } }) {
+  export async function loadServer(event) {
+    const { locals: { user, CSRFToken } } = event
+    const siteInfo = await ApiUtil.get({
+      path: "/api/siteInfo",
+      request: event
+    })
+
     setSidebar(null);
     keepSidebar.set(false);
     processQueuedSidebar();
     sidebarPageInit.set(true);
 
-    return { user, CSRFToken };
+    return { user, CSRFToken, siteInfo };
   }
 
   /**
@@ -51,10 +61,11 @@
    */
   export async function load(event) {
     const {
-      data: { user, CSRFToken },
+      data: { user, CSRFToken, siteInfo },
     } = event;
 
-    session.set({ user, CSRFToken });
+    session.set({ user, CSRFToken, siteInfo });
+
 
     if (browser) {
       sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
