@@ -15,7 +15,7 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import HomeSidebar from "$lib/component/sidebars/HomeSidebar.svelte";
+  import HomeSidebar, {load as loadSidebar} from "$lib/component/sidebars/HomeSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getPosts } from "$lib/services/posts.js";
 
@@ -33,6 +33,7 @@
       totalPage: 1,
     };
 
+    await loadSidebar(event);
     setSidebar(HomeSidebar);
 
     await getPosts({ page: event.params.page || 1, request: event }).then(

@@ -10,7 +10,7 @@
         { placement: 'bottom', hideOnClick: false },
       ]}">
       <h4 class="text-white text-uppercase mb-0">
-        {ip}
+        {$data.ipAddress}
       </h4>
     </button>
   </div>
@@ -46,130 +46,18 @@
       <table class="table table-borderless mb-0">
         <tbody>
           <tr>
-            <td>
-              <a href="/player/Butlu">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/butlu"
-                  use:tooltip="{['Butlu', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/player/Kahverengi">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/kahverengi"
-                  use:tooltip="{['kahverengi', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
-            <td>
-              <a href="/player/Steve">
-                <img
-                  alt=""
-                  class="rounded"
-                  src="https://crafthead.net/avatar/steve"
-                  use:tooltip="{['Steve', { placement: 'bottom' }]}"
-                  width="24" />
-              </a>
-            </td>
+            {#each $data.lastRegisteredUsers as player, index (player)}
+              <td>
+                <a href="/player/{player}">
+                  <img
+                    alt="{player}"
+                    class="rounded"
+                    src="https://crafthead.net/avatar/{player}"
+                    use:tooltip="{[player, { placement: 'bottom' }]}"
+                    width="24" />
+                </a>
+              </td>
+            {/each}
           </tr>
         </tbody>
       </table>
@@ -178,13 +66,28 @@
   <!-- Latest Registers End -->
 </Sidebar>
 
+<script context="module">
+  import ApiUtil from "$lib/api.util.js";
+  import { writable } from "svelte/store";
+
+  const data = writable({});
+
+  export const load = async (event) => {
+    data.set(
+      await ApiUtil.get({
+        path: "/api/sidebar/home",
+        request: event,
+      })
+    );
+  };
+</script>
+
 <script>
   import copy from "copy-to-clipboard";
 
   import Sidebar from "$lib/component/Sidebar.svelte";
   import tooltip from "$lib/tooltip.util";
 
-  const ip = "oyna.ipadresi.com";
   let copyClickIDForCommandText = 0;
   let isCommandTextCopied = false;
 
@@ -193,7 +96,7 @@
 
     const id = copyClickIDForCommandText;
 
-    copy(ip);
+    copy($data.ipAddress);
 
     isCommandTextCopied = true;
 
