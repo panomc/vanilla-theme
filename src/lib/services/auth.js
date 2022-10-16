@@ -51,3 +51,10 @@ export const sendVerifyEmail = async (token) => {
     body: { token },
   });
 };
+
+export const sendResetPassword = async (usernameOrEmail) => {
+  return ApiUtil.post({
+    path: "/auth/forgotPassword",
+    body: { usernameOrEmail },
+  });
+};
