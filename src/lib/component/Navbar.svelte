@@ -82,7 +82,7 @@
           </a>
         </li>
         <li class="nav-item rounded-pill">
-          <a href="/tickets" class="nav-link">Destek</a>
+          <a href="/support" class="nav-link">Destek</a>
         </li>
       </ul>
     </div>
