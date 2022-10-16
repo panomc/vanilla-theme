@@ -54,7 +54,7 @@ export const sendVerifyEmail = async (token) => {
 
 export const sendResetPassword = async (usernameOrEmail) => {
   return ApiUtil.post({
-    path: "/auth/forgotPassword",
+    path: "/auth/resetPassword",
     body: { usernameOrEmail },
   });
 };
