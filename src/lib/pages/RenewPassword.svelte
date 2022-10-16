@@ -6,7 +6,7 @@
       <SuccessAlert message="{message}" />
       <form on:submit|preventDefault="{onSubmit}">
         <div class="mb-3">
-          <label for="newPassword">* Yeni Şifre</label>
+          <label for="newPassword">Yeni Şifre</label>
           <input
             type="password"
             id="newPassword"
@@ -14,7 +14,7 @@
             bind:value="{newPassword}" />
         </div>
         <div class="mb-3">
-          <label for="newPasswordRepeat">* Yeni Şifre Tekrarı</label>
+          <label for="newPasswordRepeat">Yeni Şifre Tekrarı</label>
           <input
             type="password"
             id="newPasswordRepeat"
@@ -23,7 +23,7 @@
         </div>
         <button
           type="submit"
-          class="btn btn-primary w-100"
+          class="btn btn-secondary w-100"
           class:disabled="{loading}">
           Şifremi Değiştir
         </button>

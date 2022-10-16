@@ -6,16 +6,14 @@
       <SuccessAlert message="{message}" />
       <form on:submit|preventDefault="{onSubmit}">
         <p>
-          Kayıt olduğun e-posta adresine bir sıfırlama bağlantısı gönderilecek.
-          Lütfen e-posta adresini gir.
+          Kayıt olduğun E-posta adresine bir sıfırlama bağlantısı gönderilecek.
         </p>
 
         <div class="mb-3">
           <div class="form-group">
-            <label for="email">* E-Posta/Kullanıcı adı:</label>
             <input
-              type="email"
-              placeholder="ahmo@mail.com"
+              type="text"
+              placeholder="E-Posta/Kullanıcı Adı"
               id="email"
               class="form-control"
               bind:value="{usernameOrEmail}" />
