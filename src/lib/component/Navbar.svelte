@@ -21,7 +21,7 @@
     <ul class="navbar-nav flex-row ml-auto order-lg-last">
       {#if $session.user && $session.user.panelAccess}
         <li class="nav-item rounded-pill">
-          <a class="nav-link" href="{PANEL_URL}">
+          <a class="nav-link" href="{PANEL_URL}" target="_blank">
             <i
               class="fa-solid fa-arrow-up fa-rotate-by"
               style="--fa-rotate-angle: 45deg;"></i> Panel
@@ -37,7 +37,11 @@
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-              <i class="fas fa-user-circle"></i>
+              <img
+                alt="{$session.user.username}"
+                class="rounded"
+                src="https://crafthead.net/avatar/{$session.user.username}"
+                width="24" />
               {$session.user.username}
             </a>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
