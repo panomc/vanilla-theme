@@ -25,9 +25,9 @@
   export async function load({ parent, url: { searchParams } }) {
     await parent();
 
-    const token = searchParams.get("token");
+    const token = searchParams.get("token") || "";
 
-    return { token: token ? token : "" };
+    return { token };
   }
 </script>
 
