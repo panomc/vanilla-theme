@@ -58,3 +58,10 @@ export const sendResetPassword = async (usernameOrEmail) => {
     body: { usernameOrEmail },
   });
 };
+
+export const sendRenewPassword = async (newPassword, newPasswordRepeat, token) => {
+  return ApiUtil.post({
+    path: "/auth/renewPassword",
+    body: { newPassword, newPasswordRepeat, token },
+  });
+};
