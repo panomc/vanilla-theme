@@ -4,12 +4,6 @@
       <div class="col-auto">
         <h4 class="card-title">Destek Talebi Oluştur</h4>
       </div>
-      <div class="col-auto">
-        <a href="/tickets">
-          <i class="fas fa-arrow-left me-2"></i>
-          Talepler
-        </a>
-      </div>
     </div>
 
     <ErrorAlert error="{error}" />
@@ -18,7 +12,7 @@
       <input
         type="email"
         class="form-control form-control-lg border-0 text-black px-0 mb-3"
-        placeholder="Talep başlığını girin"
+        placeholder="Başlık"
         bind:value="{title}" />
 
       <select
