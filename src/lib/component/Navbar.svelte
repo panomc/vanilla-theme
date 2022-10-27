@@ -46,7 +46,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
               <a class="dropdown-item" href="/profile">Profil</a>
-              <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
+              <a class="dropdown-item" href="/tickets">Talepler</a>
+              <hr class="dropdown-divider" />
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
