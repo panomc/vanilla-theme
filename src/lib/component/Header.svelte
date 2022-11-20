@@ -6,7 +6,7 @@
         title="Panocraft"
         alt="Server Logo"
         class="img-fluid d-block m-auto"
-        src="/assets/img/logo.png"
+        src="/api/websiteLogo"
         width="400" />
     </a>
   </div>
