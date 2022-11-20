@@ -45,7 +45,8 @@
     const { locals: { user, CSRFToken } } = event
     const siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
-      request: event
+      request: event,
+      CSRFToken
     })
 
     setSidebar(null);
@@ -65,7 +66,6 @@
     } = event;
 
     session.set({ user, CSRFToken, siteInfo });
-
 
     if (browser) {
       sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
