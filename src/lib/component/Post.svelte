@@ -1,4 +1,7 @@
 <div class="card mb-3">
+  {#if post.thumbnailUrl}
+    <img src="{post.thumbnailUrl}" class="card-img-top" alt="{post.title}" />
+  {/if}
   <div class="card-body">
     <div class="row mb-3 justify-content-center">
       <div class="col">
