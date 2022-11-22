@@ -38,7 +38,7 @@ export const getPostDetail = async ({ url, request, CSRFToken }) => {
 };
 
 export const getPostPreview = async ({ id, request, CSRFToken }) => {
-  ApiUtil.get({
+  return ApiUtil.get({
     path: `/api/panel/posts/${id}/preview`,
     request,
     CSRFToken,

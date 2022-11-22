@@ -54,7 +54,7 @@
           return;
         }
 
-        data = body;
+        data.post = body;
       }
     );
 

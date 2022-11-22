@@ -1,7 +1,7 @@
-<PreviewPost post="{post}" />
+<PreviewPost post="{data.post}" />
 
 <script>
   import PreviewPost from "$lib/pages/PreviewPost.svelte";
 
-  export let post;
+  export let data;
 </script>
