@@ -9,7 +9,7 @@
 
 <div class="container">
   <nav
-    class="navbar navbar-expand-lg navbar-dark fw-bolder-lightglass bg-primary bg-gradient rounded-pill shadow px-lg-2 px-4 py-2">
+    class="navbar navbar-expand-lg navbar-dark fw-bolder-lightglass bg-primary bg-gradient rounded-pill shadow px-lg-2 px-4 py-2 mb-3">
     <button
       class="navbar-toggler d-lg-none"
       data-bs-target="#navbar"
