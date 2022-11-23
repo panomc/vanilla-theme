@@ -29,6 +29,55 @@
         </li>
       {/if}
       {#if $session.user}
+        <!-- Notifications Dropdown -->
+        <div
+          class="nav-item dropdown d-flex align-items-center"
+          id="quickNotificationsDropdown">
+          <a
+            href="javascript:void(0);"
+            class="nav-link position-relative"
+            data-bs-toggle="dropdown"
+            role="button"
+            title="Bildirimler">
+            <i class="fas fa-bell fa-lg"></i>
+
+            <span
+              class="position-absolute p-2 start-75 translate-middle badge rounded-pill bg-danger">
+              counttttt
+            </span>
+          </a>
+
+          <div
+            class="notifications dropdown-menu dropdown-menu-end animate__animated animate__zoomInUp">
+            <h6 class="dropdown-header">Bildirimler countttttt</h6>
+
+            <div
+              class="d-flex flex-column align-items-center justify-content-center mb-3">
+              <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
+              <small class="text-gray">Yeni bildirim yok.</small>
+            </div>
+
+            <a
+              href="javascript:void(0);"
+              class="list-group-item list-group-item-action  d-flex flex-row w-100">
+              <div class="col-auto">
+                <i class="fa fa-bell mx-3 my-3 text-primary"></i>
+              </div>
+              <div class="col">
+                <span class="text-wrap text-dark">typeeeeeeeee</span>
+                <small class="text-gray d-block"> dateeeeeeeee </small>
+              </div>
+            </a>
+
+            <a
+              class="dropdown-item text-primary text-center small"
+              href="/notifications">
+              Tümünü Görüntüle
+            </a>
+          </div>
+        </div>
+
+        <!-- User Dropdown -->
         <li class="nav-item rounded-pill mr-lg-0 mr-5">
           <div class="dropdown">
             <a
