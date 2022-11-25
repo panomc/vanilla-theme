@@ -174,7 +174,7 @@
 
   function markQuickNotificationsAsRead(id) {
     ApiUtil.post({
-      path: "/api/markQuickNotificationsAsRead",
+      path: "/api/notifications/quick/markAsRead",
       CSRFToken: $session.CSRFToken,
     }).then((body) => {
       if (quickNotificationProcessID === id) {
