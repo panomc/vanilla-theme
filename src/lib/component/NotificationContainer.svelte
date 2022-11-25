@@ -146,7 +146,7 @@
 
   function getQuickNotifications(id) {
     ApiUtil.get({
-      path: "/api/quickNotifications"
+      path: "/api/notifications/quick"
     }).then((body) => {
       if (quickNotificationProcessID === id) {
         if (body.result === "ok") {
