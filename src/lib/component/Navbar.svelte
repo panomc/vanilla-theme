@@ -28,68 +28,70 @@
           </a>
         </li>
       {/if}
-      {#if $session.user}
-        <!-- Notifications Dropdown -->
-        <div
-          class="nav-item dropdown d-flex align-items-center"
-          id="quickNotificationsDropdown">
-          <a
-            href="javascript:void(0);"
-            class="nav-link position-relative"
-            data-bs-toggle="dropdown"
-            role="button"
-            title="Bildirimler">
-            <i class="fas fa-bell fa-lg"></i>
 
-            {#if $notificationsCount !== 0}
+      <!-- Notifications Dropdown -->
+      <div
+        class="nav-item dropdown d-flex align-items-center"
+        id="quickNotificationsDropdown"
+      class:d-none={!$session.user}>
+        <a
+          href="javascript:void(0);"
+          class="nav-link position-relative"
+          data-bs-toggle="dropdown"
+          role="button"
+          title="Bildirimler">
+          <i class="fas fa-bell fa-lg"></i>
+
+          {#if $notificationsCount !== 0}
               <span
                 class="position-absolute p-2 start-75 translate-middle badge rounded-pill bg-danger">
                 {$notificationsCount}
               </span>
-            {/if}
-          </a>
+          {/if}
+        </a>
 
-          <div
-            class="notifications dropdown-menu dropdown-menu-end animate__animated animate__zoomInUp">
-            <h6 class="dropdown-header">
-              Bildirimler {$notificationsCount === 0
-                ? ""
-                : "(" + $notificationsCount + ")"}
-            </h6>
+        <div
+          class="notifications dropdown-menu dropdown-menu-end animate__animated animate__zoomInUp">
+          <h6 class="dropdown-header">
+            Bildirimler {$notificationsCount === 0
+            ? ""
+            : "(" + $notificationsCount + ")"}
+          </h6>
 
-            {#if $quickNotifications.length === 0}
-              <div
-                class="d-flex flex-column align-items-center justify-content-center mb-3">
-                <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
-                <small class="text-gray">Yeni bildirim yok.</small>
-              </div>
-            {:else}
-              {#each $quickNotifications as notification, index (notification)}
-                <a
-                  href="javascript:void(0);"
-                  class="list-group-item list-group-item-action  d-flex flex-row w-100">
-                  <div class="col-auto">
-                    <i class="fa fa-bell mx-3 my-3 text-primary"></i>
-                  </div>
-                  <div class="col">
+          {#if $quickNotifications.length === 0}
+            <div
+              class="d-flex flex-column align-items-center justify-content-center mb-3">
+              <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
+              <small class="text-gray">Yeni bildirim yok.</small>
+            </div>
+          {:else}
+            {#each $quickNotifications as notification, index (notification)}
+              <a
+                href="javascript:void(0);"
+                class="list-group-item list-group-item-action  d-flex flex-row w-100">
+                <div class="col-auto">
+                  <i class="fa fa-bell mx-3 my-3 text-primary"></i>
+                </div>
+                <div class="col">
                     <span class="text-wrap text-dark"
-                      >{notification.typeId}</span>
-                    <small class="text-gray d-block">
-                      {getTime(checkTime, parseInt(notification.date), "")}
-                    </small>
-                  </div>
-                </a>
-              {/each}
-            {/if}
+                    >{notification.typeId}</span>
+                  <small class="text-gray d-block">
+                    {getTime(checkTime, parseInt(notification.date), "")}
+                  </small>
+                </div>
+              </a>
+            {/each}
+          {/if}
 
-            <a
-              class="dropdown-item text-primary text-center small"
-              href="/notifications">
-              Tümünü Görüntüle
-            </a>
-          </div>
+          <a
+            class="dropdown-item text-primary text-center small"
+            href="/notifications">
+            Tümünü Görüntüle
+          </a>
         </div>
+      </div>
 
+      {#if $session.user}
         <!-- User Dropdown -->
         <li class="nav-item rounded-pill mr-lg-0 mr-5">
           <div class="dropdown">
