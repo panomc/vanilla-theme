@@ -74,10 +74,12 @@
 
 <script>
   import { onDestroy, onMount } from "svelte";
-
-  import { notificationsCount, quickNotifications } from "$lib/Store";
-  import ApiUtil from "$lib/api.util";
   import { formatDistanceToNow } from "date-fns";
+
+  import { browser } from "$app/environment";
+
+  import { notificationsCount, quickNotifications, session } from "$lib/Store";
+  import ApiUtil from "$lib/api.util";
 
   let quickNotificationProcessID = 0;
 
@@ -170,15 +172,26 @@
     getQuickNotifications(id);
   }
 
-  onMount(() => {
-    startQuickNotificationsCountDown();
+  if (browser) {
+    const sessionSubscription = session.subscribe(session => {
+      quickNotificationProcessID++;
 
+      if (session.user) {
+        startQuickNotificationsCountDown();
+      }
+    })
+
+    onDestroy(sessionSubscription)
+  }
+
+  onMount(() => {
     interval = setInterval(() => {
       checkTime += 1;
     }, 1000);
-  });
+  })
 
   onDestroy(() => {
+    quickNotificationProcessID++;
     clearInterval(interval);
   });
 </script>
