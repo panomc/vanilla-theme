@@ -41,33 +41,46 @@
             title="Bildirimler">
             <i class="fas fa-bell fa-lg"></i>
 
-            <span
-              class="position-absolute p-2 start-75 translate-middle badge rounded-pill bg-danger">
-              counttttt
-            </span>
+            {#if $notificationsCount !== 0}
+              <span
+                class="position-absolute p-2 start-75 translate-middle badge rounded-pill bg-danger">
+                {$notificationsCount}
+              </span>
+            {/if}
           </a>
 
           <div
             class="notifications dropdown-menu dropdown-menu-end animate__animated animate__zoomInUp">
-            <h6 class="dropdown-header">Bildirimler countttttt</h6>
+            <h6 class="dropdown-header">
+              Bildirimler {$notificationsCount === 0
+                ? ""
+                : "(" + $notificationsCount + ")"}
+            </h6>
 
-            <div
-              class="d-flex flex-column align-items-center justify-content-center mb-3">
-              <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
-              <small class="text-gray">Yeni bildirim yok.</small>
-            </div>
-
-            <a
-              href="javascript:void(0);"
-              class="list-group-item list-group-item-action  d-flex flex-row w-100">
-              <div class="col-auto">
-                <i class="fa fa-bell mx-3 my-3 text-primary"></i>
+            {#if $quickNotifications.length === 0}
+              <div
+                class="d-flex flex-column align-items-center justify-content-center mb-3">
+                <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
+                <small class="text-gray">Yeni bildirim yok.</small>
               </div>
-              <div class="col">
-                <span class="text-wrap text-dark">typeeeeeeeee</span>
-                <small class="text-gray d-block"> dateeeeeeeee </small>
-              </div>
-            </a>
+            {:else}
+              {#each $quickNotifications as notification, index (notification)}
+                <a
+                  href="javascript:void(0);"
+                  class="list-group-item list-group-item-action  d-flex flex-row w-100">
+                  <div class="col-auto">
+                    <i class="fa fa-bell mx-3 my-3 text-primary"></i>
+                  </div>
+                  <div class="col">
+                    <span class="text-wrap text-dark"
+                      >{notification.typeId}</span>
+                    <small class="text-gray d-block">
+                      {getTime(checkTime, parseInt(notification.date), "")}
+                    </small>
+                  </div>
+                </a>
+              {/each}
+            {/if}
 
             <a
               class="dropdown-item text-primary text-center small"
@@ -145,5 +158,74 @@
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
+
   import { PANEL_URL } from "$lib/variables.js";
+  import { notificationsCount, quickNotifications } from "$lib/Store.js";
+  import { formatDistanceToNow } from "date-fns";
+  import { onDestroy, onMount } from "svelte";
+  import ApiUtil from "$lib/api.util.js";
+
+  let quickNotificationProcessID = 0;
+
+  let checkTime = 0;
+  let interval;
+
+  function markQuickNotificationsAsRead(id) {
+    ApiUtil.post({
+      path: "/api/markQuickNotificationsAsRead",
+      CSRFToken: $session.CSRFToken,
+    }).then((body) => {
+      if (quickNotificationProcessID === id) {
+        if (body.result === "ok") {
+          notificationsCount.set(body.notificationCount);
+        }
+
+        setTimeout(() => {
+          if (quickNotificationProcessID === id) {
+            startMarkQuickNotificationsAsReadCountDown();
+          }
+        }, 1000);
+      }
+    });
+  }
+
+  function startMarkQuickNotificationsAsReadCountDown() {
+    quickNotificationProcessID++;
+
+    const id = quickNotificationProcessID;
+
+    if ($quickNotifications.length > 0) {
+      markQuickNotificationsAsRead(id);
+    } else {
+      setTimeout(() => {
+        if (quickNotificationProcessID === id) {
+          startMarkQuickNotificationsAsReadCountDown();
+        }
+      }, 1000);
+    }
+  }
+
+  function getTime(check, time, locale) {
+    return formatDistanceToNow(time, { addSuffix: true });
+  }
+
+  onMount(() => {
+    const dropdown = document.getElementById("quickNotificationsDropdown");
+
+    dropdown.addEventListener("show.bs.dropdown", function () {
+      startMarkQuickNotificationsAsReadCountDown();
+    });
+
+    dropdown.addEventListener("hide.bs.dropdown", function () {
+      quickNotificationProcessID++;
+    });
+
+    interval = setInterval(() => {
+      checkTime += 1;
+    }, 1000);
+  });
+
+  onDestroy(() => {
+    clearInterval(interval);
+  });
 </script>

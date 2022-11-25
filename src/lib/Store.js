@@ -12,6 +12,9 @@ export const keepSidebar = writable(false);
 export const sidebarPageInit = writable(false);
 export const session = writable({});
 
+export const notificationsCount = writable(0);
+export const quickNotifications = writable([]);
+
 export async function logout(CSRFToken) {
   sendLogout(CSRFToken).then(() => {
     session.update((data) => {

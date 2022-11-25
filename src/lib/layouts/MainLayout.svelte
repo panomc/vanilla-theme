@@ -19,6 +19,8 @@
   <RegisterModal />
 
   <!-- Modals End -->
+
+  <NotificationContainer />
 </App>
 
 <script context="module">
@@ -84,6 +86,7 @@
 
   import LoginModal from "$lib/component/modals/LoginModal.svelte";
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
+  import NotificationContainer from "$lib/component/NotificationContainer.svelte";
 
   // check on page change and set null if page doesn't have sidebar
   afterNavigate((navigation) => {
