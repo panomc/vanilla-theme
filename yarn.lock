@@ -122,22 +122,22 @@
     estree-walker "^2.0.2"
     picomatch "^2.3.1"
 
-"@sveltejs/adapter-node@^1.0.0-next.100":
-  version "1.0.0-next.100"
-  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-node/-/adapter-node-1.0.0-next.100.tgz#12fbf0e440e0871869388e4d9d8a007e97d64dd6"
-  integrity sha512-XtyweoRcrnD3T/hkqv4XAlhU24VM6/QiUqR2mfs7I3Ji/KrBKWSM2GCpSptnfk3mELK193sJ0T4m6Z3x8uf47w==
+"@sveltejs/adapter-node@^1.0.0-next.101":
+  version "1.0.0-next.101"
+  resolved "https://registry.yarnpkg.com/@sveltejs/adapter-node/-/adapter-node-1.0.0-next.101.tgz#a859cfa2ad6b7d0e1f80d1987c33639c2b31929c"
+  integrity sha512-gtg/b0dbDvd5TvTRsmthFSd/q9Gd+hVuq6uP0XqYgRKKXJw0tr9kNlnDNJ8HQMueo5ccHHUmOQYGV1vGR2zG0A==
   dependencies:
     "@rollup/plugin-commonjs" "^23.0.2"
     "@rollup/plugin-json" "^5.0.1"
     "@rollup/plugin-node-resolve" "^15.0.1"
     rollup "^2.79.1"
 
-"@sveltejs/kit@^1.0.0-next.553":
-  version "1.0.0-next.553"
-  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.553.tgz#5c3a4b013a80a8d8c542087245d7723ab8350101"
-  integrity sha512-6gUPzmry+j/0uFJnGAJNru3lUpGY12We1Vsom5nDeRaG/Cs2wCwK8gMO2B5taZsHmryIB8zA+v0QCcu5kClmWA==
+"@sveltejs/kit@^1.0.0-next.567":
+  version "1.0.0-next.567"
+  resolved "https://registry.yarnpkg.com/@sveltejs/kit/-/kit-1.0.0-next.567.tgz#0f2a068b7953302d8cad4ff093cdf3ba17becf54"
+  integrity sha512-4Q74HPLZb9Rr60n7EJANXH2Ng3d7wwrz67TuXxVfYuxARigWO9YzjcLHxG2IVMwRZIeT+LlwOKkg9vYYdBiezQ==
   dependencies:
-    "@sveltejs/vite-plugin-svelte" "^1.1.0"
+    "@sveltejs/vite-plugin-svelte" "^1.3.1"
     "@types/cookie" "^0.5.1"
     cookie "^0.5.0"
     devalue "^4.2.0"
@@ -148,18 +148,19 @@
     set-cookie-parser "^2.5.1"
     sirv "^2.0.2"
     tiny-glob "^0.2.9"
-    undici "5.12.0"
+    undici "5.13.0"
 
-"@sveltejs/vite-plugin-svelte@^1.1.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-1.1.1.tgz#15acaa21b579c6c00f3be3c5bd2e69e91dfb2632"
-  integrity sha512-NzIaGIzWh5hCSMUoxukYEGmxFCWgzaVglqHJLV5r0BA7hHZbHXu8DYR80i6QUX4xyoQ4PZ8ir7SUYsThbreMcg==
+"@sveltejs/vite-plugin-svelte@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@sveltejs/vite-plugin-svelte/-/vite-plugin-svelte-1.3.1.tgz#1b0a109d49ec42981ea2e1d7bdb712fbc96354bb"
+  integrity sha512-2Uu2sDdIR+XQWF7QWOVSF2jR9EU6Ciw1yWfYnfLYj8HIgnNxkh/8g22Fw2pBUI8QNyW/KxtqJUWBI+8ypamSrQ==
   dependencies:
     debug "^4.3.4"
     deepmerge "^4.2.2"
     kleur "^4.1.5"
     magic-string "^0.26.7"
-    svelte-hmr "^0.15.0"
+    svelte-hmr "^0.15.1"
+    vitefu "^0.2.2"
 
 "@types/cookie@^0.5.1":
   version "0.5.1"
@@ -255,10 +256,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bootstrap@^5.2.2:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.2.tgz#834e053eed584a65e244d8aa112a6959f56e27a0"
-  integrity sha512-dEtzMTV71n6Fhmbg4fYJzQsw1N29hJKO1js5ackCgIpDcGid2ETMGC6zwSYw09v05Y+oRdQ9loC54zB1La3hHQ==
+bootstrap@^5.2.3:
+  version "5.2.3"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.2.3.tgz#54739f4414de121b9785c5da3c87b37ff008322b"
+  integrity sha512-cEKPM+fwb3cT8NzQZYEu4HilJ3anCrWqh3CHAok1p9jXqMPsPTBhU25fBckEJHJ/p+tTxTFTsFQGM+gaHpi3QQ==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -1487,10 +1488,10 @@ prettier-plugin-svelte@^2.8.1:
   resolved "https://registry.yarnpkg.com/prettier-plugin-svelte/-/prettier-plugin-svelte-2.8.1.tgz#5b7df5bd0d953b133281607295a3e5131052bb8b"
   integrity sha512-KA3K1J3/wKDnCxW7ZDRA/QL2Q67N7Xs3gOERqJ5X1qFjq1DdnN3K1R29scSKwh+kA8FF67pXbYytUpvN/i3iQw==
 
-prettier@~2.7.1:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
-  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
+prettier@~2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.0.tgz#c7df58393c9ba77d6fba3921ae01faf994fb9dc9"
+  integrity sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==
 
 punycode@^2.1.0:
   version "2.1.1"
@@ -1793,10 +1794,10 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
-svelte-hmr@^0.15.0:
-  version "0.15.0"
-  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.0.tgz#c8304b5dd33f006415329d91470761d19417a324"
-  integrity sha512-Aw21SsyoohyVn4yiKXWPNCSW2DQNH/76kvUnE9kpt4h9hcg9tfyQc6xshx9hzgMfGF0kVx0EGD8oBMWSnATeOg==
+svelte-hmr@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.1.tgz#d11d878a0bbb12ec1cba030f580cd2049f4ec86b"
+  integrity sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==
 
 svelte-preprocess@^4.10.7:
   version "4.10.7"
@@ -1886,10 +1887,10 @@ unbox-primitive@^1.0.2:
     has-symbols "^1.0.3"
     which-boxed-primitive "^1.0.2"
 
-undici@5.12.0:
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/undici/-/undici-5.12.0.tgz#c758ffa704fbcd40d506e4948860ccaf4099f531"
-  integrity sha512-zMLamCG62PGjd9HHMpo05bSLvvwWOZgGeiWlN/vlqu3+lRo3elxktVGEyLMX+IO7c2eflLjcW74AlkhEZm15mg==
+undici@5.13.0:
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.13.0.tgz#56772fba89d8b25e39bddc8c26a438bd73ea69bb"
+  integrity sha512-UDZKtwb2k7KRsK4SdXWG7ErXiL7yTGgLWvk2AXO1JMjgjh404nFo6tWSCM2xMpJwMPx3J8i/vfqEh1zOqvj82Q==
   dependencies:
     busboy "^1.6.0"
 
@@ -1919,6 +1920,11 @@ vite@^3.2.4:
     rollup "^2.79.1"
   optionalDependencies:
     fsevents "~2.3.2"
+
+vitefu@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/vitefu/-/vitefu-0.2.2.tgz#d03215f351a1fd65f6c277d546f2d30956b970f9"
+  integrity sha512-8CKEIWPm4B4DUDN+h+hVJa9pyNi7rzc5MYmbxhs1wcMakueGFNWB5/DL30USm9qU3xUPnL4/rrLEAwwFiD1tag==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
