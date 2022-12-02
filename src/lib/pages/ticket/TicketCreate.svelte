@@ -44,7 +44,7 @@
   import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getTicketCategories } from "$lib/services/tickets";
-  import { error } from "@sveltejs/kit";
+  import { error as throwError } from "@sveltejs/kit";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -66,10 +66,10 @@
     }).then((body) => {
       if (body.error) {
         if (body.error === "NOT_EXISTS") {
-          throw error(404, body.error)
+          throw throwError(404, body.error)
         }
 
-        throw error(500, body.error)
+        throw throwError(500, body.error)
       }
 
       data = body;
