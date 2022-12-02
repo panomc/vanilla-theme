@@ -108,12 +108,11 @@
     }
   }
 
-  async function loadData({ request, CSRFToken }) {
+  async function loadData({ request }) {
     return new Promise((resolve, reject) => {
       ApiUtil.get({
         path: "/api/notifications",
         request,
-        CSRFToken,
       }).then((body) => {
         if (body.result === "ok") {
           resolve(body);
@@ -154,7 +153,6 @@
   import { formatDistanceToNow } from "date-fns";
 
   import tooltip from "$lib/tooltip.util.js";
-  import { session } from "$lib/Store.js";
 
   import ConfirmRemoveAllNotificationsModal, {
     show as showDeleteAllNotificationsModal,
@@ -171,7 +169,7 @@
   let interval;
 
   function getNotifications(id) {
-    loadData({ CSRFToken: $session.CSRFToken }).then((data) => {
+    loadData({}).then((data) => {
       if (notificationProcessID === id) {
         if (data.result === "ok") {
           setNotifications(data.notifications);
@@ -194,8 +192,7 @@
     ApiUtil.get({
       path: `/api/notifications/${
         get(notifications)[get(notifications).length - 1].id
-      }/more`,
-      CSRFToken: $session.CSRFToken,
+      }/more`
     }).then((body) => {
       if (body.result === "ok") {
         body.notifications.forEach((notification) => {
@@ -211,8 +208,7 @@
 
   function deleteNotification(id) {
     ApiUtil.delete({
-      path: `/api/notifications/${id}`,
-      CSRFToken: $session.CSRFToken,
+      path: `/api/notifications/${id}`
     }).then((body) => {
       if (body.result === "ok") {
         get(notifications).forEach((notification) => {

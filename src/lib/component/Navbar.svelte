@@ -123,7 +123,7 @@
               <a
                 class="dropdown-item text-danger"
                 href="javascript:void(0);"
-                on:click="{() => logout($session.CSRFToken)}">Çıkış Yap</a>
+                on:click="{logout}">Çıkış Yap</a>
             </div>
           </div>
         </li>
@@ -177,8 +177,7 @@
 
   function markQuickNotificationsAsRead(id) {
     ApiUtil.post({
-      path: "/api/notifications/quick/markAsRead",
-      CSRFToken: $session.CSRFToken,
+      path: "/api/notifications/quick/markAsRead"
     }).then((body) => {
       if (quickNotificationProcessID === id) {
         if (body.result === "ok") {

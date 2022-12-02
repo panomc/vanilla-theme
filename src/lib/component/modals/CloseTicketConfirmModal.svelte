@@ -86,8 +86,6 @@
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import { closeTicket } from "$lib/services/tickets";
 
-  import { session } from "$lib/Store.js";
-
   let loading = false;
 
   function refreshBrowserPage() {
@@ -99,7 +97,7 @@
 
     loading = true;
 
-    await closeTicket({ id: ticket.id, CSRFToken: $session.CSRFToken })
+    await closeTicket({ id: ticket.id })
       .then((body) => {
         if (body.result === "ok") {
           loading = false;

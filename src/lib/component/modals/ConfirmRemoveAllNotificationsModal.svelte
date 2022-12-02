@@ -65,7 +65,6 @@
 </script>
 
 <script>
-  import { session } from "$lib/Store";
   import ApiUtil from "$lib/api.util";
 
   let loading;
@@ -78,8 +77,7 @@
     loading = true;
 
     ApiUtil.delete({
-      path: "/api/notifications",
-      CSRFToken: $session.CSRFToken,
+      path: "/api/notifications"
     }).then((body) => {
       if (body.result === "ok") {
         loading = false;

@@ -78,12 +78,11 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
-  import { session } from "$lib/Store.js";
 
   export let data;
 
   function reloadData(page = data.page, url = data.url) {
-    getCategoryTickets({ page, url, CSRFToken: $session.CSRFToken }).then(
+    getCategoryTickets({ page, url }).then(
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {

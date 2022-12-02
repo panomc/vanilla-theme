@@ -101,12 +101,11 @@
   } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
   import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
-  import { session } from "$lib/Store.js";
 
   export let data;
 
   function reloadData(page = data.page, pageType = data.pageType) {
-    getTickets({ page, pageType, CSRFToken: $session.CSRFToken }).then(
+    getTickets({ page, pageType }).then(
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {

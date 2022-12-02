@@ -73,12 +73,11 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Posts from "$lib/component/Posts.svelte";
-  import { session } from "$lib/Store.js";
 
   export let data;
 
   function reloadData(page = data.page, url = data.url) {
-    getCategoryPosts({ page, url, CSRFToken: $session.CSRFToken }).then(
+    getCategoryPosts({ page, url }).then(
       (body) => {
         if (body.result === "ok") {
           if (page !== data.page) {

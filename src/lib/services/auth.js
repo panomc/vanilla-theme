@@ -1,10 +1,9 @@
 import ApiUtil from "$lib/api.util";
 import * as api from "$lib/api-server.util.js";
 
-export const sendLogout = async (CSRFToken) => {
+export const sendLogout = async () => {
   return ApiUtil.post({
-    path: "/auth/logout",
-    CSRFToken,
+    path: "/auth/logout"
   });
 };
 

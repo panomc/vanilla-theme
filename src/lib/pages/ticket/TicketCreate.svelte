@@ -83,8 +83,6 @@
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import { NETWORK_ERROR } from "$lib/api.util";
 
-  import { session } from "$lib/Store.js";
-
   export let data;
 
   let error;
@@ -101,8 +99,7 @@
     await createTicket({
       title,
       message,
-      categoryId,
-      CSRFToken: $session.CSRFToken,
+      categoryId
     })
       .then((body) => {
         loading = false;

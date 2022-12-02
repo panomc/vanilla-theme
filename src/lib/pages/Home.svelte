@@ -55,12 +55,11 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Posts from "$lib/component/Posts.svelte";
-  import { session } from "$lib/Store.js";
 
   export let data;
 
   function reloadData(page = data.page) {
-    getPosts({ page, CSRFToken: $session.CSRFToken }).then((body) => {
+    getPosts({ page }).then((body) => {
       if (body.result === "ok") {
         if (page !== data.page) {
           goto(page === 1 ? "/" : "/blog/page/" + page);

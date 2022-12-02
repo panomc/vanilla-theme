@@ -45,7 +45,7 @@
         <li class="nav-item">
           <a
             class="nav-link text-danger"
-            on:click="{() => logout($session.CSRFToken)}"
+            on:click="{logout}"
             href="javascript:void(0);">
             Çıkış Yap
           </a>

@@ -36,8 +36,8 @@
   import { browser } from "$app/environment";
   import { get } from "svelte/store";
 
-  function sendVisitorVisitRequest({ event, CSRFToken }) {
-    ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
+  function sendVisitorVisitRequest({ event }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request: event });
   }
 
   /**
@@ -70,7 +70,7 @@
     session.set({ user, CSRFToken, siteInfo });
 
     if (browser) {
-      sendVisitorVisitRequest({ event, CSRFToken: get(session).CSRFToken });
+      sendVisitorVisitRequest({ event });
     }
   }
 </script>

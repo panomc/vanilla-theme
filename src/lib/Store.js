@@ -15,8 +15,8 @@ export const session = writable({});
 export const notificationsCount = writable(0);
 export const quickNotifications = writable([]);
 
-export async function logout(CSRFToken) {
-  sendLogout(CSRFToken).then(() => {
+export async function logout() {
+  sendLogout().then(() => {
     session.update((data) => {
       data.user = null;
       data.CSRFToken = null;

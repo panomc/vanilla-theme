@@ -217,7 +217,6 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { session } from "$lib/Store.js";
 
   import Date from "$lib/component/Date.svelte";
   import tooltip from "$lib/tooltip.util";
@@ -256,8 +255,7 @@
 
     await loadMoreTicketMessages({
       id: data.ticket.id,
-      lastMessageId: data.ticket.messages[0].id,
-      CSRFToken: $session.CSRFToken,
+      lastMessageId: data.ticket.messages[0].id
     }).then((body) => {
       if (body.error) {
         return;
@@ -278,8 +276,7 @@
 
     await sendTicketMessage({
       ticketId: data.ticket.id,
-      message,
-      CSRFToken: $session.CSRFToken,
+      message
     }).then((body) => {
       if (body.error) {
         return;
