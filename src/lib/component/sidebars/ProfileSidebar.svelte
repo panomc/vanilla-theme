@@ -16,7 +16,7 @@
         </div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
-          <div class="badge bg-light text-black rounded-pill">Oyuncu</div>
+          <div class="badge bg-light text-black rounded-pill">{#if $data.permissionGroupName} {$data.permissionGroupName.capitalize()} {:else} Oyuncu {/if}</div>
         </div>
       </div>
     </div>
@@ -54,6 +54,26 @@
     </div>
   </div>
 </Sidebar>
+
+<script context="module">
+  import ApiUtil from "$lib/api.util.js";
+  import { writable } from "svelte/store";
+
+  const data = writable({});
+
+  export const load = async (event) => {
+    data.set(
+      await ApiUtil.get({
+        path: "/api/sidebar/profile",
+        request: event,
+      })
+    );
+  };
+
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  };
+</script>
 
 <script>
   import { page } from "$app/stores";

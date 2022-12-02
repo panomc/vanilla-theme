@@ -104,14 +104,16 @@
 <script context="module">
   import { setSidebar } from "$lib/Store.js";
 
-  import ProfileSidebar from "$lib/component/sidebars/ProfileSidebar.svelte";
+  import ProfileSidebar, {load as loadSidebar} from "$lib/component/sidebars/ProfileSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ parent }) {
+  export async function load(event) {
+    const { parent } = event
     await parent();
 
+    await loadSidebar(event);
     setSidebar(ProfileSidebar);
   }
 </script>
