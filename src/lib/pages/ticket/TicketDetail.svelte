@@ -174,6 +174,7 @@
   import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store";
   import { getTicketDetail } from "$lib/services/tickets";
+  import { error } from "@sveltejs/kit";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -202,9 +203,11 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        data = null;
+        if (body.error === "NOT_EXISTS") {
+          throw error(404, body.error)
+        }
 
-        return;
+        throw error(500, body.error)
       }
 
       data = body;

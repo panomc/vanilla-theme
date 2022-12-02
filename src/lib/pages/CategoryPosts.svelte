@@ -28,6 +28,7 @@
 <!-- Pagination End -->
 <script context="module">
   import { getCategoryPosts } from "$lib/services/posts";
+  import { error } from "@sveltejs/kit";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -56,9 +57,11 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        data = null;
+        if (body.error === "NOT_EXISTS") {
+          throw error(404, body.error)
+        }
 
-        return;
+        throw error(500, body.error)
       }
 
       data = body;

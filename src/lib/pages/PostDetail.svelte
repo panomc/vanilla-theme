@@ -22,7 +22,10 @@
 </div>
 
 <script context="module">
+  import { error } from "@sveltejs/kit";
+
   import HomeSidebar, { load as loadSidebar } from "$lib/component/sidebars/HomeSidebar.svelte";
+
   import { setSidebar } from "$lib/Store.js";
   import { getPostDetail } from "$lib/services/posts.js";
 
@@ -58,9 +61,11 @@
     await getPostDetail({ url: event.params.url, request: event }).then(
       (body) => {
         if (body.error) {
-          data = null;
+          if (body.error === "POST_NOT_FOUND") {
+            throw error(404, body.error)
+          }
 
-          return;
+          throw error(500, body.error)
         }
 
         data = body;
