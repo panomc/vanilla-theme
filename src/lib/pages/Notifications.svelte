@@ -72,6 +72,7 @@
   import { browser } from "$app/environment";
 
   import ApiUtil from "$lib/api.util.js";
+  import { requireLogin } from "$lib/Store.js";
 
   const notifications = writable([]);
   const count = writable(0);
@@ -129,6 +130,8 @@
   export async function load(event) {
     const { parent } = event;
     await parent();
+
+    requireLogin();
 
     let data = {};
 
