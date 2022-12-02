@@ -75,6 +75,7 @@
               {#each $quickNotifications as notification, index (notification)}
                 <a
                   href="javascript:void(0);"
+                  on:click={() => onNotificationClick(notification)}
                   class="list-group-item list-group-item-action  d-flex flex-row w-100">
                   <div class="col-auto">
                     <i class="fa fa-bell mx-3 my-3 text-primary"></i>
@@ -169,6 +170,7 @@
   import { formatDistanceToNow } from "date-fns";
   import { onDestroy, onMount } from "svelte";
   import ApiUtil from "$lib/api.util.js";
+  import { onNotificationClick } from "$lib/NotificationManager.js";
 
   let quickNotificationProcessID = 0;
 

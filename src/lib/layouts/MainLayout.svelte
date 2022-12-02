@@ -34,22 +34,44 @@
 
   import ApiUtil from "$lib/api.util.js";
   import { browser } from "$app/environment";
-  import { get } from "svelte/store";
+  import { goto } from "$app/navigation";
+
+  import { addListener } from "$lib/NotificationManager.js";
 
   function sendVisitorVisitRequest({ event }) {
     ApiUtil.post({ path: "/api/visitorVisit", request: event });
+  }
+
+  function initNotificationListeners() {
+    addListener("AN_ADMIN_REPLIED_TICKET", (notification) => {
+      const {
+        properties: { id },
+      } = notification;
+
+      goto("/ticket/" + id);
+    });
+
+    addListener("AN_ADMIN_CLOSED_TICKET", (notification) => {
+      const {
+        properties: { id },
+      } = notification;
+
+      goto("/ticket/" + id);
+    });
   }
 
   /**
    * @type {import('@sveltejs/kit').LayoutServerLoad}
    */
   export async function loadServer(event) {
-    const { locals: { user, CSRFToken } } = event
+    const {
+      locals: { user, CSRFToken },
+    } = event;
     const siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
-      CSRFToken
-    })
+      CSRFToken,
+    });
 
     setSidebar(null);
     keepSidebar.set(false);
@@ -68,6 +90,10 @@
     } = event;
 
     session.set({ user, CSRFToken, siteInfo });
+
+    if (browser) {
+      initNotificationListeners();
+    }
 
     if (browser) {
       sendVisitorVisitRequest({ event });
