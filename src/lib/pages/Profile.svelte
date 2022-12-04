@@ -2,14 +2,14 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">İstatistikler</h4>
-    <table class="table">
+    <table class="table table-borderless mb-0">
       <tbody>
         <tr>
-          <td>Kayıt Tarihi</td>
+          <td>Kayıt</td>
           <td><Date time="{data.registerDate}" /></td>
         </tr>
         <tr>
-          <td>Web Siteye Son Giriş</td>
+          <td>Son Giriş</td>
           <td><Date time="{data.lastLoginDate}" relativeFormat="true" /></td>
         </tr>
       </tbody>
