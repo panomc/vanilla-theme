@@ -75,14 +75,14 @@
               {#each $quickNotifications as notification, index (notification)}
                 <a
                   href="javascript:void(0);"
-                  on:click={() => onNotificationClick(notification)}
+                  on:click="{() => onNotificationClick(notification)}"
                   class="list-group-item list-group-item-action  d-flex flex-row w-100">
-                  <div class="col-auto">
-                    <i class="fa fa-bell mx-3 my-3 text-primary"></i>
+                  <div
+                    class="col-auto p-3 d-flex align-items-center justify-content-center">
+                    <i class="fa fa-bell"></i>
                   </div>
-                  <div class="col">
-                    <span class="text-wrap text-dark"
-                      >{notification.typeId}</span>
+                  <div class="col text-wrap pe-3">
+                    {notification.typeId}
                     <small class="text-gray d-block">
                       {getTime(checkTime, parseInt(notification.date), "")}
                     </small>
@@ -179,7 +179,7 @@
 
   function markQuickNotificationsAsRead(id) {
     ApiUtil.post({
-      path: "/api/notifications/quick/markAsRead"
+      path: "/api/notifications/quick/markAsRead",
     }).then((body) => {
       if (quickNotificationProcessID === id) {
         if (body.result === "ok") {
