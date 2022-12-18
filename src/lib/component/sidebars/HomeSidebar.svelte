@@ -37,8 +37,8 @@
         <div
           use:tooltip="{['157 players are playing', { placement: 'bottom' }]}">
           <i class="fas fa-users fa-lg d-block text-secondary py-3"></i>
-          {#if $data.server}
-            {$data.playerCount}/{$data.maxPlayerCount}
+          {#if $data.mainServer}
+            {$data.mainServer.playerCount}/{$data.mainServer.maxPlayerCount}
           {:else}
             0/0
           {/if}
@@ -100,7 +100,7 @@
   let copyClickIDForCommandText = 0;
   let isCommandTextCopied = false;
 
-  $: serverOnline = $data.server && $data.server.status === "ONLINE";
+  $: serverOnline = $data.mainServer && $data.mainServer.status === "ONLINE";
 
   function onCopyCommandTextClick() {
     copyClickIDForCommandText++;
