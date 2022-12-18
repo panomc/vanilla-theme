@@ -48,7 +48,7 @@
         properties: { id },
       } = notification;
 
-      goto("/ticket/" + id);
+      goto("/ticket/" + id, { invalidateAll: true });
     });
 
     addListener("AN_ADMIN_CLOSED_TICKET", (notification) => {
@@ -56,7 +56,7 @@
         properties: { id },
       } = notification;
 
-      goto("/ticket/" + id);
+      goto("/ticket/" + id, { invalidateAll: true });
     });
   }
 
