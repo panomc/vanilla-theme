@@ -21,18 +21,31 @@
     <h5 class="card-header bg-bittersweet text-white">Sunucu Durumu</h5>
     <div class="card-body">
       <div class="d-flex flex-row align-items-center justify-content-around">
-        <div use:tooltip="{['play.serveradress.com', { placement: 'bottom' }]}">
-          <i class="fas fa-check-circle fa-lg d-block text-mint py-3"></i>
-          Çevrimiçi
+        <div use:tooltip="{[$data.ipAddress, { placement: 'bottom' }]}">
+          <i
+            class="fas fa-lg d-block py-3"
+            class:fa-xmark-circle="{!serverOnline}"
+            class:text-danger="{!serverOnline}"
+            class:fa-check-circle="{serverOnline}"
+            class:text-mint="{serverOnline}"></i>
+          {#if serverOnline}
+            Çevrimiçi
+          {:else}
+            Çevrimdışı
+          {/if}
         </div>
         <div
           use:tooltip="{['157 players are playing', { placement: 'bottom' }]}">
           <i class="fas fa-users fa-lg d-block text-secondary py-3"></i>
-          16/32
+          {#if $data.server}
+            {$data.playerCount}/{$data.maxPlayerCount}
+          {:else}
+            0/0
+          {/if}
         </div>
         <div use:tooltip="{['Game client version', { placement: 'bottom' }]}">
           <i class="fas fa-gamepad fa-lg d-block text-bittersweet py-3"></i>
-          1.8.x
+          {$data.serverGameVersion}
         </div>
       </div>
     </div>
@@ -86,6 +99,8 @@
 
   let copyClickIDForCommandText = 0;
   let isCommandTextCopied = false;
+
+  $: serverOnline = $data.server && $data.server.status === "ONLINE";
 
   function onCopyCommandTextClick() {
     copyClickIDForCommandText++;
