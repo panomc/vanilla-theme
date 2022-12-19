@@ -1,6 +1,13 @@
 <Sidebar>
-  <div class="card">
+  <div class="card mb-3">
     <div class="card-header bg-white">
+      <img
+        src="https://crafthead.net/avatar/{user.username}"
+        class="rounded d-block m-auto border border-5 border-secondary"
+        use:tooltip="{['Çevrimiçi', { placement: 'bottom' }]}"
+        width="64"
+        height="64"
+        alt="{user.username}" />
       <img
         src="https://crafthead.net/avatar/{user.username}"
         class="rounded d-block m-auto"
@@ -16,7 +23,13 @@
         </div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
-          <div class="badge bg-light text-black rounded-pill">{#if $data.permissionGroupName} {$data.permissionGroupName.capitalize()} {:else} Oyuncu {/if}</div>
+          <div class="badge bg-light text-black rounded-pill">
+            {#if $data.permissionGroupName}
+              {$data.permissionGroupName.capitalize()}
+            {:else}
+              Oyuncu
+            {/if}
+          </div>
         </div>
       </div>
     </div>
