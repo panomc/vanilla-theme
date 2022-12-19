@@ -1,6 +1,6 @@
 <!-- Footer -->
-<div class="container pt-4">
-  <div class="row justify-content-between text-muted">
+<div class="container">
+  <div class="row justify-content-between text-muted py-3">
     <div class="col-auto">
       <p class="mb-0">© {$session.siteInfo.websiteName}</p>
     </div>
