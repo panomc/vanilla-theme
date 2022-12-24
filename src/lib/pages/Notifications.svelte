@@ -29,7 +29,7 @@
               <i class="fa fa-bell mx-3 my-3 text-primary"></i>
             </div>
             <div class="col">
-              <span class="text-wrap text-dark">{notification.typeId}</span>
+              <span class="text-wrap text-dark">{notification.type}</span>
               <small class="text-gray d-block">
                 {getTime(checkTime, parseInt(notification.date), "")}
               </small>
