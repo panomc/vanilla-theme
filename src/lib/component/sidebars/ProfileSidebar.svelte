@@ -3,17 +3,22 @@
     <div class="card-header bg-white">
       <img
         src="https://crafthead.net/avatar/{user.username}"
-        class="rounded d-block m-auto border border-5 border-secondary"
-        use:tooltip="{['Çevrimiçi', { placement: 'bottom' }]}"
-        width="64"
-        height="64"
-        alt="{user.username}" />
-      <img
-        src="https://crafthead.net/avatar/{user.username}"
         class="rounded d-block m-auto"
         width="64"
         height="64"
-        alt="{user.username}" />
+        alt="{user.username}"
+        class:border={isOnline(checkTime)}
+        class:border-5={isOnline(checkTime)}
+        class:border-secondary={isOnline(checkTime)}
+        use:tooltip="{[
+          isOnline(checkTime)
+            ? ($data.inGame ? 'Oyunda' : 'Sitede') + ' Çevrimiçi'
+            : formatRelative(
+                new Date(parseInt($data.lastActivityTime)),
+                new Date()
+              ).capitalize(),
+          { placement: 'bottom' },
+        ]}" />
       <div class="text-center">
         <h2 class="my-2">{user.username}</h2>
         <div
@@ -72,7 +77,11 @@
   import ApiUtil from "$lib/api.util.js";
   import { writable } from "svelte/store";
 
-  const data = writable({});
+  const data = writable({
+    lastActivityTime: 0,
+    inGame: false,
+    permissionGroupName: ""
+  });
 
   export const load = async (event) => {
     data.set(
@@ -89,13 +98,19 @@
 </script>
 
 <script>
+  import { formatRelative } from "date-fns";
+
   import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";
 
   import Sidebar from "$lib/component/Sidebar.svelte";
   import { logout, session } from "$lib/Store";
+  import { onDestroy, onMount } from "svelte";
 
   $: user = $session.user ? $session.user : {};
+
+  let checkTime = 0;
+  let interval;
 
   function matching(path, pathName, startsWith = false) {
     return (
@@ -104,4 +119,20 @@
       (startsWith && path.startsWith(pathName))
     );
   }
+
+  function isOnline(checkTime) {
+    const fiveMinutesAgoInMillis = Date.now() - 5 * 60 * 1000;
+
+    return $data.lastActivityTime > fiveMinutesAgoInMillis || $data.inGame;
+  }
+
+  onMount(() => {
+    interval = setInterval(() => {
+      checkTime += 1;
+    }, 1000);
+  })
+
+  onDestroy(() => {
+    clearInterval(interval);
+  })
 </script>
