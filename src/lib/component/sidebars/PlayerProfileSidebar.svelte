@@ -1,4 +1,4 @@
-<Sidebar side="left">
+<Sidebar side="{side}">
   <div class="card mb-3">
     <div class="card-header bg-white">
       <img
@@ -63,6 +63,8 @@
 
   let checkTime = 0;
   let interval;
+
+  export let side;
 
   function matching(path, pathName, startsWith = false) {
     return (

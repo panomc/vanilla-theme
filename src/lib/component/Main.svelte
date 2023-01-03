@@ -1,13 +1,20 @@
 <!-- Main Block -->
 <main class="container">
   <div class="row">
+    {#if !$sidebarProps || $sidebarProps.side === "left"}
+      <svelte:component this="{$sidebar}" {...$sidebarProps} />
+    {/if}
+
     <!-- Content -->
     <div class="col">
       <slot />
     </div>
     <!-- Content End -->
 
-    <svelte:component this="{$sidebar}" {...$sidebarProps} />
+    {$sidebarProps.side}
+    {#if !$sidebarProps || !$sidebarProps.side}
+      <svelte:component this="{$sidebar}" {...$sidebarProps} />
+    {/if}
   </div>
 </main>
 

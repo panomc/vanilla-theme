@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <aside
-  class="col-lg-4 order-lg-last order-first"
+  class="col-lg-4"
   class:order-lg-last="{side === 'right'}"
   class:order-first="{side === 'right'}"
   class:order-lg-first="{side === 'left'}"

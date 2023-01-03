@@ -15,14 +15,18 @@
 
 <script context="module">
   import { setSidebar } from "$lib/Store.js";
-  import PlayerProfileSidebar from "$lib/component/sidebars/PlayerProfileSidebar.svelte";
+  import PlayerProfileSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/PlayerProfileSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
-  export async function load({ parent }) {
+  export async function load(event) {
+    const { parent } = event;
     await parent();
 
-    setSidebar(PlayerProfileSidebar);
+    await loadSidebar(event);
+    setSidebar(PlayerProfileSidebar, {side: "left"});
   }
 </script>
