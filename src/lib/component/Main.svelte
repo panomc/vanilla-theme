@@ -11,7 +11,6 @@
     </div>
     <!-- Content End -->
 
-    {$sidebarProps.side}
     {#if !$sidebarProps || !$sidebarProps.side}
       <svelte:component this="{$sidebar}" {...$sidebarProps} />
     {/if}
