@@ -80,7 +80,6 @@
 </script>
 
 <script>
-  import { formatRelative } from "date-fns";
   import { onDestroy, onMount } from "svelte";
 
   import { page } from "$app/stores";
@@ -103,12 +102,6 @@
       path.toUpperCase() === (pathName + "/").toUpperCase() ||
       (startsWith && path.startsWith(pathName))
     );
-  }
-
-  function isOnline(checkTime) {
-    const fiveMinutesAgoInMillis = Date.now() - 5 * 60 * 1000;
-
-    return $data.lastActivityTime > fiveMinutesAgoInMillis || $data.inGame;
   }
 
   onMount(() => {
