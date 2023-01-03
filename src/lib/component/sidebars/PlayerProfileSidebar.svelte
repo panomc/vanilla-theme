@@ -1,24 +1,16 @@
 <Sidebar side="{side}">
   <div class="card mb-3">
     <div class="card-header bg-white">
-      <img
-        src="https://crafthead.net/avatar/Butlu"
-        class="rounded d-block m-auto border border-5 border-secondary"
-        use:tooltip="{['Çevrimiçi', { placement: 'bottom' }]}"
-        width="64"
-        height="64"
-        alt="Butlu" />
-      <img
-        src="https://crafthead.net/avatar/Butlu"
-        class="rounded d-block m-auto"
-        width="64"
-        height="64"
-        alt="Butlu" />
+      <PlayerHead
+        username="{$data.username}"
+        inGame="{$data.inGame}"
+        lastActivityTime="{$data.lastActivityTime}"
+        checkTime="{checkTime}" />
       <div class="text-center">
-        <h2 class="my-2">Butlu</h2>
-        <div class="d-none text-muted">Kayıt: 01.01.2019</div>
+        <h2 class="my-2">{$data.username}</h2>
         <div class="my-2">
-          <div class="badge bg-light text-black rounded-pill">Oyuncu</div>
+          <PlayerPermissionBadge
+            permissionGroupName="{$data.permissionGroupName}" />
         </div>
       </div>
     </div>
@@ -30,18 +22,20 @@
   import { writable } from "svelte/store";
 
   const data = writable({
+    username: "",
     lastActivityTime: 0,
     inGame: false,
     permissionGroupName: "",
   });
 
   export const load = async (event) => {
-    data.set(
-      await ApiUtil.get({
-        path: "/api/sidebar/playerProfile",
+    data.set({
+      ...(await ApiUtil.get({
+        path: `/api/sidebar/profile/${event.params.player}`,
         request: event,
-      })
-    );
+      })),
+      username: event.params.player,
+    });
   };
 
   String.prototype.capitalize = function () {
@@ -50,35 +44,16 @@
 </script>
 
 <script>
-  import { formatRelative } from "date-fns";
-
-  import { page } from "$app/stores";
-  import tooltip from "$lib/tooltip.util";
-
-  import Sidebar from "$lib/component/Sidebar.svelte";
-  import { logout, session } from "$lib/Store";
   import { onDestroy, onMount } from "svelte";
 
-  $: user = $session.user ? $session.user : {};
+  import Sidebar from "$lib/component/Sidebar.svelte";
+  import PlayerPermissionBadge from "$lib/component/PlayerPermissionBadge.svelte";
+  import PlayerHead from "$lib/component/PlayerHead.svelte";
 
   let checkTime = 0;
   let interval;
 
   export let side;
-
-  function matching(path, pathName, startsWith = false) {
-    return (
-      path.toUpperCase() === pathName.toUpperCase() ||
-      path.toUpperCase() === (pathName + "/").toUpperCase() ||
-      (startsWith && path.startsWith(pathName))
-    );
-  }
-
-  function isOnline(checkTime) {
-    const fiveMinutesAgoInMillis = Date.now() - 5 * 60 * 1000;
-
-    return $data.lastActivityTime > fiveMinutesAgoInMillis || $data.inGame;
-  }
 
   onMount(() => {
     interval = setInterval(() => {
