@@ -1,24 +1,11 @@
 <Sidebar>
   <div class="card mb-3">
     <div class="card-header bg-white">
-      <img
-        src="https://crafthead.net/avatar/{user.username}"
-        class="rounded d-block m-auto"
-        width="64"
-        height="64"
-        alt="{user.username}"
-        class:border={isOnline(checkTime)}
-        class:border-5={isOnline(checkTime)}
-        class:border-secondary={isOnline(checkTime)}
-        use:tooltip="{[
-          isOnline(checkTime)
-            ? ($data.inGame ? 'Oyunda' : 'Sitede') + ' Çevrimiçi'
-            : formatRelative(
-                new Date(parseInt($data.lastActivityTime)),
-                new Date()
-              ).capitalize(),
-          { placement: 'bottom' },
-        ]}" />
+      <PlayerHead
+        username="{user.username}"
+        inGame="{$data.inGame}"
+        lastActivityTime="{$data.lastActivityTime}"
+        checkTime="{checkTime}" />
       <div class="text-center">
         <h2 class="my-2">{user.username}</h2>
         <div
@@ -28,13 +15,8 @@
         </div>
         <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
-          <div class="badge bg-light text-black rounded-pill">
-            {#if $data.permissionGroupName}
-              {$data.permissionGroupName.capitalize()}
-            {:else}
-              Oyuncu
-            {/if}
-          </div>
+          <PlayerPermissionBadge
+            permissionGroupName="{$data.permissionGroupName}" />
         </div>
       </div>
     </div>
@@ -80,7 +62,7 @@
   const data = writable({
     lastActivityTime: 0,
     inGame: false,
-    permissionGroupName: ""
+    permissionGroupName: "",
   });
 
   export const load = async (event) => {
@@ -99,13 +81,16 @@
 
 <script>
   import { formatRelative } from "date-fns";
+  import { onDestroy, onMount } from "svelte";
 
   import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";
 
-  import Sidebar from "$lib/component/Sidebar.svelte";
   import { logout, session } from "$lib/Store";
-  import { onDestroy, onMount } from "svelte";
+
+  import PlayerPermissionBadge from "$lib/component/PlayerPermissionBadge.svelte";
+  import Sidebar from "$lib/component/Sidebar.svelte";
+  import PlayerHead from "$lib/component/PlayerHead.svelte";
 
   $: user = $session.user ? $session.user : {};
 
@@ -130,9 +115,9 @@
     interval = setInterval(() => {
       checkTime += 1;
     }, 1000);
-  })
+  });
 
   onDestroy(() => {
     clearInterval(interval);
-  })
+  });
 </script>
