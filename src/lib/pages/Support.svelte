@@ -20,7 +20,9 @@
 <script context="module">
   import { setSidebar } from "$lib/Store.js";
 
-  import SupportSidebar from "$lib/component/sidebars/SupportSidebar.svelte";
+  import SupportSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/SupportSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -29,6 +31,7 @@
     const { parent } = event;
     await parent();
 
+    await loadSidebar(event);
     setSidebar(SupportSidebar);
   }
 </script>

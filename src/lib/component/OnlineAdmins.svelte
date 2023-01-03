@@ -5,26 +5,18 @@
     <table class="table table-borderless mb-0">
       <tbody>
         <tr>
-          <td>
-            <a href="/player/Butlu">
-              <img
-                alt=""
-                class="rounded"
-                src="https://crafthead.net/avatar/butlu"
-                use:tooltip="{['Butlu', { placement: 'bottom' }]}"
-                width="24" />
-            </a>
-          </td>
-          <td>
-            <a href="/player/kahverengi">
-              <img
-                alt=""
-                class="rounded"
-                src="https://crafthead.net/avatar/kahverengi"
-                use:tooltip="{['kahverengi', { placement: 'bottom' }]}"
-                width="24" />
-            </a>
-          </td>
+          {#each onlineAdmins as onlineAdmin, index (onlineAdmin)}
+            <td>
+              <a href="/player/{onlineAdmin}">
+                <img
+                  alt=""
+                  class="rounded"
+                  src="https://crafthead.net/avatar/{onlineAdmin}"
+                  use:tooltip="{[onlineAdmin, { placement: 'bottom' }]}"
+                  width="24" />
+              </a>
+            </td>
+          {/each}
         </tr>
       </tbody>
     </table>
@@ -34,4 +26,6 @@
 <!-- Online Admins End -->
 <script>
   import tooltip from "$lib/tooltip.util";
+
+  export let onlineAdmins;
 </script>

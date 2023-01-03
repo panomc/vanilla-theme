@@ -171,7 +171,9 @@
 </article>
 
 <script context="module">
-  import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
+  import TicketCreateAndDetailSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store";
   import { getTicketDetail } from "$lib/services/tickets";
   import { error } from "@sveltejs/kit";
@@ -196,6 +198,7 @@
       },
     };
 
+    await loadSidebar(event);
     setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketDetail({

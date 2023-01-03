@@ -43,7 +43,9 @@
 {/if}
 
 <script context="module">
-  import TicketsSidebar from "$lib/component/sidebars/TicketsSidebar.svelte";
+  import TicketsSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/TicketsSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getTickets } from "$lib/services/tickets.js";
 
@@ -69,6 +71,7 @@
       pageType,
     };
 
+    await loadSidebar(event);
     setSidebar(TicketsSidebar);
 
     await getTickets({

@@ -41,7 +41,9 @@
 </div>
 
 <script context="module">
-  import TicketCreateAndDetailSidebar from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
+  import TicketCreateAndDetailSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getTicketCategories } from "$lib/services/tickets";
   import { error as throwError } from "@sveltejs/kit";
@@ -58,6 +60,7 @@
       categoryPage: 0,
     };
 
+    await loadSidebar(event);
     setSidebar(TicketCreateAndDetailSidebar);
 
     await getTicketCategories({
