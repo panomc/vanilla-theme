@@ -5,16 +5,13 @@
     width="{width}"
     height="{height}"
     alt="{username}"
-    class:border="{isOnline(checkTime)}"
-    class:border-5="{isOnline(checkTime)}"
-    class:border-secondary="{isOnline(checkTime)}"
+    class:border="{isOnline()}"
+    class:border-5="{isOnline()}"
+    class:border-secondary="{isOnline()}"
     use:tooltip="{[
-      isOnline(checkTime)
+      isOnline()
         ? (inGame ? 'Oyunda' : 'Sitede') + ' Çevrimiçi'
-        : formatRelative(
-            new Date(parseInt(lastActivityTime)),
-            new Date()
-          ).capitalize(),
+        : getOfflineRelativeDateText(checkTime),
       { placement: 'bottom' },
     ]}" />
 {:else}
@@ -37,9 +34,20 @@
   export let inGame = false;
   export let lastActivityTime;
 
-  function isOnline(checkTime) {
+  function isOnline() {
     const fiveMinutesAgoInMillis = Date.now() - 5 * 60 * 1000;
 
     return lastActivityTime > fiveMinutesAgoInMillis || inGame;
   }
+
+  function getOfflineRelativeDateText(checkTime) {
+    return formatRelative(
+      new Date(parseInt(lastActivityTime)),
+      new Date()
+    ).capitalize()
+  }
+
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  };
 </script>
