@@ -5,11 +5,11 @@
     width="{width}"
     height="{height}"
     alt="{username}"
-    class:border="{isOnline()}"
-    class:border-5="{isOnline()}"
-    class:border-secondary="{isOnline()}"
+    class:border="{isOnline}"
+    class:border-5="{isOnline}"
+    class:border-secondary="{isOnline}"
     use:tooltip="{[
-      isOnline()
+      isOnline
         ? (inGame ? 'Oyunda' : 'Sitede') + ' Çevrimiçi'
         : getOfflineRelativeDateText(checkTime),
       { placement: 'bottom' },
@@ -34,11 +34,7 @@
   export let inGame = false;
   export let lastActivityTime;
 
-  function isOnline() {
-    const fiveMinutesAgoInMillis = Date.now() - 5 * 60 * 1000;
-
-    return lastActivityTime > fiveMinutesAgoInMillis || inGame;
-  }
+  $: isOnline = lastActivityTime > Date.now() - 5 * 60 * 1000 || inGame;
 
   function getOfflineRelativeDateText(checkTime) {
     return formatRelative(
