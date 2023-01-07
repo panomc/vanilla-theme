@@ -1,21 +1,9 @@
 {#if status === TicketStatuses.NEW}
-  <a href="/tickets/waitingReply"
-    ><span
-      class="badge bg-mint rounded-pill"
-      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Yeni</span
-    ></a>
+  <span class="badge bg-mint rounded-pill">Yeni</span>
 {:else if status === TicketStatuses.REPLIED}
-  <a href="/tickets"
-    ><span
-      class="badge bg-sunflower rounded-pill"
-      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Yanıtlandı</span
-    ></a>
+  <span class="badge bg-sunflower rounded-pill">Yanıtlandı</span>
 {:else if status === TicketStatuses.CLOSED}
-  <a href="/tickets/closed"
-    ><span
-      class="badge bg-bittersweet rounded-pill"
-      use:tooltip="{['Filtrele', { placement: 'bottom' }]}">Kapalı</span
-    ></a>
+  <span class="badge bg-bittersweet rounded-pill">Kapalı</span>
 {/if}
 
 <script context="module">
@@ -27,7 +15,5 @@
 </script>
 
 <script>
-  import tooltip from "$lib/tooltip.util";
-
   export let status = TicketStatuses.NEW;
 </script>
