@@ -31,22 +31,26 @@
         E-Posta Değiştir
       </label>
       <div class="col col-form-label">
-        <div class="row">
-          {#if !changingEmail}
-            <div class="col-12">
-              {#if changingEmailSuccess}
-                <p class="text-dark mb-0">
-                  {newEmail} adresine e-postanı değiştirme bağlantısı gönderildi.
-                </p>
-              {:else}
-                <a
-                  href="javascript:void(0);"
-                  aria-describedby="userEmail"
-                  on:click="{startChangingEmail}">E-posta değiştir</a>
-              {/if}
-            </div>
-          {:else if changingEmail2ndStep}
-            <form on:submit|preventDefault="{sendChangeEmailLink}">
+        <form
+          on:submit|preventDefault="{() =>
+            changingEmail2ndStep
+              ? sendChangeEmailLink()
+              : startChangingEmail2ndStep()}">
+          <div class="row">
+            {#if !changingEmail}
+              <div class="col-12">
+                {#if changingEmailSuccess}
+                  <p class="text-dark mb-0">
+                    {newEmail} adresine e-postanı değiştirme bağlantısı gönderildi.
+                  </p>
+                {:else}
+                  <a
+                    href="javascript:void(0);"
+                    aria-describedby="userEmail"
+                    on:click="{startChangingEmail}">E-posta değiştir</a>
+                {/if}
+              </div>
+            {:else if changingEmail2ndStep}
               <div class="col">
                 <input
                   type="email"
@@ -75,9 +79,7 @@
                   Onayla
                 </button>
               </div>
-            </form>
-          {:else}
-            <form on:submit|preventDefault="{startChangingEmail2ndStep}">
+            {:else}
               <div class="col">
                 <input
                   type="password"
@@ -98,9 +100,9 @@
                   class="btn btn-link"
                   on:click="{startChangingEmail2ndStep}">Devam Et</button>
               </div>
-            </form>
-          {/if}
-        </div>
+            {/if}
+          </div>
+        </form>
       </div>
     </div>
   </div>
