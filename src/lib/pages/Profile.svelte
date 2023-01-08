@@ -1,7 +1,7 @@
 <!-- Statistics -->
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">İstatistikler</h4>
+    <h5 class="card-title">İstatistikler</h5>
     <table class="table table-borderless mb-0">
       <tbody>
         <tr>

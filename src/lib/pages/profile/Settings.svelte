@@ -1,99 +1,56 @@
 <!-- Settings -->
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title pb-3">Hesap Ayarları</h4>
-    <div class="accordion accordion-flush mb-3" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h4 class="card-title">
-          <button
-            class="accordion-button collapsed h3"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#settings-collapsePassword"
-            aria-expanded="false"
-            aria-controls="flush-collapseOne">
-            Şifre Değiştir
-          </button>
-        </h4>
-        <div
-          id="settings-collapsePassword"
-          class="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <!-- Set New Password -->
-            <form>
-              <div class="row align-items-end">
-                <div class="col-4">
-                  <label for="newPassowrd">Mevcut Şifre</label>
-                  <input
-                    type="password"
-                    id="newPassowrd"
-                    class="form-control" />
-                </div>
-                <div class="col-4">
-                  <label for="newPassowrd">Yeni Şifre</label>
-                  <input
-                    type="password"
-                    id="newPassowrd"
-                    class="form-control" />
-                </div>
-                <div class="col-4">
-                  <label for="newPassowrdRepeat">Yeni Şifre Tekrarı</label>
-                  <input
-                    type="password"
-                    id="newPassowrdRepeat"
-                    class="form-control" />
-                </div>
-                <div class="col-12 mt-3">
-                  <button type="submit" class="btn btn-secondary w-100">
-                    Kaydet
-                  </button>
-                </div>
-              </div>
-            </form>
+    <h5 class="card-title">Ayarlar</h5>
+    <div class="row mb-3">
+      <label class="col-md-4 col-form-label" for="userPassword">
+        E-Posta Değiştir
+      </label>
+      <div class="col col-form-label">
+        <a href="#" aria-describedby="userPassword"
+          >Şifre sıfırlama bağlantıı gönder</a>
+        <p class="text-dark mb-0">
+          MAIL adresine şifreni değiştirme bağlantısı gönderildi.
+        </p>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-md-4 col-form-label" for="userEmail">
+        Şifre Değiştir
+      </label>
+      <div class="col col-form-label">
+        <div class="row">
+          <div class="col-12">
+            <a href="#" aria-describedby="userEmail">E-posta değiştir</a>
+          </div>
+          <div class="col">
+            <input
+              type="email"
+              id="currentPassword"
+              placeholder="Mevcut Şifre"
+              class="form-control" />
+          </div>
+          <div class="col-auto">
+            <button type="reset" class="btn btn-link link-danger">
+              İptal
+            </button>
+            <button type="submit" class="btn btn-link">Devam Et</button>
           </div>
         </div>
-      </div>
-      <div class="accordion-item">
-        <h4 class="card-title">
-          <button
-            class="accordion-button collapsed h3"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#settings-collapseEmail"
-            aria-expanded="false"
-            aria-controls="flush-collapseOne"
-            >E-Posta Değiştir
-          </button>
-        </h4>
-        <div
-          id="settings-collapseEmail"
-          class="accordion-collapse collapse"
-          aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <!-- Set New Password -->
-            <form>
-              <div class="row align-items-end">
-                <div class="col-4">
-                  <label for="verifyPassword">Şifre</label>
-                  <input
-                    type="password"
-                    id="verifyPassword"
-                    class="form-control" />
-                </div>
-                <div class="col-4">
-                  <label for="setNewEmail">Yeni E-Posta</label>
-                  <input type="email" id="setNewEmail" class="form-control" />
-                </div>
-                <div class="col-4">
-                  <button type="submit" class="btn btn-secondary w-100">
-                    Kaydet
-                  </button>
-                </div>
-              </div>
-            </form>
+        <div class="row">
+          <div class="col">
+            <input
+              type="email"
+              id="currentPassword"
+              placeholder="Yeni E-Posta"
+              class="form-control" />
+            <div class="invalid-feedback">Please choose a username.</div>
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-link link-secondary">
+              Onayla
+            </button>
           </div>
         </div>
       </div>
@@ -104,13 +61,15 @@
 <script context="module">
   import { setSidebar } from "$lib/Store.js";
 
-  import ProfileSidebar, {load as loadSidebar} from "$lib/component/sidebars/ProfileSidebar.svelte";
+  import ProfileSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/ProfileSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
    */
   export async function load(event) {
-    const { parent } = event
+    const { parent } = event;
     await parent();
 
     await loadSidebar(event);
