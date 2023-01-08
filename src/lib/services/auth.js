@@ -46,7 +46,14 @@ export const sendRegister = async (body) => {
 
 export const sendVerifyEmail = async (token) => {
   return ApiUtil.post({
-    path: "/auth/verifyEmail",
+    path: "/api/auth/verifyEmail",
+    body: { token },
+  });
+};
+
+export const sendVerifyNewEmail = async (token) => {
+  return ApiUtil.post({
+    path: "/api/auth/verifyNewEmail",
     body: { token },
   });
 };
