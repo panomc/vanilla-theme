@@ -20,7 +20,7 @@
         </div>
         {#if resetPasswordSuccess}
           <p class="text-dark mb-0">
-            Mail adresine şifreni değiştirme bağlantısı gönderildi.
+            E-posta adresine şifreni değiştirme bağlantısı gönderildi.
           </p>
         {/if}
       </div>
@@ -32,37 +32,70 @@
       </label>
       <div class="col col-form-label">
         <div class="row">
-          <div class="col-12">
-            <a href="#" aria-describedby="userEmail">E-posta değiştir</a>
-          </div>
-          <div class="col">
-            <input
-              type="email"
-              id="currentPassword"
-              placeholder="Mevcut Şifre"
-              class="form-control" />
-          </div>
-          <div class="col-auto">
-            <button type="reset" class="btn btn-link link-danger">
-              İptal
-            </button>
-            <button type="submit" class="btn btn-link">Devam Et</button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <input
-              type="email"
-              id="currentPassword"
-              placeholder="Yeni E-Posta"
-              class="form-control" />
-            <div class="invalid-feedback">Please choose a username.</div>
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-link link-secondary">
-              Onayla
-            </button>
-          </div>
+          {#if !changingEmail}
+            <div class="col-12">
+              {#if changingEmailSuccess}
+                <p class="text-dark mb-0">
+                  {newEmail} adresine e-postanı değiştirme bağlantısı gönderildi.
+                </p>
+              {:else}
+                <a
+                  href="javascript:void(0);"
+                  aria-describedby="userEmail"
+                  on:click="{startChangingEmail}">E-posta değiştir</a>
+              {/if}
+            </div>
+          {:else if changingEmail2ndStep}
+            <div class="col">
+              <input
+                type="email"
+                id="newEmail"
+                placeholder="Yeni E-Posta"
+                class="form-control"
+                aria-describedby="validationChangingEmail"
+                bind:value="{newEmail}"
+                class:is-invalid="{changingEmailError}" />
+              <div id="validationChangingEmail" class="invalid-feedback">
+                {changingEmailError}
+              </div>
+            </div>
+            <div class="col-auto">
+              <button
+                type="reset"
+                class="btn btn-link link-primary"
+                on:click="{stopChangingEmail2ndStep}">
+                Geri
+              </button>
+              <button
+                type="submit"
+                class="btn btn-link link-secondary"
+                on:click="{sendChangeEmailLink}"
+                class:disabled="{changingEmailLoading}">
+                Onayla
+              </button>
+            </div>
+          {:else}
+            <div class="col">
+              <input
+                type="password"
+                id="currentPassword"
+                placeholder="Mevcut Şifre"
+                class="form-control"
+                bind:value="{currentPassword}" />
+            </div>
+            <div class="col-auto">
+              <button
+                type="reset"
+                class="btn btn-link link-danger"
+                on:click="{stopChangingEmail}">
+                İptal
+              </button>
+              <button
+                type="submit"
+                class="btn btn-link"
+                on:click="{startChangingEmail2ndStep}">Devam Et</button>
+            </div>
+          {/if}
         </div>
       </div>
     </div>
@@ -89,12 +122,22 @@
 </script>
 
 <script>
-  import { sendResetPassword } from "$lib/services/profile.js";
+  import { sendChangeEmail, sendResetPassword } from "$lib/services/profile.js";
   import { NETWORK_ERROR } from "$lib/api.util.js";
 
   let resetPasswordError;
   let resetPasswordLoading;
   let resetPasswordSuccess;
+
+  let currentPassword;
+  let newEmail;
+
+  let changingEmail;
+  let changingEmail2ndStep;
+
+  let changingEmailError;
+  let changingEmailLoading;
+  let changingEmailSuccess;
 
   async function sendResetPasswordLink() {
     resetPasswordError = null;
@@ -115,5 +158,49 @@
         resetPasswordLoading = false;
         resetPasswordError = NETWORK_ERROR;
       });
+  }
+
+  async function sendChangeEmailLink() {
+    changingEmailError = null;
+    changingEmailLoading = true;
+    changingEmailSuccess = false;
+
+    await sendChangeEmail(currentPassword, newEmail)
+      .then((body) => {
+        changingEmailLoading = false;
+
+        if (body.result === "ok") {
+          changingEmail = false;
+          changingEmail2ndStep = false;
+
+          changingEmailSuccess = true;
+        } else {
+          changingEmailError = body.error || NETWORK_ERROR;
+        }
+      })
+      .catch(() => {
+        changingEmailLoading = false;
+
+        changingEmailError = NETWORK_ERROR;
+      });
+  }
+
+  function startChangingEmail() {
+    changingEmail = true;
+  }
+
+  function startChangingEmail2ndStep() {
+    changingEmail2ndStep = true;
+  }
+
+  function stopChangingEmail() {
+    currentPassword = "";
+    newEmail = "";
+
+    changingEmail = false;
+  }
+
+  function stopChangingEmail2ndStep() {
+    changingEmail2ndStep = false;
   }
 </script>
