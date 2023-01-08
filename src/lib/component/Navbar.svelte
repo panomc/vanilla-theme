@@ -57,8 +57,7 @@
               </span>
             {/if}
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-end position-absolute">
+          <div class="dropdown-menu dropdown-menu-end position-absolute">
             <h6 class="dropdown-header">
               Bildirimler {$notificationsCount === 0
                 ? ""
@@ -66,24 +65,24 @@
             </h6>
 
             {#if $quickNotifications.length === 0}
-              <NoContent/>
+              <NoContent />
             {:else}
-            
-            {#each $quickNotifications as notification, index (notification)}
-            <a href="javascript:void(0);" class="dropdown-item" class:notification-unread="{notification.status ===
-              'NOT_READ'}">
-              <p class="mb-0">{notification.type}</p>
-              <small class="text-dark">
-                {getTime(checkTime, parseInt(notification.date), "")}
-              </small>
-            </a>
-            {/each}
-
+              {#each $quickNotifications as notification, index (notification)}
+                <a
+                  href="javascript:void(0);"
+                  on:click="{() => onNotificationClick(notification)}"
+                  class="dropdown-item"
+                  class:notification-unread="{notification.status ===
+                    'NOT_READ'}">
+                  <p class="mb-0">{notification.type}</p>
+                  <small class="text-dark">
+                    {getTime(checkTime, parseInt(notification.date), "")}
+                  </small>
+                </a>
+              {/each}
             {/if}
 
-            <a
-              class="dropdown-item text-center small"
-              href="/notifications">
+            <a class="dropdown-item text-center small" href="/notifications">
               Tümünü Görüntüle
             </a>
           </div>
@@ -110,7 +109,7 @@
               <h6 class="dropdown-header">{$session.user.username}</h6>
               <a class="dropdown-item" href="/profile">İstatistikler</a>
               <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
-              <hr class="dropdown-divider">
+              <hr class="dropdown-divider" />
               <a class="dropdown-item" href="/tickets">Talepler</a>
               <hr class="dropdown-divider" />
               <a
