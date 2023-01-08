@@ -70,7 +70,7 @@
             {:else}
             
             {#each $quickNotifications as notification, index (notification)}
-            <a href="#" class="dropdown-item" class:notification-unread="{notification.status ===
+            <a href="javascript:void(0);" class="dropdown-item" class:notification-unread="{notification.status ===
               'NOT_READ'}">
               <p class="mb-0">{notification.type}</p>
               <small class="text-dark">
