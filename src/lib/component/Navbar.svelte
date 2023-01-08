@@ -17,7 +17,7 @@
         </a>
       </li>
       <button
-        class="navbar-toggler d-lg-none"
+        class="navbar-toggler d-lg-none mx-lg-0 mx-3"
         data-bs-target="#navbar"
         data-bs-toggle="collapse"
         type="button">
@@ -38,13 +38,13 @@
 
       <!-- Notifications Dropdown -->
       <div
-        class="nav-item"
+        class="nav-item mx-lg-0 mx-3"
         id="quickNotificationsDropdown"
         class:d-none="{!$session.user}">
         <div class="dropdown">
           <a
             href="javascript:void(0);"
-            class="nav-link dropdown-toggle"
+            class="nav-link"
             data-bs-toggle="dropdown"
             role="button"
             title="Bildirimler">
@@ -58,7 +58,7 @@
             {/if}
           </a>
           <div
-            class="dropdown-menu dropdown-menu-end position-absolute animate__animated animate__zoomInUp">
+            class="dropdown-menu dropdown-menu-end position-absolute">
             <h6 class="dropdown-header">
               Bildirimler {$notificationsCount === 0
                 ? ""
@@ -99,14 +99,14 @@
         <li class="nav-item rounded-pill mr-lg-0 mr-5">
           <div class="dropdown">
             <a
-              class="nav-link dropdown-toggle"
+              class="nav-link"
               href="javascript:void(0);"
               data-bs-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
               <img
                 alt="{$session.user.username}"
-                class="rounded"
+                class="rounded me-2"
                 src="https://crafthead.net/avatar/{$session.user.username}"
                 width="24" />
               {$session.user.username}
