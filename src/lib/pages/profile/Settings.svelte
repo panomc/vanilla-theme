@@ -46,55 +46,59 @@
               {/if}
             </div>
           {:else if changingEmail2ndStep}
-            <div class="col">
-              <input
-                type="email"
-                id="newEmail"
-                placeholder="Yeni E-Posta"
-                class="form-control"
-                aria-describedby="validationChangingEmail"
-                bind:value="{newEmail}"
-                class:is-invalid="{changingEmailError}" />
-              <div id="validationChangingEmail" class="invalid-feedback">
-                {changingEmailError}
+            <form on:submit|preventDefault="{sendChangeEmailLink}">
+              <div class="col">
+                <input
+                  type="email"
+                  id="newEmail"
+                  placeholder="Yeni E-Posta"
+                  class="form-control"
+                  aria-describedby="validationChangingEmail"
+                  bind:value="{newEmail}"
+                  class:is-invalid="{changingEmailError}" />
+                <div id="validationChangingEmail" class="invalid-feedback">
+                  {changingEmailError}
+                </div>
               </div>
-            </div>
-            <div class="col-auto">
-              <button
-                type="reset"
-                class="btn btn-link link-primary"
-                on:click="{stopChangingEmail2ndStep}">
-                Geri
-              </button>
-              <button
-                type="submit"
-                class="btn btn-link link-secondary"
-                on:click="{sendChangeEmailLink}"
-                class:disabled="{changingEmailLoading}">
-                Onayla
-              </button>
-            </div>
+              <div class="col-auto">
+                <button
+                  type="reset"
+                  class="btn btn-link link-primary"
+                  on:click="{stopChangingEmail2ndStep}">
+                  Geri
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-link link-secondary"
+                  on:click="{sendChangeEmailLink}"
+                  class:disabled="{changingEmailLoading}">
+                  Onayla
+                </button>
+              </div>
+            </form>
           {:else}
-            <div class="col">
-              <input
-                type="password"
-                id="currentPassword"
-                placeholder="Mevcut Şifre"
-                class="form-control"
-                bind:value="{currentPassword}" />
-            </div>
-            <div class="col-auto">
-              <button
-                type="reset"
-                class="btn btn-link link-danger"
-                on:click="{stopChangingEmail}">
-                İptal
-              </button>
-              <button
-                type="submit"
-                class="btn btn-link"
-                on:click="{startChangingEmail2ndStep}">Devam Et</button>
-            </div>
+            <form on:submit|preventDefault="{startChangingEmail2ndStep}">
+              <div class="col">
+                <input
+                  type="password"
+                  id="currentPassword"
+                  placeholder="Mevcut Şifre"
+                  class="form-control"
+                  bind:value="{currentPassword}" />
+              </div>
+              <div class="col-auto">
+                <button
+                  type="reset"
+                  class="btn btn-link link-danger"
+                  on:click="{stopChangingEmail}">
+                  İptal
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-link"
+                  on:click="{startChangingEmail2ndStep}">Devam Et</button>
+              </div>
+            </form>
           {/if}
         </div>
       </div>
