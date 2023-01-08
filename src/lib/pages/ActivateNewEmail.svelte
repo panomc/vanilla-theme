@@ -32,7 +32,7 @@
 </script>
 
 <script>
-  import { sendVerifyEmail } from "$lib/services/auth.js";
+  import { sendVerifyNewEmail } from "$lib/services/auth.js";
   import { NETWORK_ERROR } from "$lib/api.util.js";
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";
