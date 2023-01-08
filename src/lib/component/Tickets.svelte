@@ -22,16 +22,14 @@
     </table>
   </div>
 {:else}
-  <div class="container text-center animate__animated animate__zoomIn">
-    <i class="fas fa-ticket-alt fa-3x m-3 text-dark text-opacity-25"></i>
-    <p class="text-gray">Burada içerik yok.</p>
-  </div>
+  <NoContent />
 {/if}
 
 <!-- Tickets Card End -->
 <script>
   import TicketRow from "$lib/component/TicketRow.svelte";
   import { createEventDispatcher } from "svelte";
+  import NoContent from "$lib/component/NoContent.svelte";
 
   export let tickets;
 

@@ -44,11 +44,7 @@
       {/each}
 
       {#if $notifications.length === 0}
-        <div
-          class="d-flex flex-column align-items-center justify-content-center">
-          <i class="fas fa-bell fa-3x text-dark text-opacity-25 m-3"></i>
-          <p class="text-gray">Burada içerik yok.</p>
-        </div>
+        <NoContent/>
       {/if}
 
       {#if $notifications.length < $count && $count > 10 + 10 * page}
@@ -163,6 +159,7 @@
     setCallback as setDeleteAllNotificationsModalCallback,
   } from "$lib/component/modals/ConfirmRemoveAllNotificationsModal.svelte";
   import { onNotificationClick } from "$lib/NotificationManager.js";
+  import NoContent from "$lib/component/NoContent.svelte";
 
   export let data;
 

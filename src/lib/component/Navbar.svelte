@@ -66,11 +66,7 @@
             </h6>
 
             {#if $quickNotifications.length === 0}
-              <div
-                class="d-flex flex-column align-items-center justify-content-center mb-3">
-                <i class="fas fa-2x fa-bell text-gray mx-5 my-3"></i>
-                <small class="text-gray">Yeni bildirim yok.</small>
-              </div>
+              <NoContent/>
             {:else}
             
             {#each $quickNotifications as notification, index (notification)}
@@ -165,6 +161,7 @@
   import { onDestroy, onMount } from "svelte";
   import ApiUtil from "$lib/api.util.js";
   import { onNotificationClick } from "$lib/NotificationManager.js";
+  import NoContent from "$lib/component/NoContent.svelte";
 
   let quickNotificationProcessID = 0;
 
