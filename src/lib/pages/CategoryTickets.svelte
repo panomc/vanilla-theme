@@ -33,6 +33,7 @@
   } from "$lib/component/sidebars/TicketsSidebar.svelte";
   import { setSidebar } from "$lib/Store.js";
   import { getCategoryTickets } from "$lib/services/tickets.js";
+  import { error } from "@sveltejs/kit";
 
   /**
    * @type {import('@sveltejs/kit').Load}
@@ -64,9 +65,11 @@
       request: event,
     }).then((body) => {
       if (body.error) {
-        data = {};
+        if (body.error === "NOT_EXISTS" || body.error === "PAGE_NOT_FOUND") {
+          throw error(404, body.error);
+        }
 
-        return;
+        throw error(500, body.error);
       }
 
       data = body;
@@ -81,6 +84,7 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
+  import { base } from "$app/paths";
 
   export let data;
 
@@ -99,6 +103,8 @@
           }
         } else if (body.error === "PAGE_NOT_FOUND") {
           reloadData(page - 1);
+        } else if (body.error === "NOT_EXISTS") {
+          goto(base + "/error-404");
         }
       }
     );
