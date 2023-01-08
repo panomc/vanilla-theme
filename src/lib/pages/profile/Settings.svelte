@@ -3,15 +3,26 @@
   <div class="card-body">
     <h5 class="card-title">Ayarlar</h5>
     <div class="row mb-3">
-      <label class="col-md-4 col-form-label" for="userPassword">
+      <label class="col-md-4 col-form-label" for="resetPassword">
         Şifre Değiştir
       </label>
       <div class="col col-form-label">
-        <a href="#" aria-describedby="userPassword"
+        <a
+          href="javascript:void(0);"
+          on:click="{sendResetPasswordLink}"
+          aria-describedby="resetPassword validationResetPassword"
+          class:disabled="{resetPasswordLoading}"
+          class:is-invalid="{resetPasswordError}"
           >Şifre sıfırlama bağlantısı gönder</a>
-        <p class="text-dark mb-0">
-          MAIL adresine şifreni değiştirme bağlantısı gönderildi.
-        </p>
+
+        <div id="validationResetPassword" class="invalid-feedback">
+          {resetPasswordError}
+        </div>
+        {#if resetPasswordSuccess}
+          <p class="text-dark mb-0">
+            Mail adresine şifreni değiştirme bağlantısı gönderildi.
+          </p>
+        {/if}
       </div>
     </div>
 
@@ -74,5 +85,35 @@
 
     await loadSidebar(event);
     setSidebar(ProfileSidebar);
+  }
+</script>
+
+<script>
+  import { sendResetPassword } from "$lib/services/profile.js";
+  import { NETWORK_ERROR } from "$lib/api.util.js";
+
+  let resetPasswordError;
+  let resetPasswordLoading;
+  let resetPasswordSuccess;
+
+  async function sendResetPasswordLink() {
+    resetPasswordError = null;
+    resetPasswordLoading = true;
+    resetPasswordSuccess = false;
+
+    await sendResetPassword()
+      .then((body) => {
+        resetPasswordLoading = false;
+
+        if (body.result === "ok") {
+          resetPasswordSuccess = true;
+        } else {
+          resetPasswordError = body.error || NETWORK_ERROR;
+        }
+      })
+      .catch(() => {
+        resetPasswordLoading = false;
+        resetPasswordError = NETWORK_ERROR;
+      });
   }
 </script>

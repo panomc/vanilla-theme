@@ -14,3 +14,8 @@ export const getPlayerProfile = async ({ request, username }) => {
   })
 };
 
+export const sendResetPassword = async () => {
+  return ApiUtil.post({
+    path: "/api/profile/resetPassword"
+  });
+};
