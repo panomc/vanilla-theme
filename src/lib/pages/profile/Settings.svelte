@@ -4,11 +4,11 @@
     <h5 class="card-title">Ayarlar</h5>
     <div class="row mb-3">
       <label class="col-md-4 col-form-label" for="userPassword">
-        E-Posta Değiştir
+        Şifre Değiştir
       </label>
       <div class="col col-form-label">
         <a href="#" aria-describedby="userPassword"
-          >Şifre sıfırlama bağlantıı gönder</a>
+          >Şifre sıfırlama bağlantısı gönder</a>
         <p class="text-dark mb-0">
           MAIL adresine şifreni değiştirme bağlantısı gönderildi.
         </p>
@@ -17,7 +17,7 @@
 
     <div class="row mb-3">
       <label class="col-md-4 col-form-label" for="userEmail">
-        Şifre Değiştir
+        E-Posta Değiştir
       </label>
       <div class="col col-form-label">
         <div class="row">
