@@ -74,7 +74,6 @@
                 <button
                   type="submit"
                   class="btn btn-link link-secondary"
-                  on:click="{sendChangeEmailLink}"
                   class:disabled="{changingEmailLoading}">
                   Onayla
                 </button>
@@ -97,8 +96,7 @@
                 </button>
                 <button
                   type="submit"
-                  class="btn btn-link"
-                  on:click="{startChangingEmail2ndStep}">Devam Et</button>
+                  class="btn btn-link">Devam Et</button>
               </div>
             {/if}
           </div>
@@ -167,6 +165,8 @@
   }
 
   async function sendChangeEmailLink() {
+    console.log("geldi")
+
     changingEmailError = null;
     changingEmailLoading = true;
     changingEmailSuccess = false;
