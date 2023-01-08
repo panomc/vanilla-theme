@@ -43,9 +43,13 @@
               <small>
                 <Date time="{data.ticket.date}" relativeFormat="{true}" />
                 ,
-                {data.ticket.category === "-"
+                <a
+                  href="/tickets/category/{data.ticket.category.url}"
+                  title="Filtrele"
+                  >{data.ticket.category === "-"
                     ? "Kategorisiz"
                     : data.ticket.category.title}
+                </a>
                 kategorisine açıldı.</small>
             </div>
             <div class="col-auto">
@@ -203,10 +207,10 @@
     }).then((body) => {
       if (body.error) {
         if (body.error === "NOT_EXISTS") {
-          throw error(404, body.error)
+          throw error(404, body.error);
         }
 
-        throw error(500, body.error)
+        throw error(500, body.error);
       }
 
       data = body;
@@ -257,7 +261,7 @@
 
     await loadMoreTicketMessages({
       id: data.ticket.id,
-      lastMessageId: data.ticket.messages[0].id
+      lastMessageId: data.ticket.messages[0].id,
     }).then((body) => {
       if (body.error) {
         return;
@@ -278,7 +282,7 @@
 
     await sendTicketMessage({
       ticketId: data.ticket.id,
-      message
+      message,
     }).then((body) => {
       if (body.error) {
         return;
