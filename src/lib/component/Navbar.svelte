@@ -102,13 +102,15 @@
               aria-expanded="false">
               <img
                 alt="{$session.user.username}"
-                class="rounded me-2"
+                class="rounded"
                 src="https://crafthead.net/avatar/{$session.user.username}"
                 width="24" />
-              {$session.user.username}
             </a>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
-              <a class="dropdown-item" href="/profile">Profil</a>
+              <h6 class="dropdown-header">{$session.user.username}</h6>
+              <a class="dropdown-item" href="/profile">İstatistikler</a>
+              <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
+              <hr class="dropdown-divider">
               <a class="dropdown-item" href="/tickets">Talepler</a>
               <hr class="dropdown-divider" />
               <a
