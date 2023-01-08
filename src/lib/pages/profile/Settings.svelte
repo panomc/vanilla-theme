@@ -59,7 +59,8 @@
                   class="form-control"
                   aria-describedby="validationChangingEmail"
                   bind:value="{newEmail}"
-                  class:is-invalid="{changingEmailError}" />
+                  class:is-invalid="{changingEmailError}"
+                  autofocus />
                 <div id="validationChangingEmail" class="invalid-feedback">
                   {changingEmailError}
                 </div>
@@ -85,7 +86,8 @@
                   id="currentPassword"
                   placeholder="Mevcut Şifre"
                   class="form-control"
-                  bind:value="{currentPassword}" />
+                  bind:value="{currentPassword}"
+                  autofocus />
               </div>
               <div class="col-auto">
                 <button
@@ -94,9 +96,7 @@
                   on:click="{stopChangingEmail}">
                   İptal
                 </button>
-                <button
-                  type="submit"
-                  class="btn btn-link">Devam Et</button>
+                <button type="submit" class="btn btn-link">Devam Et</button>
               </div>
             {/if}
           </div>
@@ -165,7 +165,7 @@
   }
 
   async function sendChangeEmailLink() {
-    console.log("geldi")
+    console.log("geldi");
 
     changingEmailError = null;
     changingEmailLoading = true;
