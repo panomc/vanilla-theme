@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <p class="card-text">
+    <p class="card-text text-break">
       {@html post.text}
     </p>
   </div>
