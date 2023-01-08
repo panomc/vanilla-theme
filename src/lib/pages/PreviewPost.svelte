@@ -1,8 +1,4 @@
-<h1>Önizlenen Yazı: {post.title}</h1>
-
-<hr />
-
-<br />
+<h5 class="card-title mb-3">Önizlenen Yazı: {post.title}</h5>
 
 <Post post="{post}" detail="{true}" />
 
