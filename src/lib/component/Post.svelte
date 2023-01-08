@@ -6,7 +6,7 @@
     <div class="row mb-3 justify-content-center">
       <div class="col">
         <a href="/blog/post/{post.url}" class="card-title text-black">
-          <h3 class="mb-0 d-inline-block">
+          <h3 class="mb-0 d-inline-block text-break">
             {truncate(post.title, 100)}{@html post.title.length > 100
               ? "&hellip;"
               : ""}
