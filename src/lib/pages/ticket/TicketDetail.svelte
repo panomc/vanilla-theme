@@ -41,15 +41,11 @@
             <div class="col">
               <h5 class="card-title">{data.ticket.title}</h5>
               <small>
-                <a href="/players/player/{data.ticket.username}"
-                  >{data.ticket.username}</a>
-                tarafından,
                 <Date time="{data.ticket.date}" relativeFormat="{true}" />
                 ,
-                <a href="javascript:void(0);"
-                  >{data.ticket.category === "-"
+                {data.ticket.category === "-"
                     ? "Kategorisiz"
-                    : data.ticket.category.title}</a>
+                    : data.ticket.category.title}
                 kategorisine açıldı.</small>
             </div>
             <div class="col-auto">
@@ -91,7 +87,7 @@
                   </Date>
                 </div>
                 <div class="col-auto">
-                  <a href="/players/player/{message.username}">
+                  <a href="/player/{message.username}">
                     <img
                       src="https://crafthead.net/avatar/{message.username}/48"
                       alt="{message.username}"
@@ -108,7 +104,7 @@
             {:else}
               <div class="row py-2 flex-nowrap justify-content-start">
                 <div class="col-auto text-right">
-                  <a href="/players/player/{message.username}">
+                  <a href="/player/{message.username}">
                     <img
                       src="https://crafthead.net/avatar/{message.username}/48"
                       alt="{message.username}"
