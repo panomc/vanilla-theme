@@ -29,18 +29,6 @@
               class="form-control"
               bind:value="{$data.password}" />
           </div>
-          <div class="mb-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="rememberMe" />
-              <label class="form-check-label" for="rememberMe">
-                Beni hatırla
-              </label>
-            </div>
-          </div>
         </div>
 
         <div class="modal-footer">
@@ -69,7 +57,6 @@
   const dataDefault = {
     usernameOrEmail: "",
     password: "",
-    rememberMe: false,
     recaptcha: "",
   };
 
