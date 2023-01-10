@@ -2,7 +2,7 @@
   <!-- Play Button -->
   <div class="mb-4">
     <button
-      class="btn btn-sunflower bg-gradient w-100 py-4"
+      class="btn btn-warning bg-gradient w-100 py-4"
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[

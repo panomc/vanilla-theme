@@ -9,7 +9,7 @@
 
 <div class="container">
   <nav
-    class="navbar navbar-expand-lg navbar-dark fw-bolder-lightglass bg-primary bg-gradient rounded-pill shadow px-lg-2 px-4 py-2 mb-3">
+    class="navbar navbar-expand-lg navbar-dark bg-primary bg-gradient rounded-pill shadow px-lg-2 px-4 py-2 mb-3">
     <ul class="navbar-nav flex-row me-auto">
       <li class="nav-item rounded-pill">
         <a class="nav-link" href="/">
