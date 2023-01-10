@@ -6,11 +6,11 @@
           'Talebi Kapat',
           { placement: 'bottom', hideOnClick: false },
         ]}"
-        class="btn btn-link link-bittersweet"
+        class="btn btn-link link-danger"
         role="button"
         href="javascript:void(0);"
         on:click="{() => onCloseTicket()}">
-        <i class="fas fa-check"></i>
+        <i class="fas fa-times"></i>
       </a>
     {/if}
   </th>

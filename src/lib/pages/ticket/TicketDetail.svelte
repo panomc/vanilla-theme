@@ -16,16 +16,16 @@
       <div
         class="row justify-content-between mb-3 animate__animated animate__slideInUp">
         <div class="col-auto">
-          <h3>Talep: #{data.ticket.id}</h3>
+          <h3>Talep: {data.ticket.id}</h3>
         </div>
         <div class="col-auto ml-auto">
           {#if data.ticket.status !== TicketStatuses.CLOSED}
             <a
-              class="btn btn-outline-bittersweet"
+              class="btn btn-danger"
               role="button"
               href="javascript:void(0);"
               on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
-              <i class="fas fa-check me-1"></i> Talebi Kapat
+              <i class="fas fa-times me-2"></i> Talebi Kapat
             </a>
           {/if}
         </div>
@@ -36,7 +36,7 @@
           class="card-header bg-opacity-25 pt-3"
           class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"
           class:bg-sunflower="{data.ticket.status === TicketStatuses.REPLIED}"
-          class:bg-bittersweet="{data.ticket.status === TicketStatuses.CLOSED}">
+          class:bg-danger="{data.ticket.status === TicketStatuses.CLOSED}">
           <div class="row">
             <div class="col">
               <h5 class="card-title">{data.ticket.title}</h5>

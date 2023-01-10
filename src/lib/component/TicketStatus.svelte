@@ -3,7 +3,7 @@
 {:else if status === TicketStatuses.REPLIED}
   <span class="badge bg-sunflower rounded-pill">Yanıtlandı</span>
 {:else if status === TicketStatuses.CLOSED}
-  <span class="badge bg-bittersweet rounded-pill">Kapalı</span>
+  <span class="badge bg-danger rounded-pill">Kapalı</span>
 {/if}
 
 <script context="module">

@@ -18,7 +18,7 @@
 
   <!-- Server Status -->
   <div class="card text-center border-0 mb-4">
-    <h5 class="card-header bg-bittersweet text-white">Sunucu Durumu</h5>
+    <h5 class="card-header bg-danger text-white">Sunucu Durumu</h5>
     <div class="card-body">
       <div class="d-flex flex-row align-items-center justify-content-around">
         <div use:tooltip="{[$data.ipAddress, { placement: 'bottom' }]}">
@@ -44,7 +44,7 @@
           {/if}
         </div>
         <div use:tooltip="{['Game client version', { placement: 'bottom' }]}">
-          <i class="fas fa-gamepad fa-lg d-block text-bittersweet py-3"></i>
+          <i class="fas fa-gamepad fa-lg d-block text-danger py-3"></i>
           {$data.serverGameVersion}
         </div>
       </div>

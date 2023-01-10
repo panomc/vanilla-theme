@@ -14,7 +14,7 @@
             Tümü
           </a>
           <a
-            class="btn btn-sm btn-outline-light btn-link text-bittersweet"
+            class="btn btn-sm btn-outline-light btn-link text-danger"
             class:active="{data.pageType === PageTypes.CLOSED}"
             role="button"
             href="/tickets/closed">
