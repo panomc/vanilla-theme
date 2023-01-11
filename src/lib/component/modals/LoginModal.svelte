@@ -96,15 +96,19 @@
 </script>
 
 <script>
+  import { getContext } from "svelte";
+
+  import { invalidateAll } from "$app/navigation";
+
   import { NETWORK_ERROR } from "$lib/api.util";
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
 
   import { getCredentials, sendLogin } from "$lib/services/auth.js";
 
-  import { session } from "$lib/Store.js";
-
   let loading = false;
+
+  const session = getContext("session")
 
   async function onSubmit() {
     error.set(null);
@@ -116,7 +120,7 @@
         if (body.result === "ok") {
           const CSRFToken = body.CSRFToken;
 
-          await getCredentials(CSRFToken).then((body) => {
+          await getCredentials(CSRFToken).then(async (body) => {
             session.update((data) => {
               data.user = {
                 ...Object.keys(body)
@@ -132,6 +136,8 @@
 
               return data;
             });
+
+            await invalidateAll();
 
             loading = false;
 

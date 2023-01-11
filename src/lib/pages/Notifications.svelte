@@ -126,9 +126,11 @@
    */
   export async function load(event) {
     const { parent } = event;
-    await parent();
+    const parentData = await parent();
 
-    requireLogin();
+    const {session} = parentData
+
+    requireLogin(session);
 
     let data = {};
 

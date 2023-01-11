@@ -8,13 +8,13 @@
    */
   import { getPostPreview } from "$lib/services/posts.js";
   import { get } from "svelte/store";
-  import { session } from "$lib/Store.js";
 
   export async function load(event) {
     const { parent } = event;
 
-    await parent();
+    const parentData = await parent();
 
+    const { session } = parentData;
     const { user } = get(session);
 
     if (!user && !user.panelAccess) {

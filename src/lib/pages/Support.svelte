@@ -38,5 +38,6 @@
 
 <script>
   export let data;
-  import { session } from "$lib/Store.js";
+
+  const { session } = data;
 </script>

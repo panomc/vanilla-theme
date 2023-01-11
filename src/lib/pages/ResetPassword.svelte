@@ -37,9 +37,11 @@
    * @type {import('@sveltejs/kit').LayoutLoad}
    */
   export async function load({ parent }) {
-    await parent();
+    const parentData = await parent();
 
-    requireNotLogin();
+    const { session } = parentData;
+
+    requireNotLogin(session);
   }
 </script>
 

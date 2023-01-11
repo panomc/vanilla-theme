@@ -151,23 +151,25 @@
 
 <!-- Navbar -->
 <script>
-  import { logout, session } from "$lib/Store";
+  import { formatDistanceToNow } from "date-fns";
+  import { getContext, onDestroy, onMount } from "svelte";
+
+  import { PANEL_URL } from "$lib/variables.js";
+  import { notificationsCount, quickNotifications, logout } from "$lib/Store";
+  import ApiUtil from "$lib/api.util.js";
+  import { onNotificationClick } from "$lib/NotificationManager.js";
+
+  import NoContent from "$lib/component/NoContent.svelte";
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
-
-  import { PANEL_URL } from "$lib/variables.js";
-  import { notificationsCount, quickNotifications } from "$lib/Store.js";
-  import { formatDistanceToNow } from "date-fns";
-  import { onDestroy, onMount } from "svelte";
-  import ApiUtil from "$lib/api.util.js";
-  import { onNotificationClick } from "$lib/NotificationManager.js";
-  import NoContent from "$lib/component/NoContent.svelte";
 
   let quickNotificationProcessID = 0;
 
   let checkTime = 0;
   let interval;
+
+  const session = getContext("session")
 
   function markQuickNotificationsAsRead(id) {
     ApiUtil.post({

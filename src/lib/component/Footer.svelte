@@ -14,5 +14,7 @@
 <!-- Footer End -->
 
 <script>
-  import { session } from "$lib/Store.js";
+  import { getContext } from "svelte";
+
+  const session = getContext("session")
 </script>

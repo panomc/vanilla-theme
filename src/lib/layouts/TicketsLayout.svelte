@@ -8,9 +8,12 @@
   import { requireLogin } from "$lib/Store.js";
 
   export async function load({ parent }) {
-    await parent();
+    const parentData = await parent();
+    const {session} = parentData
 
-    requireLogin();
+    requireLogin(session);
+
+    return parentData
   }
 </script>
 

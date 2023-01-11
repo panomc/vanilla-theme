@@ -24,22 +24,23 @@
 </App>
 
 <script context="module">
+  import { writable } from "svelte/store";
+  import { browser } from "$app/environment";
+  import { goto } from "$app/navigation";
+
   import {
     keepSidebar,
     setSidebar,
     processQueuedSidebar,
     sidebarPageInit,
-    session,
   } from "$lib/Store.js";
 
   import ApiUtil from "$lib/api.util.js";
-  import { browser } from "$app/environment";
-  import { goto } from "$app/navigation";
 
   import { addListener } from "$lib/NotificationManager.js";
 
-  function sendVisitorVisitRequest({ event }) {
-    ApiUtil.post({ path: "/api/visitorVisit", request: event });
+  function sendVisitorVisitRequest({ event, session }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request: event, session });
   }
 
   function initNotificationListeners() {
@@ -70,7 +71,7 @@
     const siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
-      CSRFToken,
+      CSRFToken
     });
 
     setSidebar(null);
@@ -87,22 +88,31 @@
   export async function load(event) {
     const {
       data: { user, CSRFToken, siteInfo },
+      parent,
     } = event;
+    await parent();
 
-    session.set({ user, CSRFToken, siteInfo });
+    const output = {
+      session: { user, CSRFToken, siteInfo }
+    };
 
     if (browser) {
       initNotificationListeners();
     }
 
     if (browser) {
-      sendVisitorVisitRequest({ event });
+      sendVisitorVisitRequest({ event, session: output.session });
     }
+
+    return output;
   }
 </script>
 
 <script>
+  import { onDestroy, setContext } from "svelte";
+
   import { afterNavigate } from "$app/navigation";
+  import { page } from "$app/stores";
 
   import Header from "$lib/component/Header.svelte";
   import Navbar from "$lib/component/Navbar.svelte";
@@ -113,6 +123,16 @@
   import LoginModal from "$lib/component/modals/LoginModal.svelte";
   import RegisterModal from "$lib/component/modals/RegisterModal.svelte";
   import NotificationContainer from "$lib/component/NotificationContainer.svelte";
+
+  export let data;
+
+  const session = writable(data.session)
+
+  const pageUnsubscribe = page.subscribe((page) => {
+    session.update(() => page.data.session);
+  })
+
+  setContext("session", session)
 
   // check on page change and set null if page doesn't have sidebar
   afterNavigate((navigation) => {
@@ -131,4 +151,6 @@
       processQueuedSidebar();
     }
   });
+
+  onDestroy(pageUnsubscribe)
 </script>

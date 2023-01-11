@@ -10,21 +10,13 @@ export const queuedSidebarProps = writable(null);
 export const sidebarProps = writable({});
 export const keepSidebar = writable(false);
 export const sidebarPageInit = writable(false);
-export const session = writable({});
 
 export const notificationsCount = writable(0);
 export const quickNotifications = writable([]);
 
 export async function logout() {
-  sendLogout().then(() => {
-    session.update((data) => {
-      data.user = null;
-      data.CSRFToken = null;
-
-      return data;
-    });
-
-    invalidateAll();
+  sendLogout().then(async () => {
+    await invalidateAll();
   });
 }
 
@@ -53,14 +45,14 @@ export function processQueuedSidebar() {
   sidebarProps.set(get(queuedSidebarProps));
 }
 
-export function requireLogin() {
-  if (!get(session).user) {
+export function requireLogin(session) {
+  if (!session.user) {
     throw redirect(302, "/");
   }
 }
 
-export function requireNotLogin() {
-  if (get(session).user) {
+export function requireNotLogin(session) {
+  if (session.user) {
     throw redirect(302, "/");
   }
 }

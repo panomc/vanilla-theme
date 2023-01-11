@@ -87,12 +87,12 @@
 </script>
 
 <script>
-  import { onDestroy, onMount } from "svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
   import { formatDistanceToNow } from "date-fns";
 
   import { browser } from "$app/environment";
 
-  import { notificationsCount, quickNotifications, session } from "$lib/Store";
+  import { notificationsCount, quickNotifications } from "$lib/Store";
   import ApiUtil from "$lib/api.util";
   import { onNotificationClick } from "$lib/NotificationManager.js";
 
@@ -100,6 +100,8 @@
 
   let checkTime = 0;
   let interval;
+
+  const session = getContext("session")
 
   function getTime(check, time, locale) {
     return formatDistanceToNow(time, { addSuffix: true });

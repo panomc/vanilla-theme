@@ -80,16 +80,18 @@
 </script>
 
 <script>
-  import { onDestroy, onMount } from "svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
 
   import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";
 
-  import { logout, session } from "$lib/Store";
+  import { logout } from "$lib/Store";
 
   import PlayerPermissionBadge from "$lib/component/PlayerPermissionBadge.svelte";
   import Sidebar from "$lib/component/Sidebar.svelte";
   import PlayerHead from "$lib/component/PlayerHead.svelte";
+
+  const session = getContext("session")
 
   $: user = $session.user ? $session.user : {};
 
