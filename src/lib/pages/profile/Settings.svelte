@@ -165,8 +165,6 @@
   }
 
   async function sendChangeEmailLink() {
-    console.log("geldi");
-
     changingEmailError = null;
     changingEmailLoading = true;
     changingEmailSuccess = false;
