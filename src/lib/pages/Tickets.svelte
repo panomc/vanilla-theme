@@ -46,7 +46,6 @@
   import TicketsSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/TicketsSidebar.svelte";
-  import { setSidebar } from "$lib/Store.js";
   import { getTickets } from "$lib/services/tickets.js";
 
   export const PageTypes = Object.freeze({
@@ -72,7 +71,6 @@
     };
 
     await loadSidebar(event);
-    setSidebar(TicketsSidebar);
 
     await getTickets({
       page: event.params.page || 1,
@@ -88,7 +86,7 @@
       data = body;
     });
 
-    return data;
+    return { ...data, sidebar: TicketsSidebar };
   }
 </script>
 
@@ -108,23 +106,21 @@
   export let data;
 
   function reloadData(page = data.page, pageType = data.pageType) {
-    getTickets({ page, pageType }).then(
-      (body) => {
-        if (body.result === "ok") {
-          if (page !== data.page) {
-            goto(
-              page === 1
-                ? "/tickets/" + pageType
-                : "/tickets/" + pageType + "/" + page
-            );
-          } else {
-            data = body;
-          }
-        } else if (body.error === "PAGE_NOT_FOUND") {
-          reloadData(page - 1);
+    getTickets({ page, pageType }).then((body) => {
+      if (body.result === "ok") {
+        if (page !== data.page) {
+          goto(
+            page === 1
+              ? "/tickets/" + pageType
+              : "/tickets/" + pageType + "/" + page
+          );
+        } else {
+          data = body;
         }
+      } else if (body.error === "PAGE_NOT_FOUND") {
+        reloadData(page - 1);
       }
-    );
+    });
   }
 
   const onCloseTicketClick = (updatedTicket) => {

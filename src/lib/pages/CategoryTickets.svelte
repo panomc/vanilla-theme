@@ -31,7 +31,6 @@
   import TicketsSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/TicketsSidebar.svelte";
-  import { setSidebar } from "$lib/Store.js";
   import { getCategoryTickets } from "$lib/services/tickets.js";
   import { error } from "@sveltejs/kit";
 
@@ -57,7 +56,6 @@
     };
 
     await loadSidebar(event);
-    setSidebar(TicketsSidebar);
 
     await getCategoryTickets({
       page: event.params.page || 1,
@@ -75,7 +73,7 @@
       data = body;
     });
 
-    return data;
+    return { ...data, sidebar: TicketsSidebar };
   }
 </script>
 
@@ -89,24 +87,22 @@
   export let data;
 
   function reloadData(page = data.page, url = data.url) {
-    getCategoryTickets({ page, url }).then(
-      (body) => {
-        if (body.result === "ok") {
-          if (page !== data.page) {
-            goto(
-              page === 1
-                ? "/tickets/category/" + url
-                : "/tickets/category/" + url + "/" + page
-            );
-          } else {
-            data = body;
-          }
-        } else if (body.error === "PAGE_NOT_FOUND") {
-          reloadData(page - 1);
-        } else if (body.error === "NOT_EXISTS") {
-          goto(base + "/error-404");
+    getCategoryTickets({ page, url }).then((body) => {
+      if (body.result === "ok") {
+        if (page !== data.page) {
+          goto(
+            page === 1
+              ? "/tickets/category/" + url
+              : "/tickets/category/" + url + "/" + page
+          );
+        } else {
+          data = body;
         }
+      } else if (body.error === "PAGE_NOT_FOUND") {
+        reloadData(page - 1);
+      } else if (body.error === "NOT_EXISTS") {
+        goto(base + "/error-404");
       }
-    );
+    });
   }
 </script>

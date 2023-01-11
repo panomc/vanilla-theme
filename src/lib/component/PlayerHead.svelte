@@ -40,7 +40,7 @@
     return formatRelative(
       new Date(parseInt(lastActivityTime)),
       new Date()
-    ).capitalize()
+    ).capitalize();
   }
 
   String.prototype.capitalize = function () {

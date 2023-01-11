@@ -108,7 +108,7 @@
 
   let loading = false;
 
-  const session = getContext("session")
+  const session = getContext("session");
 
   async function onSubmit() {
     error.set(null);

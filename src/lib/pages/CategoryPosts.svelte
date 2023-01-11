@@ -58,10 +58,10 @@
     }).then((body) => {
       if (body.error) {
         if (body.error === "NOT_EXISTS") {
-          throw error(404, body.error)
+          throw error(404, body.error);
         }
 
-        throw error(500, body.error)
+        throw error(500, body.error);
       }
 
       data = body;
@@ -80,24 +80,22 @@
   export let data;
 
   function reloadData(page = data.page, url = data.url) {
-    getCategoryPosts({ page, url }).then(
-      (body) => {
-        if (body.result === "ok") {
-          if (page !== data.page) {
-            goto(
-              page === 1
-                ? "/blog/category/" + url
-                : "/blog/category/" + url + "/" + page
-            );
-          } else {
-            data = body;
-          }
-        } else if (body.error === "PAGE_NOT_FOUND") {
-          reloadData(page - 1);
+    getCategoryPosts({ page, url }).then((body) => {
+      if (body.result === "ok") {
+        if (page !== data.page) {
+          goto(
+            page === 1
+              ? "/blog/category/" + url
+              : "/blog/category/" + url + "/" + page
+          );
         } else {
-          console.log(body);
+          data = body;
         }
+      } else if (body.error === "PAGE_NOT_FOUND") {
+        reloadData(page - 1);
+      } else {
+        console.log(body);
       }
-    );
+    });
   }
 </script>

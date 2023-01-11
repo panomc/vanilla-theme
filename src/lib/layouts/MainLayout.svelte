@@ -28,13 +28,6 @@
   import { browser } from "$app/environment";
   import { goto } from "$app/navigation";
 
-  import {
-    keepSidebar,
-    setSidebar,
-    processQueuedSidebar,
-    sidebarPageInit,
-  } from "$lib/Store.js";
-
   import ApiUtil from "$lib/api.util.js";
 
   import { addListener } from "$lib/NotificationManager.js";
@@ -68,16 +61,12 @@
     const {
       locals: { user, CSRFToken },
     } = event;
+
     const siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
-      CSRFToken
+      CSRFToken,
     });
-
-    setSidebar(null);
-    keepSidebar.set(false);
-    processQueuedSidebar();
-    sidebarPageInit.set(true);
 
     return { user, CSRFToken, siteInfo };
   }
@@ -93,7 +82,7 @@
     await parent();
 
     const output = {
-      session: { user, CSRFToken, siteInfo }
+      session: { user, CSRFToken, siteInfo },
     };
 
     if (browser) {
@@ -111,7 +100,6 @@
 <script>
   import { onDestroy, setContext } from "svelte";
 
-  import { afterNavigate } from "$app/navigation";
   import { page } from "$app/stores";
 
   import Header from "$lib/component/Header.svelte";
@@ -126,31 +114,19 @@
 
   export let data;
 
-  const session = writable(data.session)
+  const session = writable(data.session);
+  const sidebar = writable(null);
+  const sidebarProps = writable({});
 
   const pageUnsubscribe = page.subscribe((page) => {
     session.update(() => page.data.session);
-  })
-
-  setContext("session", session)
-
-  // check on page change and set null if page doesn't have sidebar
-  afterNavigate((navigation) => {
-    if ($keepSidebar) {
-      keepSidebar.set(false);
-      processQueuedSidebar();
-
-      return;
-    }
-
-    if (
-      navigation.from &&
-      navigation.from.url.pathname !== navigation.to.url.pathname
-    ) {
-      setSidebar(null);
-      processQueuedSidebar();
-    }
+    sidebar.update(() => page.data.sidebar);
+    sidebarProps.update(() => page.data.sidebarProps || {});
   });
 
-  onDestroy(pageUnsubscribe)
+  setContext("session", session);
+  setContext("sidebar", sidebar);
+  setContext("sidebarProps", sidebarProps);
+
+  onDestroy(pageUnsubscribe);
 </script>

@@ -19,5 +19,8 @@
 
 <!-- Main Block End -->
 <script>
-  import { sidebar, sidebarProps } from "$lib/Store.js";
+  import { getContext } from "svelte";
+
+  const sidebar = getContext("sidebar");
+  const sidebarProps = getContext("sidebarProps");
 </script>

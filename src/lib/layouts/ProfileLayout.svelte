@@ -7,10 +7,10 @@
 
   export async function load({ parent }) {
     const parentData = await parent();
-    const {session} = parentData
+    const { session } = parentData;
 
     requireLogin(session);
 
-    return parentData
+    return parentData;
   }
 </script>

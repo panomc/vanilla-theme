@@ -91,7 +91,7 @@
   import Sidebar from "$lib/component/Sidebar.svelte";
   import PlayerHead from "$lib/component/PlayerHead.svelte";
 
-  const session = getContext("session")
+  const session = getContext("session");
 
   $: user = $session.user ? $session.user : {};
 

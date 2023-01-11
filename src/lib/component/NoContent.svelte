@@ -7,11 +7,11 @@
     <small class="text-gray d-block mb-3">{text}</small>
   {/if}
 
-  <slot></slot>
+  <slot />
 </div>
 
 <script>
-  import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
   export let dark = false;
   export let icon = "fa-solid fa-ghost fa-3x";
@@ -20,6 +20,6 @@
   const dispatch = createEventDispatcher();
 
   function onClick(e) {
-    dispatch("click", e)
+    dispatch("click", e);
   }
 </script>

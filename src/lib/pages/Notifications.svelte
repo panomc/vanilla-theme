@@ -22,7 +22,7 @@
         <div class="list-group w-100 flex-row align-items-center">
           <a
             href="javascript:void(0);"
-            on:click={() => onNotificationClick(notification)}
+            on:click="{() => onNotificationClick(notification)}"
             class="list-group-item list-group-item-action  d-flex flex-row w-100"
             class:notification-unread="{notification.status === 'NOT_READ'}">
             <div class="col-auto">
@@ -44,7 +44,7 @@
       {/each}
 
       {#if $notifications.length === 0}
-        <NoContent/>
+        <NoContent />
       {/if}
 
       {#if $notifications.length < $count && $count > 10 + 10 * page}
@@ -128,7 +128,7 @@
     const { parent } = event;
     const parentData = await parent();
 
-    const {session} = parentData
+    const { session } = parentData;
 
     requireLogin(session);
 
@@ -196,7 +196,7 @@
     ApiUtil.get({
       path: `/api/notifications/${
         get(notifications)[get(notifications).length - 1].id
-      }/more`
+      }/more`,
     }).then((body) => {
       if (body.result === "ok") {
         body.notifications.forEach((notification) => {
@@ -212,7 +212,7 @@
 
   function deleteNotification(id) {
     ApiUtil.delete({
-      path: `/api/notifications/${id}`
+      path: `/api/notifications/${id}`,
     }).then((body) => {
       if (body.result === "ok") {
         get(notifications).forEach((notification) => {

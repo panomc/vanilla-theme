@@ -18,8 +18,6 @@
 </div>
 
 <script context="module">
-  import { setSidebar } from "$lib/Store.js";
-
   import ProfileSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/ProfileSidebar.svelte";
@@ -39,13 +37,12 @@
     };
 
     await loadSidebar(event);
-    setSidebar(ProfileSidebar);
 
     await getProfile({ request: event }).then((body) => {
       data = body;
     });
 
-    return data;
+    return { ...data, sidebar: ProfileSidebar };
   }
 </script>
 

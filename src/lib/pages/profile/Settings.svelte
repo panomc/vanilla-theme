@@ -107,8 +107,6 @@
 </div>
 
 <script context="module">
-  import { setSidebar } from "$lib/Store.js";
-
   import ProfileSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/ProfileSidebar.svelte";
@@ -121,7 +119,8 @@
     await parent();
 
     await loadSidebar(event);
-    setSidebar(ProfileSidebar);
+
+    return { sidebar: ProfileSidebar };
   }
 </script>
 

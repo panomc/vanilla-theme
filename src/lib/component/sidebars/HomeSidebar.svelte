@@ -35,7 +35,12 @@
           {/if}
         </div>
         <div
-          use:tooltip="{[$data.mainServer ? $data.mainServer.playerCount : 0 + ' players are playing', { placement: 'bottom' }]}">
+          use:tooltip="{[
+            $data.mainServer
+              ? $data.mainServer.playerCount
+              : 0 + ' players are playing',
+            { placement: 'bottom' },
+          ]}">
           <i class="fas fa-users fa-lg d-block text-secondary py-3"></i>
           {#if $data.mainServer}
             {$data.mainServer.playerCount}/{$data.mainServer.maxPlayerCount}

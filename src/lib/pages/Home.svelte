@@ -15,8 +15,9 @@
 
 <!-- Pagination End -->
 <script context="module">
-  import HomeSidebar, {load as loadSidebar} from "$lib/component/sidebars/HomeSidebar.svelte";
-  import { setSidebar } from "$lib/Store.js";
+  import HomeSidebar, {
+    load as loadSidebar,
+  } from "$lib/component/sidebars/HomeSidebar.svelte";
   import { getPosts } from "$lib/services/posts.js";
 
   /**
@@ -34,7 +35,6 @@
     };
 
     await loadSidebar(event);
-    setSidebar(HomeSidebar);
 
     await getPosts({ page: event.params.page || 1, request: event }).then(
       (body) => {
@@ -46,7 +46,7 @@
       }
     );
 
-    return data;
+    return { ...data, sidebar: HomeSidebar };
   }
 </script>
 

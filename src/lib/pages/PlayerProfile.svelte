@@ -16,8 +16,6 @@
 <script context="module">
   import { error } from "@sveltejs/kit";
 
-  import { setSidebar } from "$lib/Store.js";
-
   import PlayerProfileSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/PlayerProfileSidebar.svelte";
@@ -32,28 +30,31 @@
     await parent();
 
     let data = {
-      registerDate: 0
+      registerDate: 0,
     };
 
     await loadSidebar(event);
-    setSidebar(PlayerProfileSidebar, {side: "left"});
 
-    await getPlayerProfile({ username: event.params.player, request: event }).then(
-      (body) => {
-        if (body.error) {
-          if (body.error === "NOT_EXISTS") {
-            throw error(404, body.error)
-          }
-
-          throw error(500, body.error)
+    await getPlayerProfile({
+      username: event.params.player,
+      request: event,
+    }).then((body) => {
+      if (body.error) {
+        if (body.error === "NOT_EXISTS") {
+          throw error(404, body.error);
         }
 
-        data = body;
+        throw error(500, body.error);
       }
-    );
 
-    return data;
+      data = body;
+    });
 
+    return {
+      ...data,
+      sidebar: PlayerProfileSidebar,
+      sidebarProps: { side: "left" },
+    };
   }
 </script>
 

@@ -77,7 +77,7 @@
     loading = true;
 
     ApiUtil.delete({
-      path: "/api/notifications"
+      path: "/api/notifications",
     }).then((body) => {
       if (body.result === "ok") {
         loading = false;

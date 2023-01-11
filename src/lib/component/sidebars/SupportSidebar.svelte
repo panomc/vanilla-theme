@@ -1,5 +1,5 @@
 <Sidebar>
-  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}"/>
+  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
 </Sidebar>
 
 <script context="module">
@@ -7,7 +7,7 @@
   import { writable } from "svelte/store";
 
   const data = writable({
-    onlineAdmins: []
+    onlineAdmins: [],
   });
 
   export const load = async (event) => {

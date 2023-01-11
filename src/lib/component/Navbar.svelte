@@ -169,7 +169,7 @@
   let checkTime = 0;
   let interval;
 
-  const session = getContext("session")
+  const session = getContext("session");
 
   function markQuickNotificationsAsRead(id) {
     ApiUtil.post({

@@ -11,10 +11,10 @@
     </div>
   </div>
 </div>
-<!-- Footer End -->
 
+<!-- Footer End -->
 <script>
   import { getContext } from "svelte";
 
-  const session = getContext("session")
+  const session = getContext("session");
 </script>

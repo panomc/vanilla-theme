@@ -6,7 +6,7 @@
       role="alert"
       aria-live="assertive"
       aria-atomic="true"
-      on:click={() => onClick(notification)}>
+      on:click="{() => onClick(notification)}">
       <div class="toast-header bg-primary text-white">
         <strong class="me-auto">Pano</strong>
         <small>{getTime(checkTime, parseInt(notification.date), "")}</small>
@@ -101,7 +101,7 @@
   let checkTime = 0;
   let interval;
 
-  const session = getContext("session")
+  const session = getContext("session");
 
   function getTime(check, time, locale) {
     return formatDistanceToNow(time, { addSuffix: true });
@@ -163,7 +163,7 @@
 
   function getQuickNotifications(id) {
     ApiUtil.get({
-      path: "/api/notifications/quick"
+      path: "/api/notifications/quick",
     }).then((body) => {
       if (quickNotificationProcessID === id) {
         if (body.result === "ok") {
@@ -190,34 +190,34 @@
   }
 
   if (browser) {
-    const sessionSubscription = session.subscribe(session => {
+    const sessionSubscription = session.subscribe((session) => {
       quickNotificationProcessID++;
 
       if (session.user) {
         startQuickNotificationsCountDown();
       }
-    })
+    });
 
-    onDestroy(sessionSubscription)
+    onDestroy(sessionSubscription);
   }
 
   function markRead(id) {
     ApiUtil.post({
       path: `/api/notifications/${id}/read`,
-    })
+    });
   }
 
   function onClick(notification) {
     markRead(notification.id);
     onNotificationClick(notification);
-    hide(notification.id)
+    hide(notification.id);
   }
 
   onMount(() => {
     interval = setInterval(() => {
       checkTime += 1;
     }, 1000);
-  })
+  });
 
   onDestroy(() => {
     quickNotificationProcessID++;

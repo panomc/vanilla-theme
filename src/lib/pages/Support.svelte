@@ -18,8 +18,6 @@
 </div>
 
 <script context="module">
-  import { setSidebar } from "$lib/Store.js";
-
   import SupportSidebar, {
     load as loadSidebar,
   } from "$lib/component/sidebars/SupportSidebar.svelte";
@@ -32,12 +30,15 @@
     await parent();
 
     await loadSidebar(event);
-    setSidebar(SupportSidebar);
+
+    return { sidebar: SupportSidebar };
   }
 </script>
 
 <script>
+  import { getContext } from "svelte";
+
   export let data;
 
-  const { session } = data;
+  const session = getContext("session");
 </script>

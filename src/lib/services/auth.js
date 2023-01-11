@@ -3,7 +3,7 @@ import * as api from "$lib/api-server.util.js";
 
 export const sendLogout = async () => {
   return ApiUtil.post({
-    path: "/auth/logout"
+    path: "/auth/logout",
   });
 };
 
@@ -22,7 +22,7 @@ export const getCredentials = async (CSRFToken) => {
 };
 
 export const getCredentialsServerSide = async (token) => {
-  return api.GET({path: "/api/auth/credentials", token}).then((response) => {
+  return api.GET({ path: "/api/auth/credentials", token }).then((response) => {
     if (response.result !== "ok") {
       return null;
     }
@@ -65,7 +65,11 @@ export const sendResetPassword = async (usernameOrEmail) => {
   });
 };
 
-export const sendRenewPassword = async (newPassword, newPasswordRepeat, token) => {
+export const sendRenewPassword = async (
+  newPassword,
+  newPasswordRepeat,
+  token
+) => {
   return ApiUtil.post({
     path: "/auth/renewPassword",
     body: { newPassword, newPasswordRepeat, token },
