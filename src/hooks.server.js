@@ -20,10 +20,10 @@ export async function handle({
   const CSRFToken = cookies.get(COOKIE_PREFIX + CSRF_TOKEN_COOKIE_NAME);
 
   locals.user =
-    jwt &&
+    jwt && CSRFToken &&
     !pathname.startsWith("/api/") &&
     !pathname.startsWith("/auth/") &&
-    (await getCredentialsServerSide(jwt));
+    (await getCredentialsServerSide(jwt, CSRFToken));
 
   locals.jwt = jwt;
   locals.CSRFToken = CSRFToken;

@@ -1,15 +1,14 @@
 import ApiUtil from "$lib/api.util";
-import * as api from "$lib/api-server.util.js";
 
 export const sendLogout = async () => {
   return ApiUtil.post({
-    path: "/auth/logout",
+    path: "/api/auth/logout",
   });
 };
 
 export const sendLogin = async (body) => {
   return ApiUtil.post({
-    path: "/auth/login",
+    path: "/api/auth/login",
     body,
   });
 };
@@ -21,8 +20,8 @@ export const getCredentials = async (CSRFToken) => {
   });
 };
 
-export const getCredentialsServerSide = async (token) => {
-  return api.GET({ path: "/api/auth/credentials", token }).then((response) => {
+export const getCredentialsServerSide = async (token, CSRFToken) => {
+  return ApiUtil.get({ path: "/api/auth/credentials", token, CSRFToken }).then((response) => {
     if (response.result !== "ok") {
       return null;
     }
@@ -39,7 +38,7 @@ export const getCredentialsServerSide = async (token) => {
 
 export const sendRegister = async (body) => {
   return ApiUtil.post({
-    path: "/auth/register",
+    path: "/api/auth/register",
     body,
   });
 };
@@ -60,7 +59,7 @@ export const sendVerifyNewEmail = async (token) => {
 
 export const sendResetPassword = async (usernameOrEmail) => {
   return ApiUtil.post({
-    path: "/auth/resetPassword",
+    path: "/api/auth/resetPassword",
     body: { usernameOrEmail },
   });
 };
@@ -71,7 +70,7 @@ export const sendRenewPassword = async (
   token
 ) => {
   return ApiUtil.post({
-    path: "/auth/renewPassword",
+    path: "/api/auth/renewPassword",
     body: { newPassword, newPasswordRepeat, token },
   });
 };
