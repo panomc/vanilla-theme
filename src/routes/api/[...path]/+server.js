@@ -1,1 +1,1 @@
-export * from "../../../pano-ui/js/api.proxy.js";
+export { GET, POST, PUT, DELETE } from "../../../pano-ui/js/api.proxy.js";
