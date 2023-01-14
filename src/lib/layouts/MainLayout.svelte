@@ -32,8 +32,8 @@
 
   import { addListener } from "$lib/NotificationManager.js";
 
-  function sendVisitorVisitRequest({ event, session }) {
-    ApiUtil.post({ path: "/api/visitorVisit", request: event, session });
+  function sendVisitorVisitRequest({ event, CSRFToken }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
   }
 
   function initNotificationListeners() {
@@ -90,7 +90,7 @@
     }
 
     if (browser) {
-      sendVisitorVisitRequest({ event, session: output.session });
+      sendVisitorVisitRequest({ event, CSRFToken });
     }
 
     return output;
