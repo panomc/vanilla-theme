@@ -2,7 +2,7 @@
   <!-- Play Button -->
   <div class="mb-4">
     <button
-      class="btn btn-warning bg-gradient w-100 py-4"
+      class="btn btn-secondary w-100 py-4"
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[
@@ -59,7 +59,7 @@
 
   <!-- Latest Registers -->
   <div class="card text-center border-0 mb-4">
-    <h5 class="card-header bg-secondary text-white">Son Kayıt Olanlar</h5>
+    <h5 class="card-header bg-warning text-white">Son Kayıt Olanlar</h5>
     <div class="card-body p-0">
       <div class="row">
         {#each $data.lastRegisteredUsers as player, index (player)}

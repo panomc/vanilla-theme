@@ -4,7 +4,7 @@
   <div class="col-auto">
     <a
       href="/blog/post/{data.previousPost === '-' ? '' : data.previousPost.url}"
-      class="btn btn-link"
+      class="btn btn-link ps-0"
       class:disabled="{data.previousPost === '-'}"
       use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
       Önceki Yazı
@@ -13,7 +13,7 @@
   <div class="col-auto">
     <a
       href="/blog/post/{data.nextPost === '-' ? '' : data.nextPost.url}"
-      class="btn btn-link"
+      class="btn btn-link pe-0"
       class:disabled="{data.nextPost === '-'}"
       use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
       Sonraki Yazı

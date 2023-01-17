@@ -62,8 +62,8 @@
         </a>
       </div>
     {:else}
-      <a class="btn btn-link" href="/blog/post/{post.url}">
-        Devamını Oku <i class="fas fa-chevron-right ms-2"></i>
+      <a class="btn btn-link ps-0" href="/blog/post/{post.url}">
+        Devamını Oku
       </a>
 
       <div>
