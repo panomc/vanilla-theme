@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@sveltejs/adapter-node": "^1.1.4",
-    "@sveltejs/kit": "^1.2.9",
+    "@sveltejs/kit": "^1.15.1",
     "cookie": "^0.5.0",
     "copy-to-clipboard": "^3.3.3",
     "csrf": "^3.1.0",
