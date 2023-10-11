@@ -1,171 +1,141 @@
 <style global>
-  .messages-section {
-    overflow-y: auto;
-    max-height: 450px;
-  }
-
-  .message-balloon > p {
-    margin: 0;
-    padding: 0;
+  .answer {
+    margin-bottom: 0;
   }
 </style>
 
 <article class="container">
+  <div
+    class="row justify-content-between mb-3 animate__animated animate__slideInUp">
+    <div class="col-auto">
+      <h3>Talep No: {data.ticket.id}</h3>
+    </div>
+    <div class="col-auto ml-auto">
+      {#if data.ticket.status !== TicketStatuses.CLOSED}
+        <button
+          class="btn btn-danger"
+          type="button"
+          on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
+          <i class="fas fa-times me-2"></i> Talebi Kapat
+        </button>
+      {/if}
+    </div>
+  </div>
+
   <div class="card bg-white">
-    <div class="card-body">
-      <div
-        class="row justify-content-between mb-3 animate__animated animate__slideInUp">
-        <div class="col-auto">
-          <h3>Talep: {data.ticket.id}</h3>
-        </div>
-        <div class="col-auto ml-auto">
-          {#if data.ticket.status !== TicketStatuses.CLOSED}
+    <div
+      class="card-header bg-opacity-25 py-3 rounded-top"
+      class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"
+      class:bg-warning="{data.ticket.status === TicketStatuses.REPLIED}"
+      class:bg-danger="{data.ticket.status === TicketStatuses.CLOSED}">
+      <div class="row">
+        <div class="col">
+          <h5 class="card-title">{data.ticket.title}</h5>
+          <small class="mb-0">
+            <Date time="{data.ticket.date}" relativeFormat="{true}" />
+            ,
             <a
-              class="btn btn-danger"
-              role="button"
-              href="javascript:void(0);"
-              on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
-              <i class="fas fa-times me-2"></i> Talebi Kapat
+              href="/tickets/category/{data.ticket.category.url}"
+              title="Filtrele"
+              >{data.ticket.category === "-"
+                ? "Kategorisiz"
+                : data.ticket.category.title}
             </a>
-          {/if}
+            kategorisine açıldı.</small>
+        </div>
+        <div class="col-auto">
+          <TicketStatus status="{data.ticket.status}" />
         </div>
       </div>
+    </div>
+    <div
+      class="card-body"
+      id="messageSection"
+      bind:this="{messagesSectionDiv}"
+      bind:clientHeight="{$messagesSectionClientHeight}">
+      {#if data.ticket.messages.length < data.ticket.messageCount && data.ticket.messageCount > 5}
+        <button
+          class="btn btn-link bg-light d-block m-auto"
+          class:disabled="{loadMoreLoading}"
+          on:click="{loadMore}"
+          ><i class="fas fa-arrow-up mr-1"></i> Önceki Mesajlar ({data.ticket
+            .messageCount -
+            (data.ticket.messages.length - sentMessageCount)})
+        </button>
+      {/if}
 
-      <div class="card bg-white mb-3">
-        <div
-          class="card-header bg-opacity-25 pt-3"
-          class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"
-          class:bg-warning="{data.ticket.status === TicketStatuses.REPLIED}"
-          class:bg-danger="{data.ticket.status === TicketStatuses.CLOSED}">
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title">{data.ticket.title}</h5>
-              <small>
-                <Date time="{data.ticket.date}" relativeFormat="{true}" />
-                ,
-                <a
-                  href="/tickets/category/{data.ticket.category.url}"
-                  title="Filtrele"
-                  >{data.ticket.category === "-"
-                    ? "Kategorisiz"
-                    : data.ticket.category.title}
-                </a>
-                kategorisine açıldı.</small>
+      {#each data.ticket.messages as message, index (message)}
+        {#if message.panel}
+          <div class="row py-2 flex-nowrap justify-content-start">
+            <div class="col-auto d-flex align-items-center">
+              <div class="card text-bg-secondary">
+                <div class="card-header small">
+                  <Date time="{message.date}" />
+                </div>
+                <div class="card-body answer">
+                  {@html message.message}
+                </div>
+              </div>
             </div>
             <div class="col-auto">
-              <TicketStatus status="{data.ticket.status}" />
+              <a href="/player/{message.username}">
+                <img
+                  src="https://crafthead.net/avatar/{message.username}/48"
+                  alt="{message.username}"
+                  class="rounded d-block mr-auto animate__animated animate__zoomIn"
+                  use:tooltip="{[message.username, { placement: 'bottom' }]}"
+                  width="48"
+                  height="48" />
+              </a>
             </div>
           </div>
-        </div>
-        <div
-          class="card-body messages-section"
-          id="messageSection"
-          bind:this="{messagesSectionDiv}"
-          bind:clientHeight="{$messagesSectionClientHeight}">
-          {#if data.ticket.messages.length < data.ticket.messageCount && data.ticket.messageCount > 5}
-            <button
-              class="btn btn-link bg-light d-block m-auto"
-              class:disabled="{loadMoreLoading}"
-              on:click="{loadMore}"
-              ><i class="fas fa-arrow-up mr-1"></i> Önceki Mesajlar ({data
-                .ticket.messageCount -
-                (data.ticket.messages.length - sentMessageCount)})
-            </button>
-          {/if}
+        {:else}
+          <div class="row py-2 flex-nowrap justify-content-end">
+            <div class="col-auto text-right">
+              <a href="/player/{message.username}">
+                <img
+                  src="https://crafthead.net/avatar/{message.username}/48"
+                  alt="{message.username}"
+                  class="rounded animate__animated animate__zoomIn"
+                  use:tooltip="{[message.username, { placement: 'bottom' }]}"
+                  width="48"
+                  height="48" />
+              </a>
+            </div>
+            <div class="col-auto d-flex flex-nowrap align-items-center">
+              <div class="card text-bg-light">
+                <div class="card-header small">
+                  <Date time="{message.date}" />
+                </div>
+                <div class="card-body">
+                  {message.message}
+                </div>
+              </div>
+            </div>
+          </div>
+        {/if}
+      {/each}
 
-          {#each data.ticket.messages as message, index (message)}
-            {#if message.panel}
-              <div class="row py-2 flex-nowrap justify-content-end">
-                <div class="col-auto d-flex align-items-center">
-                  <!-- <a
-                      class="btn btn-link btn-sm text-gray mr-2"
-                      role="button"
-                      href="javascript:void(0);">
-                      <i class="fas fa-ellipsis-v"></i>
-                    </a> -->
-                  <Date time="{message.date}">
-                    <div
-                      class="message-balloon p-2 rounded bg-primary text-white">
-                      {@html message.message}
-                    </div>
-                  </Date>
-                </div>
-                <div class="col-auto">
-                  <a href="/player/{message.username}">
-                    <img
-                      src="https://crafthead.net/avatar/{message.username}/48"
-                      alt="{message.username}"
-                      class="rounded-circle d-block mr-auto animate__animated animate__zoomIn"
-                      use:tooltip="{[
-                        message.username,
-                        { placement: 'bottom' },
-                      ]}"
-                      width="48"
-                      height="48" />
-                  </a>
-                </div>
-              </div>
-            {:else}
-              <div class="row py-2 flex-nowrap justify-content-start">
-                <div class="col-auto text-right">
-                  <a href="/player/{message.username}">
-                    <img
-                      src="https://crafthead.net/avatar/{message.username}/48"
-                      alt="{message.username}"
-                      class="rounded-circle animate__animated animate__zoomIn"
-                      use:tooltip="{[
-                        message.username,
-                        { placement: 'bottom' },
-                      ]}"
-                      width="48"
-                      height="48" />
-                  </a>
-                </div>
-                <div class="col-auto d-flex flex-nowrap align-items-center">
-                  <Date time="{message.date}">
-                    <div
-                      class="message-balloon p-2 rounded d-inline-block bg-light text-black">
-                      {message.message}
-                    </div>
-                  </Date>
-                  <a
-                    class="btn btn-link d-none ml-3"
-                    role="button"
-                    href="javascript:void(0);">
-                    <i class="fas fa-ellipsis-v"></i>
-                  </a>
-                </div>
-              </div>
-            {/if}
-          {/each}
+      <div
+        class="row align-items-end mt-3"
+        class:d-none="{data.ticket.status === TicketStatuses.CLOSED}">
+        <div class="col">
+          <textarea
+            placeholder="Mesajınız..."
+            class="form-control"
+            bind:value="{message}"></textarea>
+        </div>
+        <div class="col-auto">
+          <button
+            class="btn btn-secondary"
+            on:click="{sendMessage}"
+            class:disabled="{messageSendLoading || isSendButtonDisabled}"
+            :disabled="{messageSendLoading || isSendButtonDisabled}">
+            <i class="fas fa-paper-plane"></i>
+            <span class="d-lg-inline d-none">Gönder</span>
+          </button>
         </div>
       </div>
-
-      {#if data.ticket.status === TicketStatuses.CLOSED}
-        <div class="container text-center">
-          <i class="fas fa-times fa-3x text-dark text-opacity-25 m-3"></i>
-          <p class="text-gray">Bu talep kapalı.</p>
-        </div>
-      {:else}
-        <div class="row align-items-end">
-          <div class="col">
-            <textarea
-              placeholder="Mesajınız..."
-              class="form-control"
-              bind:value="{message}"></textarea>
-          </div>
-          <div class="col-auto">
-            <button
-              class="btn btn-secondary"
-              on:click="{sendMessage}"
-              class:disabled="{messageSendLoading || isSendButtonDisabled}"
-              :disabled="{messageSendLoading || isSendButtonDisabled}">
-              <i class="fas fa-paper-plane"></i>
-              <span class="d-lg-inline d-none">Gönder</span>
-            </button>
-          </div>
-        </div>
-      {/if}
     </div>
   </div>
 </article>
