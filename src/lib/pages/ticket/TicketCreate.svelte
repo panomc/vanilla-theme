@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card bg-white">
   <div class="card-body">
     <div class="row justify-content-between mb-3">
       <div class="col-auto">
@@ -11,7 +11,7 @@
     <div class="mb-3">
       <input
         type="email"
-        class="form-control form-control-lg border-0 text-black px-0 mb-3"
+        class="form-control form-control-lg mb-3"
         placeholder="Başlık"
         bind:value="{title}" />
 
