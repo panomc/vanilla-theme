@@ -34,9 +34,7 @@
               href="{PANEL_URL}"
               target="_blank"
               rel="noreferrer">
-              <i
-                class="fa-solid fa-arrow-up fa-rotate-by"
-                style="--fa-rotate-angle: 45deg;"></i> Panel
+              <i class="fa-solid fa-table-columns fa-rotate-by me-2"></i> Panel
             </a>
           </li>
         {/if}
@@ -47,13 +45,12 @@
           id="quickNotificationsDropdown"
           class:d-none="{!$session.user}">
           <div class="dropdown">
-            <a
-              href="javascript:void(0);"
+            <button
               class="nav-link"
               data-bs-toggle="dropdown"
-              role="button"
+              type="button"
               title="Bildirimler">
-              <i class="fas fa-bell fa-lg"></i>
+              <i class="fas fa-bell"></i>
 
               {#if $notificationsCount !== 0}
                 <span
@@ -61,7 +58,7 @@
                   {$notificationsCount}
                 </span>
               {/if}
-            </a>
+            </button>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
               <h6 class="dropdown-header">
                 Bildirimler {$notificationsCount === 0
@@ -73,8 +70,8 @@
                 <NoContent />
               {:else}
                 {#each $quickNotifications as notification, index (notification)}
-                  <a
-                    href="javascript:void(0);"
+                  <button
+                    type="button"
                     on:click="{() => onNotificationClick(notification)}"
                     class="dropdown-item"
                     class:notification-unread="{notification.status ===
@@ -83,7 +80,7 @@
                     <small class="text-dark">
                       {getTime(checkTime, parseInt(notification.date), "")}
                     </small>
-                  </a>
+                  </button>
                 {/each}
               {/if}
 
@@ -97,32 +94,14 @@
         {#if $session.user}
           <!-- User Dropdown -->
           <li class="nav-item rounded-pill mr-lg-0 mr-5">
-            <div class="dropdown">
-              <a
-                class="nav-link"
-                href="javascript:void(0);"
-                data-bs-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false">
-                <img
-                  alt="{$session.user.username}"
-                  class="rounded"
-                  src="https://crafthead.net/avatar/{$session.user.username}"
-                  width="24" />
-              </a>
-              <div class="dropdown-menu dropdown-menu-end position-absolute">
-                <h6 class="dropdown-header">{$session.user.username}</h6>
-                <a class="dropdown-item" href="/profile">İstatistikler</a>
-                <a class="dropdown-item" href="/profile/settings">Ayarlar</a>
-                <hr class="dropdown-divider" />
-                <a class="dropdown-item" href="/tickets">Talepler</a>
-                <hr class="dropdown-divider" />
-                <a
-                  class="dropdown-item text-danger"
-                  href="javascript:void(0);"
-                  on:click="{logout}">Çıkış Yap</a>
-              </div>
-            </div>
+            <a href="/profile" class="nav-link">
+              <img
+                alt="{$session.user.username}"
+                class="rounded d-block m-auto"
+                src="https://crafthead.net/avatar/{$session.user.username}"
+                width="24"
+                height="24" />
+            </a>
           </li>
         {:else}
           <li class="nav-item me-xl-0 me-3">
@@ -143,7 +122,7 @@
 
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
-          <li class="nav-item rounded-pill">
+          <li class="nav-item">
             <a href="/support" class="nav-link">Destek</a>
           </li>
         </ul>

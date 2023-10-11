@@ -44,11 +44,19 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link text-danger"
-            on:click="{logout}"
-            href="javascript:void(0);">
-            Çıkış Yap
+            class="nav-link"
+            href="/tickets"
+            class:active="{matching($page.url.pathname, '/tickets', true)}">
+            Talepler
           </a>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link link-danger"
+            on:click="{logout}"
+            type="button">
+            Çıkış Yap
+          </button>
         </li>
       </ul>
     </div>

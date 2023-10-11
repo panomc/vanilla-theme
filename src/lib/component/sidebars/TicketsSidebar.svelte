@@ -1,10 +1,66 @@
 <Sidebar>
-  <a href="/ticket/create" class="btn btn-secondary w-100 mb-3">
-    <i class="fas fa-plus"></i>
-    <br />Destek Talebi Oluştur
-  </a>
-
-  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
+  <div class="card bg-white mb-3">
+    <div class="card-header bg-white">
+      <PlayerHead
+        username="{user.username}"
+        inGame="{$data.inGame}"
+        lastActivityTime="{$data.lastActivityTime}"
+        checkTime="{checkTime}" />
+      <div class="text-center">
+        <h2 class="my-2">{user.username}</h2>
+        <div
+          class="text-muted"
+          use:tooltip="{['Gizli', { placement: 'top', hideOnClick: false }]}">
+          {user.email}
+        </div>
+        <div class="d-none text-muted">Kayıt: 01.01.2019</div>
+        <div class="my-2">
+          <PlayerPermissionBadge
+            permissionGroupName="{$data.permissionGroupName}" />
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <ul class="nav nav-pills nav-fill flex-column">
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            href="/profile"
+            class:active="{matching($page.url.pathname, '/profile')}">
+            İstatistikler
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/profile/settings"
+            class:active="{matching(
+              $page.url.pathname,
+              '/profile/settings',
+              true
+            )}">
+            Ayarlar
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="/tickets"
+            class:active="{matching($page.url.pathname, '/tickets', true)}">
+            Talepler
+          </a>
+        </li>
+        <li class="nav-item">
+          <button
+            class="nav-link link-danger"
+            on:click="{logout}"
+            type="button">
+            Çıkış Yap
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </Sidebar>
 
 <script context="module">
@@ -12,21 +68,59 @@
   import { writable } from "svelte/store";
 
   const data = writable({
-    onlineAdmins: [],
+    lastActivityTime: 0,
+    inGame: false,
+    permissionGroupName: "",
   });
 
   export const load = async (event) => {
     data.set(
       await ApiUtil.get({
-        path: "/api/sidebar/support",
+        path: "/api/sidebar/profile",
         request: event,
       })
     );
   };
+
+  String.prototype.capitalize = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  };
 </script>
 
 <script>
-  import Sidebar from "$lib/component/Sidebar.svelte";
+  import { getContext, onDestroy, onMount } from "svelte";
 
-  import OnlineAdmins from "$lib/component/OnlineAdmins.svelte";
+  import { page } from "$app/stores";
+  import tooltip from "$lib/tooltip.util";
+
+  import { logout } from "$lib/Store";
+
+  import PlayerPermissionBadge from "$lib/component/PlayerPermissionBadge.svelte";
+  import Sidebar from "$lib/component/Sidebar.svelte";
+  import PlayerHead from "$lib/component/PlayerHead.svelte";
+
+  const session = getContext("session");
+
+  $: user = $session.user ? $session.user : {};
+
+  let checkTime = 0;
+  let interval;
+
+  function matching(path, pathName, startsWith = false) {
+    return (
+      path.toUpperCase() === pathName.toUpperCase() ||
+      path.toUpperCase() === (pathName + "/").toUpperCase() ||
+      (startsWith && path.startsWith(pathName))
+    );
+  }
+
+  onMount(() => {
+    interval = setInterval(() => {
+      checkTime += 1;
+    }, 1000);
+  });
+
+  onDestroy(() => {
+    clearInterval(interval);
+  });
 </script>
