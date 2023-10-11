@@ -67,16 +67,6 @@
       {#each data.ticket.messages as message, index (message)}
         {#if message.panel}
           <div class="row py-2 flex-nowrap justify-content-start">
-            <div class="col-auto d-flex align-items-center">
-              <div class="card text-bg-secondary">
-                <div class="card-header small">
-                  <Date time="{message.date}" />
-                </div>
-                <div class="card-body answer">
-                  {@html message.message}
-                </div>
-              </div>
-            </div>
             <div class="col-auto">
               <a href="/player/{message.username}">
                 <img
@@ -88,10 +78,20 @@
                   height="48" />
               </a>
             </div>
+            <div class="col-auto">
+              <div class="card text-bg-secondary">
+                <div class="card-header small">
+                  <Date time="{message.date}" />
+                </div>
+                <div class="card-body answer">
+                  {@html message.message}
+                </div>
+              </div>
+            </div>
           </div>
         {:else}
           <div class="row py-2 flex-nowrap justify-content-end">
-            <div class="col-auto text-right">
+            <div class="col-auto">
               <a href="/player/{message.username}">
                 <img
                   src="https://crafthead.net/avatar/{message.username}/48"
@@ -102,7 +102,7 @@
                   height="48" />
               </a>
             </div>
-            <div class="col-auto d-flex flex-nowrap align-items-center">
+            <div class="col-auto">
               <div class="card text-bg-light">
                 <div class="card-header small">
                   <Date time="{message.date}" />
