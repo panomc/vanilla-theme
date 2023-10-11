@@ -11,7 +11,7 @@
 </style>
 
 <article class="container">
-  <div class="card">
+  <div class="card bg-white">
     <div class="card-body">
       <div
         class="row justify-content-between mb-3 animate__animated animate__slideInUp">
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="card mb-3">
+      <div class="card bg-white mb-3">
         <div
           class="card-header bg-opacity-25 pt-3"
           class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"

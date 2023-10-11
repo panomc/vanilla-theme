@@ -1,5 +1,5 @@
 <div class="col-lg-4 col-md-6 m-auto">
-  <div class="card">
+  <div class="card bg-white">
     <div class="card-body">
       <h3 class="card-title">Şifreni Sıfırla</h3>
       <ErrorAlert error="{error}" />

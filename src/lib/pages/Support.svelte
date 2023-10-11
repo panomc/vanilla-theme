@@ -1,15 +1,17 @@
-<div class="card">
+<div class="card bg-white">
   <div class="card-body">
     <h3 class="card-title">Oyuncu Destek</h3>
-    <h5 class="my-3">Nasıl yardım almak istersin?</h5>
+    <p class="text-muted my-3">Nasıl yardım almak istersin?</p>
     <ul class="list-group list-group-horizontal text-center">
       <a href="/ticket/create" class="list-group-item list-group-item-action">
         <h5 class="link-primary">Talep</h5>
-        <p>Destek talebi oluştur ve cevaplandığında bildirim al.</p>
+        <p class="mb-0">
+          Destek talebi oluştur ve cevaplandığında bildirim al.
+        </p>
       </a>
       <a href="#" class="list-group-item list-group-item-action">
         <h5 class="link-primary">E-Posta</h5>
-        <p>
+        <p class="mb-0">
           {$session.siteInfo.websiteName} yöneticilerine e-postayla iletişime geç.
         </p>
       </a>

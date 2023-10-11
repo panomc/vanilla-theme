@@ -17,7 +17,7 @@
   <!-- Play Button End -->
 
   <!-- Server Status -->
-  <div class="card text-center border-0 mb-4">
+  <div class="card bg-white text-center border-0 mb-4">
     <h5 class="card-header bg-danger text-white">Sunucu Durumu</h5>
     <div class="card-body">
       <div class="d-flex flex-row align-items-center justify-content-around">
@@ -58,7 +58,7 @@
   <!-- Server Status End -->
 
   <!-- Latest Registers -->
-  <div class="card text-center border-0 mb-4">
+  <div class="card bg-white text-center border-0 mb-4">
     <h5 class="card-header bg-warning text-white">Son Kayıt Olanlar</h5>
     <div class="card-body p-0">
       <div class="row">

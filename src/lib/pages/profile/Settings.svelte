@@ -1,5 +1,5 @@
 <!-- Settings -->
-<div class="card">
+<div class="card bg-white">
   <div class="card-body">
     <h5 class="card-title">Ayarlar</h5>
     <div class="row mb-3">

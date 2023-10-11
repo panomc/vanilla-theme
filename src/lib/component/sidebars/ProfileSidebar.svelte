@@ -1,5 +1,5 @@
 <Sidebar>
-  <div class="card mb-3">
+  <div class="card bg-white mb-3">
     <div class="card-header bg-white">
       <PlayerHead
         username="{user.username}"

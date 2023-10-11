@@ -1,8 +1,8 @@
 <!-- Statistics -->
-<div class="card">
+<div class="card bg-white">
   <div class="card-body">
     <h4 class="card-title">İstatistikler</h4>
-    <table class="table table-borderless mb-0">
+    <table class="table mb-0">
       <tbody>
         <tr>
           <td>Kayıt</td>

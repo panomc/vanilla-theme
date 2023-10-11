@@ -1,4 +1,4 @@
-<div class="card mb-3">
+<div class="card bg-white mb-3">
   {#if post.thumbnailUrl}
     <a href="/blog/post/{post.url}">
       <img

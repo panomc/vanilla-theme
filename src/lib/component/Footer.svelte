@@ -6,7 +6,7 @@
     </div>
     <div class="col-auto">
       <p class="mb-0">
-        <a href="https://panocms.com" target="_blank">Pano</a> ile oluşturuldu.
+        <a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a> ile oluşturuldu.
       </p>
     </div>
   </div>
