@@ -2,24 +2,27 @@
   <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
 
 
-  {#if $ticketData.status !== TicketStatuses.CLOSED}
-    <button
-      class="btn btn-danger"
-      type="button"
-      on:click="{() => showCloseTicketConfirmModal($ticketData)}">
-      <i class="fas fa-times me-2"></i> {$_("components.ticket-create-and-detail.close-ticket-button")}
-    </button>
+  {#if $ticketData}
+    {#if $ticketData.status !== TicketStatuses.CLOSED}
+      <button
+        class="btn btn-danger"
+        type="button"
+        on:click="{() => showCloseTicketConfirmModal($ticketData)}">
+        <i class="fas fa-times me-2"></i> {$_("components.ticket-create-and-detail.close-ticket-button")}
+      </button>
+    {/if}
   {/if}
 </Sidebar>
 
 <script context="module">
-  import ApiUtil from "$lib/api.util.js";
   import { writable } from "svelte/store";
+
+  import ApiUtil from "$lib/api.util.js";
 
   const data = writable({
     onlineAdmins: [],
   });
-  const ticketData = writable({})
+  const ticketData = writable(null)
 
   export const load = async (event, ticket) => {
     data.set(
@@ -29,7 +32,9 @@
       })
     );
 
-    ticketData.set(ticket)
+    if (ticket) {
+      ticketData.set(ticket)
+    }
   };
 
   export const update = (ticket) => {

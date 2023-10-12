@@ -10,7 +10,7 @@
         <div class="pb-3">
           <i class="fas fa-question-circle fa-3x d-block m-auto text-gray"></i>
         </div>
-        {$_("components.confirm-remove-all-notifications.title")}
+        {$_("components.modals.confirm-remove-all-notifications.title")}
       </div>
       <div class="modal-footer flex-nowrap">
         <button
@@ -20,7 +20,7 @@
           aria-disabled="{loading}"
           disabled="{loading}"
           on:click="{hide}">
-          {$_("components.confirm-remove-all-notifications.cancel-button")}
+          {$_("components.modals.confirm-remove-all-notifications.cancel-button")}
         </button>
         <button
           class="btn btn-danger col-6 m-0"
@@ -28,7 +28,7 @@
           class:disabled="{loading}"
           aria-disabled="{loading}"
           disabled="{loading}"
-          on:click="{onYesClick}">{$_("components.confirm-remove-all-notifications.yes-button")}</button>
+          on:click="{onYesClick}">{$_("components.modals.confirm-remove-all-notifications.yes-button")}</button>
       </div>
     </div>
   </div>

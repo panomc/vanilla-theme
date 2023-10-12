@@ -15,7 +15,7 @@
     const parentData = await parent();
 
     const { session } = parentData;
-    const { user } = get(session);
+    const { user } = session;
 
     if (!user && !user.panelAccess) {
       return {
@@ -26,6 +26,7 @@
 
     let data = {
       post: {
+
         id: -1,
         title: "",
         category: "-",
