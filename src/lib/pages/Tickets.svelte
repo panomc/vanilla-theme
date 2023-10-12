@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">
-        <h4 class="card-title mb-md-0">Destek Talepleri</h4>
+        <h4 class="card-title mb-md-0">{$_("pages.tickets.title")}</h4>
       </div>
       <div class="col-md-auto col-12 text-md-right text-center">
         <div class="btn-group">
@@ -11,14 +11,14 @@
             class:active="{data.pageType === PageTypes.ALL}"
             role="button"
             href="/tickets/all">
-            Tümü
+            {$_("pages.tickets.all")}
           </a>
           <a
             class="btn btn-sm btn-outline-light btn-link text-danger"
             class:active="{data.pageType === PageTypes.CLOSED}"
             role="button"
             href="/tickets/closed">
-            Kapalı
+            {$_("pages.tickets.closed")}
           </a>
         </div>
       </div>
@@ -91,6 +91,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import { goto } from "$app/navigation";
 
   import Pagination from "$lib/component/Pagination.svelte";

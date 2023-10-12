@@ -173,6 +173,11 @@
         }
       },
       "reset-password-button": "Sıfırlama E-Postası Gönder"
+    },
+    "tickets": {
+      "title": "Destek Talepleri",
+      "all": "Tümü",
+      "closed": "Kapalı"
     }
   },
   "page-errors": {

@@ -173,6 +173,11 @@
         }
       },
       "reset-password-button": "Send Reset Email"
+    },
+    "tickets": {
+      "title": "Support Tickets",
+      "all": "All",
+      "closed": "Closed"
     }
   },
   "page-errors": {
