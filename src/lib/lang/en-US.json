@@ -217,6 +217,10 @@
           "current-password-placeholder": "Current Password"
         }
       }
+    },
+    "category-tickets": {
+      "title": "{categoryName} Tickets",
+      "no-category": "No Category"
     }
   },
   "page-errors": {

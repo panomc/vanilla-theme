@@ -3,10 +3,10 @@
     <div class="row justify-content-between pb-3 align-items-center">
       <div class="col-auto">
         <h4 class="card-title mb-md-0">
-          <strong
-            >"{data.category.title === "-"
-              ? "Kategorisiz"
-              : data.category.title}"</strong> Talepler
+          {@html $_("pages.category-tickets.title", {values: {categoryName: `<strong
+            >"${data.category.title === "-"
+              ? $_("pages.category-tickets.no-category")
+              : data.category.title}"</strong>`}})}
         </h4>
       </div>
     </div>
@@ -78,11 +78,13 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import { goto } from "$app/navigation";
+  import { base } from "$app/paths";
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Tickets from "$lib/component/Tickets.svelte";
-  import { base } from "$app/paths";
 
   export let data;
 

@@ -217,6 +217,10 @@
           "current-password-placeholder": "Mevcut Şifre"
         }
       }
+    },
+    "category-tickets": {
+      "title": "{categoryName} Talepler",
+      "no-category": "Kategorisiz"
     }
   },
   "page-errors": {
