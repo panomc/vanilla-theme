@@ -1,0 +1,186 @@
+{
+  "nav-links": {
+    "support": "Support",
+    "panel": "Panel"
+  },
+  "navbar": {
+    "login-button": "Login",
+    "register-button": "Register",
+    "notifications": {
+      "title": "Notifications",
+      "show-all": "Show All"
+    }
+  },
+  "footer": {
+    "been-created-with": "Created with {pano}."
+  },
+  "sidebars": {
+    "home": {
+      "copied": "Copied!",
+      "copy": "Copy",
+      "server-status": "Server Status",
+      "online": "Online",
+      "offline": "Offline",
+      "last-registrants": "Last Registrants",
+      "game-client-version": "Game Client Version"
+    },
+    "profile": {
+      "links": {
+        "statistics": "Statistics",
+        "tickets": "Tickets",
+        "settings": "Settings",
+        "logout": "Logout"
+      },
+      "secret": "Secret"
+    }
+  },
+  "component": {
+    "post": {
+      "read-more": "Read More",
+      "view": "Views"
+    },
+    "online-admins": {
+      "online-admins": "Online Admins"
+    },
+    "player-permission-badge": {
+      "player": "Player"
+    },
+    "modals": {
+      "login": {
+        "title": "Login",
+        "inputs": {
+          "username-email": "Username / E-Mail",
+          "password": "Password"
+        },
+        "login-button": "Login",
+        "forgot-password-button": "Forgot your password?"
+      },
+      "register": {
+        "title": "Register",
+        "inputs": {
+          "username": "Username",
+          "email": "E-Mail",
+          "password": "Password",
+          "password-repeat": "Password Repeat",
+          "server-rules": "Server Rules",
+          "agreement-text": "I have read and accept {link}."
+        },
+        "register-button": "Register",
+        "already-registered-button": "Login if you are already registered"
+      },
+      "confirm-remove-all-notifications": {
+        "title": "Are you sure you want to permanently delete all notifications?",
+        "cancel-button": "Cancel",
+        "yes-button": "Yes"
+      },
+      "close-ticket-confirm": {
+        "title": "Are you sure you want to close this ticket?",
+        "cancel-button": "Cancel",
+        "yes-button": "Yes"
+      }
+    },
+    "header": {
+      "alt": "Server Logo"
+    },
+    "no-content": {
+      "text": "Here is empty."
+    },
+    "ticket-row": {
+      "close-ticket": "Close Ticket",
+      "show-ticket": "View Ticket",
+      "filter": "Filter",
+      "no-category": "No Category"
+    },
+    "tickets": {
+      "table": {
+        "title": "Title",
+        "status": "Status",
+        "category": "Category",
+        "last-reply": "Last Reply"
+      }
+    }
+  },
+  "pages": {
+    "post-detail": {
+      "previous-post": "Previous Post",
+      "next-post": "Next Post"
+    },
+    "support": {
+      "title": "Support",
+      "description": "How would you like to get help?",
+      "options": {
+        "create-ticket": {
+          "title": "Create Support Ticket",
+          "description": "As a player, send messages to the authorities and get notified when they reply."
+        },
+        "send-email": {
+          "title": "Send E-Mail",
+          "description": "Email the {websiteName} administrator for various issues."
+        }
+      }
+    },
+    "create-ticket": {
+      "title": "Create Support Ticket",
+      "inputs": {
+        "title": "Title",
+        "no-category": "No Category"
+      },
+      "create-button": "Create Ticket"
+    },
+    "player-profile": {
+      "title": "Statistics",
+      "register-date": "Register Date"
+    },
+    "profile": {
+      "title": "Statistics",
+      "register-date": "Register Date",
+      "last-login": "Last Login"
+    },
+    "notifications": {
+      "delete-all-button": "Delete All",
+      "delete-notification": "Delete Notification",
+      "show-more": "Show More ({count})"
+    },
+    "activate": {
+      "title": "Activate Your E-Mail",
+      "activate-button": "Verify E-Mail"
+    },
+    "activate-new-email": {
+      "title": "Verify New E-Mail",
+      "activate-button": "Verify E-Mail"
+    },
+    "category-posts": {
+      "title": "Category: {categoryTitle} ({postCount} Posts)",
+      "posts": "Posts"
+    },
+    "preview-post": {
+      "title": "Previewing Post: {postTitle}"
+    },
+    "renew-password": {
+      "title": "Change Password",
+      "inputs": {
+        "new-password": "New Password",
+        "new-password-repeat": "New Password Repeat",
+        "change-password-button": "Change My Password"
+      }
+    },
+    "reset-password": {
+      "title": "Reset Password",
+      "description": "A reset link will be sent to the email address you registered with.",
+      "inputs": {
+        "email-username": {
+          "placeholder": "Username / E-Mail"
+        }
+      },
+      "reset-password-button": "Send Reset Email"
+    }
+  },
+  "page-errors": {
+    "404": "The page is not found!"
+  },
+  "ticket-statuses": {
+    "new": "New",
+    "replied": "Replied",
+    "closed": "Closed"
+  }
+}

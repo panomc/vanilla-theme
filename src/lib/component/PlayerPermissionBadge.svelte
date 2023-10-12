@@ -2,7 +2,7 @@
   {#if permissionGroupName}
     {permissionGroupName.capitalize()}
   {:else}
-    Oyuncu
+    {$_("component.player-permission-badge.player")}
   {/if}
 </div>
 
@@ -13,5 +13,7 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   export let permissionGroupName;
 </script>

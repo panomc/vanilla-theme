@@ -26,6 +26,8 @@
 <script>
   import tooltip from "$lib/tooltip.util";
   import { formatRelative } from "date-fns";
+  import * as locales from "date-fns/locale";
+  import { currentLanguage } from "$lib/language.util.js";
 
   export let username;
   export let width = 64;
@@ -39,7 +41,8 @@
   function getOfflineRelativeDateText(checkTime) {
     return formatRelative(
       new Date(parseInt(lastActivityTime)),
-      new Date()
+      new Date(),
+      {locale: locales[$currentLanguage['date-fns-code']]}
     ).capitalize();
   }
 

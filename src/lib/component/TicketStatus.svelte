@@ -1,9 +1,9 @@
 {#if status === TicketStatuses.NEW}
-  <span class="badge bg-mint rounded-pill">Yeni</span>
+  <span class="badge bg-mint rounded-pill">{$_("ticket-statuses.new")}</span>
 {:else if status === TicketStatuses.REPLIED}
-  <span class="badge bg-warning rounded-pill">Yanıtlandı</span>
+  <span class="badge bg-warning rounded-pill">{$_("ticket-statuses.replied")}</span>
 {:else if status === TicketStatuses.CLOSED}
-  <span class="badge bg-danger rounded-pill">Kapalı</span>
+  <span class="badge bg-danger rounded-pill">{$_("ticket-statuses.closed")}</span>
 {/if}
 
 <script context="module">
@@ -15,5 +15,7 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   export let status = TicketStatuses.NEW;
 </script>

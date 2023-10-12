@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="row justify-content-between mb-3">
       <div class="col-auto">
-        <h4 class="card-title">Destek Talebi Oluştur</h4>
+        <h4 class="card-title">{$_("pages.create-ticket.title")}</h4>
       </div>
     </div>
 
@@ -10,16 +10,16 @@
 
     <div class="mb-3">
       <input
-        type="email"
+        type="text"
         class="form-control form-control-lg mb-3"
-        placeholder="Başlık"
+        placeholder="{$_('pages.create-ticket.inputs.title')}"
         bind:value="{title}" />
 
       <select
         class="form-select"
         id="datalistOptions"
         bind:value="{categoryId}">
-        <option value="{-1}">Kategorisiz</option>
+        <option value="{-1}">{$_("pages.create-ticket.inputs.no-category")}</option>
         {#each data.categories as category, index (category)}
           <option value="{category.id}">{category.title}</option>
         {/each}
@@ -36,7 +36,7 @@
       on:click="{() => submit()}"
       class:disabled="{loading || isButtonDisabled}"
       disabled="{loading || isButtonDisabled}">
-      Talep Oluştur</button>
+      {$_("pages.create-ticket.create-button")}</button>
   </div>
 </div>
 
@@ -86,6 +86,7 @@
   import { createTicket } from "$lib/services/tickets";
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import { NETWORK_ERROR } from "$lib/api.util";
+  import { _ } from "svelte-i18n";
 
   export let data;
 

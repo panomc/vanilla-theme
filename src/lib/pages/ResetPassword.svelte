@@ -1,19 +1,19 @@
 <div class="col-lg-4 col-md-6 m-auto">
   <div class="card bg-white">
     <div class="card-body">
-      <h3 class="card-title">Şifreni Sıfırla</h3>
+      <h3 class="card-title">{$_("pages.reset-password.title")}</h3>
       <ErrorAlert error="{error}" />
       <SuccessAlert message="{message}" />
       <form on:submit|preventDefault="{onSubmit}">
         <p>
-          Kayıt olduğun E-posta adresine bir sıfırlama bağlantısı gönderilecek.
+          {$_("pages.reset-password.description")}
         </p>
 
         <div class="mb-3">
           <div class="form-group">
             <input
               type="text"
-              placeholder="E-Posta/Kullanıcı Adı"
+              placeholder="{$_('pages.reset-password.inputs.email-username.placeholder')}"
               id="email"
               class="form-control"
               bind:value="{usernameOrEmail}" />
@@ -23,7 +23,7 @@
           type="submit"
           class="btn btn-primary w-100"
           class:disabled="{loading}">
-          Sıfırlama E-Postası Gönder
+          {$_("pages.reset-password.reset-password-button")}
         </button>
       </form>
     </div>
@@ -50,6 +50,7 @@
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";
   import { sendResetPassword } from "$lib/services/auth.js";
   import { NETWORK_ERROR } from "$lib/api.util.js";
+  import { _ } from "svelte-i18n";
 
   let error;
   let message;

@@ -7,7 +7,7 @@
       class="btn btn-link ps-0"
       class:disabled="{data.previousPost === '-'}"
       use:tooltip="{[data.previousPost.title, { placement: 'bottom' }]}">
-      Önceki Yazı
+      {$_("pages.post-detail.previous-post")}
     </a>
   </div>
   <div class="col-auto">
@@ -16,7 +16,7 @@
       class="btn btn-link pe-0"
       class:disabled="{data.nextPost === '-'}"
       use:tooltip="{[data.nextPost.title, { placement: 'bottom' }]}">
-      Sonraki Yazı
+      {$_("pages.post-detail.next-post")}
     </a>
   </div>
 </div>
@@ -77,6 +77,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import tooltip from "$lib/tooltip.util";
 
   import Post from "$lib/component/Post.svelte";

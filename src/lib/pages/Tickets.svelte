@@ -43,9 +43,9 @@
 {/if}
 
 <script context="module">
-  import TicketsSidebar, {
+  import ProfileSidebar, {
     load as loadSidebar,
-  } from "$lib/component/sidebars/TicketsSidebar.svelte";
+  } from "$lib/component/sidebars/ProfileSidebar.svelte";
   import { getTickets } from "$lib/services/tickets.js";
 
   export const PageTypes = Object.freeze({
@@ -86,7 +86,7 @@
       data = body;
     });
 
-    return { ...data, sidebar: TicketsSidebar };
+    return { ...data, sidebar: ProfileSidebar };
   }
 </script>
 

@@ -1,4 +1,4 @@
-<h5 class="card-title mb-3">Önizlenen Yazı: {post.title}</h5>
+<h5 class="card-title mb-3">{$_("pages.preview-post.title", {values: {postTitle: post.title}})}</h5>
 
 <Post post="{post}" detail="{true}" />
 
@@ -59,6 +59,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import Post from "$lib/component/Post.svelte";
 
   export let post;

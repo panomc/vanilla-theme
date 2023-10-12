@@ -6,7 +6,7 @@
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[
-        isCommandTextCopied ? 'Kopyalandı!' : 'Kopyala',
+        isCommandTextCopied ? $_('sidebars.home.copied') : $_('sidebars.home.copy'),
         { placement: 'bottom', hideOnClick: false },
       ]}">
       {$data.ipAddress}
@@ -16,7 +16,7 @@
 
   <!-- Server Status -->
   <div class="card bg-white text-center mb-4">
-    <h5 class="card-header bg-danger text-white rounded-top">Sunucu Durumu</h5>
+    <h5 class="card-header bg-danger text-white rounded-top">{$_("sidebars.home.server-status")}</h5>
     <div class="card-body">
       <div class="d-flex flex-row align-items-center justify-content-around">
         <div use:tooltip="{[$data.ipAddress, { placement: 'bottom' }]}">
@@ -27,9 +27,9 @@
             class:fa-check-circle="{serverOnline}"
             class:text-mint="{serverOnline}"></i>
           {#if serverOnline}
-            Çevrimiçi
+            {$_("sidebars.home.online")}
           {:else}
-            Çevrimdışı
+            {$_("sidebars.home.offline")}
           {/if}
         </div>
         <div
@@ -46,7 +46,7 @@
             0/0
           {/if}
         </div>
-        <div use:tooltip="{['Game client version', { placement: 'bottom' }]}">
+        <div use:tooltip="{[$_('sidebars.home.game-client-version'), { placement: 'bottom' }]}">
           <i class="fas fa-gamepad fa-lg d-block text-primary py-3"></i>
           {$data.serverGameVersion}
         </div>
@@ -57,7 +57,7 @@
 
   <!-- Latest Registers -->
   <div class="card bg-white text-center mb-4">
-    <h5 class="card-header bg-warning text-white rounded-top">Son Kayıt Olanlar</h5>
+    <h5 class="card-header bg-warning text-white rounded-top">{$_("sidebars.home.last-registrants")}</h5>
     <div class="card-body p-0">
       <div class="row">
         {#each $data.lastRegisteredUsers as player, index (player)}
@@ -99,6 +99,7 @@
 
   import Sidebar from "$lib/component/Sidebar.svelte";
   import tooltip from "$lib/tooltip.util";
+  import { _ } from "svelte-i18n";
 
   let copyClickIDForCommandText = 0;
   let isCommandTextCopied = false;

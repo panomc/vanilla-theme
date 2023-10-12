@@ -1,15 +1,15 @@
 <!-- Statistics -->
 <div class="card bg-white">
   <div class="card-body">
-    <h5 class="card-title">İstatistikler</h5>
+    <h5 class="card-title">{$_("pages.profile.title")}</h5>
     <table class="table mb-0">
       <tbody>
         <tr>
-          <td>Kayıt</td>
+          <td>{$_("pages.profile.register-date")}</td>
           <td><Date time="{data.registerDate}" /></td>
         </tr>
         <tr>
-          <td>Son Giriş</td>
+          <td>{$_("pages.profile.last-login")}</td>
           <td><Date time="{data.lastLoginDate}" relativeFormat="true" /></td>
         </tr>
       </tbody>
@@ -47,6 +47,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import Date from "$lib/component/Date.svelte";
 
   export let data;

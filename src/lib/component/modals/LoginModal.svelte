@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-sm modal-dialog-centered" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Giriş Yap</h4>
+        <h4 class="modal-title">{$_("component.modals.login.title")}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
         ></button>
       </div>
@@ -14,7 +14,7 @@
             <ErrorAlert error="{$error}" />
           </div>
           <div class="mb-3">
-            <label for="usernameOrEmail">Oyuncu Adı / E-Posta</label>
+            <label for="usernameOrEmail">{$_("component.modals.login.inputs.username-email")}</label>
             <input
               type="text"
               id="usernameOrEmail"
@@ -22,7 +22,7 @@
               bind:value="{$data.usernameOrEmail}" />
           </div>
           <div class="mb-3">
-            <label for="password">Şifre</label>
+            <label for="password">{$_("component.modals.login.inputs.password")}</label>
             <input
               type="password"
               id="password"
@@ -37,13 +37,13 @@
             class="btn btn-primary w-100"
             class:disabled="{loading}"
             disabled="{loading}">
-            Giriş Yap
+            {$_("component.modals.login.login-button")}
           </button>
           <a
             href="/reset-password"
             class="btn btn-link w-100"
             on:click="{hide}">
-            Şifreni mi unuttun?
+            {$_("component.modals.login.forgot-password-button")}
           </a>
         </div>
       </form>
@@ -96,6 +96,7 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
   import { getContext } from "svelte";
 
   import { invalidateAll } from "$app/navigation";

@@ -1,6 +1,6 @@
 <!-- Online Admins -->
 <div class="card bg-white text-center mb-3">
-  <h5 class="card-header bg-warning text-white rounded-top">Çevrimiçi Adminler</h5>
+  <h5 class="card-header bg-warning text-white rounded-top">{$_("component.online-admins.online-admins")}</h5>
   <div class="card-body p-0">
     <div class="row">
       {#each onlineAdmins as onlineAdmin, index (onlineAdmin)}
@@ -21,6 +21,7 @@
 
 <!-- Online Admins End -->
 <script>
+  import { _ } from "svelte-i18n";
   import tooltip from "$lib/tooltip.util";
 
   export let onlineAdmins;

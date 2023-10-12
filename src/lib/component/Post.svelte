@@ -42,7 +42,7 @@
         <li class="list-inline">
           <div
             class="list-inline-item px-1"
-            use:tooltip="{['Görüntülenme', { placement: 'bottom' }]}">
+            use:tooltip="{[$_('component.post.view'), { placement: 'bottom' }]}">
             <i class="fas fa-eye me-2"></i>
             {post.views}
           </div>
@@ -63,7 +63,7 @@
       </div>
     {:else}
       <a class="btn btn-link ps-0" href="/blog/post/{post.url}">
-        Devamını Oku
+        {$_("component.post.read-more")}
       </a>
 
       <div>
@@ -83,6 +83,8 @@
 </div>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import { truncate } from "$lib/string.util";
   import tooltip from "$lib/tooltip.util";
 

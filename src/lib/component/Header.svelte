@@ -2,7 +2,7 @@
 <header id="header">
   <img
     title="{$session.siteInfo.websiteName}"
-    alt="Server Logo"
+    alt="{$_('component.header.alt')}"
     class="d-block m-auto p-3"
     src="/api/websiteLogo" />
 </header>
@@ -10,6 +10,7 @@
 
 <script>
   import { getContext } from "svelte";
+  import { _ } from "svelte-i18n";
 
   const session = getContext("session");
 </script>

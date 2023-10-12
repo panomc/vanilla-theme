@@ -1,12 +1,12 @@
 <div class="col-lg-4 col-md-6 m-auto">
   <div class="card bg-white">
     <div class="card-body">
-      <h3 class="card-title">Şifreni Değiştir</h3>
+      <h3 class="card-title">{$_("pages.renew-password.title")}</h3>
       <ErrorAlert error="{error}" />
       <SuccessAlert message="{message}" />
       <form on:submit|preventDefault="{onSubmit}">
         <div class="mb-3">
-          <label for="newPassword">Yeni Şifre</label>
+          <label for="newPassword">{$_("pages.renew-password.inputs.new-password")}</label>
           <input
             type="password"
             id="newPassword"
@@ -14,7 +14,7 @@
             bind:value="{newPassword}" />
         </div>
         <div class="mb-3">
-          <label for="newPasswordRepeat">Yeni Şifre Tekrarı</label>
+          <label for="newPasswordRepeat">{$_("pages.renew-password.inputs.new-password-repeat")}</label>
           <input
             type="password"
             id="newPasswordRepeat"
@@ -25,7 +25,7 @@
           type="submit"
           class="btn btn-secondary w-100"
           class:disabled="{loading}">
-          Şifremi Değiştir
+          {$_("pages.renew-password.change-password-button")}
         </button>
       </form>
     </div>
@@ -46,10 +46,11 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
   import SuccessAlert from "$lib/component/SuccessAlert.svelte";
   import { sendRenewPassword } from "$lib/services/auth.js";
-  import { NETWORK_ERROR } from "../../pano-ui/js/api.util.js";
+  import { NETWORK_ERROR } from "$lib/api.util";
 
   export let data;
   let error;

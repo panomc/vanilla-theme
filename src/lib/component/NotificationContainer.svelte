@@ -9,7 +9,7 @@
       on:click="{() => onClick(notification)}">
       <div class="toast-header bg-primary text-white">
         <strong class="me-auto">Pano</strong>
-        <small>{getTime(checkTime, parseInt(notification.date), "")}</small>
+        <small>{getTime(checkTime, parseInt(notification.date), locales[$currentLanguage['date-fns-code']])}</small>
         <button
           type="button"
           class="btn-close btn-close-white"
@@ -95,6 +95,8 @@
   import { notificationsCount, quickNotifications } from "$lib/Store";
   import ApiUtil from "$lib/api.util";
   import { onNotificationClick } from "$lib/NotificationManager.js";
+  import * as locales from "date-fns/locale";
+  import { currentLanguage } from "$lib/language.util.js";
 
   let quickNotificationProcessID = 0;
 
@@ -104,7 +106,7 @@
   const session = getContext("session");
 
   function getTime(check, time, locale) {
-    return formatDistanceToNow(time, { addSuffix: true });
+    return formatDistanceToNow(time, { addSuffix: true, locale });
   }
 
   function addNotification(notification) {

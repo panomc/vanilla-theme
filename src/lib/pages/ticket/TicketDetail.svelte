@@ -5,23 +5,6 @@
 </style>
 
 <article class="container">
-  <div
-    class="row justify-content-between mb-3 animate__animated animate__slideInUp">
-    <div class="col-auto">
-      <h3>Talep No: {data.ticket.id}</h3>
-    </div>
-    <div class="col-auto ml-auto">
-      {#if data.ticket.status !== TicketStatuses.CLOSED}
-        <button
-          class="btn btn-danger"
-          type="button"
-          on:click="{() => showCloseTicketConfirmModal(data.ticket)}">
-          <i class="fas fa-times me-2"></i> Talebi Kapat
-        </button>
-      {/if}
-    </div>
-  </div>
-
   <div class="card bg-white">
     <div
       class="card-header bg-opacity-25 py-3 rounded-top"
@@ -32,6 +15,7 @@
         <div class="col">
           <h5 class="card-title">{data.ticket.title}</h5>
           <small class="mb-0">
+            Talep: {data.ticket.id},
             <Date time="{data.ticket.date}" relativeFormat="{true}" />
             ,
             <a
@@ -143,6 +127,7 @@
 <script context="module">
   import TicketCreateAndDetailSidebar, {
     load as loadSidebar,
+    update as updateSidebar
   } from "$lib/component/sidebars/TicketCreateAndDetailSidebar.svelte";
   import { getTicketDetail } from "$lib/services/tickets";
   import { error } from "@sveltejs/kit";
@@ -167,8 +152,6 @@
       },
     };
 
-    await loadSidebar(event);
-
     await getTicketDetail({
       id: event.params.id,
       request: event,
@@ -183,6 +166,8 @@
 
       data = body;
     });
+
+    await loadSidebar(event, data.ticket);
 
     return { ...data, sidebar: TicketCreateAndDetailSidebar };
   }
@@ -204,7 +189,6 @@
   } from "$lib/services/tickets";
 
   import {
-    show as showCloseTicketConfirmModal,
     setCallback as setCloseTicketConfirmCallback,
   } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
 
@@ -271,6 +255,7 @@
 
   setCloseTicketConfirmCallback(() => {
     data.ticket.status = TicketStatuses.CLOSED;
+    updateSidebar(data.ticket)
   });
 
   afterUpdate(() => {

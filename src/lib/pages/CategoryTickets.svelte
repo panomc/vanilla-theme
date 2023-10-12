@@ -28,9 +28,9 @@
 {/if}
 
 <script context="module">
-  import TicketsSidebar, {
+  import ProfileSidebar, {
     load as loadSidebar,
-  } from "$lib/component/sidebars/TicketsSidebar.svelte";
+  } from "$lib/component/sidebars/ProfileSidebar.svelte";
   import { getCategoryTickets } from "$lib/services/tickets.js";
   import { error } from "@sveltejs/kit";
 
@@ -73,7 +73,7 @@
       data = body;
     });
 
-    return { ...data, sidebar: TicketsSidebar };
+    return { ...data, sidebar: ProfileSidebar };
   }
 </script>
 

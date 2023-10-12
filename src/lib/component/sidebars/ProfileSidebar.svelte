@@ -10,10 +10,9 @@
         <h2 class="my-2">{user.username}</h2>
         <div
           class="text-muted"
-          use:tooltip="{['Gizli', { placement: 'top', hideOnClick: false }]}">
+          use:tooltip="{[$_('sidebars.profile.secret'), { placement: 'top', hideOnClick: false }]}">
           {user.email}
         </div>
-        <div class="d-none text-muted">Kayıt: 01.01.2019</div>
         <div class="my-2">
           <PlayerPermissionBadge
             permissionGroupName="{$data.permissionGroupName}" />
@@ -27,7 +26,7 @@
             class="nav-link"
             href="/profile"
             class:active="{matching($page.url.pathname, '/profile')}">
-            İstatistikler
+            {$_("sidebars.profile.links.statistics")}
           </a>
         </li>
         <li class="nav-item">
@@ -35,7 +34,7 @@
             class="nav-link"
             href="/tickets"
             class:active="{matching($page.url.pathname, '/tickets', true)}">
-            Talepler
+            {$_("sidebars.profile.links.tickets")}
           </a>
         </li>
         <li class="nav-item">
@@ -47,7 +46,7 @@
               '/profile/settings',
               true
             )}">
-            Ayarlar
+            {$_("sidebars.profile.links.settings")}
           </a>
         </li>
         <li class="nav-item">
@@ -55,7 +54,7 @@
             class="nav-link link-danger"
             on:click="{logout}"
             type="button">
-            Çıkış Yap
+            {$_("sidebars.profile.links.logout")}
           </button>
         </li>
       </ul>
@@ -89,6 +88,7 @@
 
 <script>
   import { getContext, onDestroy, onMount } from "svelte";
+  import { _ } from "svelte-i18n";
 
   import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";

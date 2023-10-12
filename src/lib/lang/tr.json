@@ -1,0 +1,186 @@
+{
+  "nav-links": {
+    "support": "Destek",
+    "panel": "Panel"
+  },
+  "navbar": {
+    "login-button": "Giriş Yap",
+    "register-button": "Kayıt Ol",
+    "notifications": {
+      "title": "Bildirimler",
+      "show-all": "Tümünü Görüntüle"
+    }
+  },
+  "footer": {
+    "been-created-with": "{pano} ile oluşturuldu."
+  },
+  "sidebars": {
+    "home": {
+      "copied": "Kopyalandı!",
+      "copy": "Kopyala",
+      "server-status": "Sunucu Durumu",
+      "online": "Çevrimiçi",
+      "offline": "Çevrimdışı",
+      "last-registrants": "Son Kayıt Olanlar",
+      "game-client-version": "Oyun Versiyonu"
+    },
+    "profile": {
+      "links": {
+        "statistics": "İstatistikler",
+        "tickets": "Talepler",
+        "settings": "Ayarlar",
+        "logout": "Çıkış Yap"
+      },
+      "secret": "Gizli"
+    }
+  },
+  "component": {
+    "post": {
+      "read-more": "Devamını Oku",
+      "view": "Görüntülenme"
+    },
+    "online-admins": {
+      "online-admins": "Çevrimiçi Yöneticiler"
+    },
+    "player-permission-badge": {
+      "player": "Oyuncu"
+    },
+    "modals": {
+      "login": {
+        "title": "Giriş Yap",
+        "inputs": {
+          "username-email": "Oyuncu Adı / E-Posta",
+          "password": "Şifre"
+        },
+        "login-button": "Giriş Yap",
+        "forgot-password-button": "Şifreni mi unuttun?"
+      },
+      "register": {
+        "title": "Kayıt Ol",
+        "inputs": {
+          "username": "Oyuncu Adı",
+          "email": "E-Posta",
+          "password": "Şifre",
+          "password-repeat": "Şifre Tekrarı",
+          "server-rules": "Sunucu Kurallarını",
+          "agreement-text": "{link} okudum ve kabul ediyorum."
+        },
+        "register-button": "Kayıt Ol",
+        "already-registered-button": "Zaten kayıtlıysan Giriş Yap"
+      },
+      "confirm-remove-all-notifications": {
+        "title": "Tüm bildirimleri kalıcı olarak silmek istediğinizden emin misiniz?",
+        "cancel-button": "İptal",
+        "yes-button": "Evet"
+      },
+      "close-ticket-confirm": {
+        "title": "Bu talebi kapatmak istediğinizden emin misiniz?",
+        "cancel-button": "İptal",
+        "yes-button": "Evet"
+      }
+    },
+    "header": {
+      "alt": "Sunucu Logosu"
+    },
+    "no-content": {
+      "text": "Burası boş."
+    },
+    "ticket-row": {
+      "close-ticket": "Talebi Kapat",
+      "show-ticket": "Talebi Görüntüle",
+      "filter": "Filtrele",
+      "no-category": "Kategorisiz"
+    },
+    "tickets": {
+      "table": {
+        "title": "Başlık",
+        "status": "Durum",
+        "category": "Kategori",
+        "last-reply": "Son Yanıt"
+      }
+    }
+  },
+  "pages": {
+    "post-detail": {
+      "previous-post": "Önceki Yazı",
+      "next-post": "Sonraki Yazı"
+    },
+    "support": {
+      "title": "Destek",
+      "description": "Nasıl yardım almak istersin?",
+      "options": {
+        "create-ticket": {
+          "title": "Destek Talebi Oluştur",
+          "description": "Oyuncu olarak yetkililere mesaj gönder ve yanıtlandığında bildirim al."
+        },
+        "send-email": {
+          "title": "E-Posta Gönder",
+          "description": "Çeşitli konular için {websiteName} yöneticisine e-posta gönder."
+        }
+      }
+    },
+    "create-ticket": {
+      "title": "Destek Talebi Oluştur",
+      "inputs": {
+        "title": "Başlık",
+        "no-category": "Kategorisiz"
+      },
+      "create-button": "Talep Oluştur"
+    },
+    "player-profile": {
+      "title": "İstatistikler",
+      "register-date": "Kayıt"
+    },
+    "profile": {
+      "title": "İstatistikler",
+      "register-date": "Kayıt",
+      "last-login": "Son Giriş"
+    },
+    "notifications": {
+      "delete-all-button": "Tümünü Sil",
+      "delete-notification": "Bildirimi Sil",
+      "show-more": "Daha Fazla Göster ({count})"
+    },
+    "activate": {
+      "title": "E-Posta Doğrula",
+      "activate-button": "E-Posta'yı Doğrula"
+    },
+    "activate-new-email": {
+      "title": "Yeni E-Posta'yı Doğrula",
+      "activate-button": "E-Posta'yı Doğrula"
+    },
+    "category-posts": {
+      "title": "Kategori: {categoryTitle} ({postCount} Yazı)",
+      "posts": "Yazılar"
+    },
+    "preview-post": {
+      "title": "Önizlenen Yazı: {postTitle}"
+    },
+    "renew-password": {
+      "title": "Şifreni Değiştir",
+      "inputs": {
+        "new-password": "Yeni Şifre",
+        "new-password-repeat": "Yeni Şifre Tekrarı"
+      },
+      "change-password-button": "Şifremi Değiştir"
+    },
+    "reset-password": {
+      "title": "Şifreni Sıfırla",
+      "description": "Kayıt olduğun e-posta adresine bir sıfırlama bağlantısı gönderilecek.",
+      "inputs": {
+        "email-username": {
+          "placeholder": "Kullanıcı Adı / E-Posta"
+        }
+      },
+      "reset-password-button": "Sıfırlama E-Postası Gönder"
+    }
+  },
+  "page-errors": {
+    "404": "Aradığınız sayfa bulunamadı!"
+  },
+  "ticket-statuses": {
+    "new": "Yeni",
+    "replied": "Yanıtlandı",
+    "closed": "Kapalı"
+  }
+}

@@ -6,7 +6,7 @@
     </div>
     <div class="col-auto">
       <p class="mb-0">
-        <a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a> ile oluşturuldu.
+        {@html $_("footer.been-created-with", {values: {pano: `<a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a>`}})}
       </p>
     </div>
   </div>
@@ -15,6 +15,7 @@
 <!-- Footer End -->
 <script>
   import { getContext } from "svelte";
+  import { _ } from "svelte-i18n";
 
   const session = getContext("session");
 </script>

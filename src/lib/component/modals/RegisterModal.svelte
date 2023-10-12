@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-sm modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Kayıt Ol</h4>
+        <h4 class="modal-title">{$_("component.modals.register.title")}</h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal"
         ></button>
       </div>
@@ -14,7 +14,7 @@
             <ErrorAlert error="{$error}" />
           </div>
           <div class="mb-3">
-            <label for="registerUserName">Oyuncu Adı</label>
+            <label for="registerUserName">{$_("component.modals.register.inputs.username")}</label>
             <input
               type="text"
               id="registerUserName"
@@ -22,7 +22,7 @@
               bind:value="{$data.username}" />
           </div>
           <div class="mb-3">
-            <label for="registerEmail">E-Posta</label>
+            <label for="registerEmail">{$_("component.modals.register.inputs.email")}</label>
             <input
               type="email"
               id="registerEmail"
@@ -30,7 +30,7 @@
               bind:value="{$data.email}" />
           </div>
           <div class="mb-3">
-            <label for="registerPassword">Şifre</label>
+            <label for="registerPassword">{$_("component.modals.register.inputs.password")}</label>
             <input
               type="password"
               id="registerPassword"
@@ -38,7 +38,7 @@
               bind:value="{$data.password}" />
           </div>
           <div class="mb-3">
-            <label for="registerPasswordRepeat">Şifre Tekrarı</label>
+            <label for="registerPasswordRepeat">{$_("component.modals.register.inputs.password-repeat")}</label>
             <input
               type="password"
               id="registerPasswordRepeat"
@@ -53,8 +53,7 @@
                 id="registerAcceptTerms"
                 bind:checked="{$data.agreement}" />
               <label class="form-check-label" for="registerAcceptTerms">
-                <a href="javascript:void(0);">Sunucu Kurallarını</a>
-                okudum ve kabul ediyorum.
+                {@html $_("component.modals.register.inputs.agreement-text", {values: {link: `<a href="javascript:void(0);">${$_("component.modals.register.inputs.server-rules")}</a>`}})}
               </label>
             </div>
           </div>
@@ -65,7 +64,7 @@
             class="btn btn-primary w-100"
             class:disabled="{loading}"
             disabled="{loading}">
-            Kayıt Ol
+            {$_("component.modals.register.register-button")}
           </button>
           <a
             href="javascript:void(0);"
@@ -74,7 +73,7 @@
               hide();
               showLoginModal();
             }}">
-            Zaten kayıtlıysan Giriş Yap
+            {$_("component.modals.register.already-registered-button")}
           </a>
         </div>
       </form>
@@ -129,6 +128,7 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
   import { get } from "svelte/store";
 
   import { NETWORK_ERROR } from "$lib/api.util";

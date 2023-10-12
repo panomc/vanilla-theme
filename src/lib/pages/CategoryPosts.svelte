@@ -1,13 +1,13 @@
 <div class="row justify-content-between mb-3">
   <div class="col-auto">
     <h4>
-      Kategori: {data.category.title} ({data.postCount} Yazı)
+      {$_("pages.category-posts.title", {values: {categoryTitle: data.category.title, postCount: data.postCount}})}
     </h4>
   </div>
   <div class="col-auto">
     <a href="/">
       <i class="fas fa-arrow-left me-2"></i>
-      Yazılar
+      {$_("pages.category-posts.posts")}
     </a>
   </div>
 </div>
@@ -76,6 +76,7 @@
 
   import Pagination from "$lib/component/Pagination.svelte";
   import Posts from "$lib/component/Posts.svelte";
+  import { _ } from "svelte-i18n";
 
   export let data;
 

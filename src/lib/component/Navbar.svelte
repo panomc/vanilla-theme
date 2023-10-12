@@ -34,7 +34,7 @@
               href="{PANEL_URL}"
               target="_blank"
               rel="noreferrer">
-              <i class="fa-solid fa-table-columns fa-rotate-by me-2"></i> Panel
+              <i class="fa-solid fa-table-columns fa-rotate-by me-2"></i> {$_("nav-links.panel")}
             </a>
           </li>
         {/if}
@@ -49,7 +49,7 @@
               class="nav-link"
               data-bs-toggle="dropdown"
               type="button"
-              title="Bildirimler">
+              title="{$_('navbar.notifications.title')}">
               <i class="fas fa-bell"></i>
 
               {#if $notificationsCount !== 0}
@@ -61,7 +61,7 @@
             </button>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
               <h6 class="dropdown-header">
-                Bildirimler {$notificationsCount === 0
+                {$_("navbar.notifications.title")} {$notificationsCount === 0
                   ? ""
                   : "(" + $notificationsCount + ")"}
               </h6>
@@ -78,18 +78,18 @@
                       'NOT_READ'}">
                     <p class="mb-0">{notification.type}</p>
                     <small class="text-dark">
-                      {getTime(checkTime, parseInt(notification.date), "")}
+                      {getTime(checkTime, parseInt(notification.date), locales[$currentLanguage['date-fns-code']])}
                     </small>
                   </button>
                 {/each}
               {/if}
 
-              <a class="dropdown-item text-center small" href="/notifications">
-                Tümünü Görüntüle
-              </a>
-            </div>
+            <a class="dropdown-item text-center small" href="/notifications">
+              {$_("navbar.notifications.show-all")}
+            </a>
           </div>
         </div>
+      </div>
 
         {#if $session.user}
           <!-- User Dropdown -->
@@ -106,7 +106,7 @@
         {:else}
           <li class="nav-item me-xl-0 me-3">
             <button class="nav-link" on:click="{showLoginModal}">
-              Giriş Yap
+              {$_("navbar.login-button")}
             </button>
           </li>
           <li class="nav-item">
@@ -114,7 +114,7 @@
               type="button"
               class="nav-link"
               on:click="{showRegisterModal}">
-              Kayıt Ol
+              {$_("navbar.register-button")}
             </button>
           </li>
         {/if}
@@ -123,7 +123,7 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a href="/support" class="nav-link">Destek</a>
+            <a href="/support" class="nav-link">{$_("nav-links.support")}</a>
           </li>
         </ul>
       </div>
@@ -135,9 +135,10 @@
 <script>
   import { formatDistanceToNow } from "date-fns";
   import { getContext, onDestroy, onMount } from "svelte";
+  import { _ } from "svelte-i18n";
 
   import { PANEL_URL } from "$lib/variables.js";
-  import { notificationsCount, quickNotifications, logout } from "$lib/Store";
+  import { notificationsCount, quickNotifications } from "$lib/Store";
   import ApiUtil from "$lib/api.util.js";
   import { onNotificationClick } from "$lib/NotificationManager.js";
 
@@ -145,6 +146,8 @@
 
   import { show as showLoginModal } from "./modals/LoginModal.svelte";
   import { show as showRegisterModal } from "./modals/RegisterModal.svelte";
+  import * as locales from "date-fns/locale";
+  import { currentLanguage } from "$lib/language.util.js";
 
   let quickNotificationProcessID = 0;
 
@@ -188,7 +191,7 @@
   }
 
   function getTime(check, time, locale) {
-    return formatDistanceToNow(time, { addSuffix: true });
+    return formatDistanceToNow(time, { addSuffix: true, locale});
   }
 
   onMount(() => {

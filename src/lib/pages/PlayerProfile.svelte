@@ -1,11 +1,11 @@
 <!-- Statistics -->
 <div class="card bg-white">
   <div class="card-body">
-    <h4 class="card-title">İstatistikler</h4>
+    <h4 class="card-title">{$_("pages.player-profile.title")}</h4>
     <table class="table mb-0">
       <tbody>
         <tr>
-          <td>Kayıt</td>
+          <td>{$_("pages.player-profile.register-date")}</td>
           <td><Date time="{data.registerDate}" /></td>
         </tr>
       </tbody>
@@ -59,6 +59,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import Date from "$lib/component/Date.svelte";
 
   export let data;

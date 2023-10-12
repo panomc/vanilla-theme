@@ -6,10 +6,10 @@
       <thead>
         <tr>
           <th class="align-middle" scope="col"> </th>
-          <th class="align-middle" scope="col">Başlık</th>
-          <th class="align-middle" scope="col">Durum</th>
-          <th class="align-middle" scope="col">Kategori</th>
-          <th class="align-middle" scope="col">Son Yanıt</th></tr>
+          <th class="align-middle" scope="col">{$_("component.tickets.table.title")}</th>
+          <th class="align-middle" scope="col">{$_("component.tickets.table.status")}</th>
+          <th class="align-middle" scope="col">{$_("component.tickets.table.category")}</th>
+          <th class="align-middle" scope="col">{$_("component.tickets.table.last-reply")}</th></tr>
       </thead>
       <tbody>
         {#each tickets as ticket, index (ticket)}
@@ -27,8 +27,10 @@
 
 <!-- Tickets Card End -->
 <script>
-  import TicketRow from "$lib/component/TicketRow.svelte";
   import { createEventDispatcher } from "svelte";
+  import { _ } from "svelte-i18n";
+
+  import TicketRow from "$lib/component/TicketRow.svelte";
   import NoContent from "$lib/component/NoContent.svelte";
 
   export let tickets;

@@ -29,6 +29,7 @@
   import { goto } from "$app/navigation";
 
   import ApiUtil from "$lib/api.util.js";
+  import { init as initLanguage } from "$lib/language.util";
 
   import { addListener } from "$lib/NotificationManager.js";
 
@@ -84,6 +85,8 @@
     const output = {
       session: { user, CSRFToken, siteInfo },
     };
+
+    await initLanguage(siteInfo.locale);
 
     if (browser) {
       initNotificationListeners();
