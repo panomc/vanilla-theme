@@ -34,7 +34,7 @@
       "secret": "Gizli"
     }
   },
-  "component": {
+  "components": {
     "post": {
       "read-more": "Devamını Oku",
       "view": "Görüntülenme"

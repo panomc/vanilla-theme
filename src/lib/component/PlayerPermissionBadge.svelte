@@ -2,7 +2,7 @@
   {#if permissionGroupName}
     {permissionGroupName.capitalize()}
   {:else}
-    {$_("component.player-permission-badge.player")}
+    {$_("components.player-permission-badge.player")}
   {/if}
 </div>
 

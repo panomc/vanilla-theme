@@ -42,7 +42,7 @@
         <li class="list-inline">
           <div
             class="list-inline-item px-1"
-            use:tooltip="{[$_('component.post.view'), { placement: 'bottom' }]}">
+            use:tooltip="{[$_('components.post.view'), { placement: 'bottom' }]}">
             <i class="fas fa-eye me-2"></i>
             {post.views}
           </div>
@@ -63,7 +63,7 @@
       </div>
     {:else}
       <a class="btn btn-link ps-0" href="/blog/post/{post.url}">
-        {$_("component.post.read-more")}
+        {$_("components.post.read-more")}
       </a>
 
       <div>

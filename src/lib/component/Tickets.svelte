@@ -6,10 +6,10 @@
       <thead>
         <tr>
           <th class="align-middle" scope="col"> </th>
-          <th class="align-middle" scope="col">{$_("component.tickets.table.title")}</th>
-          <th class="align-middle" scope="col">{$_("component.tickets.table.status")}</th>
-          <th class="align-middle" scope="col">{$_("component.tickets.table.category")}</th>
-          <th class="align-middle" scope="col">{$_("component.tickets.table.last-reply")}</th></tr>
+          <th class="align-middle" scope="col">{$_("components.tickets.table.title")}</th>
+          <th class="align-middle" scope="col">{$_("components.tickets.table.status")}</th>
+          <th class="align-middle" scope="col">{$_("components.tickets.table.category")}</th>
+          <th class="align-middle" scope="col">{$_("components.tickets.table.last-reply")}</th></tr>
       </thead>
       <tbody>
         {#each tickets as ticket, index (ticket)}

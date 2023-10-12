@@ -2,7 +2,7 @@
 <header id="header">
   <img
     title="{$session.siteInfo.websiteName}"
-    alt="{$_('component.header.alt')}"
+    alt="{$_('components.header.alt')}"
     class="d-block m-auto p-3"
     src="/api/websiteLogo" />
 </header>

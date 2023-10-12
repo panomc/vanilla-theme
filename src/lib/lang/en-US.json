@@ -34,7 +34,7 @@
       "secret": "Secret"
     }
   },
-  "component": {
+  "components": {
     "post": {
       "read-more": "Read More",
       "view": "Views"

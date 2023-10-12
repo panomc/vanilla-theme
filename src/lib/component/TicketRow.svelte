@@ -3,7 +3,7 @@
     {#if ticket.status !== TicketStatuses.CLOSED}
       <a
         use:tooltip="{[
-          $_('component.ticket-row.close-ticket'),
+          $_('components.ticket-row.close-ticket'),
           { placement: 'bottom', hideOnClick: false },
         ]}"
         class="btn btn-link link-danger"
@@ -15,7 +15,7 @@
     {/if}
   </th>
   <td class="align-middle text-nowrap">
-    <a href="/ticket/{ticket.id}" title="{$_('component.ticket-row.show-ticket')}"
+    <a href="/ticket/{ticket.id}" title="{$_('components.ticket-row.show-ticket')}"
       >#{ticket.id} {ticket.title}</a>
   </td>
   <td class="align-middle text-nowrap">
@@ -23,10 +23,10 @@
   </td>
   <td class="align-middle text-nowrap">
     <a
-      use:tooltip="{[$_('component.ticket-row.filter'), { placement: 'bottom' }]}"
+      use:tooltip="{[$_('components.ticket-row.filter'), { placement: 'bottom' }]}"
       class="badge rounded-pill bg-light text-black"
       href="/tickets/category/{ticket.category.url}">
-      {ticket.category.title === "-" ? $_('component.ticket-row.no-category') : ticket.category.title}
+      {ticket.category.title === "-" ? $_('components.ticket-row.no-category') : ticket.category.title}
     </a>
   </td>
   <td class="align-middle text-nowrap"
