@@ -98,6 +98,9 @@
         "category": "Kategori",
         "last-reply": "Son Yanıt"
       }
+    },
+    "ticket-create-and-detail": {
+      "close-ticket-button": "Talebi Kapat"
     }
   },
   "pages": {
@@ -178,6 +181,42 @@
       "title": "Destek Talepleri",
       "all": "Tümü",
       "closed": "Kapalı"
+    },
+    "ticket-detail": {
+      "detail": {
+        "ticket": "Talep: {ticketId}",
+        "opened-in-category": "{category} kategorisinde açıldı."
+      },
+      "no-category": "Kategorisiz",
+      "filter": "Filtrele",
+      "previous-messages": "Önceki Mesajlar ({count})",
+      "inputs": {
+        "message": {
+          "placeholder": "Mesajınız..."
+        }
+      },
+      "send-button": "Gönder"
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "inputs": {
+        "change-password": {
+          "title": "Şifre Değiştir",
+          "description": "Şifre sıfırlama bağlantısı gönder",
+          "success-message": "E-posta adresine şifreni değiştirme bağlantısı gönderildi.",
+          "new-email-placeholder": "Yeni E-Posta"
+        },
+        "change-email": {
+          "title": "E-Posta Değiştir",
+          "success-message": "{newEmail} adresine e-postanı değiştirme bağlantısı gönderildi.",
+          "description": "E-posta değiştir",
+          "back": "Geri",
+          "confirm": "Onayla",
+          "cancel": "İptal",
+          "continue": "Devam Et",
+          "current-password-placeholder": "Mevcut Şifre"
+        }
+      }
     }
   },
   "page-errors": {

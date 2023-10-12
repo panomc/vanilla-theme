@@ -7,7 +7,7 @@
       class="btn btn-danger"
       type="button"
       on:click="{() => showCloseTicketConfirmModal($ticketData)}">
-      <i class="fas fa-times me-2"></i> Talebi Kapat
+      <i class="fas fa-times me-2"></i> {$_("components.ticket-create-and-detail.close-ticket-button")}
     </button>
   {/if}
 </Sidebar>
@@ -38,6 +38,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import Sidebar from "$lib/component/Sidebar.svelte";
 
   import OnlineAdmins from "$lib/component/OnlineAdmins.svelte";

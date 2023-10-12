@@ -15,17 +15,16 @@
         <div class="col">
           <h5 class="card-title">{data.ticket.title}</h5>
           <small class="mb-0">
-            Talep: {data.ticket.id},
+            {$_("pages.ticket-detail.detail.ticket", {values: {ticketId: data.ticket.id, }})},
             <Date time="{data.ticket.date}" relativeFormat="{true}" />
             ,
-            <a
-              href="/tickets/category/{data.ticket.category.url}"
-              title="Filtrele"
-              >{data.ticket.category === "-"
-                ? "Kategorisiz"
+            {@html $_("pages.ticket-detail.detail.opened-in-category", {values: {category: `<a
+              href="/tickets/category/${data.ticket.category.url}"
+              title="${$_("pages.ticket-detail.filter")}"
+              >${data.ticket.category === "-"
+                ? $_("pages.ticket-detail.no-category")
                 : data.ticket.category.title}
-            </a>
-            kategorisine açıldı.</small>
+            </a>`, }})}</small>
         </div>
         <div class="col-auto">
           <TicketStatus status="{data.ticket.status}" />
@@ -42,9 +41,9 @@
           class="btn btn-link bg-light d-block m-auto"
           class:disabled="{loadMoreLoading}"
           on:click="{loadMore}"
-          ><i class="fas fa-arrow-up mr-1"></i> Önceki Mesajlar ({data.ticket
-            .messageCount -
-            (data.ticket.messages.length - sentMessageCount)})
+          ><i class="fas fa-arrow-up mr-1"></i> {$_("pages.ticket-detail.previous-messages", {values: {count: data.ticket
+                .messageCount -
+              (data.ticket.messages.length - sentMessageCount)}})}
         </button>
       {/if}
 
@@ -105,7 +104,7 @@
         class:d-none="{data.ticket.status === TicketStatuses.CLOSED}">
         <div class="col">
           <textarea
-            placeholder="Mesajınız..."
+            placeholder="{$_('pages.ticket-detail.inputs.message.placeholder')}"
             class="form-control"
             bind:value="{message}"></textarea>
         </div>
@@ -116,7 +115,7 @@
             class:disabled="{messageSendLoading || isSendButtonDisabled}"
             :disabled="{messageSendLoading || isSendButtonDisabled}">
             <i class="fas fa-paper-plane"></i>
-            <span class="d-lg-inline d-none">Gönder</span>
+            <span class="d-lg-inline d-none">{$_("pages.ticket-detail.send-button")}</span>
           </button>
         </div>
       </div>
@@ -176,6 +175,7 @@
 <script>
   import { afterUpdate, onMount } from "svelte";
   import { writable } from "svelte/store";
+  import { _ } from "svelte-i18n";
 
   import Date from "$lib/component/Date.svelte";
   import tooltip from "$lib/tooltip.util";

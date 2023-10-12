@@ -1,10 +1,10 @@
 <!-- Settings -->
 <div class="card bg-white">
   <div class="card-body">
-    <h5 class="card-title">Ayarlar</h5>
+    <h5 class="card-title">{$_("pages.settings.title")}</h5>
     <div class="row mb-3">
       <label class="col-md-4 col-form-label" for="resetPassword">
-        Şifre Değiştir
+        {$_("pages.settings.inputs.change-password.title")}
       </label>
       <div class="col col-form-label">
         <a
@@ -13,14 +13,14 @@
           aria-describedby="resetPassword validationResetPassword"
           class:disabled="{resetPasswordLoading}"
           class:is-invalid="{resetPasswordError}"
-          >Şifre sıfırlama bağlantısı gönder</a>
+          >{$_("pages.settings.inputs.change-password.description")}</a>
 
         <div id="validationResetPassword" class="invalid-feedback">
           {resetPasswordError}
         </div>
         {#if resetPasswordSuccess}
           <p class="text-dark mb-0">
-            E-posta adresine şifreni değiştirme bağlantısı gönderildi.
+            {$_("pages.settings.inputs.change-password.success-message")}
           </p>
         {/if}
       </div>
@@ -28,7 +28,7 @@
 
     <div class="row mb-3">
       <label class="col-md-4 col-form-label" for="userEmail">
-        E-Posta Değiştir
+        {$_("pages.settings.inputs.change-email.title")}
       </label>
       <div class="col col-form-label">
         <form
@@ -41,13 +41,13 @@
               <div class="col-12">
                 {#if changingEmailSuccess}
                   <p class="text-dark mb-0">
-                    {newEmail} adresine e-postanı değiştirme bağlantısı gönderildi.
+                    {$_("pages.settings.inputs.change-email.success-message", {values: {newEmail}})}
                   </p>
                 {:else}
                   <a
                     href="javascript:void(0);"
                     aria-describedby="userEmail"
-                    on:click="{startChangingEmail}">E-posta değiştir</a>
+                    on:click="{startChangingEmail}">{$_("pages.settings.inputs.change-email.description")}</a>
                 {/if}
               </div>
             {:else if changingEmail2ndStep}
@@ -55,7 +55,7 @@
                 <input
                   type="email"
                   id="newEmail"
-                  placeholder="Yeni E-Posta"
+                  placeholder="{$_('pages.settings.inputs.change-password.new-email-placeholder')}"
                   class="form-control"
                   aria-describedby="validationChangingEmail"
                   bind:value="{newEmail}"
@@ -70,13 +70,13 @@
                   type="reset"
                   class="btn btn-link link-primary"
                   on:click="{stopChangingEmail2ndStep}">
-                  Geri
+                  {$_("pages.settings.inputs.change-email.back")}
                 </button>
                 <button
                   type="submit"
                   class="btn btn-link link-secondary"
                   class:disabled="{changingEmailLoading}">
-                  Onayla
+                  {$_("pages.settings.inputs.change-email.confirm")}
                 </button>
               </div>
             {:else}
@@ -84,7 +84,7 @@
                 <input
                   type="password"
                   id="currentPassword"
-                  placeholder="Mevcut Şifre"
+                  placeholder="{$_('pages.settings.inputs.change-email.current-password-placeholder')}"
                   class="form-control"
                   bind:value="{currentPassword}"
                   autofocus />
@@ -94,9 +94,9 @@
                   type="reset"
                   class="btn btn-link link-danger"
                   on:click="{stopChangingEmail}">
-                  İptal
+                  {$_("pages.settings.inputs.change-email.cancel")}
                 </button>
-                <button type="submit" class="btn btn-link">Devam Et</button>
+                <button type="submit" class="btn btn-link">{$_("pages.settings.inputs.change-email.continue")}</button>
               </div>
             {/if}
           </div>
@@ -125,6 +125,8 @@
 </script>
 
 <script>
+  import { _ } from "svelte-i18n";
+
   import { sendChangeEmail, sendResetPassword } from "$lib/services/profile.js";
   import { NETWORK_ERROR } from "$lib/api.util.js";
 

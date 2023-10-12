@@ -98,6 +98,9 @@
         "category": "Category",
         "last-reply": "Last Reply"
       }
+    },
+    "ticket-create-and-detail": {
+      "close-ticket-button": "Close Ticket"
     }
   },
   "pages": {
@@ -178,6 +181,42 @@
       "title": "Support Tickets",
       "all": "All",
       "closed": "Closed"
+    },
+    "ticket-detail": {
+      "detail": {
+        "ticket": "Ticket: {ticketId}",
+        "opened-in-category": "opened in {category} category."
+      },
+      "no-category": "No Category",
+      "filter": "Filter",
+      "previous-messages": "Previous Messages ({count})",
+      "inputs": {
+        "message": {
+          "placeholder": "Your message..."
+        }
+      },
+      "send-button": "Send"
+    },
+    "settings": {
+      "title": "Settings",
+      "inputs": {
+        "change-password": {
+          "title": "Change Your Password",
+          "description": "Send password reset link",
+          "success-message": "A link to change your password was sent to your email address.",
+          "new-email-placeholder": "New E-Mail"
+        },
+        "change-email": {
+          "title": "Change E-Mail",
+          "success-message": "{newEmail} has been sent a link to change your email.",
+          "description": "Change E-Mail",
+          "back": "Back",
+          "confirm": "Confirm",
+          "cancel": "Cancel",
+          "continue": "Continue",
+          "current-password-placeholder": "Current Password"
+        }
+      }
     }
   },
   "page-errors": {
