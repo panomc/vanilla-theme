@@ -163,9 +163,9 @@
       "title": "Change Password",
       "inputs": {
         "new-password": "New Password",
-        "new-password-repeat": "New Password Repeat",
-        "change-password-button": "Change My Password"
-      }
+        "new-password-repeat": "New Password Repeat"
+      },
+      "change-password-button": "Change My Password"
     },
     "reset-password": {
       "title": "Reset Password",
