@@ -2,23 +2,21 @@
   <!-- Play Button -->
   <div class="mb-4">
     <button
-      class="btn btn-secondary w-100 py-4"
+      class="btn btn-lg btn-secondary w-100"
       type="button"
       on:click="{onCopyCommandTextClick}"
       use:tooltip="{[
         isCommandTextCopied ? 'Kopyalandı!' : 'Kopyala',
         { placement: 'bottom', hideOnClick: false },
       ]}">
-      <h4 class="text-white text-uppercase mb-0">
-        {$data.ipAddress}
-      </h4>
+      {$data.ipAddress}
     </button>
   </div>
   <!-- Play Button End -->
 
   <!-- Server Status -->
-  <div class="card bg-white text-center border-0 mb-4">
-    <h5 class="card-header bg-danger text-white">Sunucu Durumu</h5>
+  <div class="card bg-white text-center mb-4">
+    <h5 class="card-header bg-danger text-white rounded-top">Sunucu Durumu</h5>
     <div class="card-body">
       <div class="d-flex flex-row align-items-center justify-content-around">
         <div use:tooltip="{[$data.ipAddress, { placement: 'bottom' }]}">
@@ -49,7 +47,7 @@
           {/if}
         </div>
         <div use:tooltip="{['Game client version', { placement: 'bottom' }]}">
-          <i class="fas fa-gamepad fa-lg d-block text-danger py-3"></i>
+          <i class="fas fa-gamepad fa-lg d-block text-primary py-3"></i>
           {$data.serverGameVersion}
         </div>
       </div>
@@ -58,8 +56,8 @@
   <!-- Server Status End -->
 
   <!-- Latest Registers -->
-  <div class="card bg-white text-center border-0 mb-4">
-    <h5 class="card-header bg-warning text-white">Son Kayıt Olanlar</h5>
+  <div class="card bg-white text-center mb-4">
+    <h5 class="card-header bg-warning text-white rounded-top">Son Kayıt Olanlar</h5>
     <div class="card-body p-0">
       <div class="row">
         {#each $data.lastRegisteredUsers as player, index (player)}
