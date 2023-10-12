@@ -33,6 +33,14 @@
         <li class="nav-item">
           <a
             class="nav-link"
+            href="/tickets"
+            class:active="{matching($page.url.pathname, '/tickets', true)}">
+            Talepler
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
             href="/profile/settings"
             class:active="{matching(
               $page.url.pathname,
@@ -40,14 +48,6 @@
               true
             )}">
             Ayarlar
-          </a>
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            href="/tickets"
-            class:active="{matching($page.url.pathname, '/tickets', true)}">
-            Talepler
           </a>
         </li>
         <li class="nav-item">
