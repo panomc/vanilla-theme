@@ -1,17 +1,16 @@
 <Sidebar>
-  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
-
-
   {#if $ticketData}
     {#if $ticketData.status !== TicketStatuses.CLOSED}
       <button
-        class="btn btn-danger"
+        class="btn btn-lg btn-danger w-100 mb-3"
         type="button"
         on:click="{() => showCloseTicketConfirmModal($ticketData)}">
-        <i class="fas fa-times me-2"></i> {$_("components.ticket-create-and-detail.close-ticket-button")}
+        <i class="fas fa-times me-2"></i>
+        {$_("components.ticket-create-and-detail.close-ticket-button")}
       </button>
     {/if}
   {/if}
+  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
 </Sidebar>
 
 <script context="module">
@@ -22,7 +21,7 @@
   const data = writable({
     onlineAdmins: [],
   });
-  const ticketData = writable(null)
+  const ticketData = writable(null);
 
   export const load = async (event, ticket) => {
     data.set(
@@ -33,13 +32,13 @@
     );
 
     if (ticket) {
-      ticketData.set(ticket)
+      ticketData.set(ticket);
     }
   };
 
   export const update = (ticket) => {
-    ticketData.set(ticket)
-  }
+    ticketData.set(ticket);
+  };
 </script>
 
 <script>
@@ -49,10 +48,6 @@
 
   import OnlineAdmins from "$lib/component/OnlineAdmins.svelte";
 
-  import {
-    show as showCloseTicketConfirmModal,
-  } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
-  import {
-    TicketStatuses,
-  } from "$lib/component/TicketStatus.svelte";
+  import { show as showCloseTicketConfirmModal } from "$lib/component/modals/CloseTicketConfirmModal.svelte";
+  import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
 </script>
