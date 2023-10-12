@@ -12,8 +12,8 @@
     class="navbar navbar-expand-lg navbar-dark bg-primary bg-body-primary bg-gradient rounded-pill shadow mb-3">
     <div class="container">
       <ul class="navbar-nav flex-row me-auto">
-        <li class="nav-item rounded-pill">
-          <a class="nav-link" href="/">
+        <li class="nav-item">
+          <a class="nav-link" title="{$_('nav-links.homepage')}" href="/">
             <i class="fa-solid fa-house"></i>
           </a>
         </li>
@@ -28,13 +28,14 @@
 
       <ul class="navbar-nav flex-row ml-auto order-lg-last">
         {#if $session.user && $session.user.panelAccess}
-          <li class="nav-item rounded-pill">
+          <li class="nav-item">
             <a
               class="nav-link"
               href="{PANEL_URL}"
               target="_blank"
               rel="noreferrer">
-              <i class="fa-solid fa-table-columns fa-rotate-by me-2"></i> {$_("nav-links.panel")}
+              <i class="fa-solid fa-table-columns fa-rotate-by me-1"></i>
+              {$_("nav-links.panel")}
             </a>
           </li>
         {/if}
@@ -50,18 +51,20 @@
               data-bs-toggle="dropdown"
               type="button"
               title="{$_('navbar.notifications.title')}">
-              <i class="fas fa-bell"></i>
+              <i class="fas fa-bell me-1"></i>
+              {$_("navbar.notifications.title")}
 
               {#if $notificationsCount !== 0}
                 <span
-                  class="position-absolute p-2 start-75 translate-middle badge rounded-pill bg-danger">
+                  class="position-absolute p-2 start-75 translate-middle badge bg-danger">
                   {$notificationsCount}
                 </span>
               {/if}
             </button>
             <div class="dropdown-menu dropdown-menu-end position-absolute">
               <h6 class="dropdown-header">
-                {$_("navbar.notifications.title")} {$notificationsCount === 0
+                {$_("navbar.notifications.title")}
+                {$notificationsCount === 0
                   ? ""
                   : "(" + $notificationsCount + ")"}
               </h6>
@@ -78,23 +81,30 @@
                       'NOT_READ'}">
                     <p class="mb-0">{notification.type}</p>
                     <small class="text-dark">
-                      {getTime(checkTime, parseInt(notification.date), locales[$currentLanguage['date-fns-code']])}
+                      {getTime(
+                        checkTime,
+                        parseInt(notification.date),
+                        locales[$currentLanguage["date-fns-code"]]
+                      )}
                     </small>
                   </button>
                 {/each}
               {/if}
 
-            <a class="dropdown-item text-center small" href="/notifications">
-              {$_("navbar.notifications.show-all")}
-            </a>
+              <a class="dropdown-item text-center small" href="/notifications">
+                {$_("navbar.notifications.show-all")}
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
         {#if $session.user}
           <!-- User Dropdown -->
-          <li class="nav-item rounded-pill mr-lg-0 mr-5">
-            <a href="/profile" class="nav-link">
+          <li class="nav-item mr-lg-0 mr-5">
+            <a
+              href="/profile"
+              class="nav-link"
+              title="{$session.user.username}">
               <img
                 alt="{$session.user.username}"
                 class="rounded d-block m-auto"
@@ -123,7 +133,11 @@
       <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav text-lg-left text-center mr-auto mt-2 mt-lg-0">
           <li class="nav-item">
-            <a href="/support" class="nav-link">{$_("nav-links.support")}</a>
+            <a
+              href="/support"
+              class="nav-link"
+              title="{$_('nav-links.support')}">
+              {$_("nav-links.support")}</a>
           </li>
         </ul>
       </div>
@@ -191,7 +205,7 @@
   }
 
   function getTime(check, time, locale) {
-    return formatDistanceToNow(time, { addSuffix: true, locale});
+    return formatDistanceToNow(time, { addSuffix: true, locale });
   }
 
   onMount(() => {

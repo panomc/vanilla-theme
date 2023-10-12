@@ -1,7 +1,8 @@
 {
   "nav-links": {
     "support": "Destek",
-    "panel": "Panel"
+    "panel": "Panel",
+    "homepage": "Ana Sayfa"
   },
   "navbar": {
     "login-button": "Giriş Yap",
