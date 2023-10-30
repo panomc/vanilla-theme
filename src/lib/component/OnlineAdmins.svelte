@@ -9,7 +9,7 @@
             <img
               alt=""
               class="rounded m-2"
-              src="https://crafthead.net/avatar/{onlineAdmin}"
+              src="https://minotar.net/avatar/{onlineAdmin}"
               use:tooltip="{[onlineAdmin, { placement: 'bottom' }]}"
               width="24" />
           </a>

@@ -53,7 +53,7 @@
         <Date time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
-            src="https://crafthead.net/avatar/{post.writer.username}"
+            src="https://minotar.net/avatar/{post.writer.username}"
             alt="{post.writer.username}"
             width="32"
             height="32"
@@ -70,7 +70,7 @@
         <Date time="{post.date}" />
         <a href="/player/{post.writer.username}">
           <img
-            src="https://crafthead.net/avatar/{post.writer.username}"
+            src="https://minotar.net/avatar/{post.writer.username}"
             alt="{post.writer.username}"
             width="32"
             height="32"

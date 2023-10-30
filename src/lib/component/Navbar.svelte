@@ -108,7 +108,7 @@
               <img
                 alt="{$session.user.username}"
                 class="rounded d-block m-auto"
-                src="https://crafthead.net/avatar/{$session.user.username}"
+                src="https://minotar.net/avatar/{$session.user.username}"
                 width="24"
                 height="24" />
             </a>

@@ -66,7 +66,7 @@
               <img
                 alt="{player}"
                 class="rounded m-2"
-                src="https://crafthead.net/avatar/{player}"
+                src="https://minotar.net/avatar/{player}"
                 use:tooltip="{[player, { placement: 'bottom' }]}"
                 width="24" />
             </a>

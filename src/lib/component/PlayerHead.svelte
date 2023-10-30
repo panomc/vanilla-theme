@@ -1,6 +1,6 @@
 {#if lastActivityTime}
   <img
-    src="https://crafthead.net/avatar/{username}"
+    src="https://minotar.net/avatar/{username}"
     class="rounded d-block m-auto"
     width="{width}"
     height="{height}"
@@ -16,7 +16,7 @@
     ]}" />
 {:else}
   <img
-    src="https://crafthead.net/avatar/{username}"
+    src="https://minotar.net/avatar/{username}"
     class="rounded d-block m-auto"
     width="{width}"
     height="{height}"
