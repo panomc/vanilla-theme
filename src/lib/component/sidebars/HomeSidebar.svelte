@@ -25,7 +25,7 @@
             class:fa-xmark-circle="{!serverOnline}"
             class:text-danger="{!serverOnline}"
             class:fa-check-circle="{serverOnline}"
-            class:text-mint="{serverOnline}"></i>
+            class:text-success="{serverOnline}"></i>
           {#if serverOnline}
             {$_("sidebars.home.online")}
           {:else}

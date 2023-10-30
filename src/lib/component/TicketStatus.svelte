@@ -1,5 +1,5 @@
 {#if status === TicketStatuses.NEW}
-  <span class="badge bg-mint rounded-pill">{$_("ticket-statuses.new")}</span>
+  <span class="badge bg-success rounded-pill">{$_("ticket-statuses.new")}</span>
 {:else if status === TicketStatuses.REPLIED}
   <span class="badge bg-warning rounded-pill">{$_("ticket-statuses.replied")}</span>
 {:else if status === TicketStatuses.CLOSED}
