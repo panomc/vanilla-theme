@@ -86,7 +86,8 @@
   import { NETWORK_ERROR } from "$lib/api.util";
 
   import ErrorAlert from "$lib/component/ErrorAlert.svelte";
-  import { closeTicket } from "$lib/services/tickets";
+  import { updateTicket } from "$lib/services/tickets";
+  import { TicketStatuses } from "$lib/component/TicketStatus.svelte";
 
   let loading = false;
 
@@ -99,7 +100,7 @@
 
     loading = true;
 
-    await closeTicket({ id: ticket.id })
+    await updateTicket({ id: ticket.id, status: TicketStatuses.CLOSED })
       .then((body) => {
         if (body.result === "ok") {
           loading = false;

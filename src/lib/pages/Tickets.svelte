@@ -49,8 +49,8 @@
   import { getTickets } from "$lib/services/tickets.js";
 
   export const PageTypes = Object.freeze({
-    ALL: "all",
-    CLOSED: "closed",
+    ALL: "ALL",
+    CLOSED: "CLOSED",
   });
 
   export const DefaultPageType = PageTypes.ALL;
@@ -61,6 +61,8 @@
   export async function load(event, pageType = DefaultPageType) {
     const { parent } = event;
     await parent();
+
+    pageType = pageType.toUpperCase()
 
     let data = {
       tickets: [],

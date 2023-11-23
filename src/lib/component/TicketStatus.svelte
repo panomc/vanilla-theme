@@ -8,9 +8,9 @@
 
 <script context="module">
   export const TicketStatuses = Object.freeze({
-    NEW: 1,
-    REPLIED: 2,
-    CLOSED: 3,
+    NEW: "NEW",
+    REPLIED: "REPLIED",
+    CLOSED: "CLOSED",
   });
 </script>
 

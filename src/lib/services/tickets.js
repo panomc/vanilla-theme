@@ -38,11 +38,11 @@ export const getTicketCategories = async ({ page, request, CSRFToken }) => {
   });
 };
 
-export const closeTicket = async ({ id, request, CSRFToken }) => {
+export const updateTicket = async ({ id, status, request, CSRFToken }) => {
   return ApiUtil.put({
     path: `/api/tickets/${id}`,
     body: {
-      status: "close",
+      status,
     },
     request,
     CSRFToken,
