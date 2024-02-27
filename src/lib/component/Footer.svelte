@@ -1,16 +1,23 @@
 <!-- Footer -->
-<div class="container">
-  <div class="row justify-content-between text-muted py-3">
-    <div class="col-auto">
-      <p class="mb-0">© {$session.siteInfo.websiteName}</p>
-    </div>
-    <div class="col-auto">
-      <p class="mb-0">
-        {@html $_("footer.been-created-with", {values: {pano: `<a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a>`}})}
-      </p>
-    </div>
+<nav class="navbar bg-light navbar-light">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img
+        title="{$session.siteInfo.websiteName}"
+        alt="{$_('components.header.alt')}"
+        width="auto"
+        height="24"
+        src="/api/websiteLogo" />
+    </a>
+    <span class="navbar-text">
+      {@html $_("footer.been-created-with", {
+        values: {
+          pano: `<a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a>`,
+        },
+      })}
+    </span>
   </div>
-</div>
+</nav>
 
 <!-- Footer End -->
 <script>

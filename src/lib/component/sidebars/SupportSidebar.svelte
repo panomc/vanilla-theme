@@ -1,5 +1,9 @@
 <Sidebar>
-  <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
+  <div class="mb-3">
+    <!-- Online Admins Card -->
+    <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
+    <!-- Online Admins Card End -->
+  </div>
 </Sidebar>
 
 <script context="module">
@@ -15,7 +19,7 @@
       await ApiUtil.get({
         path: "/api/sidebar/support",
         request: event,
-      })
+      }),
     );
   };
 </script>

@@ -1,16 +1,18 @@
 <Sidebar side="{side}">
-  <div class="card bg-white mb-3">
-    <div class="card-header bg-white">
-      <PlayerHead
-        username="{$data.username}"
-        inGame="{$data.inGame}"
-        lastActivityTime="{$data.lastActivityTime}"
-        checkTime="{checkTime}" />
-      <div class="text-center">
-        <h2 class="my-2">{$data.username}</h2>
-        <div class="my-2">
-          <PlayerPermissionBadge
-            permissionGroupName="{$data.permissionGroupName}" />
+  <div class="mb-3">
+    <div class="card">
+      <div class="card-body">
+        <PlayerHead
+          username="{$data.username}"
+          inGame="{$data.inGame}"
+          lastActivityTime="{$data.lastActivityTime}"
+          checkTime="{checkTime}" />
+        <div class="text-center">
+          <h2 class="my-2">{$data.username}</h2>
+          <div class="my-2">
+            <PlayerPermissionBadge
+              permissionGroupName="{$data.permissionGroupName}" />
+          </div>
         </div>
       </div>
     </div>

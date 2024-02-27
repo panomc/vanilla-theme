@@ -1,16 +1,23 @@
 <Sidebar>
+  <!-- Close Ticket Button -->
   {#if $ticketData}
     {#if $ticketData.status !== TicketStatuses.CLOSED}
-      <button
-        class="btn btn-lg btn-danger w-100 mb-3"
-        type="button"
-        on:click="{() => showCloseTicketConfirmModal($ticketData)}">
-        <i class="fas fa-times me-2"></i>
-        {$_("components.ticket-create-and-detail.close-ticket-button")}
-      </button>
+      <div class="mb-3">
+        <button
+          class="btn btn-lg btn-danger w-100"
+          type="button"
+          on:click="{() => showCloseTicketConfirmModal($ticketData)}">
+          <i class="fas fa-times me-2"></i>
+          {$_("components.ticket-create-and-detail.close-ticket-button")}
+        </button>
+      </div>
     {/if}
   {/if}
+  <!-- Close Ticket Button End -->
+
+  <!-- Online Admins Card -->
   <OnlineAdmins onlineAdmins="{$data.onlineAdmins}" />
+  <!-- Online Admins Card End -->
 </Sidebar>
 
 <script context="module">
@@ -28,7 +35,7 @@
       await ApiUtil.get({
         path: "/api/sidebar/support",
         request: event,
-      })
+      }),
     );
 
     if (ticket) {

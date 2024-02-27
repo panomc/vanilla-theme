@@ -1,21 +1,26 @@
-<div class="card bg-white">
+<div class="card">
   <div class="card-body">
     <h3 class="card-title">{$_("pages.support.title")}</h3>
-    <p class="my-3">{$_("pages.support.description")}</p>
     <ul class="list-group list-group-horizontal text-center">
       <a href="/ticket/create" class="list-group-item list-group-item-action">
         <i class="fas fa-ticket fa-2x my-3"></i>
         <h5>{$_("pages.support.options.create-ticket.title")}</h5>
-        <p class="mb-0">
+        <small>
           {$_("pages.support.options.create-ticket.description")}
-        </p>
+        </small>
       </a>
 
-      <a href="#" class="list-group-item list-group-item-action">
+      <a
+        href="mailto:example@mail.com"
+        class="list-group-item list-group-item-action">
         <i class="fas fa-envelope fa-2x my-3"></i>
         <div class="col-auto">
           <h5>{$_("pages.support.options.send-email.title")}</h5>
-          <p class="mb-0">{$_("pages.support.options.send-email.description", {values: {websiteName: $session.siteInfo.websiteName}})}</p>
+          <small>
+            {$_("pages.support.options.send-email.description", {
+              values: { websiteName: $session.siteInfo.websiteName },
+            })}
+          </small>
         </div>
       </a>
     </ul>

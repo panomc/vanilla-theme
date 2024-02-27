@@ -5,11 +5,13 @@
 <App>
   <Header />
 
-  <Navbar />
-
-  <Main>
-    <slot />
-  </Main>
+  <!-- Gives a gray background color to the container area -->
+  <div class="bg-light blocks">
+    <Navbar />
+    <Main>
+      <slot />
+    </Main>
+  </div>
 
   <Footer />
 

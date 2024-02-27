@@ -1,4 +1,4 @@
-<div class="container text-center" on:click="{onClick}">
+<div class="container text-center">
   {#if dark}
     <i class="{icon} text-light text-opacity-25 m-3"></i>
     <p class="text-light">{text}</p>
@@ -19,8 +19,4 @@
   export let text = $_("components.no-content.text");
 
   const dispatch = createEventDispatcher();
-
-  function onClick(e) {
-    dispatch("click", e);
-  }
 </script>

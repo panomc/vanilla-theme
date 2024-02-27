@@ -1,27 +1,36 @@
 <Sidebar>
-  <div class="card bg-white mb-3">
-    <div class="card-header bg-white">
-      <PlayerHead
-        username="{user.username}"
-        inGame="{$data.inGame}"
-        lastActivityTime="{$data.lastActivityTime}"
-        checkTime="{checkTime}" />
-      <div class="text-center">
-        <h2 class="my-2">{user.username}</h2>
-        <div
-          class="text-muted"
-          use:tooltip="{[$_('sidebars.profile.secret'), { placement: 'top', hideOnClick: false }]}">
-          {user.email}
-        </div>
-        <div class="my-2">
+  <div class="mb-3">
+    <!-- Profile Card -->
+    <div class="card">
+      <div class="card-body">
+        <PlayerHead
+          username="{user.username}"
+          inGame="{$data.inGame}"
+          lastActivityTime="{$data.lastActivityTime}"
+          checkTime="{checkTime}" />
+        <div class="text-center">
+          <h2 class="my-2">{user.username}</h2>
           <PlayerPermissionBadge
             permissionGroupName="{$data.permissionGroupName}" />
+          <div
+            class="text-muted"
+            use:tooltip="{[
+              $_('sidebars.profile.secret'),
+              { placement: 'top', hideOnClick: false },
+            ]}">
+            {user.email}
+          </div>
         </div>
       </div>
     </div>
+    <!-- Profile Card End -->
+  </div>
+
+  <!-- Profile Menu Card -->
+  <div class="card">
     <div class="card-body">
       <ul class="nav nav-pills nav-fill flex-column">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a
             class="nav-link"
             href="/profile"
@@ -44,7 +53,7 @@
             class:active="{matching(
               $page.url.pathname,
               '/profile/settings',
-              true
+              true,
             )}">
             {$_("sidebars.profile.links.settings")}
           </a>
@@ -60,6 +69,7 @@
       </ul>
     </div>
   </div>
+  <!-- Profile Menu Card End -->
 </Sidebar>
 
 <script context="module">
@@ -77,7 +87,7 @@
       await ApiUtil.get({
         path: "/api/sidebar/profile",
         request: event,
-      })
+      }),
     );
   };
 
@@ -90,8 +100,9 @@
   import { getContext, onDestroy, onMount } from "svelte";
   import { _ } from "svelte-i18n";
 
-  import { page } from "$app/stores";
   import tooltip from "$lib/tooltip.util";
+
+  import { page } from "$app/stores";
 
   import { logout } from "$lib/Store";
 

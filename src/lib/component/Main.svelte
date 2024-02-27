@@ -1,4 +1,4 @@
-<!-- Main Block -->
+<!-- Main Container -->
 <main class="container">
   <div class="row">
     {#if !$sidebarProps || $sidebarProps.side === "left"}
@@ -17,7 +17,7 @@
   </div>
 </main>
 
-<!-- Main Block End -->
+<!-- Main Container End -->
 <script>
   import { getContext } from "svelte";
 
