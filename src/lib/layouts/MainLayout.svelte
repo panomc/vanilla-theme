@@ -100,7 +100,7 @@
       CSRFToken,
     });
 
-    siteInfo = prepareSiteInfo(siteInfo);
+    siteInfo = await prepareSiteInfo(siteInfo);
 
     return { user, CSRFToken, siteInfo };
   }
