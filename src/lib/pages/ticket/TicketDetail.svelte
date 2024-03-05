@@ -62,7 +62,7 @@
               </a>
             </div>
             <div class="col-auto">
-              <div class="card text-bg-secondary">
+              <div class="card text-bg-light">
                 <div class="card-header small">
                   <Date time="{message.date}" />
                 </div>
@@ -86,7 +86,7 @@
               </a>
             </div>
             <div class="col-auto">
-              <div class="card text-bg-light">
+              <div class="card text-bg-secondary">
                 <div class="card-header small">
                   <Date time="{message.date}" />
                 </div>

@@ -1,10 +1,10 @@
-<div class="badge bg-light text-black rounded-pill">
+<span class="badge rounded-pill text-bg-light">
   {#if permissionGroupName}
     {permissionGroupName.capitalize()}
   {:else}
     {$_("components.player-permission-badge.player")}
   {/if}
-</div>
+</span>
 
 <script context="module">
   String.prototype.capitalize = function () {

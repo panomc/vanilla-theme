@@ -23,7 +23,7 @@
         <h5>
           {$_("sidebars.home.server-status")}
         </h5>
-        <ul class="list-group">
+        <ul class="list-group list-group-flush">
           <li class="list-group-item">
             {#if serverOnline}
               {$_("sidebars.home.online")}

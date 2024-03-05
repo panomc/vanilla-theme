@@ -16,28 +16,34 @@
 
   <!-- All Notifications -->
 
-  <div class="card bg-white">
+  <div class="card">
     <div class="card-body">
+      <h3 class="card-title">
+        {$_("navbar.notifications.title")}
+      </h3>
       {#each $notifications as notification, index (notification)}
-        <div class="list-group w-100 flex-row align-items-center">
+        <div class="list-group list-group-flush">
           <a
             href="javascript:void(0);"
             on:click="{() => onNotificationClick(notification)}"
-            class="list-group-item list-group-item-action  d-flex flex-row w-100"
+            class="list-group-item list-group-item-action"
             class:notification-unread="{notification.status === 'NOT_READ'}">
-            <div class="col-auto">
-              <i class="fa fa-bell mx-3 my-3 text-primary"></i>
-            </div>
-            <div class="col">
-              <span class="text-wrap text-dark">{notification.type}</span>
-              <small class="text-gray d-block">
-                {getTime(checkTime, parseInt(notification.date), locales[$currentLanguage['date-fns-code']])}
-              </small>
-            </div>
+            <span class="text-wrap">{notification.type}</span>
+            <br />
+            <small class="text-muted">
+              {getTime(
+                checkTime,
+                parseInt(notification.date),
+                locales[$currentLanguage["date-fns-code"]],
+              )}
+            </small>
           </a>
           <button
-            class="btn-close text-danger btn-sm mx-2"
-            use:tooltip="{[$_('pages.notifications.delete-notification'), { placement: 'right' }]}"
+            class="btn-close btn-sm mx-2"
+            use:tooltip="{[
+              $_('pages.notifications.delete-notification'),
+              { placement: 'right' },
+            ]}"
             on:click="{deleteNotification(notification.id)}">
           </button>
         </div>
@@ -53,7 +59,9 @@
             class="btn btn-link bg-light d-block m-auto"
             class:disabled="{loadMoreLoading}"
             on:click="{loadMore}"
-            >{$_('pages.notifications.show-more', {values: {count: $count - $notifications.length}})}
+            >{$_("pages.notifications.show-more", {
+              values: { count: $count - $notifications.length },
+            })}
           </button>
         </div>
       {/if}
@@ -94,7 +102,7 @@
 
       newNotifications.forEach((item, index) => {
         listOfFilterIsNotificationExists[index] = get(notifications).filter(
-          (filterItem) => filterItem.id === item.id
+          (filterItem) => filterItem.id === item.id,
         );
       });
 
@@ -204,7 +212,7 @@
       if (body.result === "ok") {
         body.notifications.forEach((notification) => {
           notifications.update((value) =>
-            value.insert(value.length, notification)
+            value.insert(value.length, notification),
           );
         });
 
@@ -221,7 +229,7 @@
         get(notifications).forEach((notification) => {
           if (notification.id === id) {
             notifications.update((value) =>
-              value.remove(value.indexOf(notification))
+              value.remove(value.indexOf(notification)),
             );
 
             count.update((value) => value--);

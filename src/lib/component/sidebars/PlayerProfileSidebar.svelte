@@ -8,11 +8,9 @@
           lastActivityTime="{$data.lastActivityTime}"
           checkTime="{checkTime}" />
         <div class="text-center">
-          <h2 class="my-2">{$data.username}</h2>
-          <div class="my-2">
-            <PlayerPermissionBadge
-              permissionGroupName="{$data.permissionGroupName}" />
-          </div>
+          <h2 class="my-3">{$data.username}</h2>
+          <PlayerPermissionBadge
+            permissionGroupName="{$data.permissionGroupName}" />
         </div>
       </div>
     </div>

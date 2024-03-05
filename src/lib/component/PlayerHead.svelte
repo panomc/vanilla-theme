@@ -7,12 +7,12 @@
     alt="{username}"
     class:border="{isOnline}"
     class:border-5="{isOnline}"
-    class:border-secondary="{isOnline}"
+    class:border-success="{isOnline}"
     use:tooltip="{[
       isOnline
         ? (inGame ? 'Oyunda' : 'Sitede') + ' Çevrimiçi'
         : getOfflineRelativeDateText(checkTime),
-      { placement: 'bottom' },
+      { placement: 'right' },
     ]}" />
 {:else}
   <img
@@ -39,11 +39,9 @@
   $: isOnline = lastActivityTime > Date.now() - 5 * 60 * 1000 || inGame;
 
   function getOfflineRelativeDateText(checkTime) {
-    return formatRelative(
-      new Date(parseInt(lastActivityTime)),
-      new Date(),
-      {locale: locales[$currentLanguage['date-fns-code']]}
-    ).capitalize();
+    return formatRelative(new Date(parseInt(lastActivityTime)), new Date(), {
+      locale: locales[$currentLanguage["date-fns-code"]],
+    }).capitalize();
   }
 
   String.prototype.capitalize = function () {

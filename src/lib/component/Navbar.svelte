@@ -10,7 +10,7 @@
 <div class="py-3">
   <div class="container">
     <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark bg-body-primary bg-gradient rounded-pill shadow">
+      class="navbar navbar-expand-lg navbar-dark bg-primary bg-body-primary bg-gradient rounded-pill shadow">
       <div class="container">
         <ul class="navbar-nav flex-row me-auto">
           <li class="nav-item">
@@ -56,7 +56,7 @@
 
                 {#if $notificationsCount !== 0}
                   <span
-                    class="position-absolute p-2 start-75 translate-middle badge bg-danger">
+                    class="position-absolute px-2 py-1 translate-middle badge rounded-pill bg-danger">
                     {$notificationsCount}
                   </span>
                 {/if}
@@ -91,11 +91,10 @@
                   {/each}
                 {/if}
 
-                <a
-                  class="dropdown-item text-center small"
-                  href="/notifications">
-                  {$_("navbar.notifications.show-all")}
-                </a>
+                <li class="dropdown-item bg-transparent">
+                  <a href="/notifications" class="btn btn-sm btn-primary w-100"
+                    >{$_("navbar.notifications.show-all")}</a>
+                </li>
               </div>
             </div>
           </div>
@@ -124,7 +123,7 @@
             <li class="nav-item">
               <button
                 type="button"
-                class="nav-link"
+                class="btn btn-warning rounded-pill"
                 on:click="{showRegisterModal}">
                 {$_("navbar.register-button")}
               </button>

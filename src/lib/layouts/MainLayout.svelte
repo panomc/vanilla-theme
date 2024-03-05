@@ -3,11 +3,39 @@
 </svelte:head>
 
 <App>
+  <!-- Announcement Alert -->
+  <div
+    class="alert alert-warning text-center alert-dismissible fade show rounded-0 mb-0"
+    role="alert">
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"></button>
+    Alert 2
+  </div>
+  <!--Announcement Alert End-->
   <Header />
 
   <!-- Gives a gray background color to the container area -->
   <div class="bg-light blocks">
     <Navbar />
+    <!-- Announcement Alert -->
+    <div class="container">
+      <div class="mb-3">
+        <div
+          class="alert alert-warning alert-dismissible fade show"
+          role="alert">
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"></button>
+          Alert 1
+        </div>
+      </div>
+    </div>
+    <!--Announcement Alert End-->
     <Main>
       <slot />
     </Main>

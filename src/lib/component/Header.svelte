@@ -8,27 +8,8 @@
       src="/api/websiteLogo" />
   </div>
 </div>
+
 <!-- Header End -->
-
-<!-- Announcement Alerts -->
-<div class="mb-3 d-none">
-  <div class="container">
-    <div
-      class="alert alert-primary alert-dismissible fade show rounded-pill"
-      role="alert">
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="alert"
-        aria-label="Close"></button>
-
-      <strong>Holy guacamole!</strong> You should check in on some of those fields
-      below.
-    </div>
-  </div>
-</div>
-
-<!--Announcement Alerts End-->
 
 <script>
   import { getContext } from "svelte";

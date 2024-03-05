@@ -9,17 +9,16 @@
           lastActivityTime="{$data.lastActivityTime}"
           checkTime="{checkTime}" />
         <div class="text-center">
-          <h2 class="my-2">{user.username}</h2>
-          <PlayerPermissionBadge
-            permissionGroupName="{$data.permissionGroupName}" />
-          <div
-            class="text-muted"
+          <h2 class="mt-3">{user.username}</h2>
+          <p
             use:tooltip="{[
               $_('sidebars.profile.secret'),
               { placement: 'top', hideOnClick: false },
             ]}">
             {user.email}
-          </div>
+          </p>
+          <PlayerPermissionBadge
+            permissionGroupName="{$data.permissionGroupName}" />
         </div>
       </div>
     </div>
