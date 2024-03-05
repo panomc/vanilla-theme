@@ -62,7 +62,7 @@
   import { init as initLanguage } from "$lib/language.util";
 
   import { addListener } from "$lib/NotificationManager.js";
-  import { initializePlugins } from "$lib/PluginManager.js";
+  import { initializePlugins, prepareSiteInfo } from "$lib/PluginManager.js";
 
   function sendVisitorVisitRequest({ event, CSRFToken }) {
     ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
@@ -94,11 +94,13 @@
       locals: { user, CSRFToken },
     } = event;
 
-    const siteInfo = await ApiUtil.get({
+    let siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
       CSRFToken,
     });
+
+    siteInfo = prepareSiteInfo(siteInfo);
 
     return { user, CSRFToken, siteInfo };
   }
