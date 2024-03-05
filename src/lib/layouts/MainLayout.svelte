@@ -62,6 +62,7 @@
   import { init as initLanguage } from "$lib/language.util";
 
   import { addListener } from "$lib/NotificationManager.js";
+  import { initializePlugins } from "$lib/PluginManager.js";
 
   function sendVisitorVisitRequest({ event, CSRFToken }) {
     ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
@@ -111,6 +112,8 @@
       parent,
     } = event;
     await parent();
+
+    await initializePlugins(siteInfo);
 
     const output = {
       session: { user, CSRFToken, siteInfo },
