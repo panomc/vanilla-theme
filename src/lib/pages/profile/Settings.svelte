@@ -1,5 +1,5 @@
 <!-- Settings -->
-<div class="card bg-white">
+<div class="card">
   <div class="card-body">
     <h5 class="card-title">{$_("pages.settings.title")}</h5>
     <div class="row mb-3">
@@ -41,13 +41,16 @@
               <div class="col-12">
                 {#if changingEmailSuccess}
                   <p class="text-dark mb-0">
-                    {$_("pages.settings.inputs.change-email.success-message", {values: {newEmail}})}
+                    {$_("pages.settings.inputs.change-email.success-message", {
+                      values: { newEmail },
+                    })}
                   </p>
                 {:else}
                   <a
                     href="javascript:void(0);"
                     aria-describedby="userEmail"
-                    on:click="{startChangingEmail}">{$_("pages.settings.inputs.change-email.description")}</a>
+                    on:click="{startChangingEmail}"
+                    >{$_("pages.settings.inputs.change-email.description")}</a>
                 {/if}
               </div>
             {:else if changingEmail2ndStep}
@@ -55,7 +58,9 @@
                 <input
                   type="email"
                   id="newEmail"
-                  placeholder="{$_('pages.settings.inputs.change-password.new-email-placeholder')}"
+                  placeholder="{$_(
+                    'pages.settings.inputs.change-password.new-email-placeholder',
+                  )}"
                   class="form-control"
                   aria-describedby="validationChangingEmail"
                   bind:value="{newEmail}"
@@ -84,7 +89,9 @@
                 <input
                   type="password"
                   id="currentPassword"
-                  placeholder="{$_('pages.settings.inputs.change-email.current-password-placeholder')}"
+                  placeholder="{$_(
+                    'pages.settings.inputs.change-email.current-password-placeholder',
+                  )}"
                   class="form-control"
                   bind:value="{currentPassword}"
                   autofocus />
@@ -96,7 +103,8 @@
                   on:click="{stopChangingEmail}">
                   {$_("pages.settings.inputs.change-email.cancel")}
                 </button>
-                <button type="submit" class="btn btn-link">{$_("pages.settings.inputs.change-email.continue")}</button>
+                <button type="submit" class="btn btn-link"
+                  >{$_("pages.settings.inputs.change-email.continue")}</button>
               </div>
             {/if}
           </div>

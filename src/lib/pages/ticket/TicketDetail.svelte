@@ -5,7 +5,7 @@
 </style>
 
 <article class="container">
-  <div class="card bg-white">
+  <div class="card">
     <div
       class="card-header bg-opacity-25 py-3 rounded-top"
       class:bg-secondary="{data.ticket.status === TicketStatuses.NEW}"

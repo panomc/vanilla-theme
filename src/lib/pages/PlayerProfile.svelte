@@ -1,5 +1,5 @@
 <!-- Statistics -->
-<div class="card bg-white">
+<div class="card">
   <div class="card-body">
     <h4 class="card-title">{$_("pages.player-profile.title")}</h4>
     <table class="table mb-0">

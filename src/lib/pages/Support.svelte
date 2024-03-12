@@ -1,6 +1,7 @@
 <div class="card">
   <div class="card-body">
     <h3 class="card-title">{$_("pages.support.title")}</h3>
+    <p>Sana nasıl yardımcı olabiliriz?</p>
     <ul class="list-group list-group-horizontal text-center">
       <a href="/ticket/create" class="list-group-item list-group-item-action">
         <i class="fas fa-ticket fa-2x my-3"></i>

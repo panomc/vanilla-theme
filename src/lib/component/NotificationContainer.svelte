@@ -1,4 +1,4 @@
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
+<div class="toast-container position-fixed bottom-0 end-0 p-3 d-xl-block d-none">
   {#each $notifications as notification, index (notification)}
     <div
       id="notificationToast{notification.id}"
@@ -7,7 +7,7 @@
       aria-live="assertive"
       aria-atomic="true"
       on:click="{() => onClick(notification)}">
-      <div class="toast-header bg-primary text-white">
+      <div class="toast-header text-bg-primary">
         <strong class="me-auto">Pano</strong>
         <small>{getTime(checkTime, parseInt(notification.date), locales[$currentLanguage['date-fns-code']])}</small>
         <button

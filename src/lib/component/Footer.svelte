@@ -12,7 +12,7 @@
     <span class="navbar-text">
       {@html $_("footer.been-created-with", {
         values: {
-          pano: `<a href="https://panocms.com" target="_blank" rel="noreferrer">Pano</a>`,
+          pano: `<a href="https://panomc.com" target="_blank" rel="noreferrer">Pano</a>`,
         },
       })}
     </span>

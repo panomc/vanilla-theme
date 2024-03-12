@@ -114,12 +114,12 @@
       "description": "Nasıl yardım almak istersin?",
       "options": {
         "create-ticket": {
-          "title": "Destek Talebi Oluştur",
-          "description": "Oyuncu olarak yetkililere mesaj gönder ve yanıtlandığında bildirim al."
+          "title": "Destek Talebi",
+          "description": "Oyuncu olarak yetkililerle iletişime geç."
         },
         "send-email": {
-          "title": "E-Posta Gönder",
-          "description": "Çeşitli konular için {websiteName} yöneticisine e-posta gönder."
+          "title": "E-Posta",
+          "description": "{websiteName} destek adresine e-posta gönder."
         }
       }
     },

@@ -114,12 +114,12 @@
       "description": "How would you like to get help?",
       "options": {
         "create-ticket": {
-          "title": "Create Support Ticket",
-          "description": "As a player, send messages to the authorities and get notified when they reply."
+          "title": "Support Ticket",
+          "description": "Contact the authorities as a player."
         },
         "send-email": {
-          "title": "Send E-Mail",
-          "description": "Email the {websiteName} administrator for various issues."
+          "title": "E-Mail",
+          "description": "Email the {websiteName} support address."
         }
       }
     },
