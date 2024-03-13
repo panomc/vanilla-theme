@@ -12,7 +12,7 @@
       </a>
 
       <a
-        href="mailto:example@mail.com"
+        href="mailto:{$session.siteInfo.supportEmail}"
         class="list-group-item list-group-item-action">
         <i class="fas fa-envelope fa-2x my-3"></i>
         <div class="col-auto">
@@ -29,9 +29,7 @@
 </div>
 
 <script context="module">
-  import SupportSidebar, {
-    load as loadSidebar,
-  } from "$lib/component/sidebars/SupportSidebar.svelte";
+  import SupportSidebar, { load as loadSidebar } from "$lib/component/sidebars/SupportSidebar.svelte";
 
   /**
    * @type {import('@sveltejs/kit').Load}
