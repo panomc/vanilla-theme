@@ -62,8 +62,8 @@
   import { addListener } from "$lib/NotificationManager.js";
   import { initializePlugins, prepareSiteInfo } from "$lib/PluginManager.js";
 
-  function sendVisitorVisitRequest({ event, CSRFToken }) {
-    ApiUtil.post({ path: "/api/visitorVisit", request: event, CSRFToken });
+  function sendVisitorVisitRequest({ event, csrfToken }) {
+    ApiUtil.post({ path: "/api/visitorVisit", request: event, csrfToken });
   }
 
   function initNotificationListeners() {
@@ -89,18 +89,18 @@
    */
   export async function loadServer(event) {
     const {
-      locals: { user, CSRFToken },
+      locals: { user, csrfToken }
     } = event;
 
     let siteInfo = await ApiUtil.get({
       path: "/api/siteInfo",
       request: event,
-      CSRFToken,
+      csrfToken
     });
 
     siteInfo = await prepareSiteInfo(siteInfo);
 
-    return { user, CSRFToken, siteInfo };
+    return { user, csrfToken, siteInfo };
   }
 
   /**
@@ -108,7 +108,7 @@
    */
   export async function load(event) {
     const {
-      data: { user, CSRFToken, siteInfo },
+      data: { user, csrfToken, siteInfo },
       parent,
     } = event;
     await parent();
@@ -116,7 +116,7 @@
     await initializePlugins(siteInfo);
 
     const output = {
-      session: { user, CSRFToken, siteInfo },
+      session: { user, csrfToken, siteInfo }
     };
 
     await initLanguage(siteInfo.locale);
@@ -126,7 +126,7 @@
     }
 
     if (browser) {
-      sendVisitorVisitRequest({ event, CSRFToken });
+      sendVisitorVisitRequest({ event, csrfToken });
     }
 
     return output;

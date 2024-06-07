@@ -1,10 +1,10 @@
 import ApiUtil from "$lib/api.util.js";
 
-export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
+export const getCategoryPosts = async ({ page, url, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/posts?page=${page}&categoryUrl=${url}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.page = parseInt(page);
     body.url = url;
@@ -13,11 +13,11 @@ export const getCategoryPosts = async ({ page, url, request, CSRFToken }) => {
   });
 };
 
-export const getPosts = async ({ page, request, CSRFToken }) => {
+export const getPosts = async ({ page, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/posts?page=${page}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.page = parseInt(page);
 
@@ -25,11 +25,11 @@ export const getPosts = async ({ page, request, CSRFToken }) => {
   });
 };
 
-export const getPostDetail = async ({ url, request, CSRFToken }) => {
+export const getPostDetail = async ({ url, request, csrfToken }) => {
   return ApiUtil.post({
     path: `/api/posts/${url}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.url = url;
 
@@ -37,11 +37,11 @@ export const getPostDetail = async ({ url, request, CSRFToken }) => {
   });
 };
 
-export const getPostPreview = async ({ id, request, CSRFToken }) => {
+export const getPostPreview = async ({ id, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/panel/posts/${id}/preview`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.id = parseInt(id);
 

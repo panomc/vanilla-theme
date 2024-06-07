@@ -52,7 +52,7 @@
 </div>
 
 <script context="module">
-  import { writable, get } from "svelte/store";
+  import { get, writable } from "svelte/store";
 
   const dataDefault = {
     usernameOrEmail: "",
@@ -119,9 +119,9 @@
     await sendLogin(get(data))
       .then(async (body) => {
         if (body.result === "ok") {
-          const CSRFToken = body.CSRFToken;
+          const csrfToken = body.csrfToken;
 
-          await getCredentials(CSRFToken).then(async (body) => {
+          await getCredentials(csrfToken).then(async (body) => {
             session.update((data) => {
               data.user = {
                 ...Object.keys(body)
@@ -133,7 +133,7 @@
                   }, {}),
               };
 
-              data.CSRFToken = CSRFToken;
+              data.csrfToken = csrfToken;
 
               return data;
             });

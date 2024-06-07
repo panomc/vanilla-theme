@@ -13,15 +13,15 @@ export const sendLogin = async (body) => {
   });
 };
 
-export const getCredentials = async (CSRFToken) => {
+export const getCredentials = async (csrfToken) => {
   return ApiUtil.get({
     path: "/api/auth/credentials",
-    CSRFToken,
+    csrfToken
   });
 };
 
-export const getCredentialsServerSide = async (token, CSRFToken) => {
-  return ApiUtil.get({ path: "/api/auth/credentials", token, CSRFToken }).then((response) => {
+export const getCredentialsServerSide = async (token) => {
+  return ApiUtil.get({ path: "/api/auth/credentials", token }).then((response) => {
     if (response.result !== "ok") {
       return null;
     }

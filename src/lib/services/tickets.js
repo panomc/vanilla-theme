@@ -1,10 +1,10 @@
 import ApiUtil from "../api.util.js";
 
-export const getTickets = async ({ page, pageType, request, CSRFToken }) => {
+export const getTickets = async ({ page, pageType, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/tickets?page=${page}&pageType=${pageType}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.page = parseInt(page);
     body.pageType = pageType;
@@ -13,11 +13,11 @@ export const getTickets = async ({ page, pageType, request, CSRFToken }) => {
   });
 };
 
-export const getCategoryTickets = async ({ page, url, request, CSRFToken }) => {
+export const getCategoryTickets = async ({ page, url, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/tickets?page=${page}&categoryUrl=${url}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.page = parseInt(page);
     body.url = url;
@@ -26,11 +26,11 @@ export const getCategoryTickets = async ({ page, url, request, CSRFToken }) => {
   });
 };
 
-export const getTicketCategories = async ({ page, request, CSRFToken }) => {
+export const getTicketCategories = async ({ page, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/ticket/categories?page=${page}`,
     request,
-    CSRFToken,
+    csrfToken
   }).then((body) => {
     body.page = parseInt(page);
 
@@ -38,14 +38,14 @@ export const getTicketCategories = async ({ page, request, CSRFToken }) => {
   });
 };
 
-export const updateTicket = async ({ id, status, request, CSRFToken }) => {
+export const updateTicket = async ({ id, status, request, csrfToken }) => {
   return ApiUtil.put({
     path: `/api/tickets/${id}`,
     body: {
       status,
     },
     request,
-    CSRFToken,
+    csrfToken
   });
 };
 
@@ -54,7 +54,7 @@ export const createTicket = async ({
   message,
   categoryId,
   request,
-  CSRFToken,
+                                     csrfToken
 }) => {
   return ApiUtil.post({
     path: `/api/tickets`,
@@ -64,15 +64,15 @@ export const createTicket = async ({
       categoryId,
     },
     request,
-    CSRFToken,
+    csrfToken
   });
 };
 
-export const getTicketDetail = async ({ id, request, CSRFToken }) => {
+export const getTicketDetail = async ({ id, request, csrfToken }) => {
   return ApiUtil.get({
     path: `/api/tickets/${id}`,
     request,
-    CSRFToken,
+    csrfToken
   });
 };
 
@@ -80,12 +80,12 @@ export const loadMoreTicketMessages = async ({
   id,
   lastMessageId,
   request,
-  CSRFToken,
+                                               csrfToken
 }) => {
   return ApiUtil.get({
     path: `/api/tickets/${id}/messages?lastMessageId=${lastMessageId}`,
     request,
-    CSRFToken,
+    csrfToken
   });
 };
 
@@ -93,7 +93,7 @@ export const sendTicketMessage = async ({
   ticketId,
   message,
   request,
-  CSRFToken,
+                                          csrfToken
 }) => {
   return ApiUtil.post({
     path: `/api/tickets/${ticketId}/message`,
@@ -101,6 +101,6 @@ export const sendTicketMessage = async ({
       message,
     },
     request,
-    CSRFToken,
+    csrfToken
   });
 };
